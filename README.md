@@ -1,6 +1,6 @@
 547720644
 ```
-export MAVEN_HOME=/Users/huangchao/soft/apache-maven
+export MAVEN_HOME=/Users/xxx/apache-maven
 export PATH="$MAVEN_HOME/bin:${PATH}"
 
 mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Dsort.predefinedSortOrder=custom_1
