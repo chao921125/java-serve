@@ -1,4 +1,12 @@
 547720644
+```
+export MAVEN_HOME=/Users/huangchao/soft/apache-maven
+export PATH="$MAVEN_HOME/bin:${PATH}"
+
+mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Dsort.predefinedSortOrder=custom_1
+
+```
+
 # SpringBoot 学习
 [spring-boot-examples](https://github.com/ityouknow/spring-boot-examples) |
 [SpringAll](https://github.com/wuyouzhuguli/SpringAll) |

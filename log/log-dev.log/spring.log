@@ -1,0 +1,9 @@
+2023-09-18T18:16:23.709+08:00  INFO 26584 --- [restartedMain] com.cc.javaserve.JavaServeApplication    : Starting JavaServeApplication using Java 17.0.6 with PID 26584 (/Users/huangchao/works/Study/server-java/target/classes started by huangchao in /Users/huangchao/works/Study/server-java)
+2023-09-18T18:16:23.710+08:00 DEBUG 26584 --- [restartedMain] com.cc.javaserve.JavaServeApplication    : Running with Spring Boot v3.1.3, Spring v6.0.11
+2023-09-18T18:16:23.711+08:00  INFO 26584 --- [restartedMain] com.cc.javaserve.JavaServeApplication    : The following 1 profile is active: "druid"
+2023-09-18T18:16:24.238+08:00  WARN 26584 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.cc.javaserve]' package. Please check your configuration.
+2023-09-18T18:16:24.640+08:00  INFO 26584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-18T18:16:24.640+08:00  INFO 26584 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-18T18:16:24.686+08:00  INFO 26584 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-18T18:16:24.972+08:00  WARN 26584 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-09-18T18:16:25.269+08:00  INFO 26584 --- [restartedMain] com.cc.javaserve.JavaServeApplication    : Started JavaServeApplication in 1.82 seconds (process running for 7.277)
