@@ -1,4 +1,4 @@
-package com.cc.java;
+package com.cc.javaserve;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
