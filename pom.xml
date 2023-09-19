@@ -32,7 +32,8 @@
         <bitwalker.version>1.21</bitwalker.version>
         <commons.version>2.13.0</commons.version>
         <fessional.version>2.3.3</fessional.version>
-        <jakarta.version>3.0.2</jakarta.version>
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
         <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
         <maven.version>3.11.0</maven.version>
         <oshi.version>6.4.5</oshi.version>
@@ -45,6 +46,7 @@
         <spring.dependencies.version>3.0.10</spring.dependencies.version>
         <theborakompanioni.version>2.1.0</theborakompanioni.version>
         <tobato.version>1.27.2</tobato.version>
+        <velocity.version>2.3</velocity.version>
     </properties>
     <dependencies>
         <!-- SpringBoot的依赖配置-->
@@ -160,6 +162,12 @@
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${fessional.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jakarta.servlet-api</artifactId>
+                    <groupId>jakarta.servlet</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- JWT -->
@@ -223,6 +231,18 @@
             <version>${oshi.version}</version>
         </dependency>
 
+        <!-- 定时任务 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.mchange</groupId>
+                    <artifactId>c3p0</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- 反射 -->
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -270,10 +290,23 @@
             <version>${commons.version}</version>
         </dependency>
 
+        <!-- velocity代码生成使用模板 -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>${velocity.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.version}</version>
+            <version>${jakarta.validation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- excel工具 -->
