@@ -122,6 +122,11 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${baomidou.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
@@ -130,11 +135,13 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
+        <!-- velocity代码生成使用模板 -->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${baomidou.version}</version>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>${velocity.version}</version>
         </dependency>
+
         <!-- 数据库 ====== end -->
 
         <!-- 项目其他配置 ====== start -->
@@ -240,13 +247,6 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-spring-web</artifactId>
             <version>${springfox.version}</version>
-        </dependency>
-
-        <!-- velocity代码生成使用模板 -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <version>${velocity.version}</version>
         </dependency>
 
         <dependency>
