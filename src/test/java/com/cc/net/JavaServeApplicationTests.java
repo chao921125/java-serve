@@ -1,4 +1,4 @@
-package com.cc.javaserve;
+package com.cc.net;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
