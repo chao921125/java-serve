@@ -21,9 +21,10 @@ public class RunGen {
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
                 .globalConfig(builder -> {
-                    builder.author("cc") // 作者
-                            .commentDate("yyyy-mm-dd HH:MM:SS")// 时间
-                            .outputDir(System.getProperty("user.dir") + "/src/main/java/com/cc/generator")// 目录
+                    builder.enableSwagger()
+                            .author("cc") // 作者
+                            .commentDate("yyyy-mm-dd HH:MM:SS") // 时间
+                            .outputDir(System.getProperty("user.dir") + "/src/main/java/com/cc/generator") // 目录
                             .disableOpenDir();// 禁止打开目录
                 })
                 .packageConfig(builder -> {
