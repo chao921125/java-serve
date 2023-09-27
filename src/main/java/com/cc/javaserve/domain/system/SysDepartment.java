@@ -14,38 +14,45 @@ import lombok.Setter;
 
 /**
  * <p>
- * 角色表
+ * 部门表
  * </p>
  *
  * @author cc
- * @since 2023-58-27 13:09:219
+ * @since 2023-55-27 14:09:306
  */
 @Getter
 @Setter
-@TableName("sys_role")
-@ApiModel(value = "SysRole对象", description = "角色表")
-public class SysRole implements Serializable {
+@TableName("sys_department")
+@ApiModel(value = "SysDepartment对象", description = "部门表")
+public class SysDepartment implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty("主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("名称")
-    private String name;
+    @ApiModelProperty("父级id")
+    private Long parentId;
 
-    @ApiModelProperty("角色key")
-    private String key;
+    @ApiModelProperty("祖级，树结构")
+    private String ancestors;
+
+    @ApiModelProperty("部门名称")
+    private String name;
 
     @ApiModelProperty("排序")
     private Integer sort;
 
-    @ApiModelProperty("权限标识[C,R,U,D]")
-    private String permissions;
+    @ApiModelProperty("负责人")
+    private String leader;
 
-    @ApiModelProperty("数据权限（1全部 2当前及以下 3当前）")
-    private String dataScope;
+    @ApiModelProperty("手机号")
+    private String phone;
+
+    @ApiModelProperty("邮箱")
+    private String email;
 
     @ApiModelProperty("删除标识（0删除 1未删除）")
     private String delFlag;

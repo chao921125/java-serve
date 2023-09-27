@@ -20,7 +20,7 @@ public class RunGen {
         final String TABLE_NAME = "sys_department,sys_menu";
         final String TABLE_NAME_PREFIX = "";
 
-        final String PKG = "system";
+        final String PKG = "";
         final String PKG_PATH = "/src/main/java/com/cc/generator";
         final String PKG_PATH_MAPPER = "/src/main/java/com/cc/generator/mapper";
 
