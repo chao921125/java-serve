@@ -1,4 +1,4 @@
-package com.cc.javaserve.entity;
+package com.cc.javaserve.domain.system;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;

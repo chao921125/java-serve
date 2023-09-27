@@ -1,4 +1,4 @@
 package com.cc.javaserve.service;
 
-public interface ISysUserService {
+public interface DemoService {
 }

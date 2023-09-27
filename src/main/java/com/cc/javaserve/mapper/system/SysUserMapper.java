@@ -1,6 +1,6 @@
-package com.cc.javaserve.mapper;
+package com.cc.javaserve.mapper.system;
 
-import com.cc.javaserve.entity.SysUser;
+import com.cc.javaserve.domain.system.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

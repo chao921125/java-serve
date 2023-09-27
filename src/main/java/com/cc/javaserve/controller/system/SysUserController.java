@@ -1,4 +1,4 @@
-package com.cc.javaserve.controller;
+package com.cc.javaserve.controller.system;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;

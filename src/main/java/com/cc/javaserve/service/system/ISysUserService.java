@@ -1,6 +1,6 @@
-package com.cc.javaserve.service;
+package com.cc.javaserve.service.system;
 
-import com.cc.javaserve.entity.SysUser;
+import com.cc.javaserve.domain.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

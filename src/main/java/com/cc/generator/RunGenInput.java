@@ -1,15 +1,16 @@
 package com.cc.generator;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Slf4j
-public class RunGen {
+public class RunGenInput {
     public static void main(String[] args) {
         final String DATA_SOURCE = "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
         final String DATA_NAME = "root";
@@ -20,9 +21,9 @@ public class RunGen {
         final String TABLE_NAME_PREFIX = "";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
-                .globalConfig(builder -> {
+                .globalConfig((scanner, builder) -> {
                     builder.enableSwagger()
-                            .author("cc") // 作者
+                            .author(scanner.apply("请输入作者：")) // 作者
                             .commentDate("yyyy-mm-dd HH:MM:SS") // 时间
                             .outputDir(System.getProperty("user.dir") + "/src/main/java/com/cc/generator") // 目录
                             .disableOpenDir();// 禁止打开目录
@@ -32,8 +33,8 @@ public class RunGen {
                     builder.parent(PKG) // 设置父包，mapper路径
                             .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + "/src/main/java/com/cc/generator/mapper"));
                 })
-                .strategyConfig(builder -> {
-                    builder.addInclude(TABLE_NAME) // 表
+                .strategyConfig((scanner, builder) -> {
+                    builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all"))) // 表
                             .addTablePrefix(TABLE_NAME_PREFIX) // 过滤表前缀
                             .entityBuilder() // Entity策略
                             .enableLombok() //
@@ -47,8 +48,14 @@ public class RunGen {
                             .formatServiceFileName("I%sService") // %s匹配表名，接口文件名
                             .formatServiceImplFileName("%sServiceImpl")
                             .controllerBuilder() // Controller策略
+                            .enableRestStyle()
+                            .enableHyphenStyle()
                             .enableFileOverride(); // 覆盖
                 })
                 .execute();
+    }
+    // 处理 all 情况
+    protected static List<String> getTables(String tables) {
+        return "all".equals(tables) ? Collections.emptyList() : Arrays.asList(tables.split(","));
     }
 }
