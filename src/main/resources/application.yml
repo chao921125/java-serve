@@ -37,16 +37,6 @@ server:
       # Tomcat启动初始化的线程数，默认值10
       min-spare: 100
 
-# 日志配置
-logging:
-  level:
-    root: info
-    com.cc: debug
-    org.springframework: warn
-  file:
-    path: ./log/
-    name: log/log.log
-
 # Spring配置
 spring:
   # 日志入库
@@ -99,6 +89,16 @@ pagehelper:
   helper-dialect: mysql
   support-methods-arguments: true
   params: count=countSql
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.cc: debug
+    org.springframework: warn
+  file:
+    path: ./log/
+    name: log/log.log
 
 # Shiro
 shiro:
