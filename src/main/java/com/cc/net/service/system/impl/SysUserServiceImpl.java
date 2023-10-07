@@ -1,6 +1,6 @@
 package com.cc.net.service.system.impl;
 
-import com.cc.net.domain.system.SysUser;
+import com.cc.net.entity.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cc.net.mapper.system.SysUserMapper;
 import org.springframework.stereotype.Service;

@@ -1,0 +1,152 @@
+# 项目相关配置
+cc:
+  # 名称
+  name: CC_SERVER
+  # 版本
+  version: 0.0.1
+  # 版权年份
+  copyright: 2023
+  # 文件路径 示例（ Windows配置D:/cc/uploadPath，Linux配置 /home/cc/uploadPath）
+  profile: /
+  # 获取ip地址开关
+  address-enabled: true
+
+# 用户配置
+user:
+  password:
+    # 密码错误{maxRetryCount}次锁定10分钟
+    max-retry-count: 5
+    # 密码错误锁定时长
+    lock-time: 10
+
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为80
+  port: 8080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 1000
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+
+# Spring配置
+spring:
+  # 日志入库
+  aop:
+    auto: true
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: druid
+  servlet:
+    # 文件上传
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+  devtools:
+    restart:
+      # 服务模块 热部署开关
+      enabled: true
+
+# MyBatis
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  # 搜索指定包别名
+  type-aliases-package: com.cc.**.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  # 加载全局的配置文件
+  #  config-location: classpath:mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: warning
+  global-config:
+    banner: true
+    db-config:
+      id-type: auto
+
+# PageHelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.cc: debug
+    org.springframework: warn
+  file:
+    path: ./log/
+    name: log/log.log
+
+# Shiro
+shiro:
+  # 登录地址
+  login-url: /login
+  # 权限认证失败地址
+  unauthorized-url: /unauth
+  # 首页地址
+  index-url: /index
+  # 验证码开关
+  captcha-enabled: true
+  # 验证码类型 math 数字计算 char 字符验证
+  captcha-type: math
+  cookie:
+    # 设置Cookie的域名 默认空，即当前访问的域名
+    domain:
+    # 设置cookie的有效访问路径
+    path: /
+    # 设置HttpOnly属性
+    http-only: true
+    # 设置Cookie的过期时间，天为单位
+    max-age: 30
+    # 设置密钥，务必保持唯一性（生成方式，直接拷贝到main运行即可）Base64.encodeToString(CipherUtils.generateNewKey(128, "AES").getEncoded()) （默认启动生成随机秘钥，随机秘钥会导致之前客户端RememberMe Cookie无效，如设置固定秘钥RememberMe Cookie则有效）
+    cipher-key:
+  session:
+    # Session超时时间，-1代表永不过期（默认30分钟）
+    expire-time: 43200
+    # 同步session到数据库的周期（默认1分钟）
+    db-sync-period: 1
+    # 相隔多久检查一次session的有效性，默认就是10分钟
+    validation-interval: 10
+    # 同一个用户最大会话数，比如2的意思是同一个账号允许最多同时两个人登录（默认-1不限制）
+    max-session: -1
+    # 踢出之前登录的/之后登录的用户，默认踢出之前登录的用户
+    kickout-after: false
+  rememberMe:
+    # 是否开启记住我
+    enabled: true
+
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+  url-patterns: /system/*,/monitor/*,/tool/*
+
+# Swagger配置
+swagger:
+  enabled: true

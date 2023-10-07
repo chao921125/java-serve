@@ -1,7 +1,7 @@
 package com.cc.net;
 
 import com.baomidou.mybatisplus.core.toolkit.Assert;
-import com.cc.net.domain.system.SysUser;
+import com.cc.net.entity.system.SysUser;
 import com.cc.net.mapper.system.SysUserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @SpringBootTest
 public class SampleTest {
-    @Autowired
+    @Resource
     private SysUserMapper sysUserMapper;
 
     @Test

@@ -1,6 +1,6 @@
 package com.cc.net.mapper.system;
 
-import com.cc.net.domain.system.SysRole;
+import com.cc.net.entity.system.SysRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
