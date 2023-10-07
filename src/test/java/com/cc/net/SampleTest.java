@@ -11,7 +11,7 @@ import java.util.List;
 
 @SpringBootTest
 public class SampleTest {
-    @Autowired
+    @Resource
     private SysUserMapper sysUserMapper;
 
     @Test
