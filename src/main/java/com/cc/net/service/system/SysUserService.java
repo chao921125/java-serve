@@ -1,6 +1,6 @@
 package com.cc.net.service.system;
 
-import com.cc.net.domain.system.SysUser;
+import com.cc.net.entity.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cc
  * @since 2023-28-27 10:09:265
  */
-public interface ISysUserService extends IService<SysUser> {
+public interface SysUserService extends IService<SysUser> {
 
 }

@@ -1,6 +1,6 @@
 package com.cc.net.mapper.system;
 
-import com.cc.net.domain.system.SysMenu;
+import com.cc.net.entity.system.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

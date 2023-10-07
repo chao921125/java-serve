@@ -1,6 +1,6 @@
 package com.cc.net.service.system;
 
-import com.cc.net.domain.system.SysMenu;
+import com.cc.net.entity.system.SysMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cc
  * @since 2023-55-27 14:09:404
  */
-public interface ISysMenuService extends IService<SysMenu> {
+public interface SysMenuService extends IService<SysMenu> {
 
 }

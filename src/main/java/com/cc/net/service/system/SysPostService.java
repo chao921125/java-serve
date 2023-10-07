@@ -1,6 +1,6 @@
 package com.cc.net.service.system;
 
-import com.cc.net.domain.system.SysPost;
+import com.cc.net.entity.system.SysPost;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cc
  * @since 2023-58-27 13:09:120
  */
-public interface ISysPostService extends IService<SysPost> {
+public interface SysPostService extends IService<SysPost> {
 
 }

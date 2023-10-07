@@ -1,4 +1,4 @@
-package com.cc.net.domain.system;
+package com.cc.net.entity.system;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 

@@ -17,7 +17,7 @@ public class RunGen {
         final String DATA_NAME = "root";
         final String DATA_PWD = "root123456";
 
-        final String TABLE_NAME = "sys_department,sys_menu";
+        final String TABLE_NAME = "table_name1, table_name2";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
@@ -49,7 +49,7 @@ public class RunGen {
                             .enableFileOverride() // 覆盖
                             .serviceBuilder() // Service策略
                             .enableFileOverride() // 覆盖
-                            .formatServiceFileName("I%sService") // %s匹配表名，接口文件名
+                            .formatServiceFileName("%sService") // %s匹配表名，接口文件名
                             .formatServiceImplFileName("%sServiceImpl")
                             .controllerBuilder() // Controller策略
                             .enableFileOverride(); // 覆盖

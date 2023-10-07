@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.3</version>
+        <version>3.1.4</version>
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
@@ -21,6 +21,7 @@
     <properties>
         <java.version>17</java.version>
         <project.encoding>UTF-8</project.encoding>
+        <maven.version>3.11.0</maven.version>
 
         <alibaba.druid.version>1.2.16</alibaba.druid.version>
         <alibaba.easyexcel.version>3.3.2</alibaba.easyexcel.version>
@@ -32,22 +33,22 @@
         <bitwalker.version>1.21</bitwalker.version>
         <commons.version>2.13.0</commons.version>
         <fessional.version>2.3.3</fessional.version>
+        <mybatis.version>3.0.2</mybatis.version>
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
         <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
-        <maven.version>3.11.0</maven.version>
         <oshi.version>6.4.5</oshi.version>
         <pagehelper.version>1.4.7</pagehelper.version>
         <poi.version>5.2.3</poi.version>
         <projectreactor.version>3.5.10</projectreactor.version>
         <shiro.version>1.12.0</shiro.version>
         <springfox.version>3.0.0</springfox.version>
-        <swagger.version>2.2.15</swagger.version>
+        <swagger.version>2.2.16</swagger.version>
         <spring.dependencies.version>3.0.10</spring.dependencies.version>
         <theborakompanioni.version>2.1.0</theborakompanioni.version>
-        <tobato.version>1.27.2</tobato.version>
         <velocity.version>2.3</velocity.version>
     </properties>
+
     <dependencies>
         <!-- SpringBoot的依赖配置 ====== start -->
         <dependency>
@@ -55,7 +56,6 @@
             <artifactId>spring-boot-dependencies</artifactId>
             <version>${spring.dependencies.version}</version>
             <type>pom</type>
-            <scope>import</scope>
         </dependency>
         <!-- 记录日志并入库 -->
         <dependency>
@@ -116,18 +116,24 @@
 
         <!-- Mybatis-plus -->
         <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>${baomidou.datasource.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
         <dependency>
@@ -261,12 +267,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- FastDFS 分布式文件系统 -->
-        <dependency>
-            <groupId>com.github.tobato</groupId>
-            <artifactId>fastdfs-client</artifactId>
-            <version>${tobato.version}</version>
-        </dependency>
         <!-- 项目其他配置 ====== end -->
 
         <!-- 工具类库 ====== start -->

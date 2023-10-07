@@ -48,7 +48,7 @@ public class RunGenInput {
                             .enableFileOverride() // 覆盖
                             .serviceBuilder() // Service策略
                             .enableFileOverride() // 覆盖
-                            .formatServiceFileName("I%sService") // %s匹配表名，接口文件名
+                            .formatServiceFileName("%sService") // %s匹配表名，接口文件名
                             .formatServiceImplFileName("%sServiceImpl")
                             .controllerBuilder() // Controller策略
                             .enableRestStyle()

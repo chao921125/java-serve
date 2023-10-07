@@ -1,6 +1,6 @@
 package com.cc.net.mapper.system;
 
-import com.cc.net.domain.system.SysDepartment;
+import com.cc.net.entity.system.SysDepartment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
