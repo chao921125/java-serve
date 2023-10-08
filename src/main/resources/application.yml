@@ -64,15 +64,12 @@ spring:
       # 服务模块 热部署开关
       enabled: true
 
-# MyBatis
-mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# MyBatis-plus
 mybatis-plus:
   # 搜索指定包别名
-  type-aliases-package: com.cc.**.entity
+  type-aliases-package: com.cc.net.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  mapper-locations: classpath*:mapper/**/*.xml
   # 加载全局的配置文件
   #  config-location: classpath:mybatis-config.xml
   configuration:

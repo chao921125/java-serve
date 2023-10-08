@@ -1,0 +1,6 @@
+```java
+
+@Data
+@Serial
+
+```

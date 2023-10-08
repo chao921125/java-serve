@@ -3,6 +3,7 @@ package com.cc.net.entity.log;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,11 +17,12 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author cc
- * @since 2023-54-07 14:10:812
+ * @since 2023-42-08 14:10:202
  */
 @Getter
 @Setter
 @TableName("log_login")
+@Data
 @ApiModel(value = "LogLogin对象", description = "")
 public class LogLogin implements Serializable {
 
@@ -34,9 +36,6 @@ public class LogLogin implements Serializable {
 
     @ApiModelProperty("用户名")
     private String userName;
-
-    @ApiModelProperty("用户昵称")
-    private String userNickName;
 
     @ApiModelProperty("登录 IP")
     private String ip;
@@ -52,4 +51,7 @@ public class LogLogin implements Serializable {
 
     @ApiModelProperty("设备信息")
     private String system;
+
+    @ApiModelProperty("登录状态（0 失败，1 成功）")
+    private String status;
 }

@@ -1,5 +1,7 @@
 # 数据源配置
 spring:
+  application:
+    name: java-serve
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
