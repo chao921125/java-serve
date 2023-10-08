@@ -17,7 +17,7 @@ public class RunGen {
         final String DATA_NAME = "root";
         final String DATA_PWD = "root123456";
 
-        final String TABLE_NAME = "table_name1, table_name2";
+        final String TABLE_NAME = "log_login";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
