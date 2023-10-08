@@ -1,141 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cc</groupId>
-    <artifactId>java-serve</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>java-serve</name>
-    <url>https://github.com/chao921125</url>
-    <description>java-serve</description>
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.4</version>
-        <relativePath/>
-        <!-- lookup parent from repository -->
+        <relativePath/> <!--lookup parent from repository-->
     </parent>
+
+    <groupId>com.cc</groupId>
+    <artifactId>java-serve</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>java-serve</name>
+    <description>java-serve</description>
+    <url>https://github.com/chao921125</url>
 
     <properties>
         <java.version>17</java.version>
         <project.encoding>UTF-8</project.encoding>
         <maven.version>3.11.0</maven.version>
 
-        <alibaba.druid.version>1.2.19</alibaba.druid.version>
-        <alibaba.easyexcel.version>3.3.2</alibaba.easyexcel.version>
-        <alibaba.fastjson2.version>2.0.40</alibaba.fastjson2.version>
-        <alibaba.transmittable.version>2.14.3</alibaba.transmittable.version>
-        <auth0.version>4.4.0</auth0.version>
         <baomidou.version>3.5.3.2</baomidou.version>
-        <baomidou.datasource.version>4.1.3</baomidou.datasource.version>
-        <bitwalker.version>1.21</bitwalker.version>
-        <commons.version>2.13.0</commons.version>
-        <fessional.version>2.3.3</fessional.version>
-        <mybatis.version>3.0.2</mybatis.version>
-        <jakarta.validation.version>3.0.2</jakarta.validation.version>
-        <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
-        <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
-        <oshi.version>6.4.5</oshi.version>
-        <pagehelper.version>1.4.7</pagehelper.version>
-        <poi.version>5.2.3</poi.version>
-        <projectreactor.version>3.5.10</projectreactor.version>
         <shiro.version>1.12.0</shiro.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger.version>2.2.16</swagger.version>
-        <spring.dependencies.version>3.0.10</spring.dependencies.version>
-        <theborakompanioni.version>2.1.0</theborakompanioni.version>
-        <velocity.version>2.3</velocity.version>
     </properties>
 
     <dependencies>
-        <!-- SpringBoot核心依赖配置 ====== start -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${spring.dependencies.version}</version>
-            <type>pom</type>
-        </dependency>
+        <!--spring 核心依赖 start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <!--配置：批处理-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
+            <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
-        <!-- spring security 安全认证 -->
+        <!--配置：缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!--配置：数据库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <!--配置：数据库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--配置：任务调度-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <!--配置：安全认证-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <!-- 记录日志并入库 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <!-- web模板框架 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- SpringBoot集成thymeleaf模板 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
+        <!--配置：验证-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <!-- 测试 -->
+        <!--配置：记录日志并入库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--配置：web 模板-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--配置：web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--配置：web 服务-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+        </dependency>
+        <!--工具：邮件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!--工具：socket 请求-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <!--工具：json-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
+        <!--配置：开发及测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <!--表示依赖不会传递-->
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- spring-boot-devtools -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <!-- 表示依赖不会传递 -->
-            <optional>true</optional>
-        </dependency>
-        <!-- SpringBoot的依赖配置 ====== end -->
+        <!--spring 核心依赖 end-->
 
-        <!-- 数据库 ====== start -->
-        <!-- MySQL驱动 -->
+        <!--三方配置 start-->
+        <!--数据库：oracle驱动-->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--数据库：MySQL驱动-->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- 阿里数据库连接池 -->
+        <!--数据库：阿里数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${alibaba.druid.version}</version>
+            <version>1.2.19</version>
         </dependency>
-        <!-- Mybatis-plus -->
+        <!--数据库：Mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
+            <version>3.0.2</version>
         </dependency>
-        <!-- 动态数据源 -->
+        <!--数据库：Mybatis-plus 动态数据源-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${baomidou.datasource.version}</version>
+            <version>4.1.3</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -152,73 +171,65 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
-        <!-- pagehelper 分页插件 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper.version}</version>
-        </dependency>
-        <!-- velocity代码生成使用模板 -->
+        <!--velocity代码生成使用模板-->
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-            <version>${velocity.version}</version>
+            <version>2.3</version>
         </dependency>
-        <!-- 数据库 ====== end -->
-
-        <!-- 项目其他配置 ====== start -->
-        <!-- lombok get set 方法 -->
+        <!--pagehelper 分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <!--lombok get set 方法-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <!-- 多线程 -->
+        <!--多线程-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
-            <version>${alibaba.transmittable.version}</version>
+            <version>2.14.3</version>
         </dependency>
-
-        <!-- JWT鉴权 -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jsonwebtoken.version}</version>
-        </dependency>
+        <!--JWT鉴权-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>${auth0.version}</version>
+            <version>4.4.0</version>
         </dependency>
-
-        <!-- Shiro核心框架 -->
+        <!--Shiro核心框架-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <!-- Shiro使用Spring框架 -->
+        <!--Shiro使用Spring框架-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <!-- Shiro使用EhCache缓存框架 -->
+        <!--Shiro使用EhCache缓存框架-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <!-- Shiro thymeleaf模板引擎和shiro框架的整合 -->
+        <!--Shiro thymeleaf模板引擎和shiro框架的整合-->
         <dependency>
             <groupId>com.github.theborakompanioni</groupId>
             <artifactId>thymeleaf-extras-shiro</artifactId>
-            <version>${theborakompanioni.version}</version>
+            <version>2.1.0</version>
         </dependency>
-
-        <!-- 定时任务 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+        <!--定时任务-->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
@@ -229,21 +240,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!-- 反射 -->
+        <!--token生成与解码-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!--反射-->
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${projectreactor.version}</version>
+            <version>3.5.10</version>
         </dependency>
-
-        <!-- Swagger3依赖 -->
+        <!--Swagger3依赖-->
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-core</artifactId>
             <version>${swagger.version}</version>
         </dependency>
-        <!-- 防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本 -->
+        <!--防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本-->
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-models</artifactId>
@@ -269,38 +284,88 @@
             <artifactId>springfox-spring-web</artifactId>
             <version>${springfox.version}</version>
         </dependency>
-        <!-- 校验 -->
+        <!--校验-->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.validation.version}</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>${jakarta.servlet.version}</version>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- 项目其他配置 ====== end -->
-
-        <!-- 工具类库 ====== start -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter-test</artifactId>
+            <version>3.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!--kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.modulith</groupId>
+            <artifactId>spring-modulith-starter-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+        <!--安全-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.modulith</groupId>
+            <artifactId>spring-modulith-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--三方配置 end-->
+        
+        <!--三方工具 start-->
+        <!--io常用工具类-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <!-- io常用工具类 -->
+        <!--io常用工具类-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.version}</version>
+            <version>2.13.0</version>
         </dependency>
-
-        <!-- 验证码 -->
+        <!--验证码-->
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>
-            <version>${fessional.version}</version>
+            <version>2.3.3</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jakarta.servlet-api</artifactId>
@@ -308,52 +373,54 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!-- Excel 生成/下载/导入/导出 -->
+        <!--Excel 生成/下载/导入/导出-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>${alibaba.easyexcel.version}</version>
+            <version>3.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
+            <version>5.2.3</version>
         </dependency>
-
-        <!-- JSON -->
+        <!--JSON-->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>${alibaba.fastjson2.version}</version>
+            <version>2.0.40</version>
         </dependency>
-        <!-- JSON工具类 -->
+        <!--JSON工具类-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
-
-        <!-- 解析客户端操作系统、浏览器等 -->
+        <!--解析客户端操作系统、浏览器等-->
         <dependency>
             <groupId>eu.bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>
-            <version>${bitwalker.version}</version>
+            <version>1.21</version>
         </dependency>
-        <!-- 获取系统信息 -->
+        <!--获取系统信息-->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
-            <version>${oshi.version}</version>
+            <version>6.4.5</version>
         </dependency>
-        <!-- 工具类库 ====== end -->
-        <!-- 测试 -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!--三方工具 end-->
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.modulith</groupId>
+                <artifactId>spring-modulith-bom</artifactId>
+                <version>1.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -368,6 +435,32 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.restdocs</groupId>
+                        <artifactId>spring-restdocs-asciidoctor</artifactId>
+                        <version>3.0.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <!--编译跳过测试文件检查的生命周期-->
@@ -390,7 +483,6 @@
                     <encoding>${project.encoding}</encoding>
                 </configuration>
             </plugin>
-
         </plugins>
 
         <resources>
@@ -422,28 +514,30 @@
         </resources>
     </build>
 
-    <!--    <repositories>-->
-    <!--        <repository>-->
-    <!--            <id>public</id>-->
-    <!--            <name>aliyun nexus</name>-->
-    <!--            <url>https://maven.aliyun.com/repository/public</url>-->
-    <!--            <releases>-->
-    <!--                <enabled>true</enabled>-->
-    <!--            </releases>-->
-    <!--        </repository>-->
-    <!--    </repositories>-->
+    <!--三方仓库-->
+    <!--   <repositories>-->
+    <!--       <repository>-->
+    <!--           <id>public</id>-->
+    <!--           <name>aliyun nexus</name>-->
+    <!--           <url>https://maven.aliyun.com/repository/public</url>-->
+    <!--           <releases>-->
+    <!--               <enabled>true</enabled>-->
+    <!--           </releases>-->
+    <!--       </repository>-->
+    <!--   </repositories>-->
 
-    <!--    <pluginRepositories>-->
-    <!--        <pluginRepository>-->
-    <!--            <id>public</id>-->
-    <!--            <name>aliyun nexus</name>-->
-    <!--            <url>https://maven.aliyun.com/repository/public</url>-->
-    <!--            <releases>-->
-    <!--                <enabled>true</enabled>-->
-    <!--            </releases>-->
-    <!--            <snapshots>-->
-    <!--                <enabled>false</enabled>-->
-    <!--            </snapshots>-->
-    <!--        </pluginRepository>-->
-    <!--    </pluginRepositories>-->
+    <!--   <pluginRepositories>-->
+    <!--       <pluginRepository>-->
+    <!--           <id>public</id>-->
+    <!--           <name>aliyun nexus</name>-->
+    <!--           <url>https://maven.aliyun.com/repository/public</url>-->
+    <!--           <releases>-->
+    <!--               <enabled>true</enabled>-->
+    <!--           </releases>-->
+    <!--           <snapshots>-->
+    <!--               <enabled>false</enabled>-->
+    <!--           </snapshots>-->
+    <!--       </pluginRepository>-->
+    <!--   </pluginRepositories>-->
+
 </project>
