@@ -58,8 +58,8 @@ public class RunGen {
                             .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + PKG_PATH_MAPPER));
                 })
                 .templateConfig(builder -> {
-                    builder.disable(TemplateType.CONTROLLER)
-                            .controller("/templates/controller.java");
+//                    builder.disable(TemplateType.CONTROLLER)
+//                            .controller("/templates/controller.java");
                 })
                 .injectionConfig(builder -> {
                 })
