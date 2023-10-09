@@ -7,7 +7,7 @@ import com.cc.net.common.utils.StringUtils;
  *
  * @author cc
  */
-public class PageObj {
+public class PageEntity {
     /**
      * 当前记录起始索引
      */

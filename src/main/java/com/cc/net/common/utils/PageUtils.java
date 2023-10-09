@@ -1,7 +1,7 @@
 package com.cc.net.common.utils;
 
 import com.github.pagehelper.PageHelper;
-import com.cc.net.common.core.page.PageObj;
+import com.cc.net.common.core.page.PageEntity;
 import com.cc.net.common.core.page.TableSupport;
 import com.cc.net.common.utils.sql.SqlUtil;
 
@@ -15,7 +15,7 @@ public class PageUtils extends PageHelper {
      * 设置请求分页数据
      */
     public static void startPage() {
-        PageObj pageDomain = TableSupport.buildPageRequest();
+        PageEntity pageDomain = TableSupport.buildPageRequest();
         Integer pageNum = pageDomain.getPageNum();
         Integer pageSize = pageDomain.getPageSize();
         String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());

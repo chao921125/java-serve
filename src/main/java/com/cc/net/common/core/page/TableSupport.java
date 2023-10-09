@@ -37,8 +37,8 @@ public class TableSupport {
     /**
      * 封装分页对象
      */
-    public static PageObj getPageDomain() {
-        PageObj pageDomain = new PageObj();
+    public static PageEntity getPageDomain() {
+        PageEntity pageDomain = new PageEntity();
         pageDomain.setPageNum(Convert.toInt(ServletUtils.getParameter(PAGE_NUM), 1));
         pageDomain.setPageSize(Convert.toInt(ServletUtils.getParameter(PAGE_SIZE), 10));
         pageDomain.setOrderByColumn(ServletUtils.getParameter(ORDER_BY_COLUMN));
@@ -47,7 +47,7 @@ public class TableSupport {
         return pageDomain;
     }
 
-    public static PageObj buildPageRequest() {
+    public static PageEntity buildPageRequest() {
         return getPageDomain();
     }
 }
