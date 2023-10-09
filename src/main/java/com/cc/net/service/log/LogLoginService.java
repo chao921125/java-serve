@@ -2,7 +2,6 @@ package com.cc.net.service.log;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.net.entity.log.LogLogin;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
