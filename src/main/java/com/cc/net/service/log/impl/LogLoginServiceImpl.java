@@ -7,7 +7,6 @@ import com.cc.net.service.log.LogLoginService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * <p>

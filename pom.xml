@@ -162,9 +162,9 @@
         </dependency>
         <!--velocity代码生成使用模板-->
         <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <version>2.3</version>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.32</version>
         </dependency>
         <!--pagehelper 分页插件-->
         <dependency>

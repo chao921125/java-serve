@@ -2,6 +2,7 @@ package com.cc.net.generator;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,8 +21,8 @@ public class RunGenInput {
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "system";
-        final String PKG_PATH = "/src/main/java/com/cc/generator";
-        final String PKG_PATH_MAPPER = "/src/main/java/com/cc/generator/mapper";
+        final String PKG_PATH = "/src/main/java/com/cc/net/generator";
+        final String PKG_PATH_MAPPER = "/src/main/java/com/cc/net/generator/mapper";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
                 .globalConfig((scanner, builder) -> {
@@ -29,6 +30,7 @@ public class RunGenInput {
                             .author(scanner.apply("请输入作者：")) // 作者
                             .commentDate("yyyy-mm-dd HH:MM:SS") // 时间
                             .outputDir(System.getProperty("user.dir") + PKG_PATH) // 目录
+                            .dateType(DateType.ONLY_DATE)
                             .disableOpenDir();// 禁止打开目录
                 })
                 .dataSourceConfig(builder -> {})
