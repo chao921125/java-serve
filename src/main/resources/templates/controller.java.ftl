@@ -1,85 +1,34 @@
-package ${packageName}.controller;
+package ${package}.${moduleName}.controller;
 
-import com.cc.net.common.core.controller.BaseController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ${package}.${moduleName}.service.${entityName}Service;
+import ${package}.${moduleName}.entity.${entityName};
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.R;
+import java.util.List;
 
 /**
-* ${functionName}Controller
+* ${tableComment} 前端控制器
 *
 * @author ${author}
 * @date ${datetime}
 */
 @RestController
-@RequestMapping("/${moduleName}/${businessName}")
-public class ${ClassName}Controller extends BaseController {
-@Resource
-private I${ClassName}Service ${className}Service;
+@RequestMapping("/${moduleName}/${entityName}")
+public class ${entityName}Controller {
 
-/**
-* 查询${functionName}列表
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:list')")
-@GetMapping("/list")
-#if($table.crud || $table.sub)
-public TableDataInfo list(${ClassName} ${className}) {
-startPage();
-List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
-return getDataTable(list);
-}
-#elseif($table.tree)
-public AjaxResult list(${ClassName} ${className}) {
-List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
-return success(list);
-}
-#end
+@Autowired
+private ${entityName}Service ${entityNameLower}Service;
 
-/**
-* 导出${functionName}列表
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:export')")
-@Log(title = "${functionName}", businessType = BusinessType.EXPORT)
-@PostMapping("/export")
-public void export(HttpServletResponse response, ${ClassName} ${className}) {
-List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
-ExcelUtil<${ClassName}> util = new ExcelUtil<${ClassName}>(${ClassName}. class);
-util.exportExcel(response, list, "${functionName}数据");
-}
-
-/**
-* 获取${functionName}详细信息
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:query')")
-@GetMapping(value = "/{${pkColumn.javaField}}")
-public AjaxResult getInfo(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField}) {
-return success(${className}Service.select${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaField}));
-}
-
-/**
-* 新增${functionName}
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:add')")
-@Log(title = "${functionName}", businessType = BusinessType.INSERT)
-@PostMapping
-public AjaxResult add(@RequestBody ${ClassName} ${className}) {
-return toAjax(${className}Service.insert${ClassName}(${className}));
-}
-
-/**
-* 修改${functionName}
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:edit')")
-@Log(title = "${functionName}", businessType = BusinessType.UPDATE)
-@PutMapping
-public AjaxResult edit(@RequestBody ${ClassName} ${className}) {
-return toAjax(${className}Service.update${ClassName}(${className}));
-}
-
-/**
-* 删除${functionName}
-*/
-@PreAuthorize("@ss.hasPermi('${permissionPrefix}:remove')")
-@Log(title = "${functionName}", businessType = BusinessType.DELETE)
-@DeleteMapping("/{${pkColumn.javaField}s}")
-public AjaxResult remove(@PathVariable ${pkColumn.javaType}[] ${pkColumn.javaField}s) {
-return toAjax(${className}Service.delete${ClassName}By${pkColumn.capJavaField}s(${pkColumn.javaField}s));
-}
+// 控制器方法
 }

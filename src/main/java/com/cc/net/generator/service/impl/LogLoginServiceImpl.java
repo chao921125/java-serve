@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author cc
- * @since 2023-41-09 16:10:571
+ * @since 2023-45-09 17:10:992
  */
 @Service
 public class LogLoginServiceImpl extends ServiceImpl<LogLoginMapper, LogLogin> implements LogLoginService {
