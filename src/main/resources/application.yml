@@ -111,6 +111,11 @@ xss:
   # 匹配链接
   url-patterns: /system/*,/monitor/*,/tool/*
 
+springfox:
+  documentation:
+    open-api:
+      enabled: true
+
 # Swagger配置
 swagger:
   enable: true

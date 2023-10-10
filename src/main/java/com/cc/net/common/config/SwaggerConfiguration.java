@@ -101,10 +101,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
             if (registrations != null) {
                 for (InterceptorRegistration interceptorRegistration : registrations) {
                     interceptorRegistration
-                            .excludePathPatterns("/swagger**/**")
-                            .excludePathPatterns("/webjars/**")
-                            .excludePathPatterns("/v3/**")
-                            .excludePathPatterns("/doc.html");
+                            .excludePathPatterns("/swagger**/**");
                 }
             }
         } catch (Exception e) {

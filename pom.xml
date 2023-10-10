@@ -361,6 +361,24 @@
             <version>6.4.5</version>
         </dependency>
         <!--三方工具 end-->
+
+        <!-- 解决报错异常包，请勿删除 start -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.4.0-b180830.0359</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+        <!-- 解决报错异常包，请勿删除 end -->
     </dependencies>
 
     <dependencyManagement>
