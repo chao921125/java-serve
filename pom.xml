@@ -160,7 +160,7 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
-        <!--velocity代码生成使用模板-->
+        <!--freemarker代码生成使用模板-->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
