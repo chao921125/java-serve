@@ -22,7 +22,7 @@ user:
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 8080
+  port: 8888
   servlet:
     # 应用的访问路径
     context-path: /
@@ -39,6 +39,8 @@ server:
 
 # Spring配置
 spring:
+  application:
+    name: java-serve
   # 日志入库
   aop:
     auto: true
@@ -63,6 +65,9 @@ spring:
     restart:
       # 服务模块 热部署开关
       enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 # MyBatis-plus
 mybatis-plus:
@@ -146,4 +151,8 @@ xss:
 
 # Swagger配置
 swagger:
-  enabled: true
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: swagger3
+  try-host: http://localhost:${server.port}
