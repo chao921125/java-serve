@@ -6,6 +6,7 @@ export PATH="$MAVEN_HOME/bin:${PATH}"
 mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Dsort.predefinedSortOrder=custom_1
 
 ```
+http://localhost:8080/swagger-ui/index.html
 
 # SpringBoot 学习
 [spring-boot-examples](https://github.com/ityouknow/spring-boot-examples) |
