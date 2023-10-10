@@ -19,8 +19,8 @@ import java.util.ArrayList;
  * @since 2023-42-08 14:10:202
  */
 @RestController
+@RequestMapping("/log-login")
 @Slf4j
-@RequestMapping("/logLogin")
 @Api(tags = "日志-登录")
 public class LogLoginController {
     @PostMapping("/list")
@@ -28,5 +28,4 @@ public class LogLoginController {
     public ArrayList<LogLogin> getListPage() {
         return new ArrayList<LogLogin>();
     }
-
 }

@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * @author cc
  * @since 2023-42-08 14:10:202
  */
-@Component
 @Mapper
 public interface LogLoginMapper extends BaseMapper<LogLogin> {
     ArrayList<LogLogin> selectListByTime(String startDate, String endDate);
