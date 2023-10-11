@@ -25,7 +25,6 @@
 
         <baomidou.version>3.5.3.2</baomidou.version>
         <springfox.version>3.0.0</springfox.version>
-        <swagger.version>2.2.16</swagger.version>
     </properties>
 
     <dependencies>
@@ -203,37 +202,6 @@
             <version>3.5.10</version>
         </dependency>
         <!--Swagger3依赖-->
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <!--防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本-->
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-core</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-spring-web</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

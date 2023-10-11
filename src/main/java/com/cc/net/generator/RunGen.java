@@ -1,7 +1,6 @@
 package com.cc.net.generator;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
@@ -11,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
 @Slf4j
 public class RunGen {
@@ -43,9 +39,11 @@ public class RunGen {
                             .commentDate("yyyy-mm-dd HH:MM:SS") // 时间
                             .outputDir(System.getProperty("user.dir") + PKG_PATH) // 目录
                             .dateType(DateType.ONLY_DATE)
-                            .disableOpenDir();// 禁止打开目录
+                            .disableOpenDir() // 禁止打开目录
+                            .build();
                 })
                 .dataSourceConfig(builder -> {
+//                    builder.build();
                 })
                 .packageConfig(builder -> {
                     builder.parent(PKG) // 设置父包，mapper路径
@@ -55,13 +53,15 @@ public class RunGen {
                             .serviceImpl("service.impl")
                             .mapper("mapper")
                             .xml("mapper.xml")
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + PKG_PATH_MAPPER));
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + PKG_PATH_MAPPER))
+                            .build();
                 })
                 .templateConfig(builder -> {
-//                    builder.disable(TemplateType.CONTROLLER)
-//                            .controller("/templates/controller.java");
+//                    builder.disable(TemplateType.ENTITY)
+//                            .controller("/templates/entity.java");
                 })
                 .injectionConfig(builder -> {
+//                    builder.build();
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude(getTables(TABLE_NAME)) // 表
@@ -85,7 +85,8 @@ public class RunGen {
                             .serviceBuilder() // Service 策略
                             .formatServiceFileName("%sService") // %s匹配表名，接口文件名
                             .formatServiceImplFileName("%sServiceImpl")
-                            .enableFileOverride(); // Service 覆盖
+                            .enableFileOverride() // Service 覆盖
+                            .build();
                 })
                 .templateEngine(new FreemarkerTemplateEngine())
                 .execute();

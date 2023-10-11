@@ -111,15 +111,12 @@ xss:
   # 匹配链接
   url-patterns: /system/*,/monitor/*,/tool/*
 
-springfox:
-  documentation:
-    open-api:
-      enabled: true
-
 # Swagger配置
-swagger:
-  enable: true
-  application-name: ${spring.application.name}
-  application-version: 1.0
-  application-description: swagger3
-  try-host: http://localhost:${server.port}
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    # 访问 UI 自动跳转到 swagger 种
+    path: /ui
+  packages-to-scan: com.cc.net.controller, com.cc.net.entity
