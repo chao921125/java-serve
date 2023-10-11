@@ -201,7 +201,7 @@
             <artifactId>reactor-core</artifactId>
             <version>3.5.10</version>
         </dependency>
-        <!--Swagger3依赖-->
+        <!--Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
