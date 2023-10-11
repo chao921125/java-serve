@@ -1,5 +1,6 @@
 package com.cc.net.common.config;
 
+import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -8,9 +9,10 @@ import org.springframework.stereotype.Component;
  *
  * @author cc
  */
+@Getter
 @Component
 @ConfigurationProperties(prefix = "cc")
-public class ProjectConfig {
+public class ProjectProperties {
     /**
      * 项目名称
      */
@@ -34,72 +36,47 @@ public class ProjectConfig {
     /**
      * 上传路径
      */
+    @Getter
     private static String profile;
 
     /**
      * 获取地址开关
      */
+    @Getter
     private static boolean addressEnabled;
 
     /**
      * 验证码类型
      */
+    @Getter
     private static String captchaType;
-
-    public String getName() {
-        return name;
-    }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getVersion() {
-        return version;
     }
 
     public void setVersion(String version) {
         this.version = version;
     }
 
-    public String getCopyrightYear() {
-        return copyrightYear;
-    }
-
     public void setCopyrightYear(String copyrightYear) {
         this.copyrightYear = copyrightYear;
-    }
-
-    public boolean isDemoEnabled() {
-        return demoEnabled;
     }
 
     public void setDemoEnabled(boolean demoEnabled) {
         this.demoEnabled = demoEnabled;
     }
 
-    public static String getProfile() {
-        return profile;
-    }
-
     public void setProfile(String profile) {
-        ProjectConfig.profile = profile;
-    }
-
-    public static boolean isAddressEnabled() {
-        return addressEnabled;
+        ProjectProperties.profile = profile;
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        ProjectConfig.addressEnabled = addressEnabled;
-    }
-
-    public static String getCaptchaType() {
-        return captchaType;
+        ProjectProperties.addressEnabled = addressEnabled;
     }
 
     public void setCaptchaType(String captchaType) {
-        ProjectConfig.captchaType = captchaType;
+        ProjectProperties.captchaType = captchaType;
     }
 
     /**

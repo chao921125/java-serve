@@ -1,6 +1,6 @@
 package com.cc.net.common.utils.ip;
 
-import com.cc.net.common.config.ProjectConfig;
+import com.cc.net.common.config.ProjectProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;
@@ -28,7 +28,7 @@ public class AddressUtils {
         if (IpUtils.internalIp(ip)) {
             return "内网IP";
         }
-        if (ProjectConfig.isAddressEnabled()) {
+        if (ProjectProperties.isAddressEnabled()) {
             try {
                 String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", Constants.GBK);
                 if (StringUtils.isEmpty(rspStr)) {

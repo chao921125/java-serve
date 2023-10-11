@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
  * @author cc
  * @since 2023-42-08 14:10:202
  */
-@Component
 @Service
 public class LogLoginServiceImpl extends ServiceImpl<LogLoginMapper, LogLogin> implements LogLoginService {
 

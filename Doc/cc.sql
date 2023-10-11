@@ -11,7 +11,7 @@
  Target Server Version : 80100 (8.1.0)
  File Encoding         : 65001
 
- Date: 08/10/2023 14:49:27
+ Date: 11/10/2023 14:42:00
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `log_login`;
 CREATE TABLE `log_login` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户 id',
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户名',
   `ip` varchar(255) DEFAULT NULL COMMENT '登录 IP',
@@ -32,14 +32,21 @@ CREATE TABLE `log_login` (
   `system` varchar(255) DEFAULT NULL COMMENT '设备信息',
   `status` char(1) DEFAULT '1' COMMENT '登录状态（0 失败，1 成功）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of log_login
+-- ----------------------------
+BEGIN;
+INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_time`, `address`, `system`, `status`) VALUES (1, '234', '324', '234', '234', '2023-10-08 15:19:03', '234', '234', '1');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for log_operation
 -- ----------------------------
 DROP TABLE IF EXISTS `log_operation`;
 CREATE TABLE `log_operation` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户 id',
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户名',
   `ip` varchar(255) DEFAULT NULL COMMENT '登录 IP',
@@ -56,6 +63,12 @@ CREATE TABLE `log_operation` (
   `message` varchar(255) DEFAULT NULL COMMENT '错误消息',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of log_operation
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_department
@@ -79,6 +92,13 @@ CREATE TABLE `sys_department` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='部门表';
+
+-- ----------------------------
+-- Records of sys_department
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `del_flag`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', '1', NULL, NULL, NULL, NULL, NULL);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -110,6 +130,12 @@ CREATE TABLE `sys_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='菜单表';
 
 -- ----------------------------
+-- Records of sys_menu
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
@@ -126,6 +152,12 @@ CREATE TABLE `sys_post` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='岗位表';
+
+-- ----------------------------
+-- Records of sys_post
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -147,6 +179,12 @@ CREATE TABLE `sys_role` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -179,5 +217,12 @@ CREATE TABLE `sys_user` (
   KEY `user_dept_id` (`dept_id`),
   CONSTRAINT `user_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `sys_department` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_user` (`id`, `dept_id`, `user_name`, `password`, `nick_name`, `email`, `phone`, `sex`, `avatar`, `salt`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `del_flag`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1', 1, 'admin', '123456', '超管', 'admin@mail.com', '19920008007', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL, NULL, NULL, NULL, NULL);
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
