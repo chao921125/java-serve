@@ -3,6 +3,7 @@ package com.cc.net.mapper.system;
 import com.cc.net.entity.system.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -13,6 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023-47-13 15:10:984
  */
 @Mapper
+@Repository
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }
