@@ -7,4 +7,15 @@
 <body>
 
 </body>
+<script>
+    var name = "111";
+    (() => {
+        if (typeof name === "undefined") {
+            var name = "222222";
+            console.log("------", name);
+        } else {
+            console.log("======", name);
+        }
+    })();
+</script>
 </html>

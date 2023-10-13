@@ -109,12 +109,6 @@
         </dependency>
         <!--测试-->
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--测试-->
-        <dependency>
             <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-starter-test</artifactId>
             <scope>test</scope>
@@ -163,6 +157,18 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${baomidou.version}</version>
         </dependency>
+        <!--Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <!-- 官方建议是springdoc替代springfox-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+            <version>2.2.0</version>
+        </dependency>
         <!--代码生成-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -187,52 +193,70 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--多线程-->
+        <!--Shiro-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>transmittable-thread-local</artifactId>
-            <version>2.14.3</version>
-        </dependency>
-        <!--定时任务-->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.12.0</version>
+            <!-- 排除仍使用了javax.servlet的依赖 -->
             <exclusions>
                 <exclusion>
-                    <groupId>com.mchange</groupId>
-                    <artifactId>c3p0</artifactId>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-web</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--反射-->
+        <!-- 引入适配jakarta的依赖包 -->
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
-            <version>3.5.10</version>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <classifier>jakarta</classifier>
+            <version>1.12.0</version>
         </dependency>
-        <!--Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。-->
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <classifier>jakarta</classifier>
+            <version>1.12.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!-- 官方建议是springdoc替代springfox-->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        <!--JWT鉴权-->
+        <!--JWT鉴权 token生成与解码，登录拦截验证-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
             <version>4.4.0</version>
         </dependency>
-        <!--token生成与解码-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-orgjson</artifactId>
+            <version>0.12.2</version>
+            <scope>runtime</scope>
         </dependency>
         <!--校验-->
         <dependency>

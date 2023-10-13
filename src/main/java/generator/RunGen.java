@@ -1,4 +1,4 @@
-package com.cc.net.generator;
+package generator;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
@@ -25,11 +25,11 @@ public class RunGen {
         final String DATA_NAME = "root";
         final String DATA_PWD = "root123456";
 
-        final String TABLE_NAME = "log_login";
+        final String TABLE_NAME = "sys_department,sys_menu,sys_post,sys_role,sys_user";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
-        final String PKG_PATH = "/src/main/java/com/cc/net/generator";
+        final String PKG_PATH = "/src/main/generator";
         final String PKG_PATH_MAPPER = "/src/main/resources/mapper";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
