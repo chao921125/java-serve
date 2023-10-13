@@ -8,6 +8,10 @@ mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Ds
 ```
 http://localhost:8080/swagger-ui/index.html
 
+https://github.com/geekidea/spring-boot-plus
+https://gitee.com/ckw1988/shiro-jwt-integration
+https://github.com/stylefeng/Guns
+https://github.com/liu-peiyu/geek-framework
 # SpringBoot 学习
 [spring-boot-examples](https://github.com/ityouknow/spring-boot-examples) |
 [SpringAll](https://github.com/wuyouzhuguli/SpringAll) |
