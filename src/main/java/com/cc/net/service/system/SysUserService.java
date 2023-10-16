@@ -2,9 +2,6 @@ package com.cc.net.service.system;
 
 import com.cc.net.entity.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cc.net.mapper.system.SysUserMapper;
-import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
@@ -18,18 +15,10 @@ import java.util.ArrayList;
  */
 public interface SysUserService extends IService<SysUser> {
 
-    @Autowired
-    SysUserMapper sysUserMapper;
 
-    public static ArrayList<SysUser> selectListPage() {
-        return sysUserMapper.selectPage();
-    }
+    public ArrayList<SysUser> selectListPage();
 
-    public static SysUser selectOne(String id) {
-        return new SysUser();
-    }
+    public SysUser selectOne(String id);
 
-    public static SysUser selectOneByName(String userName) {
-        return new SysUser();
-    }
+    public SysUser selectOneByName(String userName);
 }
