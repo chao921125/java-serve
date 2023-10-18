@@ -1,4 +1,9 @@
 547720644
+```shell
+# 打包命令
+mvn clean package -P dev -D maven.test.skip=true
+mvn clean package -P prod -D maven.test.skip=true
+```
 ```
 export MAVEN_HOME=/Users/xxx/apache-maven
 export PATH="$MAVEN_HOME/bin:${PATH}"

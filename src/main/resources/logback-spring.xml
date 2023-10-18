@@ -96,7 +96,7 @@
     <!--系统操作日志-->
     <root level="info">
         <appender-ref ref="console"/>
-        <appender-ref ref="file_info"/>
+        <appender-ref ref="file_all"/>
         <appender-ref ref="file_error"/>
     </root>
 </configuration>
