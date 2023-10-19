@@ -429,8 +429,8 @@
         <resources>
             <!--如果pro和xml文件放在源码java包下，也需要编译-->
             <resource>
-                <filtering>false</filtering>
                 <directory>src/main/java</directory>
+                <filtering>false</filtering>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.yml</include>
@@ -438,8 +438,8 @@
                 </includes>
             </resource>
             <resource>
-                <filtering>false</filtering>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.yml</include>
@@ -454,6 +454,24 @@
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.active>dev</spring.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.active>prod</spring.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
     <!--三方仓库-->
     <!--   <repositories>-->
