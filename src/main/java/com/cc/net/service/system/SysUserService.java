@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    public ArrayList<SysUser> selectListAll();
 
     public ArrayList<SysUser> selectListPage();
 

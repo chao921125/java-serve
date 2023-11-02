@@ -1,5 +1,6 @@
-package service.impl;
+package com.cc.net.service.system.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.cc.net.entity.system.SysUser;
 import com.cc.net.mapper.system.SysUserMapper;
 import com.cc.net.service.system.SysUserService;
@@ -22,6 +23,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Resource
     SysUserMapper sysUserMapper;
+
+    @Override
+    public ArrayList<SysUser> selectListAll() {
+//        return sysUserMapper.selectList();
+        return new ArrayList<>();
+    }
 
     @Override
     public ArrayList<SysUser> selectListPage() {
