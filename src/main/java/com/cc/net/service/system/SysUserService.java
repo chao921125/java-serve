@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface SysUserService extends IService<SysUser> {
 
-    public List<SysUser> selectListAll();
+    List<SysUser> selectListAll();
 
-    public List<SysUser> selectListPage();
+    List<SysUser> selectListPage();
 
-    public SysUser selectOne(String id);
+    SysUser selectOne(String id);
 
-    public SysUser selectOneByName(String userName);
+    SysUser selectOneByName(String userName);
 }
