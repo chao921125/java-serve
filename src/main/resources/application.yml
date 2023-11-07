@@ -42,7 +42,8 @@ spring:
   application:
     name: java-serve
   profiles:
-    active: @spring.active@
+#    active: "@spring.active@"
+    active: dev
   # 日志入库
   aop:
     auto: true
@@ -97,7 +98,7 @@ logging:
   level:
     root: info
     com.cc: debug
-    org.springframework: warn
+    org.springframework: error
   file:
     path: ./log/
     name: log/log.log
