@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cc.net.common.config.ProjectProperties;
+import com.cc.net.common.properties.ProjectProperties;
 import com.cc.net.common.utils.uuid.IdUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;

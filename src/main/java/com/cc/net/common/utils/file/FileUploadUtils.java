@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-import com.cc.net.common.config.ProjectProperties;
+import com.cc.net.common.properties.ProjectProperties;
 import com.cc.net.common.utils.uuid.Seq;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;

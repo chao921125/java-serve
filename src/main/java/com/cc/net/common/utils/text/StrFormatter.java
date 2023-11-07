@@ -1,4 +1,4 @@
-package com.cc.net.common.core.text;
+package com.cc.net.common.utils.text;
 
 import com.cc.net.common.utils.StringUtils;
 

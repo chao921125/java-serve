@@ -1,4 +1,4 @@
-package service.impl;
+package com.cc.net.service.system.impl;
 
 import com.cc.net.entity.system.SysPost;
 import com.cc.net.mapper.system.SysPostMapper;

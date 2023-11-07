@@ -1,4 +1,4 @@
-package service.impl;
+package com.cc.net.service.system.impl;
 
 import com.cc.net.entity.system.SysUser;
 import com.cc.net.mapper.system.SysUserMapper;
@@ -8,6 +8,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -22,6 +23,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Resource
     SysUserMapper sysUserMapper;
+
+    @Override
+    public List<SysUser> selectListAll() {
+        return sysUserMapper.selectList(null);
+    }
 
     @Override
     public ArrayList<SysUser> selectListPage() {

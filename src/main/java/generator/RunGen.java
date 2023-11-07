@@ -72,7 +72,6 @@ public class RunGen {
                             .enableHyphenStyle()
                             .enableFileOverride() // Controller 覆盖
                             .entityBuilder() // Entity 策略
-                            .enableLombok() //
                             .enableTableFieldAnnotation()
                             .naming(NamingStrategy.underline_to_camel) // 数据库映射实体，驼峰
                             .columnNaming(NamingStrategy.underline_to_camel) // 字段映射，驼峰

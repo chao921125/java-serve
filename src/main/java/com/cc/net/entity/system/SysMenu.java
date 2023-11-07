@@ -9,8 +9,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * <p>
@@ -20,8 +18,6 @@ import lombok.Setter;
  * @author cc
  * @since 2023-47-13 15:10:968
  */
-@Getter
-@Setter
 @TableName("sys_menu")
 @Schema(description = "SysMenu对象")
 public class SysMenu implements Serializable {
@@ -111,4 +107,172 @@ public class SysMenu implements Serializable {
     @Schema(description = "备注")
     @TableField("remark")
     private String remark;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
+
+    public String getIsLink() {
+        return isLink;
+    }
+
+    public void setIsLink(String isLink) {
+        this.isLink = isLink;
+    }
+
+    public String getIsIframe() {
+        return isIframe;
+    }
+
+    public void setIsIframe(String isIframe) {
+        this.isIframe = isIframe;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIsHide() {
+        return isHide;
+    }
+
+    public void setIsHide(String isHide) {
+        this.isHide = isHide;
+    }
+
+    public String getIsHideSubMenu() {
+        return isHideSubMenu;
+    }
+
+    public void setIsHideSubMenu(String isHideSubMenu) {
+        this.isHideSubMenu = isHideSubMenu;
+    }
+
+    public String getIsMobile() {
+        return isMobile;
+    }
+
+    public void setIsMobile(String isMobile) {
+        this.isMobile = isMobile;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

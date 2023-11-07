@@ -16,7 +16,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import com.cc.net.common.constant.Constants;
-import com.cc.net.common.core.text.Convert;
+import com.cc.net.common.utils.text.Convert;
 
 /**
  * 客户端工具类

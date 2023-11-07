@@ -19,6 +19,20 @@ user:
     # 密码错误锁定时长
     lock-time: 10
 
+# 单点登录开关
+sso:
+  openFlag: false
+  sso-client-type: server
+
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+  url-patterns: /system/*,/monitor/*,/tool/*
+
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
@@ -42,7 +56,8 @@ spring:
   application:
     name: java-serve
   profiles:
-    active: @spring.active@
+#    active: "@spring.active@"
+    active: dev
   # 日志入库
   aop:
     auto: true
@@ -86,18 +101,12 @@ mybatis-plus:
     db-config:
       id-type: auto
 
-# PageHelper分页插件
-pagehelper:
-  helper-dialect: mysql
-  support-methods-arguments: true
-  params: count=countSql
-
 # 日志配置
 logging:
   level:
     root: info
     com.cc: debug
-    org.springframework: warn
+    org.springframework: error
   file:
     path: ./log/
     name: log/log.log
@@ -112,16 +121,8 @@ springdoc:
     path: /ui
   packages-to-scan: com.cc.net.controller, com.cc.net.entity
 
-# 单点登录开关
-sso:
-  openFlag: false
-  sso-client-type: server
-
-# 防止XSS攻击
-xss:
-  # 过滤开关
-  enabled: true
-  # 排除链接（多个用逗号分隔）
-  excludes: /system/notice/*
-  # 匹配链接
-  url-patterns: /system/*,/monitor/*,/tool/*
+# PageHelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql

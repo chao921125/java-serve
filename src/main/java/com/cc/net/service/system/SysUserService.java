@@ -4,6 +4,7 @@ import com.cc.net.entity.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -15,10 +16,11 @@ import java.util.ArrayList;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    List<SysUser> selectListAll();
 
-    public ArrayList<SysUser> selectListPage();
+    List<SysUser> selectListPage();
 
-    public SysUser selectOne(String id);
+    SysUser selectOne(String id);
 
-    public SysUser selectOneByName(String userName);
+    SysUser selectOneByName(String userName);
 }

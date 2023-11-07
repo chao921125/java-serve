@@ -18,6 +18,23 @@
     <description>java-serve</description>
     <url>https://github.com/chao921125</url>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://www.mit-license.org/</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>java-serve</id>
+            <name>java-serve</name>
+            <email>admin@qq.com</email>
+            <url>https://github.com/chao921125/java-serve</url>
+            <organizationUrl>https://github.com/chao921125/java-serve</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>17</java.version>
         <project.encoding>UTF-8</project.encoding>
@@ -187,11 +204,12 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.7</version>
         </dependency>
-        <!--lombok get set 方法-->
+        <!-- slf4j -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
         <!--Shiro-->
         <dependency>
@@ -461,6 +479,18 @@
             <properties>
                 <spring.active>dev</spring.active>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.active>test</spring.active>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
         </profile>
         <profile>
             <id>prod</id>
@@ -468,7 +498,7 @@
                 <spring.active>prod</spring.active>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
     </profiles>
