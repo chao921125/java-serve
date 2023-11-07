@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Sl4j
+@Slf4j
 public class RunGenInput {
     public static void main(String[] args) {
         final String DATA_SOURCE = "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
