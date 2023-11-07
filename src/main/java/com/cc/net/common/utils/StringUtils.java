@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.springframework.util.AntPathMatcher;
 import com.cc.net.common.constant.Constants;
-import com.cc.net.common.core.text.StrFormatter;
+import com.cc.net.common.utils.text.StrFormatter;
 
 /**
  * 字符串工具类

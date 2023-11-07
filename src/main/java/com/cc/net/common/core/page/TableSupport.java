@@ -1,6 +1,6 @@
 package com.cc.net.common.core.page;
 
-import com.cc.net.common.core.text.Convert;
+import com.cc.net.common.utils.text.Convert;
 import com.cc.net.common.utils.ServletUtils;
 
 /**

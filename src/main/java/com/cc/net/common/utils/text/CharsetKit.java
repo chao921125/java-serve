@@ -1,4 +1,4 @@
-package com.cc.net.common.core.text;
+package com.cc.net.common.utils.text;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

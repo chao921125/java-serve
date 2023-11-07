@@ -1,6 +1,6 @@
 package com.cc.net.common.utils.ip;
 
-import com.cc.net.common.config.ProjectProperties;
+import com.cc.net.common.properties.ProjectProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;

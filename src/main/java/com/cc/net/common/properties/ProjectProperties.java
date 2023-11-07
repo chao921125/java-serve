@@ -1,6 +1,5 @@
-package com.cc.net.common.config;
+package com.cc.net.common.properties;
 
-import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Component;
  *
  * @author cc
  */
-@Getter
 @Component
 @ConfigurationProperties(prefix = "cc")
 public class ProjectProperties {
@@ -26,30 +24,17 @@ public class ProjectProperties {
     /**
      * 版权年份
      */
-    private String copyrightYear;
-
-    /**
-     * 实例演示开关
-     */
-    private boolean demoEnabled;
+    private String copyright;
 
     /**
      * 上传路径
      */
-    @Getter
     private static String profile;
 
     /**
      * 获取地址开关
      */
-    @Getter
     private static boolean addressEnabled;
-
-    /**
-     * 验证码类型
-     */
-    @Getter
-    private static String captchaType;
 
     public void setName(String name) {
         this.name = name;
@@ -59,12 +44,8 @@ public class ProjectProperties {
         this.version = version;
     }
 
-    public void setCopyrightYear(String copyrightYear) {
-        this.copyrightYear = copyrightYear;
-    }
-
-    public void setDemoEnabled(boolean demoEnabled) {
-        this.demoEnabled = demoEnabled;
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 
     public void setProfile(String profile) {
@@ -72,11 +53,27 @@ public class ProjectProperties {
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        ProjectProperties.addressEnabled = addressEnabled;
+        this.addressEnabled = addressEnabled;
     }
 
-    public void setCaptchaType(String captchaType) {
-        ProjectProperties.captchaType = captchaType;
+    public String getName() {
+        return name;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public static String getProfile() {
+        return profile;
+    }
+
+    public static boolean isAddressEnabled() {
+        return addressEnabled;
     }
 
     /**
