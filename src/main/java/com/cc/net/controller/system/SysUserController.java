@@ -1,7 +1,13 @@
 package com.cc.net.controller.system;
 
+import com.cc.net.entity.system.SysUser;
+import com.cc.net.service.system.SysUserService;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sys-user")
 public class SysUserController {
 
+    @Resource
+    SysUserService sysUserService;
+
+    @GetMapping("/all")
+    public List<SysUser> selectListAll() {
+        return sysUserService.selectListAll();
+    }
 }
