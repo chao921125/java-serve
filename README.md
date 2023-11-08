@@ -22,6 +22,7 @@ https://github.com/geekidea/spring-boot-plus
 https://gitee.com/ckw1988/shiro-jwt-integration
 https://github.com/stylefeng/Guns
 https://github.com/liu-peiyu/geek-framework
+https://github.com/ityouknow/spring-boot-examples/tree/master
 # SpringBoot 学习
 [spring-boot-examples](https://github.com/ityouknow/spring-boot-examples) |
 [SpringAll](https://github.com/wuyouzhuguli/SpringAll) |
