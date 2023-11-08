@@ -270,12 +270,6 @@
             <version>0.12.2</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-orgjson</artifactId>
-            <version>0.12.2</version>
-            <scope>runtime</scope>
-        </dependency>
         <!--校验-->
         <dependency>
             <groupId>jakarta.validation</groupId>

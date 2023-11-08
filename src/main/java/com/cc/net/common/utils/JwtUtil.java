@@ -3,6 +3,7 @@ package com.cc.net.common.utils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.cc.net.common.constant.ProjectConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -19,7 +20,8 @@ import java.util.Map;
 @Component
 @Slf4j
 public class JwtUtil {
-    private static final String SECRET = "7edeedb12066a811f92a3ade3d68ded679d92bf43fe448f155ae0748ee640e85";
+
+    private final String SECRET = ProjectConstants.JWT_KEY;
     private static final long EXPIRE = 60 * 24 * 7;
     public static final String HEADER = "Authorization";
 

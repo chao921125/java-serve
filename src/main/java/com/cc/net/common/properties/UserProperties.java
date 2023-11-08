@@ -13,37 +13,31 @@ import java.util.Map;
 @Component
 @ConfigurationProperties(prefix = "user")
 public class UserProperties {
-    static
-    class Password {
-        private Number maxRetryCount;
-        private Number lockTime;
+    private Number pwdMaxRetryCount;
+    private Number pwdLockTime;
+    private String jwtKey;
 
-        public void setMaxRetryCount(Number maxRetryCount) {
-            this.maxRetryCount = maxRetryCount;
-        }
-
-        public Number getMaxRetryCount() {
-            return maxRetryCount;
-        }
-
-        public Number getLockTime() {
-            return lockTime;
-        }
-
-        public void setLockTime(Number lockTime) {
-            this.lockTime = lockTime;
-        }
-    }
-    /**
-     * 密码错误{maxRetryCount}次锁定10分钟
-     */
-    private Map<String, Number> Password;
-
-    public void setPassword(Map<String, Number> password) {
-        Password = password;
+    public Number getPwdMaxRetryCount() {
+        return pwdMaxRetryCount;
     }
 
-    public Map<String, Number> getPassword() {
-        return Password;
+    public void setPwdMaxRetryCount(Number pwdMaxRetryCount) {
+        this.pwdMaxRetryCount = pwdMaxRetryCount;
+    }
+
+    public Number getPwdLockTime() {
+        return pwdLockTime;
+    }
+
+    public void setPwdLockTime(Number pwdLockTime) {
+        this.pwdLockTime = pwdLockTime;
+    }
+
+    public String getJwtKey() {
+        return jwtKey;
+    }
+
+    public void setJwtKey(String jwtKey) {
+        this.jwtKey = jwtKey;
     }
 }
