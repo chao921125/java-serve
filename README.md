@@ -11,14 +11,11 @@ export PATH="$MAVEN_HOME/bin:${PATH}"
 mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Dsort.predefinedSortOrder=custom_1
 
 ```
-http://localhost:8080/swagger-ui/index.html
+swagger http://localhost:8080/ui
 
 springboot + mybatis-plus + shiro + jwt + log
 
-https://github.com/cjbi/admin3
-https://github.com/hb0730/boot-admin
 
-https://github.com/geekidea/spring-boot-plus
 https://gitee.com/ckw1988/shiro-jwt-integration
 https://github.com/stylefeng/Guns
 https://github.com/liu-peiyu/geek-framework
@@ -41,11 +38,15 @@ https://github.com/ityouknow/spring-boot-examples/tree/master
 [zheng](https://gitee.com/shuzheng/zheng) |
 [Cloud-Platform](https://gitee.com/geek_qi/cloud-platform) |
 [SpringBlade](https://gitee.com/smallc/SpringBlade) |
-[kkFileView](https://gitee.com/kekingcn/file-online-preview)
+[kkFileView](https://gitee.com/kekingcn/file-online-preview) |
+[spring-boot2 spring-boot-plus](https://github.com/geekidea/spring-boot-plus) |
 
 # 收藏项目
 [mall](https://github.com/macrozheng/mall) [mall-admin-web](https://github.com/macrozheng/mall-admin-web) |
 [微人事](https://github.com/lenve/vhr) |
 [新蜂商城](https://github.com/newbee-ltd/newbee-mall/tree/spring-boot-3.x) |
 [在线的音乐](https://github.com/Yin-Hongwei/music-website) |
-[spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)
+[spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill) |
+[springboot3 ScribbleHub](https://github.com/dulaiduwang003/ScribbleHub) |
+[springboot3 boot-admin](https://github.com/hb0730/boot-admin) |
+[springboot3 admin3](https://github.com/cjbi/admin3) |
