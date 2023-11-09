@@ -20,7 +20,7 @@ public interface SysUserService extends IService<SysUser> {
 
     List<SysUser> selectListPage();
 
-    SysUser selectOne(String id);
+    SysUser selectById(String id);
 
-    SysUser selectOneByName(String userName);
+    SysUser selectByUser(SysUser user);
 }

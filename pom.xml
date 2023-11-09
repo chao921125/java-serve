@@ -66,7 +66,6 @@
         <pagehelper.version>1.4.7</pagehelper.version>
         <projectlombok.version>1.18.30</projectlombok.version>
 
-        <shiro.version>1.13.0</shiro.version>
         <springdoc.version>2.2.0</springdoc.version>
         <springfox.version>3.0.0</springfox.version>
 
@@ -90,10 +89,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
-        <!--配置：批处理-->
+        <!--配置：jpa-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-batch</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!--配置：缓存-->
         <dependency>
@@ -105,10 +104,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        <!--配置：数据库-->
+        <!--配置：Security-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--配置：批处理-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
         <!--配置：任务调度-->
         <dependency>
@@ -219,6 +223,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
         </dependency>
+        <!--缓存：redis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
         <!--Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。-->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -255,42 +264,6 @@
             <artifactId>lombok</artifactId>
             <version>${projectlombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!--Shiro-->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
-            <version>${shiro.version}</version>
-            <!-- 排除仍使用了javax.servlet的依赖 -->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.shiro</groupId>
-                    <artifactId>shiro-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.shiro</groupId>
-                    <artifactId>shiro-web</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- 引入适配jakarta的依赖包 -->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-            <classifier>jakarta</classifier>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <classifier>jakarta</classifier>
-            <version>${shiro.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.shiro</groupId>
-                    <artifactId>shiro-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--JWT鉴权 token生成与解码，登录拦截验证-->
         <dependency>

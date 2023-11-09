@@ -55,16 +55,11 @@ spring:
   application:
     name: java-serve
   profiles:
-#    active: "@spring.active@"
+#    active: "@spring.active@" TODO 此处放开替换掉下面的会出错，原因未知
     active: dev
   # 日志入库
   aop:
     auto: true
-  # 模板引擎
-  thymeleaf:
-    mode: HTML
-    encoding: UTF-8
-    cache: false
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
@@ -83,6 +78,19 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+# Redis
+application:
+  redis:
+    host: localhost
+    port: 6380
+    pass: pass
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000
+      refresh-token:
+        expiration: 604800000
+
 # MyBatis-plus
 mybatis-plus:
   # 搜索指定包别名
@@ -99,6 +107,12 @@ mybatis-plus:
     banner: true
     db-config:
       id-type: auto
+
+# PageHelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql
 
 # 日志配置
 logging:
@@ -119,9 +133,3 @@ springdoc:
     # 访问 UI 自动跳转到 swagger 种
     path: /ui
   packages-to-scan: com.cc.net.controller, com.cc.net.entity
-
-# PageHelper分页插件
-pagehelper:
-  helper-dialect: mysql
-  support-methods-arguments: true
-  params: count=countSql

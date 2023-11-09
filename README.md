@@ -1,4 +1,4 @@
-547720644
+# 本项目内容 547720644
 ```shell
 # 打包命令
 mvn clean package -P dev -D maven.test.skip=true
@@ -13,20 +13,40 @@ mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Ds
 ```
 swagger http://localhost:8080/ui
 
-springboot + mybatis-plus + shiro + jwt + log
+springboot + mybatis-plus + jwt + log
 
+# 三方包 以springboot作为基础核心
+| safe auth                                                                |
+|--------------------------------------------------------------------------|
+| [shrio 强大且灵活](https://mvnrepository.com/artifact/org.apache.shiro)       |
+| [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
 
-https://gitee.com/ckw1988/shiro-jwt-integration
-https://github.com/stylefeng/Guns
-https://github.com/liu-peiyu/geek-framework
-https://github.com/ityouknow/spring-boot-examples/tree/master
+| JSON                                                     |
+|----------------------------------------------------------|
+| [FastJson](https://github.com/alibaba/fastjson)          |
+| [Gson](https://github.com/google/gson)                   |
+| [Jackson](https://github.com/FasterXML/jackson)          |
+| [Json-lib](http://json-lib.sourceforge.net/index.html)   |
+
+|      |
+|------|
+| []() |
+
+|      |
+|------|
+| []() |
+
+|      |
+|------|
+| []() |
+
 # SpringBoot 学习
 [spring-boot-examples](https://github.com/ityouknow/spring-boot-examples) |
 [SpringAll](https://github.com/wuyouzhuguli/SpringAll) |
 [电商教程 spring-boot](https://github.com/macrozheng/mall-learning) [spring-cloud](https://github.com/macrozheng/mall-swarm) |
 [SpringBoot-Learning](https://gitee.com/didispace/SpringBoot-Learning)
 
-# 开发框架
+# 项目
 [Guns SpringBoot 2.x](https://github.com/stylefeng/Guns)  |
 [jeecg-boot 后台](https://github.com/jeecgboot/jeecg-boot) [jeecg-boot vue3](https://github.com/jeecgboot/jeecgboot-vue3) [jeecg-boot app](https://github.com/jeecgboot/jeecg-uniapp) |
 [ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro) |
@@ -41,7 +61,6 @@ https://github.com/ityouknow/spring-boot-examples/tree/master
 [kkFileView](https://gitee.com/kekingcn/file-online-preview) |
 [spring-boot2 spring-boot-plus](https://github.com/geekidea/spring-boot-plus) |
 
-# 收藏项目
 [mall](https://github.com/macrozheng/mall) [mall-admin-web](https://github.com/macrozheng/mall-admin-web) |
 [微人事](https://github.com/lenve/vhr) |
 [新蜂商城](https://github.com/newbee-ltd/newbee-mall/tree/spring-boot-3.x) |
@@ -50,3 +69,9 @@ https://github.com/ityouknow/spring-boot-examples/tree/master
 [springboot3 ScribbleHub](https://github.com/dulaiduwang003/ScribbleHub) |
 [springboot3 boot-admin](https://github.com/hb0730/boot-admin) |
 [springboot3 admin3](https://github.com/cjbi/admin3) |
+
+https://gitee.com/ckw1988/shiro-jwt-integration
+https://github.com/stylefeng/Guns
+https://github.com/liu-peiyu/geek-framework
+https://github.com/ityouknow/spring-boot-examples/tree/master
+https://github.com/makunet/maku-boot

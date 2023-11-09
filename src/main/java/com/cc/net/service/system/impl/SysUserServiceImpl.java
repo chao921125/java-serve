@@ -35,12 +35,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     }
 
     @Override
-    public SysUser selectOne(String id) {
+    public SysUser selectById(String id) {
         return null;
     }
 
     @Override
-    public SysUser selectOneByName(String userName) {
+    public SysUser selectByUser(SysUser user) {
+//        sysUserMapper.selectOne();
         return null;
     }
 }
