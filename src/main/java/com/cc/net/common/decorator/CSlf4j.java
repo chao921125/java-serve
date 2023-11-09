@@ -1,4 +1,4 @@
-package com.cc.net.common.log;
+package com.cc.net.common.decorator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
