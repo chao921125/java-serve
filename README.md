@@ -69,9 +69,9 @@ springboot + mybatis-plus + jwt + log
 [springboot3 ScribbleHub](https://github.com/dulaiduwang003/ScribbleHub) |
 [springboot3 boot-admin](https://github.com/hb0730/boot-admin) |
 [springboot3 admin3](https://github.com/cjbi/admin3) |
-
-https://gitee.com/ckw1988/shiro-jwt-integration
-https://github.com/stylefeng/Guns
-https://github.com/liu-peiyu/geek-framework
-https://github.com/ityouknow/spring-boot-examples/tree/master
-https://github.com/makunet/maku-boot
+https://github.com/Charles7c/continew-admin |
+https://gitee.com/ckw1988/shiro-jwt-integration |
+https://github.com/stylefeng/Guns |
+https://github.com/liu-peiyu/geek-framework |
+https://github.com/ityouknow/spring-boot-examples/tree/master |
+https://github.com/makunet/maku-boot |
