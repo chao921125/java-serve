@@ -2,6 +2,7 @@ package com.cc.net.controller.common;
 
 import com.cc.net.common.core.entity.AjaxResult;
 import com.cc.net.entity.system.SysUser;
+import com.cc.net.service.common.AuthService;
 import com.cc.net.service.system.SysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Resource
     SysUserService sysUserService;
+    @Resource
+    AuthService authService;
 
     @PostMapping("/login")
     public AjaxResult login(@RequestBody SysUser user) {
