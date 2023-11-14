@@ -79,5 +79,3 @@ springboot + mybatis-plus + jwt + log
 [SpringBoot2 新蜂商城](https://github.com/newbee-ltd/newbee-mall/tree/spring-boot-3.x) \
 [SpringBoot2 在线的音乐](https://github.com/Yin-Hongwei/music-website) \
 [springboot2 framework](https://github.com/liu-peiyu/geek-framework) \
-
-[//]: # (https://s.trojanflare.com/clashx/7a2f9f75-c54b-4b10-b0e0-61c8ee081e2c)
