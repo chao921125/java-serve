@@ -80,5 +80,4 @@ springboot + mybatis-plus + jwt + log
 [SpringBoot2 在线的音乐](https://github.com/Yin-Hongwei/music-website) \
 [springboot2 framework](https://github.com/liu-peiyu/geek-framework) \
 
-https://s.trojanflare.com/clashx/7a2f9f75-c54b-4b10-b0e0-61c8ee081e2c
-https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/speednodes.yaml
+[//]: # (https://s.trojanflare.com/clashx/7a2f9f75-c54b-4b10-b0e0-61c8ee081e2c)
