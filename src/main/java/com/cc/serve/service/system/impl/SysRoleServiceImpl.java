@@ -1,0 +1,20 @@
+package com.cc.serve.service.system.impl;
+
+import com.cc.serve.entity.system.SysRole;
+import com.cc.serve.mapper.system.SysRoleMapper;
+import com.cc.serve.service.system.SysRoleService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ * 角色表 服务实现类
+ * </p>
+ *
+ * @author cc
+ * @since 2023-47-13 15:10:981
+ */
+@Service
+public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
+
+}
