@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80100 (8.1.0)
+ Source Server Version : 80300 (8.3.0)
  Source Host           : localhost:3306
- Source Schema         : cc
+ Source Schema         : serve
 
  Target Server Type    : MySQL
- Target Server Version : 80100 (8.1.0)
+ Target Server Version : 80300 (8.3.0)
  File Encoding         : 65001
 
- Date: 11/10/2023 14:42:00
+ Date: 14/03/2024 18:04:48
 */
 
 SET NAMES utf8mb4;
@@ -75,7 +75,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_department`;
 CREATE TABLE `sys_department` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门 id',
   `parent_id` bigint DEFAULT NULL COMMENT '父级id',
   `ancestors` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '祖级，树结构',
   `name` varchar(50) DEFAULT NULL COMMENT '部门名称',
@@ -83,8 +83,7 @@ CREATE TABLE `sys_department` (
   `leader` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '负责人',
   `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '删除标识（0删除 1未删除）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用）',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用 9删除）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '修改人',
@@ -97,7 +96,7 @@ CREATE TABLE `sys_department` (
 -- Records of sys_department
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `del_flag`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', '1', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -140,11 +139,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
 CREATE TABLE `sys_post` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '岗位 id',
   `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT 'key',
   `name` varchar(50) DEFAULT NULL COMMENT '名称',
   `sort` int DEFAULT NULL COMMENT '排序',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用）',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用 9删除）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '修改人',
@@ -164,9 +163,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色 id',
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-  `key` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '角色key',
+  `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '角色key',
   `sort` int DEFAULT NULL COMMENT '排序',
   `permissions` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '权限标识[C,R,U,D]',
   `data_scope` char(1) DEFAULT NULL COMMENT '数据权限（1全部 2当前及以下 3当前）',
@@ -187,42 +186,109 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
+-- Table structure for sys_role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_menu`;
+CREATE TABLE `sys_role_menu` (
+  `id` bigint NOT NULL,
+  `role_id` bigint NOT NULL,
+  `menu_id` bigint NOT NULL,
+  PRIMARY KEY (`id`,`role_id`,`menu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色菜单';
+
+-- ----------------------------
+-- Records of sys_role_menu
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-  `id` varchar(128) NOT NULL,
-  `dept_id` bigint NOT NULL COMMENT '部门id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户 id',
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户登陆名',
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '登陆密码',
   `nick_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '昵称',
+  `real_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '真实姓名',
+  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '头像',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
   `sex` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '性别（0女 1男 2未知）',
-  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '头像',
-  `salt` varchar(20) DEFAULT NULL COMMENT '加密',
+  `age` char(2) DEFAULT NULL COMMENT '年龄',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '地址',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用 9删除）',
   `login_ip` varchar(128) DEFAULT NULL COMMENT '最后登陆ip',
   `login_address` varchar(255) DEFAULT NULL COMMENT '最后登陆地址',
   `login_info` varchar(255) DEFAULT NULL COMMENT '最后登陆设备',
   `login_time` datetime DEFAULT NULL COMMENT '最后登陆时间',
   `pwd_update_time` datetime DEFAULT NULL COMMENT '密码最后修改时间',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '删除标识（0删除 1未删除）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1' COMMENT '状态（1正常 0停用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '修改人',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `user_dept_id` (`dept_id`),
-  CONSTRAINT `user_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `sys_department` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` (`id`, `dept_id`, `user_name`, `password`, `nick_name`, `email`, `phone`, `sex`, `avatar`, `salt`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `del_flag`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1', 1, 'admin', '123456', '超管', 'admin@mail.com', '19920008007', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`, `avatar`, `email`, `phone`, `sex`, `age`, `address`, `status`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 'admin', '123456', '超管', NULL, NULL, 'admin@mail.com', '19920008007', '1', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for sys_user_department
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_department`;
+CREATE TABLE `sys_user_department` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL COMMENT '用户 id',
+  `department_id` bigint NOT NULL COMMENT '部门 id',
+  PRIMARY KEY (`id`,`user_id`,`department_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户部门';
+
+-- ----------------------------
+-- Records of sys_user_department
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for sys_user_post
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_post`;
+CREATE TABLE `sys_user_post` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL COMMENT '用户 id',
+  `post_id` bigint NOT NULL COMMENT '岗位 id',
+  PRIMARY KEY (`id`,`user_id`,`post_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户岗位';
+
+-- ----------------------------
+-- Records of sys_user_post
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for sys_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_role`;
+CREATE TABLE `sys_user_role` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL COMMENT '用户 id',
+  `role_id` bigint NOT NULL COMMENT '角色 id',
+  PRIMARY KEY (`id`,`user_id`,`role_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户角色';
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
