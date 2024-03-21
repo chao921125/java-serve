@@ -1,9 +1,13 @@
 # 本项目内容 547720644
+
+https://start.spring.io/
+
 ```shell
 # 打包命令
 mvn clean package -P dev -D maven.test.skip=true
 mvn clean package -P prod -D maven.test.skip=true
 ```
+
 ```
 export MAVEN_HOME=/Users/xxx/apache-maven
 export PATH="$MAVEN_HOME/bin:${PATH}"
@@ -11,22 +15,29 @@ export PATH="$MAVEN_HOME/bin:${PATH}"
 mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Dsort.predefinedSortOrder=custom_1
 
 ```
+
 swagger http://localhost:8080/ui
 
 springboot + mybatis-plus + jwt + log
 
 # 三方包 以springboot作为基础核心
+
+| 多数据源                                                                     |
+|--------------------------------------------------------------------------|
+| [分表分库 Apache ShardingSphere]()                                           |
+| [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
+
 | safe auth                                                                |
 |--------------------------------------------------------------------------|
 | [shrio 强大且灵活](https://mvnrepository.com/artifact/org.apache.shiro)       |
 | [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
 
-| JSON                                                     |
-|----------------------------------------------------------|
-| [FastJson](https://github.com/alibaba/fastjson)          |
-| [Gson](https://github.com/google/gson)                   |
-| [Jackson](https://github.com/FasterXML/jackson)          |
-| [Json-lib](http://json-lib.sourceforge.net/index.html)   |
+| JSON                                                   |
+|--------------------------------------------------------|
+| [FastJson](https://github.com/alibaba/fastjson)        |
+| [Gson](https://github.com/google/gson)                 |
+| [Jackson](https://github.com/FasterXML/jackson)        |
+| [Json-lib](http://json-lib.sourceforge.net/index.html) |
 
 |      |
 |------|
@@ -39,17 +50,23 @@ springboot + mybatis-plus + jwt + log
 |      |
 |------|
 | []() |
+
 # 推荐
+
 [springboot3 AI](https://github.com/dulaiduwang003/TIME-SEA-chatgpt) \
 [springboot3 AI 纯后端](https://github.com/gemingjia/gear-wenxinworkshop-starter) \
+
 # SpringBoot 学习
+
 [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects) \
 [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples) \
 [SpringBoot2 examples](https://github.com/wuyouzhuguli/SpringAll) \
 [SpringBoot2 Learning](https://gitee.com/didispace/SpringBoot-Learning) \
 [SpringBoot2 电商教程](https://github.com/macrozheng/mall-learning) [spring-cloud](https://github.com/macrozheng/mall-swarm) \
 [SpringBoot1 spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)
+
 # 项目
+
 [SpringBoot3 微服务商城](https://github.com/gz-yami/mall4cloud) [SpringBoot](https://github.com/gz-yami/mall4j) \
 [springboot3 admin3](https://github.com/cjbi/admin3) \
 [springboot3 Dice](https://github.com/bihell/Dice) \

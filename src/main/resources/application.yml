@@ -1,3 +1,4 @@
+debug: true
 # 项目相关配置
 cc:
   # 名称
@@ -10,27 +11,24 @@ cc:
   profile: /
   # 获取ip地址开关
   address-enabled: true
-
-# 用户配置
-user:
-  # 密码错误{maxRetryCount}次锁定10分钟
-  pwd-max-retry-count: 5
-  # 密码错误锁定时长
-  pwd-lock-time: 10
-
-# 单点登录开关
-sso:
-  open-flag: false
-  sso-client-type: server
-
-# 防止XSS攻击
-xss:
-  # 过滤开关
-  enabled: true
-  # 排除链接（多个用逗号分隔）
-  excludes: /system/notice/*
-  # 匹配链接
-  url-patterns: /system/*,/monitor/*,/tool/*
+  # 用户配置
+  user:
+    # 密码错误{maxRetryCount}次锁定10分钟
+    pwd-max-retry-count: 5
+    # 密码错误锁定时长
+    pwd-lock-time: 10
+  # 单点登录开关
+  sso:
+    open-flag: false
+    sso-client-type: server
+  # 防止XSS攻击
+  xss:
+    # 过滤开关
+    enabled: true
+    # 排除链接（多个用逗号分隔）
+    excludes: /system/notice/*
+    # 匹配链接
+    url-patterns: /system/*,/monitor/*,/tool/*
 
 # 开发环境配置
 server:
@@ -55,8 +53,13 @@ spring:
   application:
     name: java-serve
   profiles:
-#    active: "@spring.active@" TODO 此处放开替换掉下面的会出错，原因未知
+    #    active: "@spring.active@" TODO 此处放开替换掉下面的会出错，原因未知
     active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root1234
   # 日志入库
   aop:
     auto: true
@@ -78,23 +81,10 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
-# Redis
-application:
-  redis:
-    host: localhost
-    port: 6380
-    pass: pass
-  security:
-    jwt:
-      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-      expiration: 86400000
-      refresh-token:
-        expiration: 604800000
-
 # MyBatis-plus
 mybatis-plus:
   # 搜索指定包别名
-  type-aliases-package: com.cc.net.entity
+  type-aliases-package: com.cc.serve.**.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapper-locations: classpath*:mapper/**/*.xml
   # 加载全局的配置文件
@@ -103,10 +93,24 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: partial
     auto-mapping-unknown-column-behavior: warning
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   global-config:
     banner: true
     db-config:
       id-type: auto
+
+# Redis
+#application:
+#  redis:
+#    host: localhost
+#    port: 6380
+#    pass: pass
+#  security:
+#    jwt:
+#      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+#      expiration: 86400000
+#      refresh-token:
+#        expiration: 604800000
 
 # PageHelper分页插件
 pagehelper:
@@ -121,8 +125,8 @@ logging:
     com.cc: debug
     org.springframework: error
   file:
-    path: ./log/
-    name: log/log.log
+    path: ./logs/
+    name: logs/log-sys.log
 
 # Swagger配置
 springdoc:
@@ -134,4 +138,4 @@ springdoc:
     path: /ui
     tags-sorter: alpha
     operations-sorter: alpha
-  packages-to-scan: com.cc.net.controller, com.cc.net.entity
+  packages-to-scan: com.cc.serve.controller, com.cc.serve.entity
