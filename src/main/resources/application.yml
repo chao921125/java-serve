@@ -28,24 +28,42 @@ spring:
     username: root
     password: root1234
     # 连接池配置：https://github.com/alibaba/druid/wiki
+    type: com.alibaba.druid.pool.DruidDataSource
     druid:
+      # password-callback-class-name: com.cc.serve.config.DruidCustomPasswordCallback
       # 初始化时建立物理连接的个数。默认0
       initial-size: 5
       # 最大连接池数量，默认8
       max-active: 50
       # 最小连接池数量
-      min-idle: 1
+      min-idle: 5
       # 获取连接时最大等待时间，单位毫秒
-      max-wait: 6000
+      max-wait: 600000
+      # 保持空闲连接不被关闭的最小生存时间（单位：毫秒）
+      min-evictable-idle-time-millis: 300000
       # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭
       pool-prepared-statements: false
       # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
       max-pool-prepared-statement-per-connection-size: -1
+      # 开启后会影响性能
+      test-on-borrow: false
+      # 检测归还连接时的有效性
+      # 开启后会影响性能
+      test-on-return: false
+      # 检测空闲连接
+      # 不影响性能，建议开启
+      test-while-idle: true
+      # 检测关闭空闲连接的时间间隔（单位：毫秒）
+      time-between-eviction-runs-millis: 60000
+      # 为空则test-while-idle、test-on-borrow、test-on-return配置失效
+      validation-query: SELECT 1
+      # 检测连接是否有效的超时时间
+      validation-query-timeout: 1
       # 启用Druid内置的Filter，会使用默认的配置。可自定义配置，见下方的各个filter节点
-      filters: stat,wall
       stat-view-servlet:
         enabled: true
-        login-username: druid
+        allow: 127.0.0.1
+        login-username: admin
         login-password: 123456
         url-pattern: /druid/*
         reset-enable: false
@@ -54,11 +72,20 @@ spring:
         url-pattern: /*
         exclusions: '*.js,*.css,*.gif,*.jpg,*.png,*.ico,/druid/*'
         session-stat-enable: true
-        session-stat-max-count: 1
+        session-stat-max-count: 100
         principal-session-name: userName
         principal-cookie-name: userName
         profile-enable: true
+      filters: stat,wall,log4j,slf4j
       filter:
+        config:
+          enabled: true
+        slf4j:
+          enabled: true
+        stat:
+          enabled: true
+          merge-sql: true
+          slow-sql-millis: 5000
         wall:
           enabled: true
           config:
@@ -86,22 +113,22 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 # MyBatis-plus 配置
-#mybatis-plus:
-#  # 搜索指定包别名
-#  type-aliases-package: com.cc.serve.**.entity
-#  # 配置mapper的扫描，找到所有的mapper.xml映射文件
-#  mapper-locations: classpath*:mapper/**/*.xml
-#  # 加载全局的配置文件
-#  #  config-location: classpath:mybatis-config.xml
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    auto-mapping-behavior: partial
-#    auto-mapping-unknown-column-behavior: warning
-#    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-#  global-config:
-#    banner: true
-#    db-config:
-#      id-type: auto
+mybatis-plus:
+  # 搜索指定包别名
+  type-aliases-package: com.cc.serve.**.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapper-locations: classpath*:mapper/**/*.xml
+  # 加载全局的配置文件
+  #  config-location: classpath:mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: warning
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: true
+    db-config:
+      id-type: auto
 # Redis 配置
 #application:
 #  redis:
