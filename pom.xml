@@ -38,7 +38,7 @@
     <properties>
         <java.version>21</java.version>
 
-        <alibaba.druid.version>1.2.20</alibaba.druid.version>
+        <alibaba.druid.version>1.2.22</alibaba.druid.version>
         <alibaba.easyexcel.version>3.3.2</alibaba.easyexcel.version>
         <alibaba.fastjson2.version>2.0.46.android8</alibaba.fastjson2.version>
         <apache.version>5.2.5</apache.version>
