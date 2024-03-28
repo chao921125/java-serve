@@ -23,11 +23,11 @@ public class RunGen {
     }
 
     public static void CodeGen() {
-        final String DATA_SOURCE = "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
+        final String DATA_SOURCE = "jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
         final String DATA_NAME = "root";
-        final String DATA_PWD = "root123456";
+        final String DATA_PWD = "root1234";
 
-        final String TABLE_NAME = "sys_department,sys_menu,sys_post,sys_role,sys_user";
+        final String TABLE_NAME = "sys_user,sys_role,sys_post,sys_menu,sys_dictionary,sys_department,sys_role_department,sys_role_menu,sys_user_department,sys_user_post,sys_user_role";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";

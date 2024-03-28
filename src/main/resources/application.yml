@@ -129,34 +129,35 @@ mybatis-plus:
     banner: true
     db-config:
       id-type: auto
-# Redis 配置
-#application:
-#  redis:
-#    host: localhost
-#    port: 6380
-#    pass: pass
-#  security:
-#    jwt:
-#      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-#      expiration: 86400000
-#      refresh-token:
-#        expiration: 604800000
-# PageHelper分页插件
-#pagehelper:
-#  helper-dialect: mysql
-#  support-methods-arguments: true
-#  params: count=countSql
+  # Redis 配置
+  #application:
+  #  redis:
+  #    host: localhost
+  #    port: 6380
+  #    pass: pass
+  #  security:
+  #    jwt:
+  #      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  #      expiration: 86400000
+  #      refresh-token:
+  #        expiration: 604800000
+  # PageHelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  params: count=countSql
+  reasonable: true
 # Swagger配置
-#springdoc:
-#  api-docs:
-#    enabled: true
-#    path: /api-docs
-#  swagger-ui:
-#    # 访问 UI 自动跳转到 swagger 种
-#    path: /ui
-#    tags-sorter: alpha
-#    operations-sorter: alpha
-#  packages-to-scan: com.cc.serve.controller, com.cc.serve.entity
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    # 访问 UI 自动跳转到 swagger 种
+    path: /ui
+    tags-sorter: alpha
+    operations-sorter: alpha
+  packages-to-scan: com.cc.serve.controller, com.cc.serve.entity
 # 日志
 logging:
   level:
