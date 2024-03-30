@@ -1,4 +1,4 @@
-package com.cc.serve.base;
+package com.cc.serve.common;
 
 public class BaseEntity {
 }
