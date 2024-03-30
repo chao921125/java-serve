@@ -2,35 +2,35 @@ package com.cc.serve.common;
 
 import java.io.Serializable;
 
-public class Result<T> implements Serializable {
+public class ResultEntity<T> implements Serializable {
     private int code;
     private String msg;
     private T data;
 
-    public Result resultSuccess() {
-        Result result = new Result();
+    public ResultEntity resultSuccess() {
+        ResultEntity result = new ResultEntity();
         result.code = EnumResult.SUCCESS.getCode();
         result.msg = EnumResult.SUCCESS.getMsg();
         return result;
     }
 
-    public Result<Object> resultSuccess(Object data) {
-        Result<Object> result = new Result<Object>();
+    public ResultEntity<Object> resultSuccess(Object data) {
+        ResultEntity<Object> result = new ResultEntity<Object>();
         result.code = EnumResult.SUCCESS.getCode();
         result.msg = EnumResult.SUCCESS.getMsg();
         result.setData(data);
         return result;
     }
 
-    public Result resultFail(EnumResult enumResult) {
-        Result result = new Result();
+    public ResultEntity resultFail(EnumResult enumResult) {
+        ResultEntity result = new ResultEntity();
         result.code = enumResult.getCode();
         result.msg = enumResult.getMsg();
         return result;
     }
 
-    public Result resultFail(EnumResult enumResult, Object data) {
-        Result<Object> result = new Result<Object>();
+    public ResultEntity resultFail(EnumResult enumResult, Object data) {
+        ResultEntity<Object> result = new ResultEntity<Object>();
         result.code = enumResult.getCode();
         result.msg = enumResult.getMsg();
         result.setData(data);

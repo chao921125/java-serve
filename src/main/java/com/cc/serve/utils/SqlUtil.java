@@ -30,4 +30,19 @@ public class SqlUtil {
     public static boolean isValidOrderBySql(String value) {
         return value.matches(SQL_PATTERN);
     }
+
+    /**
+     * SQL关键字检查
+     */
+    public static void filterKeyword(String value) {
+        if (StringUtils.isEmpty(value)) {
+            return;
+        }
+        String[] sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
+        for (String sqlKeyword : sqlKeywords) {
+            if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1) {
+                throw new GlobalException("参数存在SQL注入风险");
+            }
+        }
+    }
 }
