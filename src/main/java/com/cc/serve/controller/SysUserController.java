@@ -1,10 +1,12 @@
 package com.cc.serve.controller;
 
+import com.cc.serve.common.BaseController;
+import com.cc.serve.common.ResultEntity;
 import com.cc.serve.entity.SysUser;
 import com.cc.serve.service.SysUserService;
-import com.github.pagehelper.PageHelper;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/sys-user")
-public class SysUserController {
+public class SysUserController extends BaseController {
     @Resource
     public SysUserService sysUserService;
 
@@ -29,11 +31,16 @@ public class SysUserController {
         return sysUserService.list();
     }
 
+    @GetMapping("/page")
     public List<SysUser> listPage() {
-        int pageSize = 10;
-        int pageNumber = 1;
-        int pageTotal;
-        PageHelper.startPage(pageNumber, pageSize);
+        startPage();
         return sysUserService.list();
+    }
+
+    @PostMapping
+    public ResultEntity<SysUser> add(SysUser sysUser) {
+        ResultEntity<SysUser> resultEntity = new ResultEntity<SysUser>();
+        boolean isSuccess = sysUserService.saveOrUpdate(sysUser);
+        return resultEntity;
     }
 }
