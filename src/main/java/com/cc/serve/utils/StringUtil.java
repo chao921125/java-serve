@@ -6,9 +6,7 @@ import org.springframework.util.AntPathMatcher;
 
 import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.containsIgnoreCase;
-
-public class StringUtil {
+public class StringUtil extends org.apache.commons.lang3.StringUtils {
     /**
      * 空字符串
      */

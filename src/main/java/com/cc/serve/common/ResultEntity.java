@@ -1,8 +1,9 @@
 package com.cc.serve.common;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
-public class ResultEntity<T> implements Serializable {
+public class ResultEntity<T> extends HashMap<String, Object> implements Serializable {
     private int code;
     private String msg;
     private T data;

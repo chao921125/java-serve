@@ -34,7 +34,8 @@ public class SysUserController extends BaseController {
     @GetMapping("/page")
     public List<SysUser> listPage() {
         startPage();
-        return sysUserService.list();
+        List<SysUser> list = sysUserService.list();
+        return (List<SysUser>) getDataTable(list);
     }
 
     @PostMapping
@@ -43,4 +44,5 @@ public class SysUserController extends BaseController {
         boolean isSuccess = sysUserService.saveOrUpdate(sysUser);
         return resultEntity;
     }
+
 }
