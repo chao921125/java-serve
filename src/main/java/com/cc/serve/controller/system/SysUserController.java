@@ -1,4 +1,4 @@
-package com.cc.serve.controller;
+package com.cc.serve.controller.system;
 
 import com.cc.serve.common.BaseController;
 import com.cc.serve.common.ResultEntity;

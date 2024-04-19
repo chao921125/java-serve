@@ -32,7 +32,8 @@ public class RunGen {
 
         final String PKG = "";
         final String PKG_PATH = "/src/main/generator";
-        final String PKG_PATH_MAPPER = "/src/main/resources/mapper";
+        final String PKG_PATH_MAPPER = "/src/main/generator";
+//        final String PKG_PATH_MAPPER = "/src/main/resources/mapper";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
             .globalConfig(builder -> {
