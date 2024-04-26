@@ -2,6 +2,7 @@ package com.cc.serve.controller.system;
 
 import com.cc.serve.common.BaseController;
 import com.cc.serve.common.ResultEntity;
+import com.cc.serve.common.ResultPageEntity;
 import com.cc.serve.entity.SysUser;
 import com.cc.serve.service.SysUserService;
 import jakarta.annotation.Resource;
@@ -32,17 +33,15 @@ public class SysUserController extends BaseController {
     }
 
     @GetMapping("/page")
-    public List<SysUser> listPage() {
+    public ResultPageEntity listPage(SysUser sysUser) {
         startPage();
         List<SysUser> list = sysUserService.list();
-        return (List<SysUser>) getDataTable(list);
+        return getDataTable(list);
     }
 
     @PostMapping
-    public ResultEntity<SysUser> add(SysUser sysUser) {
-        ResultEntity<SysUser> resultEntity = new ResultEntity<SysUser>();
-        boolean isSuccess = sysUserService.saveOrUpdate(sysUser);
-        return resultEntity;
+    public ResultEntity add(SysUser sysUser) {
+        return toAjax(sysUserService.saveOrUpdate(sysUser));
     }
 
 }

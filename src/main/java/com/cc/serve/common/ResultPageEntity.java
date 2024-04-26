@@ -3,7 +3,7 @@ package com.cc.serve.common;
 import java.io.Serializable;
 import java.util.List;
 
-public class TableDataEntity implements Serializable {
+public class ResultPageEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
@@ -27,10 +27,10 @@ public class TableDataEntity implements Serializable {
      */
     private String msg;
 
-    public TableDataEntity() {
+    public ResultPageEntity() {
     }
 
-    public TableDataEntity(List<?> list, int total) {
+    public ResultPageEntity(List<?> list, int total) {
         this.rows = list;
         this.total = total;
     }

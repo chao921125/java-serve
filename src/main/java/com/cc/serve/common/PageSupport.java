@@ -3,7 +3,7 @@ package com.cc.serve.common;
 import com.cc.serve.utils.ConvertUtil;
 import com.cc.serve.utils.ServletUtil;
 
-public class TableSupport {
+public class PageSupport {
     /**
      * 当前记录起始索引
      */

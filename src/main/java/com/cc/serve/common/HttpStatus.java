@@ -1,6 +1,8 @@
 package com.cc.serve.common;
 
 public class HttpStatus {
+    public static final String SUCCESS_MSG = "操作成功";
+    public static final String ERROR_MSG = "操作失败";
     /**
      * 操作成功
      */
