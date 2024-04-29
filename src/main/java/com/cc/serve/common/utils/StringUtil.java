@@ -17,6 +17,10 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
      */
     private static final char SEPARATOR = '_';
 
+    /**
+     * 星号
+     */
+    private static final char ASTERISK = '*';
 
     /**
      * 获取参数不为空值
@@ -146,6 +150,40 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
+     * 替换指定字符串的指定区间内字符为"*"
+     *
+     * @param str          字符串
+     * @param startInclude 开始位置（包含）
+     * @param endExclude   结束位置（不包含）
+     * @return 替换后的字符串
+     */
+    public static String hide(CharSequence str, int startInclude, int endExclude) {
+        if (isEmpty(str)) {
+            return NULLSTR;
+        }
+        final int strLength = str.length();
+        if (startInclude > strLength) {
+            return NULLSTR;
+        }
+        if (endExclude > strLength) {
+            endExclude = strLength;
+        }
+        if (startInclude > endExclude) {
+            // 如果起始位置大于结束位置，不替换
+            return NULLSTR;
+        }
+        final char[] chars = new char[strLength];
+        for (int i = 0; i < strLength; i++) {
+            if (i >= startInclude && i < endExclude) {
+                chars[i] = ASTERISK;
+            } else {
+                chars[i] = str.charAt(i);
+            }
+        }
+        return new String(chars);
+    }
+
+    /**
      * 截取字符串
      *
      * @param str   字符串
@@ -207,6 +245,26 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
         }
 
         return str.substring(start, end);
+    }
+
+    /**
+     * 判断是否为空，并且不是空白字符
+     *
+     * @param str 要判断的value
+     * @return 结果
+     */
+    public static boolean hasText(String str) {
+        return (str != null && !str.isEmpty() && containsText(str));
+    }
+
+    private static boolean containsText(CharSequence str) {
+        int strLen = str.length();
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -284,9 +342,10 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * 判断给定的set列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
+     * 判断给定的collection列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
      *
-     * @param array 给定的数组
+     * @param collection 给定的集合
+     * @param array      给定的数组
      * @return boolean 结果
      */
     public static boolean containsAny(Collection<String> collection, String... array) {
@@ -310,7 +369,7 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
      * @return 是否包含任意一个字符串
      */
     public static boolean containsAnyIgnoreCase(CharSequence cs, CharSequence... searchCharSequences) {
-        if (isEmpty((Collection<?>) cs) || isEmpty(searchCharSequences)) {
+        if (isEmpty(cs) || isEmpty(searchCharSequences)) {
             return false;
         }
         for (CharSequence testStr : searchCharSequences) {
@@ -379,8 +438,7 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。
-     * 例如：HELLO_WORLD->HelloWorld
+     * 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。 例如：HELLO_WORLD->HelloWorld
      *
      * @param name 转换前的下划线大写方式命名的字符串
      * @return 转换后的驼峰式命名的字符串
@@ -410,11 +468,15 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * 驼峰式命名法 例如：user_name->userName
+     * 驼峰式命名法
+     * 例如：user_name->userName
      */
     public static String toCamelCase(String s) {
         if (s == null) {
             return null;
+        }
+        if (s.indexOf(SEPARATOR) == -1) {
+            return s;
         }
         s = s.toLowerCase();
         StringBuilder sb = new StringBuilder(s.length());
@@ -454,7 +516,10 @@ public class StringUtil extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * 判断url是否与规则配置: ? 表示单个字符; * 表示一层路径内的任意字符串，不可跨层级; ** 表示任意层路径;
+     * 判断url是否与规则配置:
+     * ? 表示单个字符;
+     * * 表示一层路径内的任意字符串，不可跨层级;
+     * ** 表示任意层路径;
      *
      * @param pattern 匹配规则
      * @param url     需要匹配的url

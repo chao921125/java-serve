@@ -1,6 +1,6 @@
 package com.cc.serve.common.enums;
 
-public enum EnumResult {
+public enum ResultStatus {
     SUCCESS(0, ""),
     VALIDATED_ERROR(9, ""),
     UNKNOWN_ERROR(-1, ""),
@@ -9,7 +9,7 @@ public enum EnumResult {
     private Integer code;
     private String msg;
 
-    EnumResult(int code, String msg) {
+    ResultStatus(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

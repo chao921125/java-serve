@@ -1,7 +1,7 @@
 package com.cc.serve.common;
 
 import com.cc.serve.common.constants.HttpStatus;
-import com.cc.serve.common.enums.EnumResult;
+import com.cc.serve.common.enums.ResultStatus;
 import com.cc.serve.common.utils.StringUtil;
 
 import java.io.Serializable;
@@ -120,30 +120,30 @@ public class ResultEntity<T> extends HashMap<String, Object> implements Serializ
 
     public ResultEntity resultSuccess() {
         ResultEntity result = new ResultEntity();
-        result.code = EnumResult.SUCCESS.getCode();
-        result.msg = EnumResult.SUCCESS.getMsg();
+        result.code = ResultStatus.SUCCESS.getCode();
+        result.msg = ResultStatus.SUCCESS.getMsg();
         return result;
     }
 
     public ResultEntity<Object> resultSuccess(Object data) {
         ResultEntity<Object> result = new ResultEntity<Object>();
-        result.code = EnumResult.SUCCESS.getCode();
-        result.msg = EnumResult.SUCCESS.getMsg();
+        result.code = ResultStatus.SUCCESS.getCode();
+        result.msg = ResultStatus.SUCCESS.getMsg();
         result.setData(data);
         return result;
     }
 
-    public ResultEntity resultFail(EnumResult enumResult) {
+    public ResultEntity resultFail(ResultStatus resultStatus) {
         ResultEntity result = new ResultEntity();
-        result.code = enumResult.getCode();
-        result.msg = enumResult.getMsg();
+        result.code = resultStatus.getCode();
+        result.msg = resultStatus.getMsg();
         return result;
     }
 
-    public ResultEntity resultFail(EnumResult enumResult, Object data) {
+    public ResultEntity resultFail(ResultStatus resultStatus, Object data) {
         ResultEntity<Object> result = new ResultEntity<Object>();
-        result.code = enumResult.getCode();
-        result.msg = enumResult.getMsg();
+        result.code = resultStatus.getCode();
+        result.msg = resultStatus.getMsg();
         result.setData(data);
         return result;
     }
