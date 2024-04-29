@@ -1,7 +1,7 @@
 package com.cc.serve.common;
 
-import com.cc.serve.utils.ConvertUtil;
-import com.cc.serve.utils.ServletUtil;
+import com.cc.serve.common.utils.ConvertUtil;
+import com.cc.serve.common.utils.ServletUtil;
 
 public class PageSupport {
     /**

@@ -1,9 +1,9 @@
 package com.cc.serve.common;
 
-import com.cc.serve.utils.DateUtil;
-import com.cc.serve.utils.PageUtil;
-import com.cc.serve.utils.SqlUtil;
-import com.cc.serve.utils.StringUtil;
+import com.cc.serve.common.utils.DateUtil;
+import com.cc.serve.common.utils.PageUtil;
+import com.cc.serve.common.utils.SqlUtil;
+import com.cc.serve.common.utils.StringUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;

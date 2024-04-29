@@ -1,4 +1,4 @@
-package com.cc.serve.utils;
+package com.cc.serve.common.utils;
 
 public class FormatterUtil {
     public static final String EMPTY_JSON = "{}";

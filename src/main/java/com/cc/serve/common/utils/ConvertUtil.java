@@ -1,10 +1,11 @@
-package com.cc.serve.utils;
+package com.cc.serve.common.utils;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.NumberFormat;
@@ -600,7 +601,7 @@ public class ConvertUtil {
             return new BigDecimal((Long) value);
         }
         if (value instanceof Double) {
-            return new BigDecimal((Double) value);
+            return BigDecimal.valueOf((Double) value);
         }
         if (value instanceof Integer) {
             return new BigDecimal((Integer) value);
@@ -735,8 +736,7 @@ public class ConvertUtil {
         return charset.decode(data).toString();
     }
 
-    // -----------------------------------------------------------------------
-    // 全角半角转换
+    // ----------------------------------------------------------------------- 全角半角转换
 
     /**
      * 半角转全角
@@ -825,7 +825,12 @@ public class ConvertUtil {
 
         String s = "";
         for (int i = 0; i < fraction.length; i++) {
-            s += (digit[(int) (Math.floor(n * 10 * Math.pow(10, i)) % 10)] + fraction[i]).replaceAll("(零.)+", "");
+            // 优化double计算精度丢失问题
+            BigDecimal nNum = new BigDecimal(n);
+            BigDecimal decimal = new BigDecimal(10);
+            BigDecimal scale = nNum.multiply(decimal).setScale(2, RoundingMode.HALF_EVEN);
+            double d = scale.doubleValue();
+            s += (digit[(int) (Math.floor(d * Math.pow(10, i)) % 10)] + fraction[i]).replaceAll("(零.)+", "");
         }
         if (s.length() < 1) {
             s = "整";
@@ -840,7 +845,6 @@ public class ConvertUtil {
             }
             s = p.replaceAll("(零.)*零$", "").replaceAll("^$", "零") + unit[0][i] + s;
         }
-        return head + s.replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零").replaceAll("^整$",
-            "零元整");
+        return head + s.replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零").replaceAll("^整$", "零元整");
     }
 }

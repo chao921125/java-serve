@@ -1,6 +1,6 @@
 package com.cc.serve.common;
 
-import com.cc.serve.utils.StringUtil;
+import com.cc.serve.common.utils.StringUtil;
 
 import java.io.Serializable;
 import java.util.HashMap;

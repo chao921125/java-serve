@@ -1,4 +1,4 @@
-package com.cc.serve.utils;
+package com.cc.serve.common.utils;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;

@@ -1,4 +1,4 @@
-package com.cc.serve.utils;
+package com.cc.serve.common.utils;
 
 import com.cc.serve.common.Constants;
 import org.springframework.web.context.request.RequestAttributes;

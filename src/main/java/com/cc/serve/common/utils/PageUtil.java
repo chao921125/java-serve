@@ -1,4 +1,4 @@
-package com.cc.serve.utils;
+package com.cc.serve.common.utils;
 
 import com.cc.serve.common.PageEntity;
 import com.github.pagehelper.PageHelper;
