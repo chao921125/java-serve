@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.constants;
 
 import io.jsonwebtoken.Claims;
 

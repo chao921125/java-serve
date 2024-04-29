@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.enums;
 
 public enum EnumResult {
     SUCCESS(0, ""),

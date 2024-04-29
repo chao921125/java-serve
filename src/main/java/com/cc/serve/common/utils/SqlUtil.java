@@ -1,6 +1,6 @@
 package com.cc.serve.common.utils;
 
-import com.cc.serve.common.GlobalException;
+import com.cc.serve.common.exception.GlobalException;
 import org.apache.commons.lang3.StringUtils;
 
 public class SqlUtil {

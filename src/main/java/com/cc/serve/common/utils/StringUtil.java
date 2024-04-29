@@ -1,6 +1,6 @@
 package com.cc.serve.common.utils;
 
-import com.cc.serve.common.Constants;
+import com.cc.serve.common.constants.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.AntPathMatcher;
 

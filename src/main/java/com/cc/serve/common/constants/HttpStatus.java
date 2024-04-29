@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.constants;
 
 public class HttpStatus {
     public static final String SUCCESS_MSG = "操作成功";

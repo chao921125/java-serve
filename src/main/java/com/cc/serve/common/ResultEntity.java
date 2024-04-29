@@ -1,5 +1,7 @@
 package com.cc.serve.common;
 
+import com.cc.serve.common.constants.HttpStatus;
+import com.cc.serve.common.enums.EnumResult;
 import com.cc.serve.common.utils.StringUtil;
 
 import java.io.Serializable;

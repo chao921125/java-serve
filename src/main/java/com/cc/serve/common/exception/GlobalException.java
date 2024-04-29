@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.exception;
 
 public class GlobalException extends RuntimeException {
     public GlobalException(Throwable e) {

@@ -1,6 +1,6 @@
 package com.cc.serve.common.utils;
 
-import com.cc.serve.common.Constants;
+import com.cc.serve.common.constants.Constants;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
