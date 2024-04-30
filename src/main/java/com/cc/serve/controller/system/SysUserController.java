@@ -4,7 +4,7 @@ import com.cc.serve.common.core.BaseController;
 import com.cc.serve.common.core.ResultEntity;
 import com.cc.serve.common.core.ResultPageEntity;
 import com.cc.serve.entity.SysUser;
-import com.cc.serve.service.SysUserService;
+import com.cc.serve.service.system.SysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +35,7 @@ public class SysUserController extends BaseController {
     @GetMapping("/page")
     public ResultPageEntity listPage(SysUser sysUser) {
         startPage();
+//        List<SysUser> list = sysUserService.listPage();
         List<SysUser> list = sysUserService.list();
         return getDataTable(list);
     }
