@@ -1,8 +1,8 @@
 package com.cc.serve.controller.system;
 
-import com.cc.serve.common.BaseController;
-import com.cc.serve.common.ResultEntity;
-import com.cc.serve.common.ResultPageEntity;
+import com.cc.serve.common.core.BaseController;
+import com.cc.serve.common.core.ResultEntity;
+import com.cc.serve.common.core.ResultPageEntity;
 import com.cc.serve.entity.SysUser;
 import com.cc.serve.service.SysUserService;
 import jakarta.annotation.Resource;

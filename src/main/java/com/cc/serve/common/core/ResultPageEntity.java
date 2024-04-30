@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.core;
 
 import java.io.Serializable;
 import java.util.List;

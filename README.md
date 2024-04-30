@@ -20,7 +20,30 @@ swagger http://localhost:8080/ui
 
 springboot + mybatis-plus + jwt + log
 
-# 三方包 以springboot作为基础核心
+# 项目组成
+
+| 核心                   |
+|----------------------|
+| [Spring  Boot 全家桶]() |
+
+| 持久层，数据源，CRUD 操作                       |
+|---------------------------------------|
+| [Spring JPA 复杂项目]()                   |
+| [Mybatis-Plus](https://baomidou.com/) |
+| [Mybatis 不推荐]()                       |
+| [分页功能](https://github.com/pagehelper) |
+
+|      |
+|------|
+| []() |
+
+|      |
+|------|
+| []() |
+
+|      |
+|------|
+| []() |
 
 | 多数据源                                                                     |
 |--------------------------------------------------------------------------|
@@ -38,18 +61,6 @@ springboot + mybatis-plus + jwt + log
 | [Gson](https://github.com/google/gson)                 |
 | [Jackson](https://github.com/FasterXML/jackson)        |
 | [Json-lib](http://json-lib.sourceforge.net/index.html) |
-
-|      |
-|------|
-| []() |
-
-|      |
-|------|
-| []() |
-
-|      |
-|------|
-| []() |
 
 # 推荐
 

@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.core;
 
 import com.cc.serve.common.utils.ConvertUtil;
 import com.cc.serve.common.utils.ServletUtil;
@@ -7,7 +7,7 @@ public class PageSupport {
     /**
      * 当前记录起始索引
      */
-    public static final String PAGE_NUM = "pageNum";
+    public static final String PAGE_NUM = "pageNumber";
 
     /**
      * 每页显示记录数

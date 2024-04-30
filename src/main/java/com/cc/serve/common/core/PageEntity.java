@@ -1,4 +1,4 @@
-package com.cc.serve.common;
+package com.cc.serve.common.core;
 
 import com.cc.serve.common.utils.StringUtil;
 import org.apache.commons.lang3.StringUtils;

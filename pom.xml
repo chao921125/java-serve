@@ -44,7 +44,7 @@
         <apache.version>5.2.5</apache.version>
         <auth0.version>4.4.0</auth0.version>
 
-        <baomidou.mybatis-plus.version>3.5.5</baomidou.mybatis-plus.version>
+        <baomidou.mybatis-plus.version>3.5.6</baomidou.mybatis-plus.version>
         <baomidou.dynamic-datasource.version>4.2.0</baomidou.dynamic-datasource.version>
         <bitwalker.UserAgentUtils.version>1.21</bitwalker.UserAgentUtils.version>
 
@@ -61,10 +61,7 @@
         <javax.xml.bind.version>2.4.0-b180830.0359</javax.xml.bind.version>
         <jsonwebtoken.jjwt.version>0.12.4</jsonwebtoken.jjwt.version>
 
-        <lombok.version>1.18.32</lombok.version>
-        <mybatis.spring.boot.version>3.0.3</mybatis.spring.boot.version>
-
-        <pagehelper.version>1.4.7</pagehelper.version>
+        <pagehelper.version>2.1.0</pagehelper.version>
 
         <slf4j.version>2.0.12</slf4j.version>
         <springdoc.version>2.3.0</springdoc.version>
@@ -84,6 +81,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <!--web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--生产环境监控-->
         <dependency>
@@ -109,10 +111,10 @@
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
         <!--数据库相关 jpa-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--        </dependency>-->
         <!--数据库相关 redis-->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
@@ -123,10 +125,14 @@
         <!--            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
         <!--        </dependency>-->
         <!--数据库相关 jdbc-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-jdbc</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
+        <!--        </dependency>-->
         <!--直接使用注解返回实体-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -141,11 +147,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency>
-        <!--数据库相关 jdbc-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <!--json-->
         <dependency>
@@ -172,11 +173,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <!--web-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!--协议 websocket-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -197,12 +193,6 @@
         <!--            <artifactId>spring-session-jdbc</artifactId>-->
         <!--        </dependency>-->
         <!--springframework 依赖 end-->
-        <!--数据库：Mybatis 动态数据源-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.spring.boot.version}</version>
-        </dependency>
         <!--数据库：Mybatis-plus 动态数据源-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -211,7 +201,7 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
         </dependency>
         <!--代码生成-->
@@ -288,12 +278,6 @@
             <version>${slf4j.version}</version>
             <type>pom</type>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
         <!--JWT鉴权 token生成与解码，登录拦截验证-->
         <dependency>
@@ -407,12 +391,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter-test</artifactId>
-            <version>3.0.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
@@ -485,6 +463,13 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>
