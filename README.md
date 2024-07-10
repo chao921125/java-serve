@@ -21,6 +21,7 @@ swagger http://localhost:8080/ui
 springboot + mybatis-plus + jwt + log
 
 # 项目组成
+[Maven 仓库](https://mvnrepository.com/)
 
 | 核心                   |
 |----------------------|
@@ -48,12 +49,11 @@ springboot + mybatis-plus + jwt + log
 | 多数据源                                                                     |
 |--------------------------------------------------------------------------|
 | [分表分库 Apache ShardingSphere]()                                           |
-| [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
 
-| safe auth                                                                |
-|--------------------------------------------------------------------------|
-| [shrio 强大且灵活](https://mvnrepository.com/artifact/org.apache.shiro)       |
-| [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
+| safe auth                                                                 |
+|---------------------------------------------------------------------------|
+| [shrio 强大且灵活](https://shiro.apache.org/)                                  |
+| [spring-security 和spring结合方便](https://spring.io/projects/spring-security) |
 
 | JSON                                                   |
 |--------------------------------------------------------|
