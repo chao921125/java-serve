@@ -16,10 +16,12 @@ swagger http://localhost:8080/ui
 springboot + mybatis-plus + jwt + log
 
 # 三方包 以springboot作为基础核心
-| safe auth                                                                |
-|--------------------------------------------------------------------------|
-| [shrio 强大且灵活](https://mvnrepository.com/artifact/org.apache.shiro)       |
-| [shrio 和spring结合方便](https://mvnrepository.com/artifact/org.apache.shiro) |
+[Maven 仓库](https://mvnrepository.com/)
+
+| safe auth                                                                 |
+|---------------------------------------------------------------------------|
+| [shrio 强大且灵活](https://shiro.apache.org/)                                  |
+| [spring-security 和spring结合方便](https://spring.io/projects/spring-security) |
 
 | JSON                                                     |
 |----------------------------------------------------------|
