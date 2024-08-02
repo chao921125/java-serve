@@ -1,5 +1,18 @@
-# 开发环境配置
+# Core 开发环境配置
 debug: true
+# Core 日志
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  level:
+    root: info
+    com.cc: debug
+    org.springframework: error
+  file:
+    path: ./logs/
+    name: logs/logs.log
+# Core
 server:
   # 服务器的HTTP端口，默认为80
   port: 8080
@@ -16,7 +29,7 @@ server:
       max: 1000
       # Tomcat启动初始化的线程数，默认值10
       min-spare: 100
-# Spring 配置
+# Core Spring 配置
 spring:
   application:
     name: serve
@@ -162,12 +175,3 @@ springdoc:
     tags-sorter: alpha
     operations-sorter: alpha
   packages-to-scan: com.cc.serve.controller, com.cc.serve.entity
-# 日志
-logging:
-  level:
-    root: info
-    com.cc: debug
-    org.springframework: error
-  file:
-    path: ./logs/
-    name: logs/log-def.log
