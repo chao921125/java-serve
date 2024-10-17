@@ -122,3 +122,4 @@ springboot + mybatis-plus + jwt + log
 | [springboot2 framework](https://github.com/liu-peiyu/geek-framework) |
 | [文件管理](https://github.com/zfile-dev/zfile) |
 | [SpringCloud](https://github.com/pig-mesh/pig) |
+https://github.com/1024-lab/smart-admin
