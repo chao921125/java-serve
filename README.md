@@ -69,7 +69,10 @@ springboot + mybatis-plus + jwt + log
 [springboot3 AI 纯后端](https://github.com/gemingjia/gear-wenxinworkshop-starter) \
 
 # SpringBoot 学习
-
+https://gitee.com/li_ximing/springboot30-development-guide
+https://github.com/ali-bouali/spring-boot-3-jwt-security
+https://github.com/jobmission/oauth2-server
+[SpringBoot3 examples](https://github.com/eugenp/tutorials) \
 [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects) \
 [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples) \
 [SpringBoot2 examples](https://github.com/wuyouzhuguli/SpringAll) \
