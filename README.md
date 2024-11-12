@@ -78,6 +78,10 @@ springboot + mybatis-plus + jwt + log
 
 |                                                    |
 |--------------------------------------------------------|
+| [SpringBoot3 examples](https://gitee.com/li_ximing/springboot30-development-guide) |
+| [SpringBoot3 examples](https://github.com/ali-bouali/spring-boot-3-jwt-security) |
+| [SpringBoot3 examples](https://github.com/jobmission/oauth2-server) |
+| [SpringBoot3 examples](https://github.com/eugenp/tutorials) |
 | [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects) |
 | [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples) |
 | [SpringBoot3 examples](https://github.com/xkcoding/spring-boot-demo) |
