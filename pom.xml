@@ -74,51 +74,69 @@
     </properties>
 
     <dependencies>
-        <!--springframework 依赖 start-->
-        <!--spring 核心依赖 start-->
+        <!-- springframework 依赖 start -->
+        <!-- spring 核心依赖 start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
         </dependency>
-        <!--自动配置-->
+        <!-- 核心启动器，包括自动配置支持、日志记录和 YAML -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <!--web-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--生产环境监控-->
+        <!-- 执行器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-actuator-autoconfigure</artifactId>
         </dependency>
+        <!-- 启动器执行器 使用 Spring Boot 的 Actuator 的 Starter，它提供生产就绪功能来帮助您监控和管理应用程序 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--记录日志并入库-->
+        <!-- 自动配置 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
-        <!--批处理-->
+        <!-- 自动配置 Spring Boot AutoConfigure 注释处理器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-batch</artifactId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
         </dependency>
-        <!--数据库相关 jpa-->
+        <!-- 直接使用注解返回实体 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <!-- 配置注释处理器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- web 使用 Spring MVC 构建 Web（包括 RESTful）应用程序的入门工具。使用 Tomcat 作为默认嵌入式容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 使用 Thymeleaf 视图构建 MVC Web 应用程序的入门 -->
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency> -->
+        <!-- 数据库相关 jpa -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
         <!--        </dependency>-->
-        <!--数据库相关 redis-->
+        <!-- 数据库相关 redis -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
@@ -127,7 +145,16 @@
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
         <!--        </dependency>-->
-        <!--数据库相关 jdbc-->
+        <!-- 数据库相关 MongoDB -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>-->
+        <!--        </dependency>-->
+        <!-- 数据库相关 jdb 将 JDBC 与 HikariCP 连接池一起使用的入门 -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-jdbc</artifactId>-->
@@ -136,57 +163,108 @@
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
         <!--        </dependency>-->
-        <!--直接使用注解返回实体-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <!--缓存-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <!--超媒体是应用程序状态的引擎-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency>
-        <!--json-->
+        
+        <!-- json -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
-        <!--邮件-->
+
+        <!-- 使用 Spring AMQP 和 Rabbit MQ 的入门 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        <!--任务调度-->
+        <!-- 使用 Apache ActiveMQ 的 Starter for JMS 消息传递 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+        <!-- 超媒体是应用程序状态的引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <!-- 任务调度 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
-        <!--安全认证-->
+        <!-- 批处理 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
-        <!--实体字段格式验证-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <!--协议 websocket-->
+        <!-- 协议 websocket -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-        <!--消息队列：kafka-->
+        <!-- 缓存 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!-- 安全认证 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- 记录日志并入库 使用 Spring AOP 和 AspectJ 进行面向切面编程的入门 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- 日志 开始使用 Logback 进行日志记录。默认日志记录开始 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        <!-- 日志 Log4j2 spring-boot-starter-logging 的替代方案 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        
+        <!-- 验证 将 Java Bean 验证与 Hibernate 验证器结合使用的入门 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- 邮件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!-- 开发人员工具 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <!-- 表示依赖不会传递 -->
+            <optional>true</optional>
+        </dependency>
+        <!-- 测试 用于使用 JUnit Jupiter、Hamcrest 和 Mockito 等库测试 Spring Boot 应用程序的 Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- spring 核心依赖 end -->
+
+        <!-- 消息队列：kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-        <!---->
+        <!--  -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.session</groupId>-->
         <!--            <artifactId>spring-session-data-redis</artifactId>-->
@@ -195,8 +273,8 @@
         <!--            <groupId>org.springframework.session</groupId>-->
         <!--            <artifactId>spring-session-jdbc</artifactId>-->
         <!--        </dependency>-->
-        <!--springframework 依赖 end-->
-        <!--数据库：Mybatis-plus 动态数据源-->
+        <!-- springframework 依赖 end -->
+        <!-- 数据库：Mybatis-plus 动态数据源 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
@@ -207,43 +285,43 @@
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
         </dependency>
-        <!--代码生成-->
+        <!-- 代码生成 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
         </dependency>
-        <!--freemarker代码生成使用模板-->
+        <!-- freemarker代码生成使用模板 -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-        <!--数据库：阿里数据库连接池-->
+        <!-- 数据库：阿里数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${alibaba.druid.version}</version>
         </dependency>
-        <!--数据库：oracle驱动-->
+        <!-- 数据库：oracle驱动 -->
 <!--        <dependency>-->
 <!--            <groupId>com.oracle.database.jdbc</groupId>-->
 <!--            <artifactId>ojdbc11</artifactId>-->
 <!--            <version>${oracle.jdbc.version}</version>-->
 <!--            <scope>runtime</scope>-->
 <!--        </dependency>-->
-        <!--数据库：MySQL驱动-->
+        <!-- 数据库：MySQL驱动 -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--缓存：redis-->
+        <!-- 缓存：redis -->
         <!--        <dependency>-->
         <!--            <groupId>redis.clients</groupId>-->
         <!--            <artifactId>jedis</artifactId>-->
         <!--        </dependency>-->
-        <!--Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。官方建议是springdoc替代springfox-->
+        <!-- Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。官方建议是springdoc替代springfox -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -259,7 +337,7 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.swagger.version}</version>
         </dependency>
-        <!--pagehelper 分页插件-->
+        <!-- pagehelper 分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -278,7 +356,7 @@
             <type>pom</type>
             <scope>test</scope>
         </dependency>
-        <!--JWT鉴权 token生成与解码，登录拦截验证-->
+        <!-- JWT鉴权 token生成与解码，登录拦截验证 -->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
@@ -301,7 +379,7 @@
             <version>${jsonwebtoken.jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!--校验-->
+        <!-- 校验 -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
@@ -313,18 +391,18 @@
             <version>${jakarta.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!--io常用工具类-->
+        <!-- io常用工具类 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <!--io常用工具类-->
+        <!-- io常用工具类 -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-        <!--验证码-->
+        <!-- 验证码 -->
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>
@@ -336,7 +414,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--Excel 生成/下载/导入/导出-->
+        <!-- Excel 生成/下载/导入/导出 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
@@ -352,13 +430,13 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${apache.version}</version>
         </dependency>
-        <!--JSON-->
+        <!-- JSON -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
             <version>${alibaba.fastjson2.version}</version>
         </dependency>
-        <!--JSON工具类-->
+        <!-- JSON工具类 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -368,37 +446,20 @@
             <artifactId>gson</artifactId>
             <version>${google.gson.version}</version>
         </dependency>
-        <!--解析客户端操作系统、浏览器等-->
+        <!-- 解析客户端操作系统、浏览器等 -->
         <dependency>
             <groupId>eu.bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>
             <version>${bitwalker.UserAgentUtils.version}</version>
         </dependency>
-        <!--获取系统信息-->
+        <!-- 获取系统信息 -->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
             <version>${github.oshi.version}</version>
         </dependency>
-        <!--开发、测试使用的包 start-->
-        <!-- 热更新 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <!--表示依赖不会传递-->
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!-- 开发、测试使用的包 start -->
+        <!--  热更新 -->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit-test</artifactId>
@@ -424,7 +485,7 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--开发、测试使用的包 end-->
+        <!-- 开发、测试使用的包 end -->
     </dependencies>
 
     <dependencyManagement>
@@ -485,7 +546,7 @@
         </profile>
     </profiles>
 
-    <!--三方仓库-->
+    <!-- 三方仓库 -->
     <!--   <repositories>-->
     <!--       <repository>-->
     <!--           <id>public</id>-->
