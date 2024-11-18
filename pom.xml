@@ -52,7 +52,6 @@
         <commons-io.version>2.17.0</commons-io.version>
 
         <fessional.kaptcha.version>2.3.3</fessional.kaptcha.version>
-        <freemarker.version>2.3.33</freemarker.version>
 
         <github.oshi.version>6.6.5</github.oshi.version>
         <google.gson.version>2.11.0</google.gson.version>
@@ -257,14 +256,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- spring 核心依赖 end -->
 
+        <!-- springframework 其他 start -->
         <!-- 消息队列：kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-        <!--  -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.session</groupId>-->
         <!--            <artifactId>spring-session-data-redis</artifactId>-->
@@ -273,7 +271,38 @@
         <!--            <groupId>org.springframework.session</groupId>-->
         <!--            <artifactId>spring-session-jdbc</artifactId>-->
         <!--        </dependency>-->
-        <!-- springframework 依赖 end -->
+        <!-- springframework 其他 end -->
+
+        <!-- springframework 开发、测试 start -->
+        <!--  热更新 -->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- springframework 开发、测试 end -->
+        <!-- spring 核心依赖 end -->
+
         <!-- 数据库：Mybatis-plus 动态数据源 -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -290,12 +319,6 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
-        </dependency>
-        <!-- freemarker代码生成使用模板 -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>${freemarker.version}</version>
         </dependency>
         <!-- 数据库：阿里数据库连接池 -->
         <dependency>
@@ -458,34 +481,6 @@
             <artifactId>oshi-core</artifactId>
             <version>${github.oshi.version}</version>
         </dependency>
-        <!-- 开发、测试使用的包 start -->
-        <!--  热更新 -->
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- 开发、测试使用的包 end -->
     </dependencies>
 
     <dependencyManagement>
