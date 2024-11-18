@@ -1,0 +1,3 @@
+- 1、核心 pom 依赖
+- 2、数据库 mysql mybatis-plus 数据库连接、自动生成实体
+- 3、数据库连接池 mysql 阿里
