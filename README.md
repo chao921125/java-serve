@@ -3,7 +3,10 @@
 https://start.spring.io/
 
 ```shell
+# 分析依赖
+mvn dependency:tree
 # 打包命令
+mvn clean package -D maven.test.skip=true
 mvn clean package -P dev -D maven.test.skip=true
 mvn clean package -P prod -D maven.test.skip=true
 ```

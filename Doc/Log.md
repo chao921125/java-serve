@@ -1,4 +1,5 @@
-- 1、核心 pom 依赖
-- 2、数据库 mysql mybatis-plus 自动生成实体（待更新）
-- 3、数据库连接池 mysql 阿里
-- 4、springdoc 集成
+- 核心 pom 依赖
+- 数据库 mysql mybatis-plus
+- mybatis-plus 自动生成实体（待更新） https://baomidou.com/reference/new-code-generator-configuration/
+- 数据库连接池 mysql 阿里
+- springdoc 集成
