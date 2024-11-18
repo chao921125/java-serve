@@ -339,11 +339,13 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <!-- 缓存：redis -->
         <!--        <dependency>-->
         <!--            <groupId>redis.clients</groupId>-->
         <!--            <artifactId>jedis</artifactId>-->
         <!--        </dependency>-->
+
         <!-- Swagger3依赖，鉴于引入的非 swagger 原包，所以 mybatis-plus 自动生成代码需要修改。官方建议是springdoc替代springfox -->
         <dependency>
             <groupId>org.springdoc</groupId>
