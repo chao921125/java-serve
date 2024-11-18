@@ -22,10 +22,10 @@ springboot + mybatis-plus + jwt + log
 
 # 项目组成
 
-| 核心     |
-|---|
-| [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)   |
-| [Maven 仓库](https://mvnrepository.com/) |
+| 核心                                                                                               |
+|--------------------------------------------------------------------------------------------------|
+| [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html) |
+| [Maven 仓库](https://mvnrepository.com/)                                                           |
 
 
 | 核心                   |
