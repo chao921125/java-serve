@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,100 +18,100 @@ import java.util.Date;
  * @since 2024-09-28 15:03:228
  */
 @TableName("sys_user")
-@ApiModel(value = "SysUser对象", description = "用户表")
+@Schema(name = "SysUser对象", description = "用户表")
 public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("用户 id")
+    @Schema(name = "用户 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("用户登陆名")
+    @Schema(name = "用户登陆名")
     @TableField("user_name")
     private String userName;
 
-    @ApiModelProperty("登陆密码")
+    @Schema(name = "登陆密码", pattern = "", maxLength = 20, minLength = 6)
     @TableField("password")
     private String password;
 
-    @ApiModelProperty("昵称")
+    @Schema(name = "昵称")
     @TableField("nick_name")
     private String nickName;
 
-    @ApiModelProperty("真实姓名")
+    @Schema(name = "真实姓名")
     @TableField("real_name")
     private String realName;
 
-    @ApiModelProperty("头像")
+    @Schema(name = "头像")
     @TableField("avatar")
     private String avatar;
 
-    @ApiModelProperty("邮箱")
+    @Schema(name = "邮箱")
     @TableField("email")
     private String email;
 
-    @ApiModelProperty("手机号")
+    @Schema(name = "手机号")
     @TableField("phone")
     private String phone;
 
-    @ApiModelProperty("性别（0女 1男 2未知）")
+    @Schema(name = "性别（0女 1男 2未知）")
     @TableField("sex")
     private String sex;
 
-    @ApiModelProperty("年龄")
+    @Schema(name = "年龄")
     @TableField("age")
     private String age;
 
-    @ApiModelProperty("地址")
+    @Schema(name = "地址")
     @TableField("address")
     private String address;
 
-    @ApiModelProperty("状态（1正常 0停用 9删除）")
+    @Schema(name = "状态（1正常 0停用 9删除）")
     @TableField("status")
     private String status;
 
-    @ApiModelProperty("用户类型（0 系统用户 1 2）")
+    @Schema(name = "用户类型（0 系统用户 1 2）")
     @TableField("type")
     private String type;
 
-    @ApiModelProperty("最后登陆ip")
+    @Schema(name = "最后登陆ip")
     @TableField("login_ip")
     private String loginIp;
 
-    @ApiModelProperty("最后登陆地址")
+    @Schema(name = "最后登陆地址")
     @TableField("login_address")
     private String loginAddress;
 
-    @ApiModelProperty("最后登陆设备")
+    @Schema(name = "最后登陆设备")
     @TableField("login_info")
     private String loginInfo;
 
-    @ApiModelProperty("最后登陆时间")
+    @Schema(name = "最后登陆时间")
     @TableField("login_time")
     private Date loginTime;
 
-    @ApiModelProperty("密码最后修改时间")
+    @Schema(name = "密码最后修改时间")
     @TableField("pwd_update_time")
     private Date pwdUpdateTime;
 
-    @ApiModelProperty("创建人")
+    @Schema(name = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @ApiModelProperty("创建时间")
+    @Schema(name = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty("修改人")
+    @Schema(name = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @ApiModelProperty("修改时间")
+    @Schema(name = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty("备注")
+    @Schema(name = "备注")
     @TableField("remark")
     private String remark;
 

@@ -8,8 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -20,60 +19,60 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2024-09-28 15:03:223
  */
 @TableName("sys_role")
-@ApiModel(value = "SysRole对象", description = "角色表")
+@Schema(name = "SysRole对象", description = "角色表")
 public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("角色 id")
+    @Schema(name = "角色 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("名称")
+    @Schema(name = "名称")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty("角色key")
+    @Schema(name = "角色key")
     @TableField("code")
     private String code;
 
-    @ApiModelProperty("排序")
+    @Schema(name = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @ApiModelProperty("权限标识[C,R,U,D]")
+    @Schema(name = "权限标识[C,R,U,D]")
     @TableField("permissions")
     private String permissions;
 
-    @ApiModelProperty("数据权限（1全部 2当前及以下 3当前）")
+    @Schema(name = "数据权限（1全部 2当前及以下 3当前）")
     @TableField("data_scope")
     private String dataScope;
 
-    @ApiModelProperty("删除标识（0删除 1未删除）")
+    @Schema(name = "删除标识（0删除 1未删除）")
     @TableField("del_flag")
     private String delFlag;
 
-    @ApiModelProperty("状态（1正常 0停用）")
+    @Schema(name = "状态（1正常 0停用）")
     @TableField("status")
     private String status;
 
-    @ApiModelProperty("创建人")
+    @Schema(name = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @ApiModelProperty("创建时间")
+    @Schema(name = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty("修改人")
+    @Schema(name = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @ApiModelProperty("修改时间")
+    @Schema(name = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty("备注")
+    @Schema(name = "备注")
     @TableField("remark")
     private String remark;
 

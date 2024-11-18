@@ -8,8 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -20,48 +19,48 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2024-09-28 15:03:221
  */
 @TableName("sys_post")
-@ApiModel(value = "SysPost对象", description = "岗位表")
+@Schema(name = "SysPost对象", description = "岗位表")
 public class SysPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("岗位 id")
+    @Schema(name = "岗位 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("key")
+    @Schema(name = "key")
     @TableField("code")
     private String code;
 
-    @ApiModelProperty("名称")
+    @Schema(name = "名称")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty("排序")
+    @Schema(name = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @ApiModelProperty("状态（1正常 0停用 9删除）")
+    @Schema(name = "状态（1正常 0停用 9删除）")
     @TableField("status")
     private String status;
 
-    @ApiModelProperty("创建人")
+    @Schema(name = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @ApiModelProperty("创建时间")
+    @Schema(name = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty("修改人")
+    @Schema(name = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @ApiModelProperty("修改时间")
+    @Schema(name = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty("备注")
+    @Schema(name = "备注")
     @TableField("remark")
     private String remark;
 

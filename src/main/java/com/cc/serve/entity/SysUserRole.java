@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
@@ -18,7 +17,7 @@ import java.io.Serializable;
  * @since 2024-09-28 15:03:233
  */
 @TableName("sys_user_role")
-@ApiModel(value = "SysUserRole对象", description = "用户角色")
+@Schema(name = "SysUserRole对象", description = "用户角色")
 public class SysUserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,11 +25,11 @@ public class SysUserRole implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("用户 id")
+    @Schema(name = "用户 id")
     @TableField("user_id")
     private Long userId;
 
-    @ApiModelProperty("角色 id")
+    @Schema(name = "角色 id")
     @TableField("role_id")
     private Long roleId;
 

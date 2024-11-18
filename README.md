@@ -16,7 +16,8 @@ mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Ds
 
 ```
 
-swagger http://localhost:8080/ui
+api doc swagger http://localhost:8080/api json http://localhost:8080/api-docs
+user password(启动日志)
 
 springboot + mybatis-plus + jwt + log
 

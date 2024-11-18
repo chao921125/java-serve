@@ -8,8 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -20,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2024-09-28 15:03:218
  */
 @TableName("sys_menu")
-@ApiModel(value = "SysMenu对象", description = "菜单表")
+@Schema(name = "SysMenu对象", description = "菜单表")
 public class SysMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,83 +27,83 @@ public class SysMenu implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("父级id")
+    @Schema(name = "父级id")
     @TableField("parent_id")
     private Long parentId;
 
-    @ApiModelProperty("菜单名称（国际化直接自动转化为对应的key）")
+    @Schema(name = "菜单名称（国际化直接自动转化为对应的key）")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty("排序")
+    @Schema(name = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @ApiModelProperty("请求路径")
+    @Schema(name = "请求路径")
     @TableField("path")
     private String path;
 
-    @ApiModelProperty("组件地址，默认在views/目录下，但不用填写views/")
+    @Schema(name = "组件地址，默认在views/目录下，但不用填写views/")
     @TableField("component")
     private String component;
 
-    @ApiModelProperty("图标")
+    @Schema(name = "图标")
     @TableField("icon")
     private String icon;
 
-    @ApiModelProperty("标题")
+    @Schema(name = "标题")
     @TableField("title")
     private String title;
 
-    @ApiModelProperty("菜单类型（0 菜单 1 目录）")
+    @Schema(name = "菜单类型（0 菜单 1 目录）")
     @TableField("type")
     private String type;
 
-    @ApiModelProperty("是否登录访问（默认此项不填 0否 1是）")
+    @Schema(name = "是否登录访问（默认此项不填 0否 1是）")
     @TableField("auth")
     private String auth;
 
-    @ApiModelProperty("是否是连接（0否 1是）与iframe互斥")
+    @Schema(name = "是否是连接（0否 1是）与iframe互斥")
     @TableField("isLink")
     private String isLink;
 
-    @ApiModelProperty("是否是内嵌（0否 1是）与link互斥")
+    @Schema(name = "是否是内嵌（0否 1是）与link互斥")
     @TableField("isIframe")
     private String isIframe;
 
-    @ApiModelProperty("link或者iframe时，访问地址")
+    @Schema(name = "link或者iframe时，访问地址")
     @TableField("address")
     private String address;
 
-    @ApiModelProperty("是否隐藏路由（0否 1是）")
+    @Schema(name = "是否隐藏路由（0否 1是）")
     @TableField("isHide")
     private String isHide;
 
-    @ApiModelProperty("是否隐藏子路由（0否 1是）")
+    @Schema(name = "是否隐藏子路由（0否 1是）")
     @TableField("isHideSubMenu")
     private String isHideSubMenu;
 
-    @ApiModelProperty("是否为手机端（0否 1是）")
+    @Schema(name = "是否为手机端（0否 1是）")
     @TableField("isMobile")
     private String isMobile;
 
-    @ApiModelProperty("创建人")
+    @Schema(name = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @ApiModelProperty("创建时间")
+    @Schema(name = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty("修改人")
+    @Schema(name = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @ApiModelProperty("修改时间")
+    @Schema(name = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty("备注")
+    @Schema(name = "备注")
     @TableField("remark")
     private String remark;
 
