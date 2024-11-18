@@ -16,16 +16,17 @@ mvn com.github.ekryd.sortpom:sortpom-maven-plugin:sort -Dsort.keepBlankLines -Ds
 
 ```
 
-swagger http://localhost:8080/ui
+api doc swagger http://localhost:8080/api json http://localhost:8080/api-docs
+user password(启动日志)
 
 springboot + mybatis-plus + jwt + log
 
 # 项目组成
 
-| 核心     |
-|---|
-| [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)   |
-| [Maven 仓库](https://mvnrepository.com/) |
+| 核心                                                                                               |
+|--------------------------------------------------------------------------------------------------|
+| [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html) |
+| [Maven 仓库](https://mvnrepository.com/)                                                           |
 
 
 | 核心                   |

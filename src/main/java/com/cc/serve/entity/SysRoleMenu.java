@@ -3,7 +3,7 @@ package com.cc.serve.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @since 2024-09-28 15:03:227
  */
 @TableName("sys_role_menu")
-@ApiModel(value = "SysRoleMenu对象", description = "角色菜单")
+@Schema(name = "SysRoleMenu对象", description = "角色菜单")
 public class SysRoleMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
