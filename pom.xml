@@ -216,15 +216,15 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- 日志 开始使用 Logback 进行日志记录。默认日志记录开始 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-logging</artifactId>-->
+<!--        </dependency>-->
         <!-- 日志 Log4j2 spring-boot-starter-logging 的替代方案 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-log4j2</artifactId>-->
+<!--        </dependency>-->
         
         <!-- 验证 将 Java Bean 验证与 Hibernate 验证器结合使用的入门 -->
         <dependency>

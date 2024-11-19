@@ -21,8 +21,9 @@ public class RunGenInput {
         logger.info("======开始生成======");
         final String DATA_SOURCE = "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
         final String DATA_NAME = "root";
-        final String DATA_PWD = "Admin123.";
+//        final String DATA_PWD = "Admin123.";
 //        final String DATA_PWD = "root123456";
+        final String DATA_PWD = "root1234";
 
         final String TABLE_NAME = "";
         final String TABLE_NAME_PREFIX = "";
