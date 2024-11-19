@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.apache.ibatis.type.JdbcType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,9 +61,6 @@ public class RunGenInput {
                     .xml("mapper.xml")
                     .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + PKG_PATH_MAPPER));
             })
-            .injectionConfig(builder -> {
-//                    builder.build();
-            })
             .strategyConfig((scanner, builder) -> {
                 builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all"))) // 表
                     .addTablePrefix(TABLE_NAME_PREFIX) // 过滤表前缀
@@ -88,6 +86,10 @@ public class RunGenInput {
                     .enableHyphenStyle()
                     .enableFileOverride(); // 覆盖
             })
+            .injectionConfig(builder -> {
+//                    builder.build();
+            })
+            .templateEngine(new FreemarkerTemplateEngine()) // 使用自定义的模板引擎
             .execute();
         logger.info("======生成代码结束======");
     }

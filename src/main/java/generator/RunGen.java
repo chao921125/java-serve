@@ -24,7 +24,7 @@ public class RunGen {
 //        final String DATA_PWD = "root123456";
         final String DATA_PWD = "root1234";
 
-        final String TABLE_NAME = "sys_user,sys_role,sys_post,sys_menu,sys_dictionary,sys_department,sys_role_department,sys_role_menu,sys_user_department,sys_user_post,sys_user_role";
+        final String TABLE_NAME = "all";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
@@ -91,10 +91,10 @@ public class RunGen {
                 })
 //                注入配置
                 .injectionConfig(builder -> {
-                    Map<String, String> customFile = new HashMap<>();
-                    // DTO
-                    customFile.put("Entity.java", "/templates/entity.java.ftl");
-                    builder.customFile(customFile);
+//                    Map<String, String> customFile = new HashMap<>();
+//                    // DTO
+//                    customFile.put(".java", "/templates/entity.java.ftl");
+//                    builder.customFile(customFile);
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用自定义的模板引擎
                 .execute();
