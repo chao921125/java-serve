@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * ${table.name} ${table.comment}
+ * ${table.name} ${table.comment!}
  * </p>
  * ${schemaName}
  * @author ${author}
@@ -38,7 +38,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 <#if table.convert>
 @TableName("${table.name}")
 </#if>
-@Schema(name = "${entity}对象", description = "${table.comment}")
+@Schema(name = "${entity}对象", description = "${table.comment!}")
 public class ${entity} implements Serializable {
 
     private static final long serialVersionUID = 1L;

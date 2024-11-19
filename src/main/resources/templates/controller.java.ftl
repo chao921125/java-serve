@@ -18,6 +18,7 @@ import ${superControllerClassPackage};
  * @author ${author}
  * @since ${date}
  */
+@Tag(name = "${table.comment!}", description = "${table.comment!}")
 <#if restControllerStyle>
 @RestController
 <#else>
