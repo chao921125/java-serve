@@ -11,7 +11,7 @@
  Target Server Version : 80403 (8.4.3)
  File Encoding         : 65001
 
- Date: 19/11/2024 17:45:15
+ Date: 19/11/2024 17:50:54
 */
 
 SET NAMES utf8mb4;
@@ -33,6 +33,13 @@ CREATE TABLE `log_login` (
   `status` char(1) DEFAULT '1' COMMENT '登录状态（0 失败，1 成功）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of log_login
+-- ----------------------------
+BEGIN;
+INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_time`, `address`, `system`, `status`) VALUES (1, '234', '324', '234', '234', '2023-10-08 15:19:03', '234', '234', '1');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for log_operation
@@ -58,6 +65,12 @@ CREATE TABLE `log_operation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
+-- Records of log_operation
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_department
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_department`;
@@ -78,6 +91,13 @@ CREATE TABLE `sys_department` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='部门表';
+
+-- ----------------------------
+-- Records of sys_department
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -109,6 +129,12 @@ CREATE TABLE `sys_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='菜单表';
 
 -- ----------------------------
+-- Records of sys_menu
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
@@ -125,6 +151,12 @@ CREATE TABLE `sys_post` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='岗位表';
+
+-- ----------------------------
+-- Records of sys_post
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -148,6 +180,12 @@ CREATE TABLE `sys_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
 
 -- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_role_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
@@ -157,6 +195,12 @@ CREATE TABLE `sys_role_menu` (
   `menu_id` bigint NOT NULL,
   PRIMARY KEY (`id`,`role_id`,`menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色菜单';
+
+-- ----------------------------
+-- Records of sys_role_menu
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -190,6 +234,13 @@ CREATE TABLE `sys_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
 -- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`, `avatar`, `email`, `phone`, `sex`, `age`, `address`, `status`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 'admin', '123456', '超管', NULL, NULL, 'admin@mail.com', '19920008007', '1', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_user_department
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_department`;
@@ -199,6 +250,12 @@ CREATE TABLE `sys_user_department` (
   `department_id` bigint NOT NULL COMMENT '部门 id',
   PRIMARY KEY (`id`,`user_id`,`department_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户部门';
+
+-- ----------------------------
+-- Records of sys_user_department
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -212,6 +269,12 @@ CREATE TABLE `sys_user_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户岗位';
 
 -- ----------------------------
+-- Records of sys_user_post
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
@@ -221,5 +284,11 @@ CREATE TABLE `sys_user_role` (
   `role_id` bigint NOT NULL COMMENT '角色 id',
   PRIMARY KEY (`id`,`user_id`,`role_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户角色';
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
