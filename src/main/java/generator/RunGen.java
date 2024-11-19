@@ -11,9 +11,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class RunGen {
     private static final Logger logger = LoggerFactory.getLogger(RunGen.class);
@@ -22,10 +20,11 @@ public class RunGen {
         logger.info("======开始生成======");
         final String DATA_SOURCE = "jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
         final String DATA_NAME = "root";
-        final String DATA_PWD = "Admin123.";
+//        final String DATA_PWD = "Admin123.";
 //        final String DATA_PWD = "root123456";
+        final String DATA_PWD = "root1234";
 
-        final String TABLE_NAME = "sys_user,sys_role,sys_post,sys_menu,sys_dictionary,sys_department,sys_role_department,sys_role_menu,sys_user_department,sys_user_post,sys_user_role";
+        final String TABLE_NAME = "all";
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
@@ -33,15 +32,17 @@ public class RunGen {
         final String PKG_PATH_MAPPER = "/src/main/generator";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
+//                全局配置
                 .globalConfig(builder -> {
                     builder.enableSwagger()
                             .author("cc") // 作者
-                            .commentDate("yyyy-mm-dd HH:MM:SS") // 时间
+                            .commentDate("yyyy-MM-dd HH:mm:ss") // 时间
                             .outputDir(System.getProperty("user.dir") + PKG_PATH) // 目录
                             .dateType(DateType.ONLY_DATE)
                             .disableOpenDir() // 禁止打开目录
                             .build();
                 })
+//                数据库配置
                 .dataSourceConfig(builder -> {
                     builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -> {
                         // 兼容旧版本转换成Integer
@@ -51,6 +52,7 @@ public class RunGen {
                         return typeRegistry.getColumnType(metaInfo);
                     }).build();
                 })
+//                包配置
                 .packageConfig(builder -> {
                     builder.parent(PKG) // 设置父包，mapper路径
                             .controller("controller")
@@ -62,34 +64,39 @@ public class RunGen {
                             .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + PKG_PATH_MAPPER))
                             .build();
                 })
-                .injectionConfig(builder -> {
-//                    builder.build();
-                })
+//                策略配置
                 .strategyConfig(builder -> {
                     builder.addInclude(getTables(TABLE_NAME)) // 表
                             .addTablePrefix(TABLE_NAME_PREFIX) // 过滤表前缀
-                            .controllerBuilder() // Controller 策略
-                            .formatFileName("%sController")
-                            .enableRestStyle()
-                            .enableHyphenStyle()
-                            .enableFileOverride() // Controller 覆盖
                             .entityBuilder() // Entity 策略
                             .enableTableFieldAnnotation()
                             .naming(NamingStrategy.underline_to_camel) // 数据库映射实体，驼峰
                             .columnNaming(NamingStrategy.underline_to_camel) // 字段映射，驼峰
                             .enableFileOverride() // Entity 覆盖
+                            .controllerBuilder() // Controller 策略
+                            .formatFileName("%sController")
+                            .enableRestStyle()
+                            .enableHyphenStyle()
+                            .enableFileOverride() // Controller 覆盖
+                            .serviceBuilder() // Service 策略
+                            .formatServiceFileName("%sService") // %s匹配表名，接口文件名
+                            .formatServiceImplFileName("%sServiceImpl")
+                            .enableFileOverride() // Service 覆盖
                             .mapperBuilder() // Mapper 策略
                             .superClass(BaseMapper.class)
                             .formatMapperFileName("%sMapper")
                             .formatXmlFileName("%sMapper")
                             .enableFileOverride() // Mapper 覆盖
-                            .serviceBuilder() // Service 策略
-                            .formatServiceFileName("%sService") // %s匹配表名，接口文件名
-                            .formatServiceImplFileName("%sServiceImpl")
-                            .enableFileOverride() // Service 覆盖
                             .build();
                 })
-                .templateEngine(new FreemarkerTemplateEngine())
+//                注入配置
+                .injectionConfig(builder -> {
+//                    Map<String, String> customFile = new HashMap<>();
+//                    // DTO
+//                    customFile.put(".java", "/templates/entity.java.ftl");
+//                    builder.customFile(customFile);
+                })
+                .templateEngine(new FreemarkerTemplateEngine()) // 使用自定义的模板引擎
                 .execute();
         logger.info("======生成代码结束======");
     }

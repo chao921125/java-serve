@@ -1,17 +1,17 @@
 /*
- Navicat Premium Data Transfer
+ Navicat Premium Dump SQL
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80300 (8.3.0)
+ Source Server Version : 80403 (8.4.3)
  Source Host           : localhost:3306
  Source Schema         : serve
 
  Target Server Type    : MySQL
- Target Server Version : 80300 (8.3.0)
+ Target Server Version : 80403 (8.4.3)
  File Encoding         : 65001
 
- Date: 14/03/2024 18:04:48
+ Date: 19/11/2024 17:45:15
 */
 
 SET NAMES utf8mb4;
@@ -35,13 +35,6 @@ CREATE TABLE `log_login` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of log_login
--- ----------------------------
-BEGIN;
-INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_time`, `address`, `system`, `status`) VALUES (1, '234', '324', '234', '234', '2023-10-08 15:19:03', '234', '234', '1');
-COMMIT;
-
--- ----------------------------
 -- Table structure for log_operation
 -- ----------------------------
 DROP TABLE IF EXISTS `log_operation`;
@@ -51,7 +44,7 @@ CREATE TABLE `log_operation` (
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户名',
   `ip` varchar(255) DEFAULT NULL COMMENT '登录 IP',
   `ip_real` varchar(255) DEFAULT NULL COMMENT '真实IP',
-  `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
+  `create_time` datetime DEFAULT NULL COMMENT '操作时间',
   `address` varchar(255) DEFAULT NULL COMMENT '地址',
   `system` varchar(255) DEFAULT NULL COMMENT '设备信息',
   `status` char(1) DEFAULT '1' COMMENT '登录状态（0 失败，1 成功）',
@@ -63,12 +56,6 @@ CREATE TABLE `log_operation` (
   `message` varchar(255) DEFAULT NULL COMMENT '错误消息',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
--- Records of log_operation
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_department
@@ -93,13 +80,6 @@ CREATE TABLE `sys_department` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='部门表';
 
 -- ----------------------------
--- Records of sys_department
--- ----------------------------
-BEGIN;
-INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
-COMMIT;
-
--- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
@@ -114,12 +94,12 @@ CREATE TABLE `sys_menu` (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
   `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '菜单类型（0 菜单 1 目录）',
   `auth` char(1) DEFAULT '1' COMMENT '是否登录访问（默认此项不填 0否 1是）',
-  `isLink` char(1) DEFAULT '0' COMMENT '是否是连接（0否 1是）与iframe互斥',
-  `isIframe` char(1) DEFAULT '0' COMMENT '是否是内嵌（0否 1是）与link互斥',
+  `is_link` char(1) DEFAULT '0' COMMENT '是否是连接（0否 1是）与iframe互斥',
+  `is_iframe` char(1) DEFAULT '0' COMMENT '是否是内嵌（0否 1是）与link互斥',
   `address` varchar(255) DEFAULT NULL COMMENT 'link或者iframe时，访问地址',
-  `isHide` char(1) DEFAULT '0' COMMENT '是否隐藏路由（0否 1是）',
-  `isHideSubMenu` char(1) DEFAULT NULL COMMENT '是否隐藏子路由（0否 1是）',
-  `isMobile` char(1) DEFAULT '0' COMMENT '是否为手机端（0否 1是）',
+  `is_hide` char(1) DEFAULT '0' COMMENT '是否隐藏路由（0否 1是）',
+  `is_hide_sub_menu` char(1) DEFAULT NULL COMMENT '是否隐藏子路由（0否 1是）',
+  `is_mobile` char(1) DEFAULT '0' COMMENT '是否为手机端（0否 1是）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '修改人',
@@ -127,12 +107,6 @@ CREATE TABLE `sys_menu` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='菜单表';
-
--- ----------------------------
--- Records of sys_menu
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -151,12 +125,6 @@ CREATE TABLE `sys_post` (
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='岗位表';
-
--- ----------------------------
--- Records of sys_post
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -180,12 +148,6 @@ CREATE TABLE `sys_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
 
 -- ----------------------------
--- Records of sys_role
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for sys_role_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
@@ -195,12 +157,6 @@ CREATE TABLE `sys_role_menu` (
   `menu_id` bigint NOT NULL,
   PRIMARY KEY (`id`,`role_id`,`menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色菜单';
-
--- ----------------------------
--- Records of sys_role_menu
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -234,13 +190,6 @@ CREATE TABLE `sys_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
 -- ----------------------------
--- Records of sys_user
--- ----------------------------
-BEGIN;
-INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`, `avatar`, `email`, `phone`, `sex`, `age`, `address`, `status`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 'admin', '123456', '超管', NULL, NULL, 'admin@mail.com', '19920008007', '1', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-COMMIT;
-
--- ----------------------------
 -- Table structure for sys_user_department
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_department`;
@@ -250,12 +199,6 @@ CREATE TABLE `sys_user_department` (
   `department_id` bigint NOT NULL COMMENT '部门 id',
   PRIMARY KEY (`id`,`user_id`,`department_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户部门';
-
--- ----------------------------
--- Records of sys_user_department
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -269,12 +212,6 @@ CREATE TABLE `sys_user_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户岗位';
 
 -- ----------------------------
--- Records of sys_user_post
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for sys_user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
@@ -284,11 +221,5 @@ CREATE TABLE `sys_user_role` (
   `role_id` bigint NOT NULL COMMENT '角色 id',
   PRIMARY KEY (`id`,`user_id`,`role_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户角色';
-
--- ----------------------------
--- Records of sys_user_role
--- ----------------------------
-BEGIN;
-COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

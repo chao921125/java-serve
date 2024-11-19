@@ -42,9 +42,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
+#    password: Admin123
+#    password: root123456
     password: root1234
-#    password: C root1234
-#    password: C Admin123
     # 连接池配置：https://github.com/alibaba/druid/wiki
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
