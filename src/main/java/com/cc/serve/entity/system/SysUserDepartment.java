@@ -1,5 +1,6 @@
-package com.cc.serve.entity;
+package com.cc.serve.entity.system;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -9,24 +10,26 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 角色菜单
+ * 用户部门
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:226
+ * @since 2024-09-28 15:03:231
  */
-@TableName("sys_role_department")
-@Schema(name = "SysRoleDepartment对象", description = "角色菜单")
-public class SysRoleDepartment implements Serializable {
+@TableName("sys_user_department")
+@Schema(name = "SysUserDepartment对象", description = "用户部门")
+public class SysUserDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("id")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("role_id")
-    private Long roleId;
+    @Schema(name = "用户 id")
+    @TableField("user_id")
+    private Long userId;
 
+    @Schema(name = "部门 id")
     @TableField("department_id")
     private Long departmentId;
 
@@ -38,12 +41,12 @@ public class SysRoleDepartment implements Serializable {
         this.id = id;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getDepartmentId() {
@@ -56,9 +59,9 @@ public class SysRoleDepartment implements Serializable {
 
     @Override
     public String toString() {
-        return "SysRoleDepartment{" +
+        return "SysUserDepartment{" +
             "id = " + id +
-            ", roleId = " + roleId +
+            ", userId = " + userId +
             ", departmentId = " + departmentId +
             "}";
     }

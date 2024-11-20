@@ -1,6 +1,8 @@
-package com.cc.serve.entity;
+package com.cc.serve.entity.system;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
@@ -10,30 +12,47 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- *
+ * 角色表
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:215
+ * @since 2024-09-28 15:03:223
  */
-@TableName("sys_dictionary")
-@Schema(name = "SysDictionary对象", description = "")
-public class SysDictionary implements Serializable {
+@TableName("sys_role")
+@Schema(name = "SysRole对象", description = "角色表")
+public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableField("id")
+    @Schema(name = "角色 id")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "字典名称")
+    @Schema(name = "名称")
     @TableField("name")
     private String name;
 
-    @Schema(name = "字典值")
-    @TableField("value")
-    private String value;
+    @Schema(name = "角色key")
+    @TableField("code")
+    private String code;
 
-    @Schema(name = "状态（0 停用 1 正常）")
+    @Schema(name = "排序")
+    @TableField("sort")
+    private Integer sort;
+
+    @Schema(name = "权限标识[C,R,U,D]")
+    @TableField("permissions")
+    private String permissions;
+
+    @Schema(name = "数据权限（1全部 2当前及以下 3当前）")
+    @TableField("data_scope")
+    private String dataScope;
+
+    @Schema(name = "删除标识（0删除 1未删除）")
+    @TableField("del_flag")
+    private String delFlag;
+
+    @Schema(name = "状态（1正常 0停用）")
     @TableField("status")
     private String status;
 
@@ -73,12 +92,44 @@ public class SysDictionary implements Serializable {
         this.name = name;
     }
 
-    public String getValue() {
-        return value;
+    public String getCode() {
+        return code;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
+    public String getDataScope() {
+        return dataScope;
+    }
+
+    public void setDataScope(String dataScope) {
+        this.dataScope = dataScope;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 
     public String getStatus() {
@@ -131,10 +182,14 @@ public class SysDictionary implements Serializable {
 
     @Override
     public String toString() {
-        return "SysDictionary{" +
+        return "SysRole{" +
             "id = " + id +
             ", name = " + name +
-            ", value = " + value +
+            ", code = " + code +
+            ", sort = " + sort +
+            ", permissions = " + permissions +
+            ", dataScope = " + dataScope +
+            ", delFlag = " + delFlag +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

@@ -1,62 +1,38 @@
-package com.cc.serve.entity;
+package com.cc.serve.entity.system;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
 /**
  * <p>
- * 部门表
+ *
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:122
+ * @since 2024-09-28 15:03:215
  */
-@TableName("sys_department")
-@Schema(name = "SysDepartment对象", description = "部门表")
-public class SysDepartment implements Serializable {
+@TableName("sys_dictionary")
+@Schema(name = "SysDictionary对象", description = "")
+public class SysDictionary implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(name = "部门 id")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableField("id")
     private Long id;
 
-    @Schema(name = "父级id")
-    @TableField("parent_id")
-    private Long parentId;
-
-    @Schema(name = "祖级，树结构")
-    @TableField("ancestors")
-    private String ancestors;
-
-    @Schema(name = "部门名称")
+    @Schema(name = "字典名称")
     @TableField("name")
     private String name;
 
-    @Schema(name = "排序")
-    @TableField("sort")
-    private Integer sort;
+    @Schema(name = "字典值")
+    @TableField("value")
+    private String value;
 
-    @Schema(name = "负责人")
-    @TableField("leader")
-    private String leader;
-
-    @Schema(name = "手机号")
-    @TableField("phone")
-    private String phone;
-
-    @Schema(name = "邮箱")
-    @TableField("email")
-    private String email;
-
-    @Schema(name = "状态（1正常 0停用 9删除）")
+    @Schema(name = "状态（0 停用 1 正常）")
     @TableField("status")
     private String status;
 
@@ -88,22 +64,6 @@ public class SysDepartment implements Serializable {
         this.id = id;
     }
 
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getAncestors() {
-        return ancestors;
-    }
-
-    public void setAncestors(String ancestors) {
-        this.ancestors = ancestors;
-    }
-
     public String getName() {
         return name;
     }
@@ -112,36 +72,12 @@ public class SysDepartment implements Serializable {
         this.name = name;
     }
 
-    public Integer getSort() {
-        return sort;
+    public String getValue() {
+        return value;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public String getLeader() {
-        return leader;
-    }
-
-    public void setLeader(String leader) {
-        this.leader = leader;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public String getStatus() {
@@ -194,15 +130,10 @@ public class SysDepartment implements Serializable {
 
     @Override
     public String toString() {
-        return "SysDepartment{" +
+        return "SysDictionary{" +
             "id = " + id +
-            ", parentId = " + parentId +
-            ", ancestors = " + ancestors +
             ", name = " + name +
-            ", sort = " + sort +
-            ", leader = " + leader +
-            ", phone = " + phone +
-            ", email = " + email +
+            ", value = " + value +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

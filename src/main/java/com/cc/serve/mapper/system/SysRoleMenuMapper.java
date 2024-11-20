@@ -1,7 +1,7 @@
 package com.cc.serve.mapper.system;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cc.serve.entity.SysRoleMenu;
+import com.cc.serve.entity.system.SysRoleMenu;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
