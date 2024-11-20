@@ -1,6 +1,7 @@
 package com.cc.serve.entity.system;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -21,7 +22,7 @@ public class SysDictionary implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableField("id")
+    @TableId("id")
     private Long id;
 
     @Schema(name = "字典名称")
