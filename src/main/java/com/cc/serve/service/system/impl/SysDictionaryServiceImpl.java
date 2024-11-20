@@ -1,7 +1,7 @@
 package com.cc.serve.service.system.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cc.serve.entity.SysDictionary;
+import com.cc.serve.entity.system.SysDictionary;
 import com.cc.serve.mapper.system.SysDictionaryMapper;
 import com.cc.serve.service.system.SysDictionaryService;
 import org.springframework.stereotype.Service;

@@ -154,17 +154,17 @@ mybatis-plus:
       id-type: auto
 
 # Redis 配置
-#application:
+application:
 #  redis:
 #    host: localhost
 #    port: 6380
 #    pass: pass
-#  security:
-#    jwt:
-#      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-#      expiration: 86400000
-#      refresh-token:
-#        expiration: 604800000
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
 
 # PageHelper分页插件
 pagehelper:

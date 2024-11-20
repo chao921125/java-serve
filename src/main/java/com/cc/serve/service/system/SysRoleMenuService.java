@@ -1,7 +1,7 @@
 package com.cc.serve.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cc.serve.entity.SysRoleMenu;
+import com.cc.serve.entity.system.SysRoleMenu;
 
 /**
  * <p>

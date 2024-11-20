@@ -1,7 +1,7 @@
 package com.cc.serve.service.system.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cc.serve.entity.SysUserRole;
+import com.cc.serve.entity.system.SysUserRole;
 import com.cc.serve.mapper.system.SysUserRoleMapper;
 import com.cc.serve.service.system.SysUserRoleService;
 import org.springframework.stereotype.Service;

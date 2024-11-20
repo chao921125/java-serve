@@ -3,7 +3,7 @@ package com.cc.serve.controller.system;
 import com.cc.serve.common.core.BaseController;
 import com.cc.serve.common.core.ResultEntity;
 import com.cc.serve.common.core.ResultPageEntity;
-import com.cc.serve.entity.SysUser;
+import com.cc.serve.entity.system.SysUser;
 import com.cc.serve.service.system.SysUserService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

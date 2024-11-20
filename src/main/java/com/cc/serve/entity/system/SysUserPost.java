@@ -1,4 +1,4 @@
-package com.cc.serve.entity;
+package com.cc.serve.entity.system;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -10,15 +10,15 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 用户角色
+ * 用户岗位
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:233
+ * @since 2024-09-28 15:03:232
  */
-@TableName("sys_user_role")
-@Schema(name = "SysUserRole对象", description = "用户角色")
-public class SysUserRole implements Serializable {
+@TableName("sys_user_post")
+@Schema(name = "SysUserPost对象", description = "用户岗位")
+public class SysUserPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +29,9 @@ public class SysUserRole implements Serializable {
     @TableField("user_id")
     private Long userId;
 
-    @Schema(name = "角色 id")
-    @TableField("role_id")
-    private Long roleId;
+    @Schema(name = "岗位 id")
+    @TableField("post_id")
+    private Long postId;
 
     public Long getId() {
         return id;
@@ -49,20 +49,20 @@ public class SysUserRole implements Serializable {
         this.userId = userId;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getPostId() {
+        return postId;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
     @Override
     public String toString() {
-        return "SysUserRole{" +
+        return "SysUserPost{" +
             "id = " + id +
             ", userId = " + userId +
-            ", roleId = " + roleId +
+            ", postId = " + postId +
             "}";
     }
 }

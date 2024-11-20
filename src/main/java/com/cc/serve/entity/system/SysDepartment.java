@@ -1,4 +1,4 @@
-package com.cc.serve.entity;
+package com.cc.serve.entity.system;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,47 +12,51 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * 角色表
+ * 部门表
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:223
+ * @since 2024-09-28 15:03:122
  */
-@TableName("sys_role")
-@Schema(name = "SysRole对象", description = "角色表")
-public class SysRole implements Serializable {
+@TableName("sys_department")
+@Schema(name = "SysDepartment对象", description = "部门表")
+public class SysDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(name = "角色 id")
+    @Schema(name = "部门 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "名称")
+    @Schema(name = "父级id")
+    @TableField("parent_id")
+    private Long parentId;
+
+    @Schema(name = "祖级，树结构")
+    @TableField("ancestors")
+    private String ancestors;
+
+    @Schema(name = "部门名称")
     @TableField("name")
     private String name;
-
-    @Schema(name = "角色key")
-    @TableField("code")
-    private String code;
 
     @Schema(name = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @Schema(name = "权限标识[C,R,U,D]")
-    @TableField("permissions")
-    private String permissions;
+    @Schema(name = "负责人")
+    @TableField("leader")
+    private String leader;
 
-    @Schema(name = "数据权限（1全部 2当前及以下 3当前）")
-    @TableField("data_scope")
-    private String dataScope;
+    @Schema(name = "手机号")
+    @TableField("phone")
+    private String phone;
 
-    @Schema(name = "删除标识（0删除 1未删除）")
-    @TableField("del_flag")
-    private String delFlag;
+    @Schema(name = "邮箱")
+    @TableField("email")
+    private String email;
 
-    @Schema(name = "状态（1正常 0停用）")
+    @Schema(name = "状态（1正常 0停用 9删除）")
     @TableField("status")
     private String status;
 
@@ -84,20 +88,28 @@ public class SysRole implements Serializable {
         this.id = id;
     }
 
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getAncestors() {
+        return ancestors;
+    }
+
+    public void setAncestors(String ancestors) {
+        this.ancestors = ancestors;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Integer getSort() {
@@ -108,28 +120,28 @@ public class SysRole implements Serializable {
         this.sort = sort;
     }
 
-    public String getPermissions() {
-        return permissions;
+    public String getLeader() {
+        return leader;
     }
 
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
+    public void setLeader(String leader) {
+        this.leader = leader;
     }
 
-    public String getDataScope() {
-        return dataScope;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDataScope(String dataScope) {
-        this.dataScope = dataScope;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getDelFlag() {
-        return delFlag;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getStatus() {
@@ -182,14 +194,15 @@ public class SysRole implements Serializable {
 
     @Override
     public String toString() {
-        return "SysRole{" +
+        return "SysDepartment{" +
             "id = " + id +
+            ", parentId = " + parentId +
+            ", ancestors = " + ancestors +
             ", name = " + name +
-            ", code = " + code +
             ", sort = " + sort +
-            ", permissions = " + permissions +
-            ", dataScope = " + dataScope +
-            ", delFlag = " + delFlag +
+            ", leader = " + leader +
+            ", phone = " + phone +
+            ", email = " + email +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

@@ -1,7 +1,7 @@
 package com.cc.serve.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cc.serve.entity.SysDictionary;
+import com.cc.serve.entity.system.SysDictionary;
 
 /**
  * <p>
