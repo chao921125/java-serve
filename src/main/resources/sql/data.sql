@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80403 (8.4.3)
+ Source Server Version : 80402 (8.4.2)
  Source Host           : localhost:3306
  Source Schema         : serve
 
  Target Server Type    : MySQL
- Target Server Version : 80403 (8.4.3)
+ Target Server Version : 80402 (8.4.2)
  File Encoding         : 65001
 
- Date: 19/11/2024 17:49:58
+ Date: 20/11/2024 23:01:39
 */
 
 SET NAMES utf8mb4;
@@ -30,6 +30,10 @@ INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_t
 -- Records of sys_department
 -- ----------------------------
 INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Records of sys_dictionary
+-- ----------------------------
 
 -- ----------------------------
 -- Records of sys_menu
