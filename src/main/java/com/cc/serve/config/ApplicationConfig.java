@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "server")
-public class Config {
+public class ApplicationConfig {
     /**
      * 项目名称
      */
@@ -65,7 +65,7 @@ public class Config {
     }
 
     public void setProfile(String profile) {
-        Config.profile = profile;
+        ApplicationConfig.profile = profile;
     }
 
     public static boolean isAddressEnabled() {
@@ -73,7 +73,7 @@ public class Config {
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        Config.addressEnabled = addressEnabled;
+        ApplicationConfig.addressEnabled = addressEnabled;
     }
 
     public static String getCaptchaType() {
@@ -81,7 +81,7 @@ public class Config {
     }
 
     public void setCaptchaType(String captchaType) {
-        Config.captchaType = captchaType;
+        ApplicationConfig.captchaType = captchaType;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.cc.serve.common.task;
+package com.cc.serve.scheduler;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
