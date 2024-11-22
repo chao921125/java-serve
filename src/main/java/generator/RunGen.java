@@ -28,8 +28,8 @@ public class RunGen {
         final String TABLE_NAME_PREFIX = "";
 
         final String PKG = "";
-        final String PKG_PATH = "/src/main/generator";
-        final String PKG_PATH_MAPPER = "/src/main/generator";
+        final String PKG_PATH = "/src/main/java/code";
+        final String PKG_PATH_MAPPER = "/src/main/java/code";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
 //                全局配置

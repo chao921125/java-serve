@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:215
+ * @since 2024-11-22 13:40:54
  */
-@Tag(name = "字典", description = "字典")
+@Tag(name = "", description = "")
 @RestController
 @RequestMapping("/sys-dictionary")
 public class SysDictionaryController {

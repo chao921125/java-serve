@@ -2,6 +2,6 @@
 - mybatis-plus
 - 阿里 druid
 - mysql
-- mybatis-plus 自动生成实体（待更新） https://baomidou.com/reference/new-code-generator-configuration/
+- mybatis-plus 自动生成实体 https://baomidou.com/reference/new-code-generator-configuration/
 - springdoc
 - security6 springboot3 security6 配置

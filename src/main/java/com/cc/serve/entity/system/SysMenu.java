@@ -8,276 +8,281 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * 菜单表
+ * sys_menu 菜单表
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:218
+ * @since 2024-11-22 13:40:54
  */
+
 @TableName("sys_menu")
 @Schema(name = "SysMenu对象", description = "菜单表")
 public class SysMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @Schema(description = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "父级id")
+    @Schema(description = "父级id")
     @TableField("parent_id")
     private Long parentId;
 
-    @Schema(name = "菜单名称（国际化直接自动转化为对应的key）")
+    @Schema(description = "菜单名称（国际化直接自动转化为对应的key）")
     @TableField("name")
     private String name;
 
-    @Schema(name = "排序")
+    @Schema(description = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @Schema(name = "请求路径")
+    @Schema(description = "请求路径")
     @TableField("path")
     private String path;
 
-    @Schema(name = "组件地址，默认在views/目录下，但不用填写views/")
+    @Schema(description = "组件地址，默认在views/目录下，但不用填写views/")
     @TableField("component")
     private String component;
 
-    @Schema(name = "图标")
+    @Schema(description = "图标")
     @TableField("icon")
     private String icon;
 
-    @Schema(name = "标题")
+    @Schema(description = "标题")
     @TableField("title")
     private String title;
 
-    @Schema(name = "菜单类型（0 菜单 1 目录）")
+    @Schema(description = "菜单类型（0 菜单 1 目录）")
     @TableField("type")
     private String type;
 
-    @Schema(name = "是否登录访问（默认此项不填 0否 1是）")
+    @Schema(description = "是否登录访问（默认此项不填 0否 1是）")
     @TableField("auth")
     private String auth;
 
-    @Schema(name = "是否是连接（0否 1是）与iframe互斥")
+    @Schema(description = "是否是连接（0否 1是）与iframe互斥")
     @TableField("isLink")
     private String isLink;
 
-    @Schema(name = "是否是内嵌（0否 1是）与link互斥")
+    @Schema(description = "是否是内嵌（0否 1是）与link互斥")
     @TableField("isIframe")
     private String isIframe;
 
-    @Schema(name = "link或者iframe时，访问地址")
+    @Schema(description = "link或者iframe时，访问地址")
     @TableField("address")
     private String address;
 
-    @Schema(name = "是否隐藏路由（0否 1是）")
+    @Schema(description = "是否隐藏路由（0否 1是）")
     @TableField("isHide")
     private String isHide;
 
-    @Schema(name = "是否隐藏子路由（0否 1是）")
+    @Schema(description = "是否隐藏子路由（0否 1是）")
     @TableField("isHideSubMenu")
     private String isHideSubMenu;
 
-    @Schema(name = "是否为手机端（0否 1是）")
+    @Schema(description = "是否为手机端（0否 1是）")
     @TableField("isMobile")
     private String isMobile;
 
-    @Schema(name = "创建人")
+    @Schema(description = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @Schema(name = "创建时间")
+    @Schema(description = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @Schema(name = "修改人")
+    @Schema(description = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @Schema(name = "修改时间")
+    @Schema(description = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @Schema(name = "备注")
+    @Schema(description = "备注")
     @TableField("remark")
     private String remark;
 
+
     public Long getId() {
-        return id;
+    return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+    this.id = id;
     }
 
     public Long getParentId() {
-        return parentId;
+    return parentId;
     }
 
     public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    this.parentId = parentId;
     }
 
     public String getName() {
-        return name;
+    return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+    this.name = name;
     }
 
     public Integer getSort() {
-        return sort;
+    return sort;
     }
 
     public void setSort(Integer sort) {
-        this.sort = sort;
+    this.sort = sort;
     }
 
     public String getPath() {
-        return path;
+    return path;
     }
 
     public void setPath(String path) {
-        this.path = path;
+    this.path = path;
     }
 
     public String getComponent() {
-        return component;
+    return component;
     }
 
     public void setComponent(String component) {
-        this.component = component;
+    this.component = component;
     }
 
     public String getIcon() {
-        return icon;
+    return icon;
     }
 
     public void setIcon(String icon) {
-        this.icon = icon;
+    this.icon = icon;
     }
 
     public String getTitle() {
-        return title;
+    return title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+    this.title = title;
     }
 
     public String getType() {
-        return type;
+    return type;
     }
 
     public void setType(String type) {
-        this.type = type;
+    this.type = type;
     }
 
     public String getAuth() {
-        return auth;
+    return auth;
     }
 
     public void setAuth(String auth) {
-        this.auth = auth;
+    this.auth = auth;
     }
 
     public String getIsLink() {
-        return isLink;
+    return isLink;
     }
 
     public void setIsLink(String isLink) {
-        this.isLink = isLink;
+    this.isLink = isLink;
     }
 
     public String getIsIframe() {
-        return isIframe;
+    return isIframe;
     }
 
     public void setIsIframe(String isIframe) {
-        this.isIframe = isIframe;
+    this.isIframe = isIframe;
     }
 
     public String getAddress() {
-        return address;
+    return address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+    this.address = address;
     }
 
     public String getIsHide() {
-        return isHide;
+    return isHide;
     }
 
     public void setIsHide(String isHide) {
-        this.isHide = isHide;
+    this.isHide = isHide;
     }
 
     public String getIsHideSubMenu() {
-        return isHideSubMenu;
+    return isHideSubMenu;
     }
 
     public void setIsHideSubMenu(String isHideSubMenu) {
-        this.isHideSubMenu = isHideSubMenu;
+    this.isHideSubMenu = isHideSubMenu;
     }
 
     public String getIsMobile() {
-        return isMobile;
+    return isMobile;
     }
 
     public void setIsMobile(String isMobile) {
-        this.isMobile = isMobile;
+    this.isMobile = isMobile;
     }
 
     public String getCreateBy() {
-        return createBy;
+    return createBy;
     }
 
     public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    this.createBy = createBy;
     }
 
     public Date getCreateTime() {
-        return createTime;
+    return createTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    this.createTime = createTime;
     }
 
     public String getUpdateBy() {
-        return updateBy;
+    return updateBy;
     }
 
     public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+    return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    this.updateTime = updateTime;
     }
 
     public String getRemark() {
-        return remark;
+    return remark;
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+    this.remark = remark;
     }
 
     @Override
     public String toString() {
-        return "SysMenu{" +
+    return "SysMenu{" +
             "id = " + id +
             ", parentId = " + parentId +
             ", name = " + name +
@@ -299,6 +304,6 @@ public class SysMenu implements Serializable {
             ", updateBy = " + updateBy +
             ", updateTime = " + updateTime +
             ", remark = " + remark +
-            "}";
+    "}";
     }
 }

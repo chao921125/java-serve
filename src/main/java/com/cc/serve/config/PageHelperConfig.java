@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class PageHelperConfigure {
+public class PageHelperConfig {
     @Bean
     public Interceptor[] plugins() {
         return new Interceptor[]{new PageInterceptor()};

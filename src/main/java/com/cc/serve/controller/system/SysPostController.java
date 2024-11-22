@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:221
+ * @since 2024-11-22 13:40:55
  */
-@Tag(name = "岗位", description = "岗位")
+@Tag(name = "岗位表", description = "岗位表")
 @RestController
 @RequestMapping("/sys-post")
 public class SysPostController {

@@ -1,8 +1,7 @@
 package com.cc.serve.mapper.system;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cc.serve.entity.system.SysRole;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -10,9 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:223
+ * @since 2024-11-22 13:40:55
  */
-@Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
 }

@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 用户岗位 前端控制器
+ * 用户岗位 用户1-N岗位 前端控制器
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:232
+ * @since 2024-11-22 13:40:55
  */
-@Tag(name = "用户岗位", description = "用户岗位")
+@Tag(name = "用户岗位 用户1-N岗位", description = "用户岗位 用户1-N岗位")
 @RestController
 @RequestMapping("/sys-user-post")
 public class SysUserPostController {

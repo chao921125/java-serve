@@ -1,8 +1,7 @@
 package com.cc.serve.mapper.system;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cc.serve.entity.system.SysDepartment;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -10,9 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:122
+ * @since 2024-11-22 13:40:54
  */
-@Mapper
 public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
 
 }

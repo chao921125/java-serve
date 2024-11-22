@@ -3,135 +3,141 @@ package com.cc.serve.entity.system;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 import java.util.Date;
 
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * <p>
- *
+ * sys_dictionary 
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:215
+ * @since 2024-11-22 13:40:54
  */
+
 @TableName("sys_dictionary")
 @Schema(name = "SysDictionary对象", description = "")
 public class SysDictionary implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("id")
-    private Long id;
 
-    @Schema(name = "字典名称")
+    @Schema(description = "主键")
+    @TableId("id")
+    private Integer id;
+
+    @Schema(description = "字典名称")
     @TableField("name")
     private String name;
 
-    @Schema(name = "字典值")
+    @Schema(description = "字典值")
     @TableField("value")
     private String value;
 
-    @Schema(name = "状态（0 停用 1 正常）")
+    @Schema(description = "状态（0正常 1 停用）")
     @TableField("status")
     private String status;
 
-    @Schema(name = "创建人")
+    @Schema(description = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @Schema(name = "创建时间")
+    @Schema(description = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @Schema(name = "修改人")
+    @Schema(description = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @Schema(name = "修改时间")
+    @Schema(description = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @Schema(name = "备注")
+    @Schema(description = "备注")
     @TableField("remark")
     private String remark;
 
-    public Long getId() {
-        return id;
+
+    public Integer getId() {
+    return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer id) {
+    this.id = id;
     }
 
     public String getName() {
-        return name;
+    return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+    this.name = name;
     }
 
     public String getValue() {
-        return value;
+    return value;
     }
 
     public void setValue(String value) {
-        this.value = value;
+    this.value = value;
     }
 
     public String getStatus() {
-        return status;
+    return status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+    this.status = status;
     }
 
     public String getCreateBy() {
-        return createBy;
+    return createBy;
     }
 
     public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    this.createBy = createBy;
     }
 
     public Date getCreateTime() {
-        return createTime;
+    return createTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    this.createTime = createTime;
     }
 
     public String getUpdateBy() {
-        return updateBy;
+    return updateBy;
     }
 
     public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+    return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    this.updateTime = updateTime;
     }
 
     public String getRemark() {
-        return remark;
+    return remark;
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+    this.remark = remark;
     }
 
     @Override
     public String toString() {
-        return "SysDictionary{" +
+    return "SysDictionary{" +
             "id = " + id +
             ", name = " + name +
             ", value = " + value +
@@ -141,6 +147,6 @@ public class SysDictionary implements Serializable {
             ", updateBy = " + updateBy +
             ", updateTime = " + updateTime +
             ", remark = " + remark +
-            "}";
+    "}";
     }
 }

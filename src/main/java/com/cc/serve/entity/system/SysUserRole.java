@@ -4,65 +4,71 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * <p>
- * 用户角色
+ * sys_user_role 用户角色 用户N-1角色
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:233
+ * @since 2024-11-22 13:40:55
  */
+
 @TableName("sys_user_role")
-@Schema(name = "SysUserRole对象", description = "用户角色")
+@Schema(name = "SysUserRole对象", description = "用户角色 用户N-1角色")
 public class SysUserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @Schema(description = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "用户 id")
+    @Schema(description = "用户 id")
     @TableField("user_id")
     private Long userId;
 
-    @Schema(name = "角色 id")
+    @Schema(description = "角色 id")
     @TableField("role_id")
     private Long roleId;
 
+
     public Long getId() {
-        return id;
+    return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+    this.id = id;
     }
 
     public Long getUserId() {
-        return userId;
+    return userId;
     }
 
     public void setUserId(Long userId) {
-        this.userId = userId;
+    this.userId = userId;
     }
 
     public Long getRoleId() {
-        return roleId;
+    return roleId;
     }
 
     public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    this.roleId = roleId;
     }
 
     @Override
     public String toString() {
-        return "SysUserRole{" +
+    return "SysUserRole{" +
             "id = " + id +
             ", userId = " + userId +
             ", roleId = " + roleId +
-            "}";
+    "}";
     }
 }
