@@ -1,9 +1,7 @@
 package com.cc.serve.service.system;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.serve.entity.system.SysUser;
-
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
@@ -11,8 +9,8 @@ import java.util.List;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:228
+ * @since 2024-11-22 13:40:55
  */
 public interface SysUserService extends IService<SysUser> {
-    public List<SysUser> listPage(SysUser user);
+
 }

@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 
-@Import({ WebSecurityConfigurer.class})
+//@Import({ WebSecurityConfigurer.class})
 @EnableGlobalAuthentication
 @Configuration
 public class SecurityConfig {

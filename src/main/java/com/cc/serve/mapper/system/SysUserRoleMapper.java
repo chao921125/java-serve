@@ -1,18 +1,16 @@
 package com.cc.serve.mapper.system;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cc.serve.entity.system.SysUserRole;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
- * 用户角色 Mapper 接口
+ * 用户角色 用户N-1角色 Mapper 接口
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:233
+ * @since 2024-11-22 13:40:55
  */
-@Mapper
 public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
 
 }

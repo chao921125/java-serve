@@ -1,9 +1,9 @@
 package com.cc.serve.service.system.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cc.serve.entity.system.SysRole;
 import com.cc.serve.mapper.system.SysRoleMapper;
 import com.cc.serve.service.system.SysRoleService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:223
+ * @since 2024-11-22 13:40:55
  */
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {

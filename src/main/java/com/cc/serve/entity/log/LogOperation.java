@@ -8,8 +8,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -19,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-11-20 23:04:58
+ * @since 2024-11-22 13:40:54
  */
 
 @TableName("log_operation")

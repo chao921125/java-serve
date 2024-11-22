@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:218
+ * @since 2024-11-22 13:40:54
  */
-@Tag(name = "菜单", description = "菜单")
+@Tag(name = "菜单表", description = "菜单表")
 @RestController
 @RequestMapping("/sys-menu")
 public class SysMenuController {

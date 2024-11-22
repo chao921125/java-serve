@@ -3,63 +3,71 @@ package com.cc.serve.entity.system;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * <p>
- * 角色菜单
+ * sys_role_menu 角色菜单 角色1-N菜单
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:227
+ * @since 2024-11-22 13:40:55
  */
+
 @TableName("sys_role_menu")
-@Schema(name = "SysRoleMenu对象", description = "角色菜单")
+@Schema(name = "SysRoleMenu对象", description = "角色菜单 角色1-N菜单")
 public class SysRoleMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @Schema(description = "主键")
     @TableId("id")
     private Long id;
 
+    @Schema(description = "-")
     @TableField("role_id")
     private Long roleId;
 
+    @Schema(description = "-")
     @TableField("menu_id")
     private Long menuId;
 
+
     public Long getId() {
-        return id;
+    return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+    this.id = id;
     }
 
     public Long getRoleId() {
-        return roleId;
+    return roleId;
     }
 
     public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    this.roleId = roleId;
     }
 
     public Long getMenuId() {
-        return menuId;
+    return menuId;
     }
 
     public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    this.menuId = menuId;
     }
 
     @Override
     public String toString() {
-        return "SysRoleMenu{" +
+    return "SysRoleMenu{" +
             "id = " + id +
             ", roleId = " + roleId +
             ", menuId = " + menuId +
-            "}";
+    "}";
     }
 }

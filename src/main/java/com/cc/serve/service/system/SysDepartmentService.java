@@ -1,7 +1,7 @@
 package com.cc.serve.service.system;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.serve.entity.system.SysDepartment;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.cc.serve.entity.system.SysDepartment;
  * </p>
  *
  * @author cc
- * @since 2024-09-28 15:03:122
+ * @since 2024-11-22 13:40:54
  */
 public interface SysDepartmentService extends IService<SysDepartment> {
 

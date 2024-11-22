@@ -8,194 +8,185 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * 角色表
+ * sys_role 角色表
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:223
+ * @since 2024-11-22 13:40:55
  */
+
 @TableName("sys_role")
 @Schema(name = "SysRole对象", description = "角色表")
 public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(name = "角色 id")
+
+    @Schema(description = "角色 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "名称")
+    @Schema(description = "名称")
     @TableField("name")
     private String name;
 
-    @Schema(name = "角色key")
+    @Schema(description = "角色key")
     @TableField("code")
     private String code;
 
-    @Schema(name = "排序")
+    @Schema(description = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @Schema(name = "权限标识[C,R,U,D]")
+    @Schema(description = "权限标识[C,R,U,D]")
     @TableField("permissions")
     private String permissions;
 
-    @Schema(name = "数据权限（1全部 2当前及以下 3当前）")
+    @Schema(description = "数据权限（1全部 2当前及以下 3当前）")
     @TableField("data_scope")
     private String dataScope;
 
-    @Schema(name = "删除标识（0删除 1未删除）")
-    @TableField("del_flag")
-    private String delFlag;
-
-    @Schema(name = "状态（1正常 0停用）")
+    @Schema(description = "状态（0正常 1停用 9删除）")
     @TableField("status")
     private String status;
 
-    @Schema(name = "创建人")
+    @Schema(description = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @Schema(name = "创建时间")
+    @Schema(description = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @Schema(name = "修改人")
+    @Schema(description = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @Schema(name = "修改时间")
+    @Schema(description = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @Schema(name = "备注")
+    @Schema(description = "备注")
     @TableField("remark")
     private String remark;
 
+
     public Long getId() {
-        return id;
+    return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+    this.id = id;
     }
 
     public String getName() {
-        return name;
+    return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+    this.name = name;
     }
 
     public String getCode() {
-        return code;
+    return code;
     }
 
     public void setCode(String code) {
-        this.code = code;
+    this.code = code;
     }
 
     public Integer getSort() {
-        return sort;
+    return sort;
     }
 
     public void setSort(Integer sort) {
-        this.sort = sort;
+    this.sort = sort;
     }
 
     public String getPermissions() {
-        return permissions;
+    return permissions;
     }
 
     public void setPermissions(String permissions) {
-        this.permissions = permissions;
+    this.permissions = permissions;
     }
 
     public String getDataScope() {
-        return dataScope;
+    return dataScope;
     }
 
     public void setDataScope(String dataScope) {
-        this.dataScope = dataScope;
-    }
-
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
+    this.dataScope = dataScope;
     }
 
     public String getStatus() {
-        return status;
+    return status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+    this.status = status;
     }
 
     public String getCreateBy() {
-        return createBy;
+    return createBy;
     }
 
     public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    this.createBy = createBy;
     }
 
     public Date getCreateTime() {
-        return createTime;
+    return createTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    this.createTime = createTime;
     }
 
     public String getUpdateBy() {
-        return updateBy;
+    return updateBy;
     }
 
     public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+    return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    this.updateTime = updateTime;
     }
 
     public String getRemark() {
-        return remark;
+    return remark;
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+    this.remark = remark;
     }
 
     @Override
     public String toString() {
-        return "SysRole{" +
+    return "SysRole{" +
             "id = " + id +
             ", name = " + name +
             ", code = " + code +
             ", sort = " + sort +
             ", permissions = " + permissions +
             ", dataScope = " + dataScope +
-            ", delFlag = " + delFlag +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +
             ", updateBy = " + updateBy +
             ", updateTime = " + updateTime +
             ", remark = " + remark +
-            "}";
+    "}";
     }
 }

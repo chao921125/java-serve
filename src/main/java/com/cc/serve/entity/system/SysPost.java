@@ -8,145 +8,149 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * 岗位表
+ * sys_post 岗位表
  * </p>
- *
+ * 
  * @author cc
- * @since 2024-09-28 15:03:221
+ * @since 2024-11-22 13:40:55
  */
+
 @TableName("sys_post")
 @Schema(name = "SysPost对象", description = "岗位表")
 public class SysPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(name = "岗位 id")
+
+    @Schema(description = "岗位 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(name = "key")
+    @Schema(description = "key")
     @TableField("code")
     private String code;
 
-    @Schema(name = "名称")
+    @Schema(description = "名称")
     @TableField("name")
     private String name;
 
-    @Schema(name = "排序")
+    @Schema(description = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @Schema(name = "状态（1正常 0停用 9删除）")
+    @Schema(description = "状态（0正常 1停用 9删除）")
     @TableField("status")
     private String status;
 
-    @Schema(name = "创建人")
+    @Schema(description = "创建人")
     @TableField("create_by")
     private String createBy;
 
-    @Schema(name = "创建时间")
+    @Schema(description = "创建时间")
     @TableField("create_time")
     private Date createTime;
 
-    @Schema(name = "修改人")
+    @Schema(description = "修改人")
     @TableField("update_by")
     private String updateBy;
 
-    @Schema(name = "修改时间")
+    @Schema(description = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
-    @Schema(name = "备注")
+    @Schema(description = "备注")
     @TableField("remark")
     private String remark;
 
+
     public Long getId() {
-        return id;
+    return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+    this.id = id;
     }
 
     public String getCode() {
-        return code;
+    return code;
     }
 
     public void setCode(String code) {
-        this.code = code;
+    this.code = code;
     }
 
     public String getName() {
-        return name;
+    return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+    this.name = name;
     }
 
     public Integer getSort() {
-        return sort;
+    return sort;
     }
 
     public void setSort(Integer sort) {
-        this.sort = sort;
+    this.sort = sort;
     }
 
     public String getStatus() {
-        return status;
+    return status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+    this.status = status;
     }
 
     public String getCreateBy() {
-        return createBy;
+    return createBy;
     }
 
     public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    this.createBy = createBy;
     }
 
     public Date getCreateTime() {
-        return createTime;
+    return createTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    this.createTime = createTime;
     }
 
     public String getUpdateBy() {
-        return updateBy;
+    return updateBy;
     }
 
     public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+    return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    this.updateTime = updateTime;
     }
 
     public String getRemark() {
-        return remark;
+    return remark;
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+    this.remark = remark;
     }
 
     @Override
     public String toString() {
-        return "SysPost{" +
+    return "SysPost{" +
             "id = " + id +
             ", code = " + code +
             ", name = " + name +
@@ -157,6 +161,6 @@ public class SysPost implements Serializable {
             ", updateBy = " + updateBy +
             ", updateTime = " + updateTime +
             ", remark = " + remark +
-            "}";
+    "}";
     }
 }
