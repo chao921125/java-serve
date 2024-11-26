@@ -39,9 +39,9 @@
         <java.version>21</java.version>
 
         <alibaba.druid.version>1.2.23</alibaba.druid.version>
-        <alibaba.easyexcel.version>4.0.3</alibaba.easyexcel.version>
-        <alibaba.fastjson2.version>2.0.53</alibaba.fastjson2.version>
-        <apache.version>5.3.0</apache.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
+        <fastjson2.version>2.0.53</fastjson2.version>
+        <poi.version>5.3.0</poi.version>
         <auth0.version>4.4.0</auth0.version>
 
         <baomidou.mybatis-plus.version>3.5.9</baomidou.mybatis-plus.version>
@@ -54,12 +54,12 @@
         <fessional.kaptcha.version>2.3.3</fessional.kaptcha.version>
         <freemarker.version>2.3.33</freemarker.version>
 
-        <github.oshi.version>6.6.5</github.oshi.version>
-        <google.gson.version>2.11.0</google.gson.version>
+        <oshi.version>6.6.5</oshi.version>
+        <gson.version>2.11.0</gson.version>
 
         <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
         <jakarta.validation.version>3.1.0</jakarta.validation.version>
-        <javax.xml.bind.version>2.4.0-b180830.0359</javax.xml.bind.version>
+        <jakarta.xml.bind.version>4.0.2</jakarta.xml.bind.version>
         <jsonwebtoken.jjwt.version>0.12.6</jsonwebtoken.jjwt.version>
 
         <oracle.jdbc.version>23.6.0.24.10</oracle.jdbc.version>
@@ -162,7 +162,7 @@
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
         <!--        </dependency>-->
-        
+
         <!-- json -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -225,7 +225,7 @@
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-log4j2</artifactId>-->
 <!--        </dependency>-->
-        
+
         <!-- 验证 将 Java Bean 验证与 Hibernate 验证器结合使用的入门 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -374,6 +374,11 @@
             <version>${auth0.version}</version>
         </dependency>
         <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
             <version>${jsonwebtoken.jjwt.version}</version>
@@ -450,23 +455,23 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>${alibaba.easyexcel.version}</version>
+            <version>${easyexcel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>${apache.version}</version>
+            <version>${poi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>${apache.version}</version>
+            <version>${poi.version}</version>
         </dependency>
         <!-- JSON -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>${alibaba.fastjson2.version}</version>
+            <version>${fastjson2.version}</version>
         </dependency>
         <!-- JSON工具类 -->
         <dependency>
@@ -476,7 +481,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${google.gson.version}</version>
+            <version>${gson.version}</version>
         </dependency>
         <!-- 解析客户端操作系统、浏览器等 -->
         <dependency>
@@ -488,7 +493,7 @@
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
-            <version>${github.oshi.version}</version>
+            <version>${oshi.version}</version>
         </dependency>
     </dependencies>
 
