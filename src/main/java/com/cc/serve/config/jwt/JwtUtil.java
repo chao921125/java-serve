@@ -2,18 +2,18 @@ package com.cc.serve.config.jwt;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-//@ConfigurationProperties(prefix = "application")
+@ConfigurationProperties(prefix = "application")
 public class JwtUtil {
-    @Value("${jwt.secret}")
+    @Value("${application.security.jwt.secret}")
     private String JWT_KEY;
-    @Value("${jwt.expire}")
+    @Value("${application.security.jwt.expirat}")
     public Long JWT_TTL;
 
     public static String generateToken(String userName) {

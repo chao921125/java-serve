@@ -161,13 +161,10 @@ application:
 #    pass: pass
   security:
     jwt:
-      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-      expiration: 86400000 # a day
-      refresh-token:
-        expiration: 604800000 # 7 days
-jwt:
-  secret: roctMjozJwbc4UrQNjXU2owWw9rnaJ6v # >=256 bit >=32个字符
-  expire: 2592000 # 30天，s为单位
+      secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970 # >=256 bit >=32个字符
+      expirat:  604800000 # 30天，ms为单位
+      refresh:
+        expirat: 2592000000 # 7 days
 
 # PageHelper分页插件
 pagehelper:
