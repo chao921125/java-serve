@@ -1,8 +1,9 @@
-package com.cc.serve.common.utils;
+package com.cc.serve.config.security;
 
 import com.cc.serve.common.constants.Constants;
 import com.cc.serve.common.constants.HttpStatus;
 import com.cc.serve.common.exception.ServiceException;
+import com.cc.serve.common.utils.StringUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

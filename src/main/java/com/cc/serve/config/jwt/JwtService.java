@@ -1,4 +1,4 @@
-package com.cc.serve.common.jwt;
+package com.cc.serve.config.jwt;
 
 import org.springframework.stereotype.Service;
 

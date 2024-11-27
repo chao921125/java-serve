@@ -165,6 +165,9 @@ application:
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
+jwt:
+  secret: roctMjozJwbc4UrQNjXU2owWw9rnaJ6v # >=256 bit >=32个字符
+  expire: 2592000 # 30天，s为单位
 
 # PageHelper分页插件
 pagehelper:
