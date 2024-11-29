@@ -161,7 +161,7 @@ application:
 #    pass: pass
   security:
     jwt:
-      secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJ0b29sdHQiOiJodHRwczovL3Rvb2x0dC5jb20ifV0sImlhdCI6MTczMjg2NTI0NiwiZXhwIjo0MTAyMzI5NTk5LCJhdWQiOiIqIiwiaXNzIjoiY2NuZXQiLCJzdWIiOiIqIn0.bWHMxLdgjqFJ5AuvVnH3oKJweG51D61OgbDopNX6AkI # >=256 bit >=32个字符
+      secret: 7edeedb12066a811f92a3ade3d68ded679d92bf43fe448f155ae0748ee640e85
       expirat:  604800000 # 30天，ms为单位
       refresh:
         expirat: 2592000000 # 7 days
