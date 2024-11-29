@@ -48,6 +48,7 @@
         <baomidou.mybatis-plus.version>3.5.9</baomidou.mybatis-plus.version>
         <baomidou.dynamic-datasource.version>4.3.1</baomidou.dynamic-datasource.version>
         <bitwalker.UserAgentUtils.version>1.21</bitwalker.UserAgentUtils.version>
+        <mybatis.spring.version>3.0.4</mybatis.spring.version>
 
         <com.sun.xml.bind.version>4.0.4</com.sun.xml.bind.version>
         <commons-io.version>2.17.0</commons-io.version>
@@ -313,6 +314,11 @@
                     <artifactId>mybatis-spring</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis.spring.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
