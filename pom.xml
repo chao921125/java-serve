@@ -39,6 +39,7 @@
         <java.version>21</java.version>
 
         <alibaba.druid.version>1.2.23</alibaba.druid.version>
+        <apache.commons.version>3.17.0</apache.commons.version>
         <easyexcel.version>4.0.3</easyexcel.version>
         <fastjson2.version>2.0.53</fastjson2.version>
         <poi.version>5.3.0</poi.version>
@@ -301,16 +302,28 @@
         <!-- springframework 开发、测试 end -->
         <!-- spring 核心依赖 end -->
 
-        <!-- 数据库：Mybatis-plus 动态数据源 -->
+        <!-- 数据库 -->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${baomidou.dynamic-datasource.version}</version>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${baomidou.mybatis-plus.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
             <version>${baomidou.mybatis-plus.version}</version>
+        </dependency>
+        <!-- 数据库：Mybatis-plus 动态数据源 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${baomidou.dynamic-datasource.version}</version>
         </dependency>
         <!-- 代码生成 -->
         <dependency>
@@ -432,6 +445,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons.version}</version>
         </dependency>
         <!-- io常用工具类 -->
         <dependency>

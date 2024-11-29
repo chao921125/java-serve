@@ -1,6 +1,6 @@
 package com.cc.serve.common.base;
 
-import org.demo.security.common.web.util.I18nMessageTool;
+import com.cc.serve.common.utils.I18nMessageTool;
 
 public final class ResultBuilder {
 
