@@ -5,3 +5,5 @@
 - mybatis-plus 自动生成实体 https://baomidou.com/reference/new-code-generator-configuration/
 - springdoc
 - security6 springboot3 security6.2 配置
+
+https://gitee.com/youlaiorg/youlai-boot
