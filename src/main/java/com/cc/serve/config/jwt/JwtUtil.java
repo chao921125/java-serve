@@ -16,7 +16,6 @@ import java.util.function.Function;
 import java.security.Key;
 
 @Component
-@ConfigurationProperties(prefix = "application")
 public class JwtUtil {
     @Value("${application.security.jwt.secret}")
     private String JWT_KEY;
