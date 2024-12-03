@@ -1,6 +1,6 @@
 package com.cc.serve.mapper.system;
 
-import com.cc.serve.entity.system.SysDepartment;
+import com.cc.serve.model.entity.system.SysDepartment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

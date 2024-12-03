@@ -1,6 +1,5 @@
-package com.cc.serve.entity.system;
+package com.cc.serve.model.entity.system;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -13,45 +12,33 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * sys_role 角色表
+ * sys_dictionary 
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:55
+ * @since 2024-11-22 13:40:54
  */
 
-@TableName("sys_role")
-@Schema(name = "SysRole对象", description = "角色表")
-public class SysRole implements Serializable {
+@TableName("sys_dictionary")
+@Schema(name = "SysDictionary对象", description = "")
+public class SysDictionary implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "角色 id")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @Schema(description = "主键")
+    @TableId("id")
+    private Integer id;
 
-    @Schema(description = "名称")
+    @Schema(description = "字典名称")
     @TableField("name")
     private String name;
 
-    @Schema(description = "角色key")
-    @TableField("code")
-    private String code;
+    @Schema(description = "字典值")
+    @TableField("value")
+    private String value;
 
-    @Schema(description = "排序")
-    @TableField("sort")
-    private Integer sort;
-
-    @Schema(description = "权限标识[C,R,U,D]")
-    @TableField("permissions")
-    private String permissions;
-
-    @Schema(description = "数据权限（1全部 2当前及以下 3当前）")
-    @TableField("data_scope")
-    private String dataScope;
-
-    @Schema(description = "状态（0正常 1停用 9删除）")
+    @Schema(description = "状态（0正常 1 停用）")
     @TableField("status")
     private String status;
 
@@ -76,11 +63,11 @@ public class SysRole implements Serializable {
     private String remark;
 
 
-    public Long getId() {
+    public Integer getId() {
     return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
     this.id = id;
     }
 
@@ -92,36 +79,12 @@ public class SysRole implements Serializable {
     this.name = name;
     }
 
-    public String getCode() {
-    return code;
+    public String getValue() {
+    return value;
     }
 
-    public void setCode(String code) {
-    this.code = code;
-    }
-
-    public Integer getSort() {
-    return sort;
-    }
-
-    public void setSort(Integer sort) {
-    this.sort = sort;
-    }
-
-    public String getPermissions() {
-    return permissions;
-    }
-
-    public void setPermissions(String permissions) {
-    this.permissions = permissions;
-    }
-
-    public String getDataScope() {
-    return dataScope;
-    }
-
-    public void setDataScope(String dataScope) {
-    this.dataScope = dataScope;
+    public void setValue(String value) {
+    this.value = value;
     }
 
     public String getStatus() {
@@ -174,13 +137,10 @@ public class SysRole implements Serializable {
 
     @Override
     public String toString() {
-    return "SysRole{" +
+    return "SysDictionary{" +
             "id = " + id +
             ", name = " + name +
-            ", code = " + code +
-            ", sort = " + sort +
-            ", permissions = " + permissions +
-            ", dataScope = " + dataScope +
+            ", value = " + value +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

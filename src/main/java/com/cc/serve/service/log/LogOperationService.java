@@ -1,6 +1,6 @@
 package com.cc.serve.service.log;
 
-import com.cc.serve.entity.log.LogOperation;
+import com.cc.serve.model.entity.log.LogOperation;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

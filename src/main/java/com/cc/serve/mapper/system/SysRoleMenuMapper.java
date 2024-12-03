@@ -1,6 +1,6 @@
 package com.cc.serve.mapper.system;
 
-import com.cc.serve.entity.system.SysRoleMenu;
+import com.cc.serve.model.entity.system.SysRoleMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

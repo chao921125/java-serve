@@ -2,9 +2,6 @@ package ${package.Entity};
 
 import java.io.Serializable;
 import java.util.Date;
-<#list table.importPackages as pkg>
-import ${pkg};
-</#list>
 <#if springdoc>
 import io.swagger.v3.oas.annotations.media.Schema;
 <#elseif swagger>
@@ -30,9 +27,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 <#if table.convert>
-@TableName("${table.name}")
 </#if>
-public class ${entity} implements Serializable {
+@Schema(name = "${entity}VO对象", description = "${table.comment!}")
+public class ${entity}VO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,32 +39,24 @@ public class ${entity} implements Serializable {
 <#assign keyPropertyName="${field.propertyName}"/>
 </#if>
 <#if field.keyFlag>
-<#-- 主键 -->
-    <#if field.keyIdentityFlag>
-    @TableId(value = "${field.annotationColumnName}", type = IdType.AUTO)
-    <#elseif idType??>
-    @TableId(value = "${field.annotationColumnName}", type = IdType.${idType})
-    <#elseif field.convert>
-    @TableId("${field.annotationColumnName}")
+    <#if field.comment!?length gt 0>
+    @Schema(description = "${field.comment}")
+    <#else>
+    @Schema(description = "主键")
     </#if>
 <#-- 普通字段 -->
 <#elseif field.fill??>
-<#-- -----   存在字段填充设置   ----->
-    <#if field.convert>
-    @TableField(value = "${field.annotationColumnName}", fill = FieldFill.${field.fill})
+    <#if field.comment!?length gt 0>
+    @Schema(description = "${field.comment}")
     <#else>
-    @TableField(fill = FieldFill.${field.fill})
+    @Schema(description = "-")
     </#if>
 <#elseif field.convert>
-    @TableField("${field.annotationColumnName}")
-</#if>
-<#-- 乐观锁注解 -->
-<#if field.versionField>
-    @Version
-</#if>
-<#-- 逻辑删除注解 -->
-<#if field.logicDeleteField>
-    @TableLogic
+    <#if field.comment!?length gt 0>
+    @Schema(description = "${field.comment}")
+    <#else>
+    @Schema(description = "-")
+    </#if>
 </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>
@@ -118,7 +107,7 @@ public class ${entity} implements Serializable {
 
     @Override
     public String toString() {
-    return "${entity}{" +
+    return "${entity}VO{" +
     <#list table.fields as field>
         <#if field_index==0>
             "${field.propertyName} = " + ${field.propertyName} +

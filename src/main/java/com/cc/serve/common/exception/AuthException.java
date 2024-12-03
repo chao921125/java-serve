@@ -17,7 +17,7 @@ public class AuthException implements AuthenticationEntryPoint {
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         PrintWriter writer = response.getWriter();
-        writer.print(JSON.stringify(Result.fail("${authentication.fail:认证失败}")));
+//        writer.print(JSON.stringify(Result.fail("${authentication.fail:认证失败}")));
         writer.flush();
         writer.close();
     }

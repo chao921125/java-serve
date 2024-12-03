@@ -1,4 +1,4 @@
-package com.cc.serve.entity.log;
+package com.cc.serve.model.entity.log;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -13,16 +13,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * log_operation 
+ * log_login 
  * </p>
  * 
  * @author cc
  * @since 2024-11-22 13:40:54
  */
 
-@TableName("log_operation")
-@Schema(name = "LogOperation对象", description = "")
-public class LogOperation implements Serializable {
+@TableName("log_login")
+@Schema(name = "LogLogin对象", description = "")
+public class LogLogin implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,9 +47,9 @@ public class LogOperation implements Serializable {
     @TableField("ip_real")
     private String ipReal;
 
-    @Schema(description = "操作时间")
-    @TableField("oper_time")
-    private Date operTime;
+    @Schema(description = "登录时间")
+    @TableField("login_time")
+    private Date loginTime;
 
     @Schema(description = "地址")
     @TableField("address")
@@ -62,30 +62,6 @@ public class LogOperation implements Serializable {
     @Schema(description = "登录状态（0 失败，1 成功）")
     @TableField("status")
     private String status;
-
-    @Schema(description = "操作（0 查询，1 新增，2 修改，3 删除）")
-    @TableField("type")
-    private String type;
-
-    @Schema(description = "来源（0 其他，1 PC，2 手机）")
-    @TableField("source")
-    private String source;
-
-    @Schema(description = "请求 URL")
-    @TableField("url")
-    private String url;
-
-    @Schema(description = "请求方法")
-    @TableField("method")
-    private String method;
-
-    @Schema(description = "请求方式：post，get......")
-    @TableField("method_type")
-    private String methodType;
-
-    @Schema(description = "错误消息")
-    @TableField("message")
-    private String message;
 
 
     public Long getId() {
@@ -128,12 +104,12 @@ public class LogOperation implements Serializable {
     this.ipReal = ipReal;
     }
 
-    public Date getOperTime() {
-    return operTime;
+    public Date getLoginTime() {
+    return loginTime;
     }
 
-    public void setOperTime(Date operTime) {
-    this.operTime = operTime;
+    public void setLoginTime(Date loginTime) {
+    this.loginTime = loginTime;
     }
 
     public String getAddress() {
@@ -160,72 +136,18 @@ public class LogOperation implements Serializable {
     this.status = status;
     }
 
-    public String getType() {
-    return type;
-    }
-
-    public void setType(String type) {
-    this.type = type;
-    }
-
-    public String getSource() {
-    return source;
-    }
-
-    public void setSource(String source) {
-    this.source = source;
-    }
-
-    public String getUrl() {
-    return url;
-    }
-
-    public void setUrl(String url) {
-    this.url = url;
-    }
-
-    public String getMethod() {
-    return method;
-    }
-
-    public void setMethod(String method) {
-    this.method = method;
-    }
-
-    public String getMethodType() {
-    return methodType;
-    }
-
-    public void setMethodType(String methodType) {
-    this.methodType = methodType;
-    }
-
-    public String getMessage() {
-    return message;
-    }
-
-    public void setMessage(String message) {
-    this.message = message;
-    }
-
     @Override
     public String toString() {
-    return "LogOperation{" +
+    return "LogLogin{" +
             "id = " + id +
             ", userId = " + userId +
             ", userName = " + userName +
             ", ip = " + ip +
             ", ipReal = " + ipReal +
-            ", operTime = " + operTime +
+            ", loginTime = " + loginTime +
             ", address = " + address +
             ", system = " + system +
             ", status = " + status +
-            ", type = " + type +
-            ", source = " + source +
-            ", url = " + url +
-            ", method = " + method +
-            ", methodType = " + methodType +
-            ", message = " + message +
     "}";
     }
 }

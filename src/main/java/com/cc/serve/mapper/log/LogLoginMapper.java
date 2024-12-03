@@ -1,6 +1,6 @@
 package com.cc.serve.mapper.log;
 
-import com.cc.serve.entity.log.LogLogin;
+import com.cc.serve.model.entity.log.LogLogin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

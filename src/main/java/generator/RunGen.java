@@ -30,6 +30,7 @@ public class RunGen {
         final String PKG = "";
         final String PKG_PATH = "/src/main/java/code";
         final String PKG_PATH_MAPPER = "/src/main/java/code";
+        final String PKG_PATH_VO = "/src/main/java/code/vo";
 
         FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
 //                全局配置
@@ -91,10 +92,16 @@ public class RunGen {
                 })
 //                注入配置
                 .injectionConfig(builder -> {
-//                    Map<String, String> customFile = new HashMap<>();
-//                    // DTO
-//                    customFile.put(".java", "/templates/entity.java.ftl");
-//                    builder.customFile(customFile);
+                    Map<String, String> customFile = new HashMap<>();
+                    // VO
+                    customFile.put("VO.java", "/templates/entityVO.java.ftl");
+
+                    builder.beforeOutputFile((tableInfo, objectMap) -> {
+                                // 自定义文件输出逻辑
+                                objectMap.put("pathInfo", PKG_PATH_VO);
+                            })
+                            .customFile(customFile)
+                            .build();
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用自定义的模板引擎
                 .execute();

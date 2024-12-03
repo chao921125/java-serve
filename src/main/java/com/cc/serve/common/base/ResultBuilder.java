@@ -21,7 +21,7 @@ public final class ResultBuilder {
 
     public ResultBuilder msg(String msg) {
         // 使用Builder方式构建Result对象，翻译响应数据
-        result.setMessage(I18nMessageTool.translate(msg));
+//        result.setMessage(I18nMessageTool.translate(msg));
         return this;
     }
 

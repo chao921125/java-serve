@@ -1,6 +1,6 @@
 package com.cc.serve.service.system.impl;
 
-import com.cc.serve.entity.system.SysRoleMenu;
+import com.cc.serve.model.entity.system.SysRoleMenu;
 import com.cc.serve.mapper.system.SysRoleMenuMapper;
 import com.cc.serve.service.system.SysRoleMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

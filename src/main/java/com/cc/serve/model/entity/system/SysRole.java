@@ -1,4 +1,4 @@
-package com.cc.serve.entity.system;
+package com.cc.serve.model.entity.system;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -13,51 +13,43 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * sys_department 部门表
+ * sys_role 角色表
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-11-22 13:40:55
  */
 
-@TableName("sys_department")
-@Schema(name = "SysDepartment对象", description = "部门表")
-public class SysDepartment implements Serializable {
+@TableName("sys_role")
+@Schema(name = "SysRole对象", description = "角色表")
+public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "部门 id")
+    @Schema(description = "角色 id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "父级id")
-    @TableField("parent_id")
-    private Long parentId;
-
-    @Schema(description = "祖级，树结构")
-    @TableField("ancestors")
-    private String ancestors;
-
-    @Schema(description = "部门名称")
+    @Schema(description = "名称")
     @TableField("name")
     private String name;
+
+    @Schema(description = "角色key")
+    @TableField("code")
+    private String code;
 
     @Schema(description = "排序")
     @TableField("sort")
     private Integer sort;
 
-    @Schema(description = "负责人")
-    @TableField("leader")
-    private String leader;
+    @Schema(description = "权限标识[C,R,U,D]")
+    @TableField("permissions")
+    private String permissions;
 
-    @Schema(description = "手机号")
-    @TableField("phone")
-    private String phone;
-
-    @Schema(description = "邮箱")
-    @TableField("email")
-    private String email;
+    @Schema(description = "数据权限（1全部 2当前及以下 3当前）")
+    @TableField("data_scope")
+    private String dataScope;
 
     @Schema(description = "状态（0正常 1停用 9删除）")
     @TableField("status")
@@ -92,28 +84,20 @@ public class SysDepartment implements Serializable {
     this.id = id;
     }
 
-    public Long getParentId() {
-    return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-    this.parentId = parentId;
-    }
-
-    public String getAncestors() {
-    return ancestors;
-    }
-
-    public void setAncestors(String ancestors) {
-    this.ancestors = ancestors;
-    }
-
     public String getName() {
     return name;
     }
 
     public void setName(String name) {
     this.name = name;
+    }
+
+    public String getCode() {
+    return code;
+    }
+
+    public void setCode(String code) {
+    this.code = code;
     }
 
     public Integer getSort() {
@@ -124,28 +108,20 @@ public class SysDepartment implements Serializable {
     this.sort = sort;
     }
 
-    public String getLeader() {
-    return leader;
+    public String getPermissions() {
+    return permissions;
     }
 
-    public void setLeader(String leader) {
-    this.leader = leader;
+    public void setPermissions(String permissions) {
+    this.permissions = permissions;
     }
 
-    public String getPhone() {
-    return phone;
+    public String getDataScope() {
+    return dataScope;
     }
 
-    public void setPhone(String phone) {
-    this.phone = phone;
-    }
-
-    public String getEmail() {
-    return email;
-    }
-
-    public void setEmail(String email) {
-    this.email = email;
+    public void setDataScope(String dataScope) {
+    this.dataScope = dataScope;
     }
 
     public String getStatus() {
@@ -198,15 +174,13 @@ public class SysDepartment implements Serializable {
 
     @Override
     public String toString() {
-    return "SysDepartment{" +
+    return "SysRole{" +
             "id = " + id +
-            ", parentId = " + parentId +
-            ", ancestors = " + ancestors +
             ", name = " + name +
+            ", code = " + code +
             ", sort = " + sort +
-            ", leader = " + leader +
-            ", phone = " + phone +
-            ", email = " + email +
+            ", permissions = " + permissions +
+            ", dataScope = " + dataScope +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

@@ -1,6 +1,6 @@
 package com.cc.serve.service.system.impl;
 
-import com.cc.serve.entity.system.SysDepartment;
+import com.cc.serve.model.entity.system.SysDepartment;
 import com.cc.serve.mapper.system.SysDepartmentMapper;
 import com.cc.serve.service.system.SysDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
