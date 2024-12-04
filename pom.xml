@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cc</groupId>
-    <artifactId>serve</artifactId>
+    <artifactId>java-serve</artifactId>
     <version>${pversion}</version>
     <packaging>pom</packaging>
 
@@ -36,8 +36,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.0</version>
-        <!-- lookup parent from repository -->
-        <relativePath/>
     </parent>
 
     <modules>
@@ -46,49 +44,37 @@
 
     <properties>
         <pversion>0.0.3</pversion>
-        <skipTests>true</skipTests>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-
+        <skipTests>true</skipTests>
         <alibaba.druid.version>1.2.23</alibaba.druid.version>
         <apache.commons.version>3.17.0</apache.commons.version>
-        <easyexcel.version>4.0.3</easyexcel.version>
-        <fastjson2.version>2.0.53</fastjson2.version>
-        <poi.version>5.3.0</poi.version>
         <auth0.version>4.4.0</auth0.version>
-
-        <lombok.version>1.18.36</lombok.version>
-
         <baomidou.mybatis-plus.version>3.5.9</baomidou.mybatis-plus.version>
         <baomidou.dynamic-datasource.version>4.3.1</baomidou.dynamic-datasource.version>
         <bitwalker.UserAgentUtils.version>1.21</bitwalker.UserAgentUtils.version>
-        <mybatis.spring.version>3.0.4</mybatis.spring.version>
-
-        <com.sun.xml.bind.version>4.0.4</com.sun.xml.bind.version>
         <commons-io.version>2.17.0</commons-io.version>
-
+        <easyexcel.version>4.0.3</easyexcel.version>
+        <fastjson2.version>2.0.53</fastjson2.version>
+        <gson.version>2.11.0</gson.version>
+        <lombok.version>1.18.36</lombok.version>
+        <mybatis.spring.version>3.0.4</mybatis.spring.version>
         <fessional.kaptcha.version>2.3.3</fessional.kaptcha.version>
         <freemarker.version>2.3.33</freemarker.version>
-
         <oshi.version>6.6.5</oshi.version>
-        <gson.version>2.11.0</gson.version>
-
+        <poi.version>5.3.0</poi.version>
         <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
         <jakarta.validation.version>3.1.0</jakarta.validation.version>
         <jakarta.xml.bind.version>4.0.2</jakarta.xml.bind.version>
         <jsonwebtoken.jjwt.version>0.12.6</jsonwebtoken.jjwt.version>
-
         <oracle.jdbc.version>23.6.0.24.10</oracle.jdbc.version>
-
         <pagehelper.version>2.1.0</pagehelper.version>
-
         <slf4j.version>2.0.16</slf4j.version>
         <springdoc.version>2.6.0</springdoc.version>
         <spring.restdocs.version>3.0.1</spring.restdocs.version>
         <spring.modulith-bom.version>1.2.5</spring.modulith-bom.version>
-
         <junit.version>1.11.3</junit.version>
     </properties>
 

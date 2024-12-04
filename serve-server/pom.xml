@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.cc</groupId>
-        <artifactId>serve</artifactId>
+        <artifactId>java-serve</artifactId>
         <version>${pversion}</version>
     </parent>
 
