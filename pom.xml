@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.cc</groupId>
-    <artifactId>serve</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>serve</name>
     <description>My Java Server</description>
     <url>https://github.com/chao921125</url>
-
     <developers>
         <developer>
             <id>java-serve</id>
@@ -19,13 +13,25 @@
             <organizationUrl>https://github.com/chao921125/java-serve</organizationUrl>
         </developer>
     </developers>
-
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
     <licenses>
         <license>
             <name>MIT License</name>
             <url>https://www.mit-license.org/</url>
         </license>
     </licenses>
+
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cc</groupId>
+    <artifactId>serve</artifactId>
+    <version>${project.version}</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,7 +41,12 @@
         <relativePath/>
     </parent>
 
+    <modules>
+        <!--        <module>server</module>-->
+    </modules>
+
     <properties>
+        <project.version>0.0.3</project.version>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
@@ -46,6 +57,8 @@
         <fastjson2.version>2.0.53</fastjson2.version>
         <poi.version>5.3.0</poi.version>
         <auth0.version>4.4.0</auth0.version>
+
+        <lombok.version>1.18.36</lombok.version>
 
         <baomidou.mybatis-plus.version>3.5.9</baomidou.mybatis-plus.version>
         <baomidou.dynamic-datasource.version>4.3.1</baomidou.dynamic-datasource.version>
@@ -74,6 +87,8 @@
         <springdoc.version>2.6.0</springdoc.version>
         <spring.restdocs.version>3.0.1</spring.restdocs.version>
         <spring.modulith-bom.version>1.2.5</spring.modulith-bom.version>
+
+        <junit.version>1.11.3</junit.version>
     </properties>
 
     <dependencies>
@@ -273,11 +288,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
@@ -304,6 +314,12 @@
         </dependency>
         <!-- springframework 开发、测试 end -->
         <!-- spring 核心依赖 end -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
 
         <!-- 数据库 -->
         <dependency>
@@ -501,6 +517,13 @@
             <artifactId>oshi-core</artifactId>
             <version>${oshi.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -521,6 +544,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <compilerArguments>
+                        <arg>-Xlint:-option</arg>
+                    </compilerArguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -558,6 +584,7 @@
 <!--            </plugin>-->
         </plugins>
     </build>
+
     <repositories>
         <repository>
             <id>maven_central</id>
