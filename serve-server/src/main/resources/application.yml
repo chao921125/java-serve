@@ -48,7 +48,7 @@ spring:
     # 连接池配置：https://github.com/alibaba/druid/wiki
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      # password-callback-class-name: com.cc.serveserver.config.DruidCustomPasswordCallback
+      # password-callback-class-name: com.cc.server.config.DruidCustomPasswordCallback
       # 初始化时建立物理连接的个数。默认0
       initial-size: 5
       # 最大连接池数量，默认8
@@ -138,7 +138,7 @@ spring:
 # MyBatis-plus 配置
 mybatis-plus:
   # 搜索指定包别名
-  type-aliases-package: com.cc.serveserver.**.entity
+  type-aliases-package: com.cc.server.**.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapper-locations: classpath*:mapper/**/*.xml
   # 加载全局的配置文件
@@ -187,4 +187,4 @@ springdoc:
     path: /api
     tags-sorter: alpha
     operations-sorter: alpha
-  packages-to-scan: com.cc.serveserver.controller, com.cc.serveserver.entity
+  packages-to-scan: com.cc.server.controller, com.cc.server.entity

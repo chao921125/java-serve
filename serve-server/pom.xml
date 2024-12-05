@@ -18,6 +18,17 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>serve-common</artifactId>
+            <version>${pversion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>serve-scheduler</artifactId>
+            <version>${pversion}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
