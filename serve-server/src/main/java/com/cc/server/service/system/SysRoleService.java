@@ -1,6 +1,6 @@
 package com.cc.server.service.system;
 
-import com.cc.server.model.entity.system.SysRole;
+import com.cc.server.model.system.entity.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author cc
- * @since 2024-11-22 13:40:55
+ * @since 2024-12-05 10:57:08
  */
 public interface SysRoleService extends IService<SysRole> {
 

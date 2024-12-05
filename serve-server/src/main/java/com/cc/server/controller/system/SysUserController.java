@@ -1,11 +1,6 @@
 package com.cc.server.controller.system;
 
-import com.cc.server.model.entity.system.SysUser;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,30 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author cc
- * @since 2024-11-22 13:40:55
+ * @since 2024-12-05 10:57:08
  */
 @Tag(name = "用户表", description = "用户表")
 @RestController
 @RequestMapping("/sys-user")
 public class SysUserController {
 
-    @PostMapping("/login")
-    public Object login() {
-        return "";
-    }
-
-    public Object register(@RequestBody @Valid SysUser sysUser) {
-        try {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            sysUser.setPassword(encoder.encode(sysUser.getPassword()));
-            return "";
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
-    @PostMapping("/generateToken")
-    public Object authenticateAndGetToken() {
-        return "";
-    }
 }

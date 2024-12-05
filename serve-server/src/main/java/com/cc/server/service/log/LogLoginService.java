@@ -1,6 +1,6 @@
 package com.cc.server.service.log;
 
-import com.cc.server.model.entity.log.LogLogin;
+import com.cc.server.model.log.entity.LogLogin;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-12-05 10:57:07
  */
 public interface LogLoginService extends IService<LogLogin> {
 

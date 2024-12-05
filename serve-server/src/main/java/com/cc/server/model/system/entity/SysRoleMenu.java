@@ -1,13 +1,10 @@
-package com.cc.server.model.entity.system;
+package com.cc.server.model.system.entity;
+
+import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.io.Serializable;
-
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -15,25 +12,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:55
+ * @since 2024-12-05 10:57:08
  */
 
 @TableName("sys_role_menu")
-@Schema(name = "SysRoleMenu对象", description = "角色菜单 角色1-N菜单")
 public class SysRoleMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "主键")
     @TableId("id")
     private Long id;
 
-    @Schema(description = "-")
     @TableField("role_id")
     private Long roleId;
 
-    @Schema(description = "-")
     @TableField("menu_id")
     private Long menuId;
 

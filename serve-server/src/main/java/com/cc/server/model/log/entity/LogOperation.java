@@ -1,15 +1,11 @@
-package com.cc.server.model.entity.log;
+package com.cc.server.model.log.entity;
 
+import java.io.Serializable;
+import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.io.Serializable;
-import java.util.Date;
-
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -17,73 +13,57 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-12-05 10:57:08
  */
 
 @TableName("log_operation")
-@Schema(name = "LogOperation对象", description = "")
 public class LogOperation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "用户 id")
     @TableField("user_id")
     private String userId;
 
-    @Schema(description = "用户名")
     @TableField("user_name")
     private String userName;
 
-    @Schema(description = "登录 IP")
     @TableField("ip")
     private String ip;
 
-    @Schema(description = "真实IP")
     @TableField("ip_real")
     private String ipReal;
 
-    @Schema(description = "操作时间")
     @TableField("oper_time")
     private Date operTime;
 
-    @Schema(description = "地址")
     @TableField("address")
     private String address;
 
-    @Schema(description = "设备信息")
     @TableField("system")
     private String system;
 
-    @Schema(description = "登录状态（0 失败，1 成功）")
     @TableField("status")
     private String status;
 
-    @Schema(description = "操作（0 查询，1 新增，2 修改，3 删除）")
     @TableField("type")
     private String type;
 
-    @Schema(description = "来源（0 其他，1 PC，2 手机）")
     @TableField("source")
     private String source;
 
-    @Schema(description = "请求 URL")
     @TableField("url")
     private String url;
 
-    @Schema(description = "请求方法")
     @TableField("method")
     private String method;
 
-    @Schema(description = "请求方式：post，get......")
     @TableField("method_type")
     private String methodType;
 
-    @Schema(description = "错误消息")
     @TableField("message")
     private String message;
 

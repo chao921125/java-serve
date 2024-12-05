@@ -1,13 +1,10 @@
-package com.cc.server.model.vo.log;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.v3.oas.annotations.media.Schema;
+package com.cc.server.model.log.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -15,10 +12,10 @@ import java.util.Date;
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-12-05 10:57:07
  */
 
-@Schema(name = "LogLogin对象", description = "")
+@Schema(name = "LogLoginVO对象", description = "")
 public class LogLoginVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -126,7 +123,7 @@ public class LogLoginVO implements Serializable {
 
     @Override
     public String toString() {
-    return "LogLogin{" +
+    return "LogLoginVO{" +
             "id = " + id +
             ", userId = " + userId +
             ", userName = " + userName +

@@ -1,6 +1,6 @@
 package com.cc.server.mapper.log;
 
-import com.cc.server.model.entity.log.LogOperation;
+import com.cc.server.model.log.entity.LogOperation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-12-05 10:57:08
  */
 public interface LogOperationMapper extends BaseMapper<LogOperation> {
 

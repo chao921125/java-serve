@@ -1,42 +1,35 @@
-package com.cc.server.model.entity.system;
+package com.cc.server.model.system.entity;
+
+import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import java.io.Serializable;
-
-
-import io.swagger.v3.oas.annotations.media.Schema;
-
 /**
  * <p>
- * sys_user_department 用户部门 用户1-1 部门
+ * sys_user_post 用户岗位 用户1-N岗位
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:55
+ * @since 2024-12-05 10:57:08
  */
 
-@TableName("sys_user_department")
-@Schema(name = "SysUserDepartment对象", description = "用户部门 用户1-1 部门")
-public class SysUserDepartment implements Serializable {
+@TableName("sys_user_post")
+public class SysUserPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "用户 id")
     @TableField("user_id")
     private Long userId;
 
-    @Schema(description = "部门 id")
-    @TableField("department_id")
-    private Long departmentId;
+    @TableField("post_id")
+    private Long postId;
 
 
     public Long getId() {
@@ -55,20 +48,20 @@ public class SysUserDepartment implements Serializable {
     this.userId = userId;
     }
 
-    public Long getDepartmentId() {
-    return departmentId;
+    public Long getPostId() {
+    return postId;
     }
 
-    public void setDepartmentId(Long departmentId) {
-    this.departmentId = departmentId;
+    public void setPostId(Long postId) {
+    this.postId = postId;
     }
 
     @Override
     public String toString() {
-    return "SysUserDepartment{" +
+    return "SysUserPost{" +
             "id = " + id +
             ", userId = " + userId +
-            ", departmentId = " + departmentId +
+            ", postId = " + postId +
     "}";
     }
 }

@@ -1,8 +1,4 @@
-package com.cc.server.model.entity.system;
-
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+package com.cc.server.model.system.vo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,50 +12,40 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-11-22 13:40:54
+ * @since 2024-12-05 10:57:08
  */
 
-@TableName("sys_dictionary")
-@Schema(name = "SysDictionary对象", description = "")
-public class SysDictionary implements Serializable {
+@Schema(name = "SysDictionaryVO对象", description = "")
+public class SysDictionaryVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
     @Schema(description = "主键")
-    @TableId("id")
     private Integer id;
 
     @Schema(description = "字典名称")
-    @TableField("name")
     private String name;
 
     @Schema(description = "字典值")
-    @TableField("value")
     private String value;
 
     @Schema(description = "状态（0正常 1 停用）")
-    @TableField("status")
     private String status;
 
     @Schema(description = "创建人")
-    @TableField("create_by")
     private String createBy;
 
     @Schema(description = "创建时间")
-    @TableField("create_time")
     private Date createTime;
 
     @Schema(description = "修改人")
-    @TableField("update_by")
     private String updateBy;
 
     @Schema(description = "修改时间")
-    @TableField("update_time")
     private Date updateTime;
 
     @Schema(description = "备注")
-    @TableField("remark")
     private String remark;
 
 
@@ -137,7 +123,7 @@ public class SysDictionary implements Serializable {
 
     @Override
     public String toString() {
-    return "SysDictionary{" +
+    return "SysDictionaryVO{" +
             "id = " + id +
             ", name = " + name +
             ", value = " + value +
