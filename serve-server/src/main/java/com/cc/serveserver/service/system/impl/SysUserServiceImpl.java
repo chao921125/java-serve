@@ -1,7 +1,7 @@
 package com.cc.serveserver.service.system.impl;
 
-import com.cc.serve.model.entity.system.SysUser;
-import com.cc.serve.mapper.system.SysUserMapper;
+import com.cc.serveserver.model.entity.system.SysUser;
+import com.cc.serveserver.mapper.system.SysUserMapper;
 import com.cc.serveserver.service.system.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

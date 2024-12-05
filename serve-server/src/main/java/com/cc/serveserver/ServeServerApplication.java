@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@MapperScan("com.cc.serve.mapper")
+@MapperScan("com.cc.serveserver.mapper")
 public class ServeServerApplication {
     private static final Logger logger = LoggerFactory.getLogger(ServeServerApplication.class);
 

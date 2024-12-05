@@ -1,6 +1,6 @@
 package com.cc.serveserver.service.system;
 
-import com.cc.serve.model.entity.system.SysDepartment;
+import com.cc.serveserver.model.entity.system.SysDepartment;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

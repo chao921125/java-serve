@@ -1,7 +1,7 @@
 package com.cc.serveserver.service.system.impl;
 
-import com.cc.serve.model.entity.system.SysPost;
-import com.cc.serve.mapper.system.SysPostMapper;
+import com.cc.serveserver.model.entity.system.SysPost;
+import com.cc.serveserver.mapper.system.SysPostMapper;
 import com.cc.serveserver.service.system.SysPostService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

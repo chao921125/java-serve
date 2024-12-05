@@ -1,8 +1,8 @@
 package com.cc.serveserver;
 
 //import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-//import com.cc.serve.model.entity.system.SysUser;
-//import com.cc.serve.service.system.SysUserService;
+//import com.cc.serveserver.model.entity.system.SysUser;
+//import com.cc.serveserver.service.system.SysUserService;
 //import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

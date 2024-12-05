@@ -1,6 +1,6 @@
 package com.cc.serveserver.controller.system;
 
-import com.cc.serve.model.entity.system.SysUser;
+import com.cc.serveserver.model.entity.system.SysUser;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

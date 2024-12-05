@@ -1,7 +1,7 @@
 package com.cc.serveserver.common.utils;
 
-import com.cc.serve.common.core.PageEntity;
-import com.cc.serve.common.core.PageSupport;
+import com.cc.serveserver.common.core.PageEntity;
+import com.cc.serveserver.common.core.PageSupport;
 import com.github.pagehelper.PageHelper;
 
 public class PageUtil extends PageHelper {

@@ -1,7 +1,7 @@
 package com.cc.serveserver.service.system.impl;
 
-import com.cc.serve.model.entity.system.SysRoleMenu;
-import com.cc.serve.mapper.system.SysRoleMenuMapper;
+import com.cc.serveserver.model.entity.system.SysRoleMenu;
+import com.cc.serveserver.mapper.system.SysRoleMenuMapper;
 import com.cc.serveserver.service.system.SysRoleMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

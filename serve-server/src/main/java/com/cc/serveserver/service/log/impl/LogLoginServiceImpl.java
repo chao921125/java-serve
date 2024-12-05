@@ -1,7 +1,7 @@
 package com.cc.serveserver.service.log.impl;
 
-import com.cc.serve.model.entity.log.LogLogin;
-import com.cc.serve.mapper.log.LogLoginMapper;
+import com.cc.serveserver.model.entity.log.LogLogin;
+import com.cc.serveserver.mapper.log.LogLoginMapper;
 import com.cc.serveserver.service.log.LogLoginService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 
 //@Configuration
-//@MapperScan("com.cc.serve.mapper")
+//@MapperScan("com.cc.serveserver.mapper")
 public class MybatisPlusConfig {
     /**
      * 分页插件 3.5.X

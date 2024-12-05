@@ -1,6 +1,6 @@
 package com.cc.serveserver.mapper.system;
 
-import com.cc.serve.model.entity.system.SysUserPost;
+import com.cc.serveserver.model.entity.system.SysUserPost;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

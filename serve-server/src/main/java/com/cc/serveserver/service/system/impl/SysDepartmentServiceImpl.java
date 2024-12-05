@@ -1,7 +1,7 @@
 package com.cc.serveserver.service.system.impl;
 
-import com.cc.serve.model.entity.system.SysDepartment;
-import com.cc.serve.mapper.system.SysDepartmentMapper;
+import com.cc.serveserver.model.entity.system.SysDepartment;
+import com.cc.serveserver.mapper.system.SysDepartmentMapper;
 import com.cc.serveserver.service.system.SysDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.cc.serveserver.service.system;
 
-import com.cc.serve.model.entity.system.SysUserRole;
+import com.cc.serveserver.model.entity.system.SysUserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
