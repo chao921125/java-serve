@@ -1,13 +1,13 @@
-package com.cc.serve;
+package com.cc.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServerApplication {
+public class JavaServeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServerApplication.class, args);
+		SpringApplication.run(JavaServeApplication.class, args);
 	}
 
 }
