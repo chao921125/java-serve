@@ -5,7 +5,7 @@
     <groupId>com.cc</groupId>
     <artifactId>java-serve</artifactId>
     <version>${pversion}</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>serve</name>
     <description>My Java Server</description>
@@ -37,12 +37,6 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.0</version>
     </parent>
-
-    <modules>
-        <module>serve-common</module>
-        <module>serve-scheduler</module>
-        <module>serve-server</module>
-    </modules>
 
     <properties>
         <pversion>0.0.3</pversion>
