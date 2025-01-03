@@ -105,3 +105,4 @@
 | [文件管理](https://github.com/zfile-dev/zfile)                                                                                                                                                              |
 | [SpringCloud](https://github.com/pig-mesh/pig)                                                                                                                                                          |
 https://github.com/1024-lab/smart-admin
+https://gitee.com/peng.liu.s/springboot3-springsecurity6-mybatisplus
