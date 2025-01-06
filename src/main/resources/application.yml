@@ -3,6 +3,8 @@ debug: true
 
 # Core 日志
 logging:
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
   charset:
     console: UTF-8
     file: UTF-8
