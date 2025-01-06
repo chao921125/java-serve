@@ -37,7 +37,7 @@ server:
 # Core Spring 配置
 spring:
   application:
-    name: serve
+    name: java-serve
   profiles:
     active: dev
   datasource:
