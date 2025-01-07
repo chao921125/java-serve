@@ -1,6 +1,7 @@
 package com.cc.server.controller.system;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,5 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/sys-user")
 public class SysUserController {
-
+    @Tag(name = "获取用户信息", description = "获取用户信息")
+    public void getUser() {
+        System.out.println("getUser");
+    }
 }
