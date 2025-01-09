@@ -115,7 +115,7 @@ spring:
   security:
     user:
       name: admin
-      password: 123456
+      password: 123123
   # 日志入库
   aop:
     auto: true
