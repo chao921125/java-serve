@@ -47,10 +47,10 @@
 
 # 推荐
 
-|                                                                                |
-|--------------------------------------------------------------------------------|
-| [springboot3 AI](https://github.com/dulaiduwang003/TIME-SEA-chatgpt)           |
-| [springboot3 AI 纯后端](https://github.com/gemingjia/gear-wenxinworkshop-starter) |
+| AI                                                                          |
+|-----------------------------------------------------------------------------|
+| [springboot3](https://github.com/dulaiduwang003/TIME-SEA-chatgpt)           |
+| [springboot3 纯后端](https://github.com/gemingjia/gear-wenxinworkshop-starter) |
 
 # SpringBoot 学习
 
@@ -63,11 +63,6 @@
 | [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects)                                               |
 | [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples)                                                |
 | [SpringBoot3 examples](https://github.com/xkcoding/spring-boot-demo)                                                     |
-| [SpringBoot2 examples](https://github.com/wuyouzhuguli/SpringAll)                                                        |
-| [SpringBoot2 Learning](https://gitee.com/didispace/SpringBoot-Learning)                                                  |
-| [SpringBoot2 电商教程](https://github.com/macrozheng/mall-learning) [spring-cloud](https://github.com/macrozheng/mall-swarm) |
-| [SpringBoot1 spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)                                       |
-| [SpringBoot1 spring-boot-seckill](https://github.com/xuchengsheng/spring-reading)                                        |
 
 # 项目
 
@@ -87,21 +82,7 @@
 | [springboot3 PlayEdu](https://github.com/PlayEdu/PlayEdu)                                                                                                                                               |
 | [springboot3 demo](https://gitee.com/ckw1988/shiro-jwt-integration)                                                                                                                                     |
 | [springboot3 maku](https://github.com/makunet/maku-boot)                                                                                                                                                |
-| [SpringBoot2 kkFileView](https://gitee.com/kekingcn/file-online-preview)                                                                                                                                |
-| [spring-boot2 spring-boot-plus](https://github.com/geekidea/spring-boot-plus)                                                                                                                           |
-| [SpringBoot2 mall](https://github.com/macrozheng/mall) [mall-admin-web](https://github.com/macrozheng/mall-admin-web)                                                                                   |
-| [SpringBoot2 Guns](https://github.com/stylefeng/Guns)                                                                                                                                                   |
-| [SpringBoot2 jeecg-boot](https://github.com/jeecgboot/jeecg-boot) [jeecg-boot vue3](https://github.com/jeecgboot/jeecgboot-vue3) [jeecg-boot app](https://github.com/jeecgboot/jeecg-uniapp)            |
-| [SpringBoot2 ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro)                                                                                                                                    |
-| [SpringBoot2 RuoYi-Cloud](https://github.com/yangzongzhuan/RuoYi-Cloud) [RuoYi-Vue3](https://github.com/yangzongzhuan/RuoYi-Vue3) [RuoYi-Cloud-Vue3](https://github.com/yangzongzhuan/RuoYi-Cloud-Vue3) |
-| [SpringBoot2  芋道源码 / ruoyi-vue-pro](https://gitee.com/zhijiantianya/ruoyi-vue-pro) [芋道源码](https://gitee.com/yudaocode)                                                                                  |
-| [SpringBoot2 Cloud-Platform](https://gitee.com/geek_qi/cloud-platform)                                                                                                                                  |
-| [SpringBoot2 SpringBlade](https://gitee.com/smallc/SpringBlade)                                                                                                                                         |
-| [SpringBoot2 zheng](https://gitee.com/shuzheng/zheng)                                                                                                                                                   |
-| [SpringBoot2 微人事](https://github.com/lenve/vhr)                                                                                                                                                         |
-| [SpringBoot2 新蜂商城](https://github.com/newbee-ltd/newbee-mall/tree/spring-boot-3.x)                                                                                                                      |
-| [SpringBoot2 在线的音乐](https://github.com/Yin-Hongwei/music-website)                                                                                                                                       |
-| [springboot2 framework](https://github.com/liu-peiyu/geek-framework)                                                                                                                                    |
 | [文件管理](https://github.com/zfile-dev/zfile)                                                                                                                                                              |
 | [SpringCloud](https://github.com/pig-mesh/pig)                                                                                                                                                          |
 https://github.com/1024-lab/smart-admin
+https://gitee.com/peng.liu.s/springboot3-springsecurity6-mybatisplus
