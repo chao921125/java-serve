@@ -1,8 +1,13 @@
 package com.cc.server.controller.system;
 
+import com.cc.server.model.system.entity.SysUser;
+import com.cc.server.service.system.SysUserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,8 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/sys-user")
 public class SysUserController {
+    @Resource
+    private SysUserService userService;
+
     @Tag(name = "获取用户信息", description = "获取用户信息")
-    public void getUser() {
-        System.out.println("getUser");
+    @GetMapping("/user")
+    public SysUser getUserByNameEmailPhone(@RequestParam String username) {
+        return userService.getUserByNameEmailPhone(username);
     }
 }
