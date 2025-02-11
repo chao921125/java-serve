@@ -35,7 +35,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.1</version>
+		<version>3.4.2</version>
 		<relativePath/>
 	</parent>
 
@@ -68,7 +68,7 @@
 		<oracle.jdbc.version>23.6.0.24.10</oracle.jdbc.version>
 		<pagehelper.version>2.1.0</pagehelper.version>
 		<slf4j.version>2.0.16</slf4j.version>
-		<springdoc.version>2.8.1</springdoc.version>
+		<springdoc.version>2.8.4</springdoc.version>
 		<spring.restdocs.version>3.0.1</spring.restdocs.version>
 		<spring.modulith-bom.version>1.2.5</spring.modulith-bom.version>
 		<junit.version>1.11.3</junit.version>
@@ -272,6 +272,12 @@
 
 		<!-- springframework 开发、测试 start -->
 		<!-- 测试 用于使用 JUnit Jupiter、Hamcrest 和 Mockito 等库测试 Spring Boot 应用程序的 Starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
