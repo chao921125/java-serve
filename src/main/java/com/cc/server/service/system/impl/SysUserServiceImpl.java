@@ -4,6 +4,7 @@ import com.cc.server.model.system.entity.SysUser;
 import com.cc.server.mapper.system.SysUserMapper;
 import com.cc.server.service.system.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +18,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
-    private SysUserService userService;
+    @Resource
+    private SysUserMapper userMapper;
 
     @Override
     public SysUser getUserByNameEmailPhone(String username) {
-        SysUser user = userService.getUserByNameEmailPhone(username);
+        SysUser user = userMapper.selectByNameEmailPhone(username);
+        System.out.println(user);
         if (user == null) {
             return null;
 //            throw new UsernameNotFoundException("用户不存在");
