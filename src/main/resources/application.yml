@@ -1,6 +1,12 @@
 # Core 开发环境配置
 debug: true
 
+project:
+  name: CCNET
+  version: 0.0.1
+  email: hcprecog@gmail.com
+  url: https://github.com/chao921125/
+
 # Core 日志
 logging:
   pattern:
@@ -38,6 +44,7 @@ server:
 spring:
   application:
     name: java-serve
+    version: 0.0.1
   profiles:
     active: dev
   datasource:
@@ -183,7 +190,7 @@ pagehelper:
 springdoc:
   api-docs:
     enabled: true
-    path: /api-docs
+    path: /docs
   swagger-ui:
     # 访问 UI 自动跳转到 swagger 种
     path: /api
