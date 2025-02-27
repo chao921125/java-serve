@@ -1,5 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cc.server.mapper.log.LogLoginMapper">
+<mapper namespace="mapper.LogLoginMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="LogLoginMap" type="entity.LogLogin">
+            <id column="id" property="id" />
+            <result column="user_id" property="userId" />
+            <result column="user_name" property="userName" />
+            <result column="ip" property="ip" />
+            <result column="ip_real" property="ipReal" />
+            <result column="login_time" property="loginTime" />
+            <result column="address" property="address" />
+            <result column="system" property="system" />
+            <result column="status" property="status" />
+    </resultMap>
 
+    <!-- 通用查询列 -->
+    <sql id="LogLoginList">
+        id, user_id, user_name, ip, ip_real, login_time, address, system, status
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="LogLoginBy">
+            <if test="userId != null and userId != ''">
+                AND user_id = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND user_name = #{userName}
+            </if>
+            <if test="ip != null and ip != ''">
+                AND ip = #{ip}
+            </if>
+            <if test="ipReal != null and ipReal != ''">
+                AND ip_real = #{ipReal}
+            </if>
+            <if test="loginTime != null and loginTime != ''">
+                AND login_time = #{loginTime}
+            </if>
+            <if test="address != null and address != ''">
+                AND address = #{address}
+            </if>
+            <if test="system != null and system != ''">
+                AND system = #{system}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="LogLoginSet">
+            <if test="userId != null and userId != ''">
+                user_id = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName}
+            </if>
+            <if test="ip != null and ip != ''">
+                ip = #{ip}
+            </if>
+            <if test="ipReal != null and ipReal != ''">
+                ip_real = #{ipReal}
+            </if>
+            <if test="loginTime != null and loginTime != ''">
+                login_time = #{loginTime}
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address}
+            </if>
+            <if test="system != null and system != ''">
+                system = #{system}
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status}
+            </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectLogLoginVo">
+        select id, user_id, user_name, ip, ip_real, login_time, address, system, status from log_login
+    </sql>
+
+    <!-- 查询表log_login所有信息 -->
+    <select id="selectAllLogLogin" resultMap="LogLoginMap">
+        SELECT
+        <include refid="LogLoginList"/>
+        FROM log_login
+    </select>
+
+    <!-- 根据主键id查询表log_login信息 -->
+    <select id="selectLogLoginByid" resultMap="LogLoginMap">
+        SELECT
+        <include refid="LogLoginList"/>
+        FROM log_login
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据条件查询表log_login信息 -->
+    <select id="selectLogLoginBy" resultMap="LogLoginMap">
+        SELECT
+        <include refid="LogLoginList"/>
+        FROM log_login
+        WHERE 1=1
+        <include refid="LogLoginBy" />
+    </select>
+
+    <!-- 新增表log_login信息 -->
+    <insert id="insertLogLogin">
+        INSERT INTO log_login (
+            id
+            ,user_id
+            ,user_name
+            ,ip
+            ,ip_real
+            ,login_time
+            ,address
+            ,system
+            ,status
+        ) VALUES (
+            #{id}
+            ,#{userId}
+            ,#{userName}
+            ,#{ip}
+            ,#{ipReal}
+            ,#{loginTime}
+            ,#{address}
+            ,#{system}
+            ,#{status}
+        )
+    </insert>
+
+    <!-- 根据主键id更新表log_login信息 -->
+    <update id="updateLogLoginByid" parameterType="entity.LogLogin">
+        UPDATE log_login
+        <set>
+            <include refid="LogLoginSet"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 根据主键id删除表log_login信息：慎用！！！ -->
+    <delete id="deleteLogLoginByid">
+        DELETE FROM
+        log_login
+        WHERE id=#{id}
+    </delete>
 </mapper>

@@ -28,7 +28,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author ${author}
  * @since ${date}
  */
-
 <#if table.convert>
 @TableName("${table.name}")
 </#if>
@@ -73,6 +72,7 @@ public class ${entity} implements Serializable {
 </#list>
 
 <#------------  END 字段循环遍历  ---------->
+<#-- get set -->
 <#if !entityLombokModel>
     <#list table.fields as field>
     <#if field.propertyType == "boolean">
@@ -97,14 +97,15 @@ public class ${entity} implements Serializable {
     }
     </#list>
 </#if>
+
 <#if entityColumnConstant>
     <#list table.fields as field>
-
     public static final String ${field.name?upper_case} = "${field.name}";
     </#list>
 </#if>
-<#if activeRecord>
 
+<#-- Serializable -->
+<#if activeRecord>
     @Override
     public Serializable pkVal() {
     <#if keyPropertyName??>
@@ -114,19 +115,30 @@ public class ${entity} implements Serializable {
     </#if>
     }
 </#if>
-<#if !entityLombokModel>
 
+    <#-- 构造函数 -->
+    public ${entity}(<#list table.fields as field><#if field.propertyType == "LocalDateTime">Date ${field.propertyName}</#if><#if field.propertyType != "LocalDateTime">${field.propertyType} ${field.propertyName}</#if><#sep>,</#list>){
+    <#list table.fields as field>
+        this.${field.propertyName} = ${field.propertyName};
+    </#list>
+    }
+
+    public ${entity}(){
+    }
+
+<#-- toString -->
+<#if !entityLombokModel>
     @Override
     public String toString() {
-    return "${entity}{" +
-    <#list table.fields as field>
-        <#if field_index==0>
-            "${field.propertyName} = " + ${field.propertyName} +
-        <#else>
-            ", ${field.propertyName} = " + ${field.propertyName} +
-        </#if>
-    </#list>
-    "}";
+        return "${entity}{" +
+        <#list table.fields as field>
+            <#if field_index==0>
+                "${field.propertyName} = " + ${field.propertyName} +
+            <#else>
+                ", ${field.propertyName} = " + ${field.propertyName} +
+            </#if>
+        </#list>
+        "}";
     }
 </#if>
 }

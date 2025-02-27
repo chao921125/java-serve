@@ -1,5 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cc.server.mapper.system.SysDepartmentMapper">
+<mapper namespace="mapper.SysDepartmentMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysDepartmentMap" type="entity.SysDepartment">
+            <id column="id" property="id" />
+            <result column="parent_id" property="parentId" />
+            <result column="ancestors" property="ancestors" />
+            <result column="name" property="name" />
+            <result column="sort" property="sort" />
+            <result column="leader" property="leader" />
+            <result column="phone" property="phone" />
+            <result column="email" property="email" />
+            <result column="status" property="status" />
+            <result column="create_by" property="createBy" />
+            <result column="create_time" property="createTime" />
+            <result column="update_by" property="updateBy" />
+            <result column="update_time" property="updateTime" />
+            <result column="remark" property="remark" />
+    </resultMap>
 
+    <!-- 通用查询列 -->
+    <sql id="SysDepartmentList">
+        id, parent_id, ancestors, name, sort, leader, phone, email, status, create_by, create_time, update_by, update_time, remark
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysDepartmentBy">
+            <if test="parentId != null and parentId != ''">
+                AND parent_id = #{parentId}
+            </if>
+            <if test="ancestors != null and ancestors != ''">
+                AND ancestors = #{ancestors}
+            </if>
+            <if test="name != null and name != ''">
+                AND name = #{name}
+            </if>
+            <if test="sort != null and sort != ''">
+                AND sort = #{sort}
+            </if>
+            <if test="leader != null and leader != ''">
+                AND leader = #{leader}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                AND create_by = #{createBy}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                AND update_by = #{updateBy}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                AND remark = #{remark}
+            </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysDepartmentSet">
+            <if test="parentId != null and parentId != ''">
+                parent_id = #{parentId}
+            </if>
+            <if test="ancestors != null and ancestors != ''">
+                ancestors = #{ancestors}
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+            <if test="sort != null and sort != ''">
+                sort = #{sort}
+            </if>
+            <if test="leader != null and leader != ''">
+                leader = #{leader}
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email}
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                create_by = #{createBy}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                create_time = #{createTime}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                update_by = #{updateBy}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark}
+            </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectSysDepartmentVo">
+        select id, parent_id, ancestors, name, sort, leader, phone, email, status, create_by, create_time, update_by, update_time, remark from sys_department
+    </sql>
+
+    <!-- 查询表sys_department所有信息 -->
+    <select id="selectAllSysDepartment" resultMap="SysDepartmentMap">
+        SELECT
+        <include refid="SysDepartmentList"/>
+        FROM sys_department
+    </select>
+
+    <!-- 根据主键id查询表sys_department信息 -->
+    <select id="selectSysDepartmentByid" resultMap="SysDepartmentMap">
+        SELECT
+        <include refid="SysDepartmentList"/>
+        FROM sys_department
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据条件查询表sys_department信息 -->
+    <select id="selectSysDepartmentBy" resultMap="SysDepartmentMap">
+        SELECT
+        <include refid="SysDepartmentList"/>
+        FROM sys_department
+        WHERE 1=1
+        <include refid="SysDepartmentBy" />
+    </select>
+
+    <!-- 新增表sys_department信息 -->
+    <insert id="insertSysDepartment">
+        INSERT INTO sys_department (
+            id
+            ,parent_id
+            ,ancestors
+            ,name
+            ,sort
+            ,leader
+            ,phone
+            ,email
+            ,status
+            ,create_by
+            ,create_time
+            ,update_by
+            ,update_time
+            ,remark
+        ) VALUES (
+            #{id}
+            ,#{parentId}
+            ,#{ancestors}
+            ,#{name}
+            ,#{sort}
+            ,#{leader}
+            ,#{phone}
+            ,#{email}
+            ,#{status}
+            ,#{createBy}
+            ,#{createTime}
+            ,#{updateBy}
+            ,#{updateTime}
+            ,#{remark}
+        )
+    </insert>
+
+    <!-- 根据主键id更新表sys_department信息 -->
+    <update id="updateSysDepartmentByid" parameterType="entity.SysDepartment">
+        UPDATE sys_department
+        <set>
+            <include refid="SysDepartmentSet"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 根据主键id删除表sys_department信息：慎用！！！ -->
+    <delete id="deleteSysDepartmentByid">
+        DELETE FROM
+        sys_department
+        WHERE id=#{id}
+    </delete>
 </mapper>

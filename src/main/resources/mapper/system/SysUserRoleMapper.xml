@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cc.server.mapper.system.SysUserRoleMapper">
+<mapper namespace="mapper.SysUserRoleMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysUserRoleMap" type="entity.SysUserRole">
+            <id column="id" property="id" />
+            <result column="user_id" property="userId" />
+            <result column="role_id" property="roleId" />
+    </resultMap>
 
+    <!-- 通用查询列 -->
+    <sql id="SysUserRoleList">
+        id, user_id, role_id
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysUserRoleBy">
+            <if test="userId != null and userId != ''">
+                AND user_id = #{userId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                AND role_id = #{roleId}
+            </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysUserRoleSet">
+            <if test="userId != null and userId != ''">
+                user_id = #{userId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                role_id = #{roleId}
+            </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectSysUserRoleVo">
+        select id, user_id, role_id from sys_user_role
+    </sql>
+
+    <!-- 查询表sys_user_role所有信息 -->
+    <select id="selectAllSysUserRole" resultMap="SysUserRoleMap">
+        SELECT
+        <include refid="SysUserRoleList"/>
+        FROM sys_user_role
+    </select>
+
+    <!-- 根据主键id查询表sys_user_role信息 -->
+    <select id="selectSysUserRoleByid" resultMap="SysUserRoleMap">
+        SELECT
+        <include refid="SysUserRoleList"/>
+        FROM sys_user_role
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据条件查询表sys_user_role信息 -->
+    <select id="selectSysUserRoleBy" resultMap="SysUserRoleMap">
+        SELECT
+        <include refid="SysUserRoleList"/>
+        FROM sys_user_role
+        WHERE 1=1
+        <include refid="SysUserRoleBy" />
+    </select>
+
+    <!-- 新增表sys_user_role信息 -->
+    <insert id="insertSysUserRole">
+        INSERT INTO sys_user_role (
+            id
+            ,user_id
+            ,role_id
+        ) VALUES (
+            #{id}
+            ,#{userId}
+            ,#{roleId}
+        )
+    </insert>
+
+    <!-- 根据主键id更新表sys_user_role信息 -->
+    <update id="updateSysUserRoleByid" parameterType="entity.SysUserRole">
+        UPDATE sys_user_role
+        <set>
+            <include refid="SysUserRoleSet"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 根据主键id删除表sys_user_role信息：慎用！！！ -->
+    <delete id="deleteSysUserRoleByid">
+        DELETE FROM
+        sys_user_role
+        WHERE id=#{id}
+    </delete>
 </mapper>
