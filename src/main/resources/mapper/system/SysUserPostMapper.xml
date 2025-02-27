@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cc.server.mapper.system.SysUserPostMapper">
+<mapper namespace="mapper.SysUserPostMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysUserPostMap" type="entity.SysUserPost">
+            <id column="id" property="id" />
+            <result column="user_id" property="userId" />
+            <result column="post_id" property="postId" />
+    </resultMap>
 
+    <!-- 通用查询列 -->
+    <sql id="SysUserPostList">
+        id, user_id, post_id
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysUserPostBy">
+            <if test="userId != null and userId != ''">
+                AND user_id = #{userId}
+            </if>
+            <if test="postId != null and postId != ''">
+                AND post_id = #{postId}
+            </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysUserPostSet">
+            <if test="userId != null and userId != ''">
+                user_id = #{userId}
+            </if>
+            <if test="postId != null and postId != ''">
+                post_id = #{postId}
+            </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectSysUserPostVo">
+        select id, user_id, post_id from sys_user_post
+    </sql>
+
+    <!-- 查询表sys_user_post所有信息 -->
+    <select id="selectAllSysUserPost" resultMap="SysUserPostMap">
+        SELECT
+        <include refid="SysUserPostList"/>
+        FROM sys_user_post
+    </select>
+
+    <!-- 根据主键id查询表sys_user_post信息 -->
+    <select id="selectSysUserPostByid" resultMap="SysUserPostMap">
+        SELECT
+        <include refid="SysUserPostList"/>
+        FROM sys_user_post
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据条件查询表sys_user_post信息 -->
+    <select id="selectSysUserPostBy" resultMap="SysUserPostMap">
+        SELECT
+        <include refid="SysUserPostList"/>
+        FROM sys_user_post
+        WHERE 1=1
+        <include refid="SysUserPostBy" />
+    </select>
+
+    <!-- 新增表sys_user_post信息 -->
+    <insert id="insertSysUserPost">
+        INSERT INTO sys_user_post (
+            id
+            ,user_id
+            ,post_id
+        ) VALUES (
+            #{id}
+            ,#{userId}
+            ,#{postId}
+        )
+    </insert>
+
+    <!-- 根据主键id更新表sys_user_post信息 -->
+    <update id="updateSysUserPostByid" parameterType="entity.SysUserPost">
+        UPDATE sys_user_post
+        <set>
+            <include refid="SysUserPostSet"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 根据主键id删除表sys_user_post信息：慎用！！！ -->
+    <delete id="deleteSysUserPostByid">
+        DELETE FROM
+        sys_user_post
+        WHERE id=#{id}
+    </delete>
 </mapper>
