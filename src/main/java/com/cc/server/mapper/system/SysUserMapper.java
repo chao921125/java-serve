@@ -1,11 +1,10 @@
 package com.cc.server.mapper.system;
 
-import com.cc.server.model.system.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.cc.server.entity.system.SysUser;
 import org.apache.ibatis.annotations.Param;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -13,9 +12,43 @@ import java.io.Serializable;
  * </p>
  *
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-@Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
-    SysUser selectByNameEmailPhone(@Param("name") String name);
+  /**
+  *  查询表sys_user所有信息
+  */
+  List<SysUser> selectAllSysUser();
+
+  /**
+  *  根据主键id查询表sys_user信息
+  *  @param id
+  */
+  SysUser selectSysUserById(@Param("id") Long id);
+
+  /**
+  *  根据条件查询表sys_user信息
+  *  @param sysUser
+  */
+  List<SysUser> selectSysUserByCondition(SysUser sysUser);
+
+  /**
+  *  根据主键id查询表sys_user信息
+  *  @param id
+  */
+  Integer deleteSysUserById(@Param("id") Long id);
+
+  /**
+  *  根据主键id更新表sys_user信息
+  *  @param sysUser
+  */
+  Integer updateSysUserById(SysUser sysUser);
+
+  /**
+  *  新增表sys_user信息
+  *  @param sysUser
+  */
+  Integer insertSysUser(SysUser sysUser);
+
+  SysUser loginSysUser(SysUser sysUser);
 }

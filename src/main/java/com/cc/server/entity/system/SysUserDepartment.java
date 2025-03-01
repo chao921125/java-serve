@@ -1,4 +1,4 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 
@@ -13,9 +13,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
 @TableName("sys_user_department")
 public class SysUserDepartment implements Serializable {
 
@@ -56,12 +55,23 @@ public class SysUserDepartment implements Serializable {
     this.departmentId = departmentId;
     }
 
+
+
+    public SysUserDepartment(Long id,Long userId,Long departmentId){
+        this.id = id;
+        this.userId = userId;
+        this.departmentId = departmentId;
+    }
+
+    public SysUserDepartment(){
+    }
+
     @Override
     public String toString() {
-    return "SysUserDepartment{" +
-            "id = " + id +
-            ", userId = " + userId +
-            ", departmentId = " + departmentId +
-    "}";
+        return "SysUserDepartment{" +
+                "id = " + id +
+                ", userId = " + userId +
+                ", departmentId = " + departmentId +
+        "}";
     }
 }

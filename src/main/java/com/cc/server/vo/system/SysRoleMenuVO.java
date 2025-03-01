@@ -1,4 +1,4 @@
-package com.cc.server.model.system.vo;
+package com.cc.server.vo.system;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 
 @Schema(name = "SysRoleMenuVO对象", description = "角色菜单 角色1-N菜单")

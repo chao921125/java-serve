@@ -1,10 +1,11 @@
-package com.cc.server.model.system.vo;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 import java.util.Date;
-
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
@@ -12,55 +13,54 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
-@Schema(name = "SysDepartmentVO对象", description = "部门表")
-public class SysDepartmentVO implements Serializable {
+@TableName("sys_department")
+public class SysDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "部门 id")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "父级id")
+    @TableField("parent_id")
     private Long parentId;
 
-    @Schema(description = "祖级，树结构")
+    @TableField("ancestors")
     private String ancestors;
 
-    @Schema(description = "部门名称")
+    @TableField("name")
     private String name;
 
-    @Schema(description = "排序")
+    @TableField("sort")
     private Integer sort;
 
-    @Schema(description = "负责人")
+    @TableField("leader")
     private String leader;
 
-    @Schema(description = "手机号")
+    @TableField("phone")
     private String phone;
 
-    @Schema(description = "邮箱")
+    @TableField("email")
     private String email;
 
-    @Schema(description = "状态（0正常 1停用 9删除）")
+    @TableField("status")
     private String status;
 
-    @Schema(description = "创建人")
+    @TableField("create_by")
     private String createBy;
 
-    @Schema(description = "创建时间")
+    @TableField("create_time")
     private Date createTime;
 
-    @Schema(description = "修改人")
+    @TableField("update_by")
     private String updateBy;
 
-    @Schema(description = "修改时间")
+    @TableField("update_time")
     private Date updateTime;
 
-    @Schema(description = "备注")
+    @TableField("remark")
     private String remark;
 
 
@@ -176,23 +176,45 @@ public class SysDepartmentVO implements Serializable {
     this.remark = remark;
     }
 
+
+
+    public SysDepartment(Long id,Long parentId,String ancestors,String name,Integer sort,String leader,String phone,String email,String status,String createBy,Date createTime,String updateBy,Date updateTime,String remark){
+        this.id = id;
+        this.parentId = parentId;
+        this.ancestors = ancestors;
+        this.name = name;
+        this.sort = sort;
+        this.leader = leader;
+        this.phone = phone;
+        this.email = email;
+        this.status = status;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
+    public SysDepartment(){
+    }
+
     @Override
     public String toString() {
-    return "SysDepartmentVO{" +
-            "id = " + id +
-            ", parentId = " + parentId +
-            ", ancestors = " + ancestors +
-            ", name = " + name +
-            ", sort = " + sort +
-            ", leader = " + leader +
-            ", phone = " + phone +
-            ", email = " + email +
-            ", status = " + status +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
+        return "SysDepartment{" +
+                "id = " + id +
+                ", parentId = " + parentId +
+                ", ancestors = " + ancestors +
+                ", name = " + name +
+                ", sort = " + sort +
+                ", leader = " + leader +
+                ", phone = " + phone +
+                ", email = " + email +
+                ", status = " + status +
+                ", createBy = " + createBy +
+                ", createTime = " + createTime +
+                ", updateBy = " + updateBy +
+                ", updateTime = " + updateTime +
+                ", remark = " + remark +
+        "}";
     }
 }

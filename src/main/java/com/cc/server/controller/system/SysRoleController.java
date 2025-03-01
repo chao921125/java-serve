@@ -1,6 +1,6 @@
 package com.cc.server.controller.system;
 
-import com.cc.server.model.system.entity.SysRole;
+import com.cc.server.entity.system.SysRole;
 import com.cc.server.service.system.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,6 +29,6 @@ public class SysRoleController {
     @Operation(summary = "获取角色列表", description = "角色")
     @GetMapping("/list")
     public List<SysRole> getRoleById() {
-        return roleService.getRoleAll();
+        return roleService.selectAllSysRole();
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysUserDepartmentMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserDepartmentMap" type="entity.SysUserDepartment">
+    <resultMap id="SysUserDepartmentMap" type="com.cc.server.entity.system.SysUserDepartment">
             <id column="id" property="id" />
             <result column="user_id" property="userId" />
             <result column="department_id" property="departmentId" />
@@ -46,7 +46,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_user_department信息 -->
-    <select id="selectSysUserDepartmentByid" resultMap="SysUserDepartmentMap">
+    <select id="selectSysUserDepartmentById" resultMap="SysUserDepartmentMap">
         SELECT
         <include refid="SysUserDepartmentList"/>
         FROM sys_user_department
@@ -76,7 +76,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_user_department信息 -->
-    <update id="updateSysUserDepartmentByid" parameterType="entity.SysUserDepartment">
+    <update id="updateSysUserDepartmentById" parameterType="com.cc.server.entity.system.SysUserDepartment">
         UPDATE sys_user_department
         <set>
             <include refid="SysUserDepartmentSet"/>
@@ -86,7 +86,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_user_department信息：慎用！！！ -->
-    <delete id="deleteSysUserDepartmentByid">
+    <delete id="deleteSysUserDepartmentById">
         DELETE FROM
         sys_user_department
         WHERE id=#{id}

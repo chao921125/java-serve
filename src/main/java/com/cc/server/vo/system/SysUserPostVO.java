@@ -1,4 +1,4 @@
-package com.cc.server.model.system.vo;
+package com.cc.server.vo.system;
 
 import java.io.Serializable;
 
@@ -7,15 +7,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * sys_user_role 用户角色 用户N-1角色
+ * sys_user_post 用户岗位 用户1-N岗位
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 
-@Schema(name = "SysUserRoleVO对象", description = "用户角色 用户N-1角色")
-public class SysUserRoleVO implements Serializable {
+@Schema(name = "SysUserPostVO对象", description = "用户岗位 用户1-N岗位")
+public class SysUserPostVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,8 +26,8 @@ public class SysUserRoleVO implements Serializable {
     @Schema(description = "用户 id")
     private Long userId;
 
-    @Schema(description = "角色 id")
-    private Long roleId;
+    @Schema(description = "岗位 id")
+    private Long postId;
 
 
     public Long getId() {
@@ -46,20 +46,20 @@ public class SysUserRoleVO implements Serializable {
     this.userId = userId;
     }
 
-    public Long getRoleId() {
-    return roleId;
+    public Long getPostId() {
+    return postId;
     }
 
-    public void setRoleId(Long roleId) {
-    this.roleId = roleId;
+    public void setPostId(Long postId) {
+    this.postId = postId;
     }
 
     @Override
     public String toString() {
-    return "SysUserRoleVO{" +
+    return "SysUserPostVO{" +
             "id = " + id +
             ", userId = " + userId +
-            ", roleId = " + roleId +
+            ", postId = " + postId +
     "}";
     }
 }

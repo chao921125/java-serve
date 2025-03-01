@@ -1,44 +1,33 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * sys_role 角色表
+ * sys_dictionary 
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
-@TableName("sys_role")
-public class SysRole implements Serializable {
+@TableName("sys_dictionary")
+public class SysDictionary implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId("id")
+    private Integer id;
 
     @TableField("name")
     private String name;
 
-    @TableField("code")
-    private String code;
-
-    @TableField("sort")
-    private Integer sort;
-
-    @TableField("permissions")
-    private String permissions;
-
-    @TableField("data_scope")
-    private String dataScope;
+    @TableField("value")
+    private String value;
 
     @TableField("status")
     private String status;
@@ -59,11 +48,11 @@ public class SysRole implements Serializable {
     private String remark;
 
 
-    public Long getId() {
+    public Integer getId() {
     return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
     this.id = id;
     }
 
@@ -75,36 +64,12 @@ public class SysRole implements Serializable {
     this.name = name;
     }
 
-    public String getCode() {
-    return code;
+    public String getValue() {
+    return value;
     }
 
-    public void setCode(String code) {
-    this.code = code;
-    }
-
-    public Integer getSort() {
-    return sort;
-    }
-
-    public void setSort(Integer sort) {
-    this.sort = sort;
-    }
-
-    public String getPermissions() {
-    return permissions;
-    }
-
-    public void setPermissions(String permissions) {
-    this.permissions = permissions;
-    }
-
-    public String getDataScope() {
-    return dataScope;
-    }
-
-    public void setDataScope(String dataScope) {
-    this.dataScope = dataScope;
+    public void setValue(String value) {
+    this.value = value;
     }
 
     public String getStatus() {
@@ -155,21 +120,35 @@ public class SysRole implements Serializable {
     this.remark = remark;
     }
 
+
+
+    public SysDictionary(Integer id,String name,String value,String status,String createBy,Date createTime,String updateBy,Date updateTime,String remark){
+        this.id = id;
+        this.name = name;
+        this.value = value;
+        this.status = status;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
+    public SysDictionary(){
+    }
+
     @Override
     public String toString() {
-    return "SysRole{" +
-            "id = " + id +
-            ", name = " + name +
-            ", code = " + code +
-            ", sort = " + sort +
-            ", permissions = " + permissions +
-            ", dataScope = " + dataScope +
-            ", status = " + status +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
+        return "SysDictionary{" +
+                "id = " + id +
+                ", name = " + name +
+                ", value = " + value +
+                ", status = " + status +
+                ", createBy = " + createBy +
+                ", createTime = " + createTime +
+                ", updateBy = " + updateBy +
+                ", updateTime = " + updateTime +
+                ", remark = " + remark +
+        "}";
     }
 }

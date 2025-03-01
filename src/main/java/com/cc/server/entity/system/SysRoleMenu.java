@@ -1,4 +1,4 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 
@@ -12,9 +12,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
 @TableName("sys_role_menu")
 public class SysRoleMenu implements Serializable {
 
@@ -55,12 +54,23 @@ public class SysRoleMenu implements Serializable {
     this.menuId = menuId;
     }
 
+
+
+    public SysRoleMenu(Long id,Long roleId,Long menuId){
+        this.id = id;
+        this.roleId = roleId;
+        this.menuId = menuId;
+    }
+
+    public SysRoleMenu(){
+    }
+
     @Override
     public String toString() {
-    return "SysRoleMenu{" +
-            "id = " + id +
-            ", roleId = " + roleId +
-            ", menuId = " + menuId +
-    "}";
+        return "SysRoleMenu{" +
+                "id = " + id +
+                ", roleId = " + roleId +
+                ", menuId = " + menuId +
+        "}";
     }
 }

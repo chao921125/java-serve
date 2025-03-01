@@ -1,10 +1,12 @@
 package com.cc.server.service.system.impl;
 
-import com.cc.server.model.system.entity.SysRole;
-import com.cc.server.mapper.system.SysRoleMapper;
-import com.cc.server.service.system.SysRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cc.server.entity.system.SysRole;
+import com.cc.server.mapper.system.SysRoleMapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.cc.server.service.system.SysRoleService;
 
 import java.util.List;
 
@@ -14,13 +16,51 @@ import java.util.List;
  * </p>
  *
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
+  @Autowired
+  private SysRoleMapper sysRoleMapper;
 
-    @Override
-    public List<SysRole> getRoleAll() {
-        return List.of();
-    }
+ /**
+ *  查询表sys_role所有信息
+ */
+ @Override
+ public List<SysRole> selectAllSysRole() { return sysRoleMapper.selectAllSysRole();}
+
+   /**
+   *  根据主键id查询表sys_role信息
+   *  @param id
+   */
+   @Override
+   public SysRole selectSysRoleById(@Param("id") Long id) { return sysRoleMapper.selectSysRoleById(id);}
+
+ /**
+ *  根据条件查询表sys_role信息
+ *  @param sysRole
+ */
+ @Override
+ public List<SysRole> selectSysRoleByCondition(SysRole sysRole) { return sysRoleMapper.selectSysRoleByCondition(sysRole);}
+
+   /**
+   *  根据主键id查询表sys_role信息
+   *  @param id
+   */
+   @Override
+   public Integer deleteSysRoleById(@Param("id") Long id) { return sysRoleMapper.deleteSysRoleById(id);}
+
+   /**
+   *  根据主键id更新表sys_role信息
+   *  @param sysRole
+   */
+   @Override
+   public Integer updateSysRoleById(SysRole sysRole) { return sysRoleMapper.updateSysRoleById(sysRole);}
+
+   /**
+   *  新增表sys_role信息
+   *  @param sysRole
+   */
+   @Override
+   public Integer insertSysRole(SysRole sysRole) { return sysRoleMapper.insertSysRole(sysRole);}
 }

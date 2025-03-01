@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysUserRoleMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserRoleMap" type="entity.SysUserRole">
+    <resultMap id="SysUserRoleMap" type="com.cc.server.entity.system.SysUserRole">
             <id column="id" property="id" />
             <result column="user_id" property="userId" />
             <result column="role_id" property="roleId" />
@@ -46,7 +46,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_user_role信息 -->
-    <select id="selectSysUserRoleByid" resultMap="SysUserRoleMap">
+    <select id="selectSysUserRoleById" resultMap="SysUserRoleMap">
         SELECT
         <include refid="SysUserRoleList"/>
         FROM sys_user_role
@@ -76,7 +76,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_user_role信息 -->
-    <update id="updateSysUserRoleByid" parameterType="entity.SysUserRole">
+    <update id="updateSysUserRoleById" parameterType="com.cc.server.entity.system.SysUserRole">
         UPDATE sys_user_role
         <set>
             <include refid="SysUserRoleSet"/>
@@ -86,7 +86,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_user_role信息：慎用！！！ -->
-    <delete id="deleteSysUserRoleByid">
+    <delete id="deleteSysUserRoleById">
         DELETE FROM
         sys_user_role
         WHERE id=#{id}

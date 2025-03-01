@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysPostMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysPostMap" type="entity.SysPost">
+    <resultMap id="SysPostMap" type="com.cc.server.entity.system.SysPost">
             <id column="id" property="id" />
             <result column="code" property="code" />
             <result column="name" property="name" />
@@ -95,7 +95,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_post信息 -->
-    <select id="selectSysPostByid" resultMap="SysPostMap">
+    <select id="selectSysPostById" resultMap="SysPostMap">
         SELECT
         <include refid="SysPostList"/>
         FROM sys_post
@@ -139,7 +139,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_post信息 -->
-    <update id="updateSysPostByid" parameterType="entity.SysPost">
+    <update id="updateSysPostById" parameterType="com.cc.server.entity.system.SysPost">
         UPDATE sys_post
         <set>
             <include refid="SysPostSet"/>
@@ -149,7 +149,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_post信息：慎用！！！ -->
-    <delete id="deleteSysPostByid">
+    <delete id="deleteSysPostById">
         DELETE FROM
         sys_post
         WHERE id=#{id}

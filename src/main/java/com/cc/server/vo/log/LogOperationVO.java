@@ -1,4 +1,4 @@
-package com.cc.server.model.log.vo;
+package com.cc.server.vo.log;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 
 @Schema(name = "LogOperationVO对象", description = "")

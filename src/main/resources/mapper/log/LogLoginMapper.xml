@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.LogLoginMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="LogLoginMap" type="entity.LogLogin">
+    <resultMap id="LogLoginMap" type="com.cc.server.entity.log.LogLogin">
             <id column="id" property="id" />
             <result column="user_id" property="userId" />
             <result column="user_name" property="userName" />
@@ -88,7 +88,7 @@
     </select>
 
     <!-- 根据主键id查询表log_login信息 -->
-    <select id="selectLogLoginByid" resultMap="LogLoginMap">
+    <select id="selectLogLoginById" resultMap="LogLoginMap">
         SELECT
         <include refid="LogLoginList"/>
         FROM log_login
@@ -130,7 +130,7 @@
     </insert>
 
     <!-- 根据主键id更新表log_login信息 -->
-    <update id="updateLogLoginByid" parameterType="entity.LogLogin">
+    <update id="updateLogLoginById" parameterType="com.cc.server.entity.log.LogLogin">
         UPDATE log_login
         <set>
             <include refid="LogLoginSet"/>
@@ -140,7 +140,7 @@
     </update>
 
     <!-- 根据主键id删除表log_login信息：慎用！！！ -->
-    <delete id="deleteLogLoginByid">
+    <delete id="deleteLogLoginById">
         DELETE FROM
         log_login
         WHERE id=#{id}

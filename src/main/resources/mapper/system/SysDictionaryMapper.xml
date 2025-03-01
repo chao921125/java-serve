@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysDictionaryMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysDictionaryMap" type="entity.SysDictionary">
+    <resultMap id="SysDictionaryMap" type="com.cc.server.entity.system.SysDictionary">
             <id column="id" property="id" />
             <result column="name" property="name" />
             <result column="value" property="value" />
@@ -88,7 +88,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_dictionary信息 -->
-    <select id="selectSysDictionaryByid" resultMap="SysDictionaryMap">
+    <select id="selectSysDictionaryById" resultMap="SysDictionaryMap">
         SELECT
         <include refid="SysDictionaryList"/>
         FROM sys_dictionary
@@ -130,7 +130,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_dictionary信息 -->
-    <update id="updateSysDictionaryByid" parameterType="entity.SysDictionary">
+    <update id="updateSysDictionaryById" parameterType="com.cc.server.entity.system.SysDictionary">
         UPDATE sys_dictionary
         <set>
             <include refid="SysDictionarySet"/>
@@ -140,7 +140,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_dictionary信息：慎用！！！ -->
-    <delete id="deleteSysDictionaryByid">
+    <delete id="deleteSysDictionaryById">
         DELETE FROM
         sys_dictionary
         WHERE id=#{id}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysRoleMenuMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysRoleMenuMap" type="entity.SysRoleMenu">
+    <resultMap id="SysRoleMenuMap" type="com.cc.server.entity.system.SysRoleMenu">
             <id column="id" property="id" />
             <result column="role_id" property="roleId" />
             <result column="menu_id" property="menuId" />
@@ -46,7 +46,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_role_menu信息 -->
-    <select id="selectSysRoleMenuByid" resultMap="SysRoleMenuMap">
+    <select id="selectSysRoleMenuById" resultMap="SysRoleMenuMap">
         SELECT
         <include refid="SysRoleMenuList"/>
         FROM sys_role_menu
@@ -76,7 +76,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_role_menu信息 -->
-    <update id="updateSysRoleMenuByid" parameterType="entity.SysRoleMenu">
+    <update id="updateSysRoleMenuById" parameterType="com.cc.server.entity.system.SysRoleMenu">
         UPDATE sys_role_menu
         <set>
             <include refid="SysRoleMenuSet"/>
@@ -86,7 +86,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_role_menu信息：慎用！！！ -->
-    <delete id="deleteSysRoleMenuByid">
+    <delete id="deleteSysRoleMenuById">
         DELETE FROM
         sys_role_menu
         WHERE id=#{id}

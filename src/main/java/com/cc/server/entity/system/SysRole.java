@@ -1,4 +1,4 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,15 +9,14 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * sys_department 部门表
+ * sys_role 角色表
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
-@TableName("sys_department")
-public class SysDepartment implements Serializable {
+@TableName("sys_role")
+public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,26 +24,20 @@ public class SysDepartment implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("parent_id")
-    private Long parentId;
-
-    @TableField("ancestors")
-    private String ancestors;
-
     @TableField("name")
     private String name;
+
+    @TableField("code")
+    private String code;
 
     @TableField("sort")
     private Integer sort;
 
-    @TableField("leader")
-    private String leader;
+    @TableField("permissions")
+    private String permissions;
 
-    @TableField("phone")
-    private String phone;
-
-    @TableField("email")
-    private String email;
+    @TableField("data_scope")
+    private String dataScope;
 
     @TableField("status")
     private String status;
@@ -73,28 +66,20 @@ public class SysDepartment implements Serializable {
     this.id = id;
     }
 
-    public Long getParentId() {
-    return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-    this.parentId = parentId;
-    }
-
-    public String getAncestors() {
-    return ancestors;
-    }
-
-    public void setAncestors(String ancestors) {
-    this.ancestors = ancestors;
-    }
-
     public String getName() {
     return name;
     }
 
     public void setName(String name) {
     this.name = name;
+    }
+
+    public String getCode() {
+    return code;
+    }
+
+    public void setCode(String code) {
+    this.code = code;
     }
 
     public Integer getSort() {
@@ -105,28 +90,20 @@ public class SysDepartment implements Serializable {
     this.sort = sort;
     }
 
-    public String getLeader() {
-    return leader;
+    public String getPermissions() {
+    return permissions;
     }
 
-    public void setLeader(String leader) {
-    this.leader = leader;
+    public void setPermissions(String permissions) {
+    this.permissions = permissions;
     }
 
-    public String getPhone() {
-    return phone;
+    public String getDataScope() {
+    return dataScope;
     }
 
-    public void setPhone(String phone) {
-    this.phone = phone;
-    }
-
-    public String getEmail() {
-    return email;
-    }
-
-    public void setEmail(String email) {
-    this.email = email;
+    public void setDataScope(String dataScope) {
+    this.dataScope = dataScope;
     }
 
     public String getStatus() {
@@ -177,23 +154,41 @@ public class SysDepartment implements Serializable {
     this.remark = remark;
     }
 
+
+
+    public SysRole(Long id,String name,String code,Integer sort,String permissions,String dataScope,String status,String createBy,Date createTime,String updateBy,Date updateTime,String remark){
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.sort = sort;
+        this.permissions = permissions;
+        this.dataScope = dataScope;
+        this.status = status;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
+    public SysRole(){
+    }
+
     @Override
     public String toString() {
-    return "SysDepartment{" +
-            "id = " + id +
-            ", parentId = " + parentId +
-            ", ancestors = " + ancestors +
-            ", name = " + name +
-            ", sort = " + sort +
-            ", leader = " + leader +
-            ", phone = " + phone +
-            ", email = " + email +
-            ", status = " + status +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
+        return "SysRole{" +
+                "id = " + id +
+                ", name = " + name +
+                ", code = " + code +
+                ", sort = " + sort +
+                ", permissions = " + permissions +
+                ", dataScope = " + dataScope +
+                ", status = " + status +
+                ", createBy = " + createBy +
+                ", createTime = " + createTime +
+                ", updateBy = " + updateBy +
+                ", updateTime = " + updateTime +
+                ", remark = " + remark +
+        "}";
     }
 }

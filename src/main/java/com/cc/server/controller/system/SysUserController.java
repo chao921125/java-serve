@@ -1,6 +1,6 @@
 package com.cc.server.controller.system;
 
-import com.cc.server.model.system.entity.SysUser;
+import com.cc.server.entity.system.SysUser;
 import com.cc.server.service.system.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,7 +28,9 @@ public class SysUserController {
     @Operation(summary = "获取用户信息", description = "用户名、邮箱、手机号，密码登录")
     @GetMapping("/user")
     public SysUser getUserByNameEmailPhone(@RequestParam String username) {
-        return userService.getUserByNameEmailPhone(username);
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName(username);
+        return userService.getUserByNameEmailPhone(sysUser);
     }
     @Operation(summary = "用户登录", description = "用户名、邮箱、手机号，密码登录")
     @Parameter(name = "username", description = "用户名", required = true)
@@ -36,6 +38,9 @@ public class SysUserController {
     @ApiResponse(responseCode = "200", description = "登录成功")
     @PostMapping("/login")
     public SysUser login(@RequestParam String username, @RequestParam String password) {
-        return userService.loginUser(username, password);
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName(username);
+        sysUser.setPassword(password);
+        return userService.getUserByNameEmailPhone(sysUser);
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysUserMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserMap" type="entity.SysUser">
+    <resultMap id="SysUserMap" type="com.cc.server.entity.system.SysUser">
             <id column="id" property="id" />
             <result column="user_name" property="userName" />
             <result column="password" property="password" />
@@ -179,7 +179,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_user信息 -->
-    <select id="selectSysUserByid" resultMap="SysUserMap">
+    <select id="selectSysUserById" resultMap="SysUserMap">
         SELECT
         <include refid="SysUserList"/>
         FROM sys_user
@@ -247,7 +247,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_user信息 -->
-    <update id="updateSysUserByid" parameterType="entity.SysUser">
+    <update id="updateSysUserById" parameterType="com.cc.server.entity.system.SysUser">
         UPDATE sys_user
         <set>
             <include refid="SysUserSet"/>
@@ -257,9 +257,28 @@
     </update>
 
     <!-- 根据主键id删除表sys_user信息：慎用！！！ -->
-    <delete id="deleteSysUserByid">
+    <delete id="deleteSysUserById">
         DELETE FROM
         sys_user
         WHERE id=#{id}
     </delete>
+
+    <select id="loginSysUser" resultMap="SysUserMap">
+        SELECT
+        <include refid="SysUserList" />
+        FROM users
+        WHERE 1=1
+        <if test="userName != null and userName != ''">
+            AND user_name = #{userName}
+        </if>
+        <if test="email != null and email != ''">
+            AND email = #{email}
+        </if>
+        <if test="phone != null and phone != ''">
+            AND phone = #{phone}
+        </if>
+        <if test="password != null and password != ''">
+            AND password = #{password}
+        </if>
+    </select>
 </mapper>

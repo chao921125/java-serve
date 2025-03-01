@@ -1,4 +1,4 @@
-package com.cc.server.model.system.vo;
+package com.cc.server.vo.system;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,29 +8,44 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
- * sys_dictionary 
+ * sys_department 部门表
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 
-@Schema(name = "SysDictionaryVO对象", description = "")
-public class SysDictionaryVO implements Serializable {
+@Schema(name = "SysDepartmentVO对象", description = "部门表")
+public class SysDepartmentVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "主键")
-    private Integer id;
+    @Schema(description = "部门 id")
+    private Long id;
 
-    @Schema(description = "字典名称")
+    @Schema(description = "父级id")
+    private Long parentId;
+
+    @Schema(description = "祖级，树结构")
+    private String ancestors;
+
+    @Schema(description = "部门名称")
     private String name;
 
-    @Schema(description = "字典值")
-    private String value;
+    @Schema(description = "排序")
+    private Integer sort;
 
-    @Schema(description = "状态（0正常 1 停用）")
+    @Schema(description = "负责人")
+    private String leader;
+
+    @Schema(description = "手机号")
+    private String phone;
+
+    @Schema(description = "邮箱")
+    private String email;
+
+    @Schema(description = "状态（0正常 1停用 9删除）")
     private String status;
 
     @Schema(description = "创建人")
@@ -49,12 +64,28 @@ public class SysDictionaryVO implements Serializable {
     private String remark;
 
 
-    public Integer getId() {
+    public Long getId() {
     return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
     this.id = id;
+    }
+
+    public Long getParentId() {
+    return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+    this.parentId = parentId;
+    }
+
+    public String getAncestors() {
+    return ancestors;
+    }
+
+    public void setAncestors(String ancestors) {
+    this.ancestors = ancestors;
     }
 
     public String getName() {
@@ -65,12 +96,36 @@ public class SysDictionaryVO implements Serializable {
     this.name = name;
     }
 
-    public String getValue() {
-    return value;
+    public Integer getSort() {
+    return sort;
     }
 
-    public void setValue(String value) {
-    this.value = value;
+    public void setSort(Integer sort) {
+    this.sort = sort;
+    }
+
+    public String getLeader() {
+    return leader;
+    }
+
+    public void setLeader(String leader) {
+    this.leader = leader;
+    }
+
+    public String getPhone() {
+    return phone;
+    }
+
+    public void setPhone(String phone) {
+    this.phone = phone;
+    }
+
+    public String getEmail() {
+    return email;
+    }
+
+    public void setEmail(String email) {
+    this.email = email;
     }
 
     public String getStatus() {
@@ -123,10 +178,15 @@ public class SysDictionaryVO implements Serializable {
 
     @Override
     public String toString() {
-    return "SysDictionaryVO{" +
+    return "SysDepartmentVO{" +
             "id = " + id +
+            ", parentId = " + parentId +
+            ", ancestors = " + ancestors +
             ", name = " + name +
-            ", value = " + value +
+            ", sort = " + sort +
+            ", leader = " + leader +
+            ", phone = " + phone +
+            ", email = " + email +
             ", status = " + status +
             ", createBy = " + createBy +
             ", createTime = " + createTime +

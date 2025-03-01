@@ -1,4 +1,4 @@
-package com.cc.server.model.log.entity;
+package com.cc.server.entity.log;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,9 +13,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:07
+ * @since 2025-03-01 20:26:58
  */
-
 @TableName("log_login")
 public class LogLogin implements Serializable {
 
@@ -122,18 +121,35 @@ public class LogLogin implements Serializable {
     this.status = status;
     }
 
+
+
+    public LogLogin(Long id,String userId,String userName,String ip,String ipReal,Date loginTime,String address,String system,String status){
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.ip = ip;
+        this.ipReal = ipReal;
+        this.loginTime = loginTime;
+        this.address = address;
+        this.system = system;
+        this.status = status;
+    }
+
+    public LogLogin(){
+    }
+
     @Override
     public String toString() {
-    return "LogLogin{" +
-            "id = " + id +
-            ", userId = " + userId +
-            ", userName = " + userName +
-            ", ip = " + ip +
-            ", ipReal = " + ipReal +
-            ", loginTime = " + loginTime +
-            ", address = " + address +
-            ", system = " + system +
-            ", status = " + status +
-    "}";
+        return "LogLogin{" +
+                "id = " + id +
+                ", userId = " + userId +
+                ", userName = " + userName +
+                ", ip = " + ip +
+                ", ipReal = " + ipReal +
+                ", loginTime = " + loginTime +
+                ", address = " + address +
+                ", system = " + system +
+                ", status = " + status +
+        "}";
     }
 }

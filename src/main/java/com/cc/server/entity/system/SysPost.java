@@ -1,4 +1,4 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,9 +13,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
 @TableName("sys_post")
 public class SysPost implements Serializable {
 
@@ -133,19 +132,37 @@ public class SysPost implements Serializable {
     this.remark = remark;
     }
 
+
+
+    public SysPost(Long id,String code,String name,Integer sort,String status,String createBy,Date createTime,String updateBy,Date updateTime,String remark){
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.sort = sort;
+        this.status = status;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
+    public SysPost(){
+    }
+
     @Override
     public String toString() {
-    return "SysPost{" +
-            "id = " + id +
-            ", code = " + code +
-            ", name = " + name +
-            ", sort = " + sort +
-            ", status = " + status +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
+        return "SysPost{" +
+                "id = " + id +
+                ", code = " + code +
+                ", name = " + name +
+                ", sort = " + sort +
+                ", status = " + status +
+                ", createBy = " + createBy +
+                ", createTime = " + createTime +
+                ", updateBy = " + updateBy +
+                ", updateTime = " + updateTime +
+                ", remark = " + remark +
+        "}";
     }
 }

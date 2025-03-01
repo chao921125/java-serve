@@ -21,8 +21,8 @@ public class RunGen {
         final String DATA_SOURCE = "jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
         final String DATA_NAME = "root";
 //        final String DATA_PWD = "Admin123.";
-//        final String DATA_PWD = "root123456";
-        final String DATA_PWD = "root1234";
+        final String DATA_PWD = "Root123.";
+//        final String DATA_PWD = "root1234";
 
         final String TABLE_NAME = "all";
         final String TABLE_NAME_PREFIX = "";

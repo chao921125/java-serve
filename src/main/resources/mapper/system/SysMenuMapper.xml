@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysMenuMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysMenuMap" type="entity.SysMenu">
+    <resultMap id="SysMenuMap" type="com.cc.server.entity.system.SysMenu">
             <id column="id" property="id" />
             <result column="parent_id" property="parentId" />
             <result column="name" property="name" />
@@ -172,7 +172,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_menu信息 -->
-    <select id="selectSysMenuByid" resultMap="SysMenuMap">
+    <select id="selectSysMenuById" resultMap="SysMenuMap">
         SELECT
         <include refid="SysMenuList"/>
         FROM sys_menu
@@ -238,7 +238,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_menu信息 -->
-    <update id="updateSysMenuByid" parameterType="entity.SysMenu">
+    <update id="updateSysMenuById" parameterType="com.cc.server.entity.system.SysMenu">
         UPDATE sys_menu
         <set>
             <include refid="SysMenuSet"/>
@@ -248,7 +248,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_menu信息：慎用！！！ -->
-    <delete id="deleteSysMenuByid">
+    <delete id="deleteSysMenuById">
         DELETE FROM
         sys_menu
         WHERE id=#{id}

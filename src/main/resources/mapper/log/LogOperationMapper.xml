@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.LogOperationMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="LogOperationMap" type="entity.LogOperation">
+    <resultMap id="LogOperationMap" type="com.cc.server.entity.log.LogOperation">
             <id column="id" property="id" />
             <result column="user_id" property="userId" />
             <result column="user_name" property="userName" />
@@ -130,7 +130,7 @@
     </select>
 
     <!-- 根据主键id查询表log_operation信息 -->
-    <select id="selectLogOperationByid" resultMap="LogOperationMap">
+    <select id="selectLogOperationById" resultMap="LogOperationMap">
         SELECT
         <include refid="LogOperationList"/>
         FROM log_operation
@@ -184,7 +184,7 @@
     </insert>
 
     <!-- 根据主键id更新表log_operation信息 -->
-    <update id="updateLogOperationByid" parameterType="entity.LogOperation">
+    <update id="updateLogOperationById" parameterType="com.cc.server.entity.log.LogOperation">
         UPDATE log_operation
         <set>
             <include refid="LogOperationSet"/>
@@ -194,7 +194,7 @@
     </update>
 
     <!-- 根据主键id删除表log_operation信息：慎用！！！ -->
-    <delete id="deleteLogOperationByid">
+    <delete id="deleteLogOperationById">
         DELETE FROM
         log_operation
         WHERE id=#{id}

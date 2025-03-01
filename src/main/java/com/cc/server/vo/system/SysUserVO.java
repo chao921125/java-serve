@@ -1,11 +1,10 @@
-package com.cc.server.model.system.entity;
+package com.cc.server.vo.system;
 
 import java.io.Serializable;
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>
@@ -13,79 +12,79 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 
-@TableName("sys_user")
-public class SysUser implements Serializable {
+@Schema(name = "SysUserVO对象", description = "用户表")
+public class SysUserVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @Schema(description = "用户 id")
     private Long id;
 
-    @TableField("user_name")
+    @Schema(description = "用户登陆名")
     private String userName;
 
-    @TableField("password")
+    @Schema(description = "登陆密码")
     private String password;
 
-    @TableField("nick_name")
+    @Schema(description = "昵称")
     private String nickName;
 
-    @TableField("real_name")
+    @Schema(description = "真实姓名")
     private String realName;
 
-    @TableField("avatar")
+    @Schema(description = "头像")
     private String avatar;
 
-    @TableField("email")
+    @Schema(description = "邮箱")
     private String email;
 
-    @TableField("phone")
+    @Schema(description = "手机号")
     private String phone;
 
-    @TableField("sex")
+    @Schema(description = "性别（0女 1男 2未知）")
     private String sex;
 
-    @TableField("age")
+    @Schema(description = "年龄")
     private String age;
 
-    @TableField("address")
+    @Schema(description = "地址")
     private String address;
 
-    @TableField("status")
+    @Schema(description = "状态（0正常 1停用 9删除）")
     private String status;
 
-    @TableField("login_ip")
+    @Schema(description = "最后登陆ip")
     private String loginIp;
 
-    @TableField("login_address")
+    @Schema(description = "最后登陆地址")
     private String loginAddress;
 
-    @TableField("login_info")
+    @Schema(description = "最后登陆设备")
     private String loginInfo;
 
-    @TableField("login_time")
+    @Schema(description = "最后登陆时间")
     private Date loginTime;
 
-    @TableField("pwd_update_time")
+    @Schema(description = "密码最后修改时间")
     private Date pwdUpdateTime;
 
-    @TableField("create_by")
+    @Schema(description = "创建人")
     private String createBy;
 
-    @TableField("create_time")
+    @Schema(description = "创建时间")
     private Date createTime;
 
-    @TableField("update_by")
+    @Schema(description = "修改人")
     private String updateBy;
 
-    @TableField("update_time")
+    @Schema(description = "修改时间")
     private Date updateTime;
 
-    @TableField("remark")
+    @Schema(description = "备注")
     private String remark;
 
 
@@ -267,7 +266,7 @@ public class SysUser implements Serializable {
 
     @Override
     public String toString() {
-    return "SysUser{" +
+    return "SysUserVO{" +
             "id = " + id +
             ", userName = " + userName +
             ", password = " + password +

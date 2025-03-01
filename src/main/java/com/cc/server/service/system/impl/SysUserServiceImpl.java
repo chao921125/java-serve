@@ -1,12 +1,14 @@
 package com.cc.server.service.system.impl;
 
-import com.cc.server.model.system.entity.SysUser;
-import com.cc.server.mapper.system.SysUserMapper;
-import com.cc.server.service.system.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import jakarta.annotation.Resource;
+import com.cc.server.entity.system.SysUser;
+import com.cc.server.mapper.system.SysUserMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.cc.server.service.system.SysUserService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,29 +16,60 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
-    @Resource
-    private SysUserMapper userMapper;
+  @Autowired
+  private SysUserMapper sysUserMapper;
 
-    @Override
-    public SysUser getUserByNameEmailPhone(String username) {
-        SysUser user = userMapper.selectByNameEmailPhone(username);
-        System.out.println(user);
-        if (user == null) {
-            return null;
-//            throw new UsernameNotFoundException("用户不存在");
-        } else {
-            // 这里可以同时加载用户角色、权限信息，构造 SecurityUser
-//        return new SecurityUser(user);
-            return user;
-        }
-    }
+ /**
+ *  查询表sys_user所有信息
+ */
+ @Override
+ public List<SysUser> selectAllSysUser() { return sysUserMapper.selectAllSysUser();}
 
+   /**
+   *  根据主键id查询表sys_user信息
+   *  @param id
+   */
+   @Override
+   public SysUser selectSysUserById(@Param("id") Long id) { return sysUserMapper.selectSysUserById(id);}
+
+ /**
+ *  根据条件查询表sys_user信息
+ *  @param sysUser
+ */
+ @Override
+ public List<SysUser> selectSysUserByCondition(SysUser sysUser) { return sysUserMapper.selectSysUserByCondition(sysUser);}
+
+   /**
+   *  根据主键id查询表sys_user信息
+   *  @param id
+   */
+   @Override
+   public Integer deleteSysUserById(@Param("id") Long id) { return sysUserMapper.deleteSysUserById(id);}
+
+   /**
+   *  根据主键id更新表sys_user信息
+   *  @param sysUser
+   */
+   @Override
+   public Integer updateSysUserById(SysUser sysUser) { return sysUserMapper.updateSysUserById(sysUser);}
+
+   /**
+   *  新增表sys_user信息
+   *  @param sysUser
+   */
+   @Override
+   public Integer insertSysUser(SysUser sysUser) { return sysUserMapper.insertSysUser(sysUser);}
+
+    /**
+     *  新增表sys_user信息
+     *  @param sysUser
+     */
     @Override
-    public SysUser loginUser(String username, String password) {
-        return null;
+    public SysUser getUserByNameEmailPhone(SysUser sysUser) {
+        return sysUserMapper.loginSysUser(sysUser);
     }
 }

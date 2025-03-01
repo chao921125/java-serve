@@ -1,10 +1,11 @@
-package com.cc.server.model.system.vo;
+package com.cc.server.entity.system;
 
 import java.io.Serializable;
 import java.util.Date;
-
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
@@ -12,79 +13,78 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
-@Schema(name = "SysUserVO对象", description = "用户表")
-public class SysUserVO implements Serializable {
+@TableName("sys_user")
+public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "用户 id")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "用户登陆名")
+    @TableField("user_name")
     private String userName;
 
-    @Schema(description = "登陆密码")
+    @TableField("password")
     private String password;
 
-    @Schema(description = "昵称")
+    @TableField("nick_name")
     private String nickName;
 
-    @Schema(description = "真实姓名")
+    @TableField("real_name")
     private String realName;
 
-    @Schema(description = "头像")
+    @TableField("avatar")
     private String avatar;
 
-    @Schema(description = "邮箱")
+    @TableField("email")
     private String email;
 
-    @Schema(description = "手机号")
+    @TableField("phone")
     private String phone;
 
-    @Schema(description = "性别（0女 1男 2未知）")
+    @TableField("sex")
     private String sex;
 
-    @Schema(description = "年龄")
+    @TableField("age")
     private String age;
 
-    @Schema(description = "地址")
+    @TableField("address")
     private String address;
 
-    @Schema(description = "状态（0正常 1停用 9删除）")
+    @TableField("status")
     private String status;
 
-    @Schema(description = "最后登陆ip")
+    @TableField("login_ip")
     private String loginIp;
 
-    @Schema(description = "最后登陆地址")
+    @TableField("login_address")
     private String loginAddress;
 
-    @Schema(description = "最后登陆设备")
+    @TableField("login_info")
     private String loginInfo;
 
-    @Schema(description = "最后登陆时间")
+    @TableField("login_time")
     private Date loginTime;
 
-    @Schema(description = "密码最后修改时间")
+    @TableField("pwd_update_time")
     private Date pwdUpdateTime;
 
-    @Schema(description = "创建人")
+    @TableField("create_by")
     private String createBy;
 
-    @Schema(description = "创建时间")
+    @TableField("create_time")
     private Date createTime;
 
-    @Schema(description = "修改人")
+    @TableField("update_by")
     private String updateBy;
 
-    @Schema(description = "修改时间")
+    @TableField("update_time")
     private Date updateTime;
 
-    @Schema(description = "备注")
+    @TableField("remark")
     private String remark;
 
 
@@ -264,31 +264,61 @@ public class SysUserVO implements Serializable {
     this.remark = remark;
     }
 
+
+
+    public SysUser(Long id,String userName,String password,String nickName,String realName,String avatar,String email,String phone,String sex,String age,String address,String status,String loginIp,String loginAddress,String loginInfo,Date loginTime,Date pwdUpdateTime,String createBy,Date createTime,String updateBy,Date updateTime,String remark){
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.nickName = nickName;
+        this.realName = realName;
+        this.avatar = avatar;
+        this.email = email;
+        this.phone = phone;
+        this.sex = sex;
+        this.age = age;
+        this.address = address;
+        this.status = status;
+        this.loginIp = loginIp;
+        this.loginAddress = loginAddress;
+        this.loginInfo = loginInfo;
+        this.loginTime = loginTime;
+        this.pwdUpdateTime = pwdUpdateTime;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
+    public SysUser(){
+    }
+
     @Override
     public String toString() {
-    return "SysUserVO{" +
-            "id = " + id +
-            ", userName = " + userName +
-            ", password = " + password +
-            ", nickName = " + nickName +
-            ", realName = " + realName +
-            ", avatar = " + avatar +
-            ", email = " + email +
-            ", phone = " + phone +
-            ", sex = " + sex +
-            ", age = " + age +
-            ", address = " + address +
-            ", status = " + status +
-            ", loginIp = " + loginIp +
-            ", loginAddress = " + loginAddress +
-            ", loginInfo = " + loginInfo +
-            ", loginTime = " + loginTime +
-            ", pwdUpdateTime = " + pwdUpdateTime +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
+        return "SysUser{" +
+                "id = " + id +
+                ", userName = " + userName +
+                ", password = " + password +
+                ", nickName = " + nickName +
+                ", realName = " + realName +
+                ", avatar = " + avatar +
+                ", email = " + email +
+                ", phone = " + phone +
+                ", sex = " + sex +
+                ", age = " + age +
+                ", address = " + address +
+                ", status = " + status +
+                ", loginIp = " + loginIp +
+                ", loginAddress = " + loginAddress +
+                ", loginInfo = " + loginInfo +
+                ", loginTime = " + loginTime +
+                ", pwdUpdateTime = " + pwdUpdateTime +
+                ", createBy = " + createBy +
+                ", createTime = " + createTime +
+                ", updateBy = " + updateBy +
+                ", updateTime = " + updateTime +
+                ", remark = " + remark +
+        "}";
     }
 }

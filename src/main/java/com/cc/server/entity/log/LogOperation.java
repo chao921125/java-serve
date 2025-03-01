@@ -1,4 +1,4 @@
-package com.cc.server.model.log.entity;
+package com.cc.server.entity.log;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,9 +13,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  * 
  * @author cc
- * @since 2024-12-05 10:57:08
+ * @since 2025-03-01 20:26:58
  */
-
 @TableName("log_operation")
 public class LogOperation implements Serializable {
 
@@ -188,24 +187,47 @@ public class LogOperation implements Serializable {
     this.message = message;
     }
 
+
+
+    public LogOperation(Long id,String userId,String userName,String ip,String ipReal,Date operTime,String address,String system,String status,String type,String source,String url,String method,String methodType,String message){
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.ip = ip;
+        this.ipReal = ipReal;
+        this.operTime = operTime;
+        this.address = address;
+        this.system = system;
+        this.status = status;
+        this.type = type;
+        this.source = source;
+        this.url = url;
+        this.method = method;
+        this.methodType = methodType;
+        this.message = message;
+    }
+
+    public LogOperation(){
+    }
+
     @Override
     public String toString() {
-    return "LogOperation{" +
-            "id = " + id +
-            ", userId = " + userId +
-            ", userName = " + userName +
-            ", ip = " + ip +
-            ", ipReal = " + ipReal +
-            ", operTime = " + operTime +
-            ", address = " + address +
-            ", system = " + system +
-            ", status = " + status +
-            ", type = " + type +
-            ", source = " + source +
-            ", url = " + url +
-            ", method = " + method +
-            ", methodType = " + methodType +
-            ", message = " + message +
-    "}";
+        return "LogOperation{" +
+                "id = " + id +
+                ", userId = " + userId +
+                ", userName = " + userName +
+                ", ip = " + ip +
+                ", ipReal = " + ipReal +
+                ", operTime = " + operTime +
+                ", address = " + address +
+                ", system = " + system +
+                ", status = " + status +
+                ", type = " + type +
+                ", source = " + source +
+                ", url = " + url +
+                ", method = " + method +
+                ", methodType = " + methodType +
+                ", message = " + message +
+        "}";
     }
 }

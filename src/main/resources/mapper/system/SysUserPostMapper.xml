@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.SysUserPostMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserPostMap" type="entity.SysUserPost">
+    <resultMap id="SysUserPostMap" type="com.cc.server.entity.system.SysUserPost">
             <id column="id" property="id" />
             <result column="user_id" property="userId" />
             <result column="post_id" property="postId" />
@@ -46,7 +46,7 @@
     </select>
 
     <!-- 根据主键id查询表sys_user_post信息 -->
-    <select id="selectSysUserPostByid" resultMap="SysUserPostMap">
+    <select id="selectSysUserPostById" resultMap="SysUserPostMap">
         SELECT
         <include refid="SysUserPostList"/>
         FROM sys_user_post
@@ -76,7 +76,7 @@
     </insert>
 
     <!-- 根据主键id更新表sys_user_post信息 -->
-    <update id="updateSysUserPostByid" parameterType="entity.SysUserPost">
+    <update id="updateSysUserPostById" parameterType="com.cc.server.entity.system.SysUserPost">
         UPDATE sys_user_post
         <set>
             <include refid="SysUserPostSet"/>
@@ -86,7 +86,7 @@
     </update>
 
     <!-- 根据主键id删除表sys_user_post信息：慎用！！！ -->
-    <delete id="deleteSysUserPostByid">
+    <delete id="deleteSysUserPostById">
         DELETE FROM
         sys_user_post
         WHERE id=#{id}
