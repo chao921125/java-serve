@@ -96,7 +96,7 @@
     </select>
 
     <!-- 根据条件查询表sys_dictionary信息 -->
-    <select id="selectSysDictionaryBy" resultMap="SysDictionaryMap">
+    <select id="selectSysDictionaryByCondition" resultMap="SysDictionaryMap">
         SELECT
         <include refid="SysDictionaryList"/>
         FROM sys_dictionary

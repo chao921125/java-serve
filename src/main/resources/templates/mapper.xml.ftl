@@ -83,7 +83,7 @@
     </#list>
 
     <!-- 根据条件查询表${table.name}信息 -->
-    <select id="select${entity}By" resultMap="${entity}Map">
+    <select id="select${entity}ByCondition" resultMap="${entity}Map">
         SELECT
         <include refid="${entity}List"/>
         FROM ${table.name}

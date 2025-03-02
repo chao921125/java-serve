@@ -187,7 +187,7 @@
     </select>
 
     <!-- 根据条件查询表sys_user信息 -->
-    <select id="selectSysUserBy" resultMap="SysUserMap">
+    <select id="selectSysUserByCondition" resultMap="SysUserMap">
         SELECT
         <include refid="SysUserList"/>
         FROM sys_user
@@ -266,7 +266,7 @@
     <select id="loginSysUser" resultMap="SysUserMap">
         SELECT
         <include refid="SysUserList" />
-        FROM users
+        FROM sys_user
         WHERE 1=1
         <if test="userName != null and userName != ''">
             AND user_name = #{userName}

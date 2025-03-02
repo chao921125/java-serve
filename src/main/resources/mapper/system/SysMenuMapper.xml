@@ -180,7 +180,7 @@
     </select>
 
     <!-- 根据条件查询表sys_menu信息 -->
-    <select id="selectSysMenuBy" resultMap="SysMenuMap">
+    <select id="selectSysMenuByCondition" resultMap="SysMenuMap">
         SELECT
         <include refid="SysMenuList"/>
         FROM sys_menu

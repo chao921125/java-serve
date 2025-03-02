@@ -54,7 +54,7 @@
     </select>
 
     <!-- 根据条件查询表sys_user_post信息 -->
-    <select id="selectSysUserPostBy" resultMap="SysUserPostMap">
+    <select id="selectSysUserPostByCondition" resultMap="SysUserPostMap">
         SELECT
         <include refid="SysUserPostList"/>
         FROM sys_user_post

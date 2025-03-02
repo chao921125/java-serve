@@ -131,7 +131,7 @@
     </select>
 
     <!-- 根据条件查询表sys_department信息 -->
-    <select id="selectSysDepartmentBy" resultMap="SysDepartmentMap">
+    <select id="selectSysDepartmentByCondition" resultMap="SysDepartmentMap">
         SELECT
         <include refid="SysDepartmentList"/>
         FROM sys_department

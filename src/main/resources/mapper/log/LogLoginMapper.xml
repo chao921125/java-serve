@@ -96,7 +96,7 @@
     </select>
 
     <!-- 根据条件查询表log_login信息 -->
-    <select id="selectLogLoginBy" resultMap="LogLoginMap">
+    <select id="selectLogLoginByCondition" resultMap="LogLoginMap">
         SELECT
         <include refid="LogLoginList"/>
         FROM log_login

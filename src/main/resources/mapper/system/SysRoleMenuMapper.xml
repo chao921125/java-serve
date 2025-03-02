@@ -54,7 +54,7 @@
     </select>
 
     <!-- 根据条件查询表sys_role_menu信息 -->
-    <select id="selectSysRoleMenuBy" resultMap="SysRoleMenuMap">
+    <select id="selectSysRoleMenuByCondition" resultMap="SysRoleMenuMap">
         SELECT
         <include refid="SysRoleMenuList"/>
         FROM sys_role_menu

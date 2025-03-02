@@ -117,7 +117,7 @@
     </select>
 
     <!-- 根据条件查询表sys_role信息 -->
-    <select id="selectSysRoleBy" resultMap="SysRoleMap">
+    <select id="selectSysRoleByCondition" resultMap="SysRoleMap">
         SELECT
         <include refid="SysRoleList"/>
         FROM sys_role

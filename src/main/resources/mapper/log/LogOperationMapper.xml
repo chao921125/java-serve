@@ -138,7 +138,7 @@
     </select>
 
     <!-- 根据条件查询表log_operation信息 -->
-    <select id="selectLogOperationBy" resultMap="LogOperationMap">
+    <select id="selectLogOperationByCondition" resultMap="LogOperationMap">
         SELECT
         <include refid="LogOperationList"/>
         FROM log_operation

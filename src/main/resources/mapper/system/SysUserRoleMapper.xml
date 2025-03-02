@@ -54,7 +54,7 @@
     </select>
 
     <!-- 根据条件查询表sys_user_role信息 -->
-    <select id="selectSysUserRoleBy" resultMap="SysUserRoleMap">
+    <select id="selectSysUserRoleByCondition" resultMap="SysUserRoleMap">
         SELECT
         <include refid="SysUserRoleList"/>
         FROM sys_user_role

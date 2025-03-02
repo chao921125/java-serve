@@ -54,7 +54,7 @@
     </select>
 
     <!-- 根据条件查询表sys_user_department信息 -->
-    <select id="selectSysUserDepartmentBy" resultMap="SysUserDepartmentMap">
+    <select id="selectSysUserDepartmentByCondition" resultMap="SysUserDepartmentMap">
         SELECT
         <include refid="SysUserDepartmentList"/>
         FROM sys_user_department

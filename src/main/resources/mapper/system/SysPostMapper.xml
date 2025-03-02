@@ -103,7 +103,7 @@
     </select>
 
     <!-- 根据条件查询表sys_post信息 -->
-    <select id="selectSysPostBy" resultMap="SysPostMap">
+    <select id="selectSysPostByCondition" resultMap="SysPostMap">
         SELECT
         <include refid="SysPostList"/>
         FROM sys_post
