@@ -23,12 +23,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/sys-role")
 public class SysRoleController {
-    @Resource
-    private SysRoleService roleService;
+	@Resource
+	private SysRoleService roleService;
 
-    @Operation(summary = "获取角色列表", description = "角色")
-    @GetMapping("/list")
-    public List<SysRole> getRoleById() {
-        return roleService.selectAllSysRole();
-    }
+	@Operation(summary = "获取角色列表", description = "角色")
+	@GetMapping("/list")
+	public List<SysRole> getRoleById() {
+		return roleService.selectAllSysRole();
+	}
 }

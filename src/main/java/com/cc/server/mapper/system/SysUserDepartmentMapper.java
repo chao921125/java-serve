@@ -15,39 +15,44 @@ import java.util.List;
  * @since 2025-03-01 20:26:58
  */
 public interface SysUserDepartmentMapper extends BaseMapper<SysUserDepartment> {
-  /**
-  *  查询表sys_user_department所有信息
-  */
-  List<SysUserDepartment> selectAllSysUserDepartment();
+	/**
+	 * 查询表sys_user_department所有信息
+	 */
+	List<SysUserDepartment> selectAllSysUserDepartment();
 
-  /**
-  *  根据主键id查询表sys_user_department信息
-  *  @param id
-  */
-  SysUserDepartment selectSysUserDepartmentById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_user_department信息
+	 *
+	 * @param id
+	 */
+	SysUserDepartment selectSysUserDepartmentById(@Param("id") Long id);
 
-  /**
-  *  根据条件查询表sys_user_department信息
-  *  @param sysUserDepartment
-  */
-  List<SysUserDepartment> selectSysUserDepartmentByCondition(SysUserDepartment sysUserDepartment);
+	/**
+	 * 根据条件查询表sys_user_department信息
+	 *
+	 * @param sysUserDepartment
+	 */
+	List<SysUserDepartment> selectSysUserDepartmentByCondition(SysUserDepartment sysUserDepartment);
 
-  /**
-  *  根据主键id查询表sys_user_department信息
-  *  @param id
-  */
-  Integer deleteSysUserDepartmentById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_user_department信息
+	 *
+	 * @param id
+	 */
+	Integer deleteSysUserDepartmentById(@Param("id") Long id);
 
-  /**
-  *  根据主键id更新表sys_user_department信息
-  *  @param sysUserDepartment
-  */
-  Integer updateSysUserDepartmentById(SysUserDepartment sysUserDepartment);
+	/**
+	 * 根据主键id更新表sys_user_department信息
+	 *
+	 * @param sysUserDepartment
+	 */
+	Integer updateSysUserDepartmentById(SysUserDepartment sysUserDepartment);
 
-  /**
-  *  新增表sys_user_department信息
-  *  @param sysUserDepartment
-  */
-  Integer insertSysUserDepartment(SysUserDepartment sysUserDepartment);
+	/**
+	 * 新增表sys_user_department信息
+	 *
+	 * @param sysUserDepartment
+	 */
+	Integer insertSysUserDepartment(SysUserDepartment sysUserDepartment);
 
 }

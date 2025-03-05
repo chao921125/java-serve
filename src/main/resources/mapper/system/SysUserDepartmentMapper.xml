@@ -3,39 +3,41 @@
 <mapper namespace="com.cc.server.mapper.system.SysUserDepartmentMapper">
     <!-- 通用查询映射结果 -->
     <resultMap id="SysUserDepartmentMap" type="com.cc.server.entity.system.SysUserDepartment">
-            <id column="id" property="id" />
-            <result column="user_id" property="userId" />
-            <result column="department_id" property="departmentId" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="department_id" property="departmentId"/>
     </resultMap>
 
     <!-- 通用查询列 -->
     <sql id="SysUserDepartmentList">
-        id, user_id, department_id
+        id
+        , user_id, department_id
     </sql>
 
     <!-- 通用条件列 -->
     <sql id="SysUserDepartmentBy">
-            <if test="userId != null and userId != ''">
-                AND user_id = #{userId}
-            </if>
-            <if test="departmentId != null and departmentId != ''">
-                AND department_id = #{departmentId}
-            </if>
+        <if test="userId != null and userId != ''">
+            AND user_id = #{userId}
+        </if>
+        <if test="departmentId != null and departmentId != ''">
+            AND department_id = #{departmentId}
+        </if>
     </sql>
 
     <!-- 通用设置列 -->
     <sql id="SysUserDepartmentSet">
-            <if test="userId != null and userId != ''">
-                user_id = #{userId}
-            </if>
-            <if test="departmentId != null and departmentId != ''">
-                department_id = #{departmentId}
-            </if>
+        <if test="userId != null and userId != ''">
+            user_id = #{userId}
+        </if>
+        <if test="departmentId != null and departmentId != ''">
+            department_id = #{departmentId}
+        </if>
     </sql>
 
     <!-- 通用查询 -->
     <sql id="selectSysUserDepartmentVo">
-        select id, user_id, department_id from sys_user_department
+        select id, user_id, department_id
+        from sys_user_department
     </sql>
 
     <!-- 查询表sys_user_department所有信息 -->
@@ -59,20 +61,17 @@
         <include refid="SysUserDepartmentList"/>
         FROM sys_user_department
         WHERE 1=1
-        <include refid="SysUserDepartmentBy" />
+        <include refid="SysUserDepartmentBy"/>
     </select>
 
     <!-- 新增表sys_user_department信息 -->
     <insert id="insertSysUserDepartment">
-        INSERT INTO sys_user_department (
-            id
-            ,user_id
-            ,department_id
-        ) VALUES (
-            #{id}
-            ,#{userId}
-            ,#{departmentId}
-        )
+        INSERT INTO sys_user_department ( id
+        , user_id
+        , department_id)
+        VALUES ( #{id}
+        , #{userId}
+        , #{departmentId})
     </insert>
 
     <!-- 根据主键id更新表sys_user_department信息 -->
@@ -87,8 +86,8 @@
 
     <!-- 根据主键id删除表sys_user_department信息：慎用！！！ -->
     <delete id="deleteSysUserDepartmentById">
-        DELETE FROM
-        sys_user_department
-        WHERE id=#{id}
+        DELETE
+        FROM sys_user_department
+        WHERE id = #{id}
     </delete>
 </mapper>

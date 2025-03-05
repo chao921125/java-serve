@@ -3,39 +3,41 @@
 <mapper namespace="com.cc.server.mapper.system.SysRoleMenuMapper">
     <!-- 通用查询映射结果 -->
     <resultMap id="SysRoleMenuMap" type="com.cc.server.entity.system.SysRoleMenu">
-            <id column="id" property="id" />
-            <result column="role_id" property="roleId" />
-            <result column="menu_id" property="menuId" />
+        <id column="id" property="id"/>
+        <result column="role_id" property="roleId"/>
+        <result column="menu_id" property="menuId"/>
     </resultMap>
 
     <!-- 通用查询列 -->
     <sql id="SysRoleMenuList">
-        id, role_id, menu_id
+        id
+        , role_id, menu_id
     </sql>
 
     <!-- 通用条件列 -->
     <sql id="SysRoleMenuBy">
-            <if test="roleId != null and roleId != ''">
-                AND role_id = #{roleId}
-            </if>
-            <if test="menuId != null and menuId != ''">
-                AND menu_id = #{menuId}
-            </if>
+        <if test="roleId != null and roleId != ''">
+            AND role_id = #{roleId}
+        </if>
+        <if test="menuId != null and menuId != ''">
+            AND menu_id = #{menuId}
+        </if>
     </sql>
 
     <!-- 通用设置列 -->
     <sql id="SysRoleMenuSet">
-            <if test="roleId != null and roleId != ''">
-                role_id = #{roleId}
-            </if>
-            <if test="menuId != null and menuId != ''">
-                menu_id = #{menuId}
-            </if>
+        <if test="roleId != null and roleId != ''">
+            role_id = #{roleId}
+        </if>
+        <if test="menuId != null and menuId != ''">
+            menu_id = #{menuId}
+        </if>
     </sql>
 
     <!-- 通用查询 -->
     <sql id="selectSysRoleMenuVo">
-        select id, role_id, menu_id from sys_role_menu
+        select id, role_id, menu_id
+        from sys_role_menu
     </sql>
 
     <!-- 查询表sys_role_menu所有信息 -->
@@ -59,20 +61,17 @@
         <include refid="SysRoleMenuList"/>
         FROM sys_role_menu
         WHERE 1=1
-        <include refid="SysRoleMenuBy" />
+        <include refid="SysRoleMenuBy"/>
     </select>
 
     <!-- 新增表sys_role_menu信息 -->
     <insert id="insertSysRoleMenu">
-        INSERT INTO sys_role_menu (
-            id
-            ,role_id
-            ,menu_id
-        ) VALUES (
-            #{id}
-            ,#{roleId}
-            ,#{menuId}
-        )
+        INSERT INTO sys_role_menu ( id
+        , role_id
+        , menu_id)
+        VALUES ( #{id}
+        , #{roleId}
+        , #{menuId})
     </insert>
 
     <!-- 根据主键id更新表sys_role_menu信息 -->
@@ -87,8 +86,8 @@
 
     <!-- 根据主键id删除表sys_role_menu信息：慎用！！！ -->
     <delete id="deleteSysRoleMenuById">
-        DELETE FROM
-        sys_role_menu
-        WHERE id=#{id}
+        DELETE
+        FROM sys_role_menu
+        WHERE id = #{id}
     </delete>
 </mapper>

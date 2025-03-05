@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * <p>
  * sys_user_department 用户部门 用户1-1 部门
  * </p>
- * 
+ *
  * @author cc
  * @since 2025-03-01 20:26:58
  */
@@ -17,49 +17,49 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(name = "SysUserDepartmentVO对象", description = "用户部门 用户1-1 部门")
 public class SysUserDepartmentVO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "主键")
-    private Long id;
+	@Schema(description = "主键")
+	private Long id;
 
-    @Schema(description = "用户 id")
-    private Long userId;
+	@Schema(description = "用户 id")
+	private Long userId;
 
-    @Schema(description = "部门 id")
-    private Long departmentId;
+	@Schema(description = "部门 id")
+	private Long departmentId;
 
 
-    public Long getId() {
-    return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-    this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getUserId() {
-    return userId;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setUserId(Long userId) {
-    this.userId = userId;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public Long getDepartmentId() {
-    return departmentId;
-    }
+	public Long getDepartmentId() {
+		return departmentId;
+	}
 
-    public void setDepartmentId(Long departmentId) {
-    this.departmentId = departmentId;
-    }
+	public void setDepartmentId(Long departmentId) {
+		this.departmentId = departmentId;
+	}
 
-    @Override
-    public String toString() {
-    return "SysUserDepartmentVO{" +
-            "id = " + id +
-            ", userId = " + userId +
-            ", departmentId = " + departmentId +
-    "}";
-    }
+	@Override
+	public String toString() {
+		return "SysUserDepartmentVO{" +
+				"id = " + id +
+				", userId = " + userId +
+				", departmentId = " + departmentId +
+				"}";
+	}
 }

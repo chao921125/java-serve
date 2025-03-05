@@ -11,11 +11,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.cc.server.mapper")
 public class ServerApplication {
-    private static final Logger logger = LoggerFactory.getLogger(ServerApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServerApplication.class);
 
-    public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
-        logger.info("Server Success!");
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ServerApplication.class, args);
+		logger.info("Server Success!");
+	}
 
 }

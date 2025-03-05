@@ -15,39 +15,44 @@ import java.util.List;
  * @since 2025-03-01 20:26:58
  */
 public interface SysPostMapper extends BaseMapper<SysPost> {
-  /**
-  *  查询表sys_post所有信息
-  */
-  List<SysPost> selectAllSysPost();
+	/**
+	 * 查询表sys_post所有信息
+	 */
+	List<SysPost> selectAllSysPost();
 
-  /**
-  *  根据主键id查询表sys_post信息
-  *  @param id
-  */
-  SysPost selectSysPostById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_post信息
+	 *
+	 * @param id
+	 */
+	SysPost selectSysPostById(@Param("id") Long id);
 
-  /**
-  *  根据条件查询表sys_post信息
-  *  @param sysPost
-  */
-  List<SysPost> selectSysPostByCondition(SysPost sysPost);
+	/**
+	 * 根据条件查询表sys_post信息
+	 *
+	 * @param sysPost
+	 */
+	List<SysPost> selectSysPostByCondition(SysPost sysPost);
 
-  /**
-  *  根据主键id查询表sys_post信息
-  *  @param id
-  */
-  Integer deleteSysPostById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_post信息
+	 *
+	 * @param id
+	 */
+	Integer deleteSysPostById(@Param("id") Long id);
 
-  /**
-  *  根据主键id更新表sys_post信息
-  *  @param sysPost
-  */
-  Integer updateSysPostById(SysPost sysPost);
+	/**
+	 * 根据主键id更新表sys_post信息
+	 *
+	 * @param sysPost
+	 */
+	Integer updateSysPostById(SysPost sysPost);
 
-  /**
-  *  新增表sys_post信息
-  *  @param sysPost
-  */
-  Integer insertSysPost(SysPost sysPost);
+	/**
+	 * 新增表sys_post信息
+	 *
+	 * @param sysPost
+	 */
+	Integer insertSysPost(SysPost sysPost);
 
 }

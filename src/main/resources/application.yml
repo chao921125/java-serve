@@ -51,9 +51,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/serve?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
-#    password: Admin123
+    #    password: Admin123
     password: Root123.
-#    password: root1234
+    #    password: root1234
     # 连接池配置：https://github.com/alibaba/druid/wiki
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -164,14 +164,14 @@ mybatis-plus:
 
 # Redis 配置
 application:
-#  redis:
-#    host: localhost
-#    port: 6380
-#    pass: pass
+  #  redis:
+  #    host: localhost
+  #    port: 6380
+  #    pass: pass
   security:
     jwt:
       secret: 7edeedb12066a811f92a3ade3d68ded679d92bf43fe448f155ae0748ee640e85
-      expirat:  604800000 # 30天，ms为单位
+      expirat: 604800000 # 30天，ms为单位
       refresh:
         expirat: 2592000000 # 7 days
 

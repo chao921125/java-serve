@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * <p>
  * sys_department 部门表
  * </p>
- * 
+ *
  * @author cc
  * @since 2025-03-01 20:26:58
  */
@@ -18,181 +18,181 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(name = "SysDepartmentVO对象", description = "部门表")
 public class SysDepartmentVO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 
-    @Schema(description = "部门 id")
-    private Long id;
+	@Schema(description = "部门 id")
+	private Long id;
 
-    @Schema(description = "父级id")
-    private Long parentId;
+	@Schema(description = "父级id")
+	private Long parentId;
 
-    @Schema(description = "祖级，树结构")
-    private String ancestors;
+	@Schema(description = "祖级，树结构")
+	private String ancestors;
 
-    @Schema(description = "部门名称")
-    private String name;
+	@Schema(description = "部门名称")
+	private String name;
 
-    @Schema(description = "排序")
-    private Integer sort;
+	@Schema(description = "排序")
+	private Integer sort;
 
-    @Schema(description = "负责人")
-    private String leader;
+	@Schema(description = "负责人")
+	private String leader;
 
-    @Schema(description = "手机号")
-    private String phone;
+	@Schema(description = "手机号")
+	private String phone;
 
-    @Schema(description = "邮箱")
-    private String email;
+	@Schema(description = "邮箱")
+	private String email;
 
-    @Schema(description = "状态（0正常 1停用 9删除）")
-    private String status;
+	@Schema(description = "状态（0正常 1停用 9删除）")
+	private String status;
 
-    @Schema(description = "创建人")
-    private String createBy;
+	@Schema(description = "创建人")
+	private String createBy;
 
-    @Schema(description = "创建时间")
-    private Date createTime;
+	@Schema(description = "创建时间")
+	private Date createTime;
 
-    @Schema(description = "修改人")
-    private String updateBy;
+	@Schema(description = "修改人")
+	private String updateBy;
 
-    @Schema(description = "修改时间")
-    private Date updateTime;
+	@Schema(description = "修改时间")
+	private Date updateTime;
 
-    @Schema(description = "备注")
-    private String remark;
+	@Schema(description = "备注")
+	private String remark;
 
 
-    public Long getId() {
-    return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-    this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getParentId() {
-    return parentId;
-    }
+	public Long getParentId() {
+		return parentId;
+	}
 
-    public void setParentId(Long parentId) {
-    this.parentId = parentId;
-    }
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
 
-    public String getAncestors() {
-    return ancestors;
-    }
+	public String getAncestors() {
+		return ancestors;
+	}
 
-    public void setAncestors(String ancestors) {
-    this.ancestors = ancestors;
-    }
+	public void setAncestors(String ancestors) {
+		this.ancestors = ancestors;
+	}
 
-    public String getName() {
-    return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-    this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Integer getSort() {
-    return sort;
-    }
+	public Integer getSort() {
+		return sort;
+	}
 
-    public void setSort(Integer sort) {
-    this.sort = sort;
-    }
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 
-    public String getLeader() {
-    return leader;
-    }
+	public String getLeader() {
+		return leader;
+	}
 
-    public void setLeader(String leader) {
-    this.leader = leader;
-    }
+	public void setLeader(String leader) {
+		this.leader = leader;
+	}
 
-    public String getPhone() {
-    return phone;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setPhone(String phone) {
-    this.phone = phone;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getEmail() {
-    return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-    this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getStatus() {
-    return status;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-    this.status = status;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-    public String getCreateBy() {
-    return createBy;
-    }
+	public String getCreateBy() {
+		return createBy;
+	}
 
-    public void setCreateBy(String createBy) {
-    this.createBy = createBy;
-    }
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
 
-    public Date getCreateTime() {
-    return createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public String getUpdateBy() {
-    return updateBy;
-    }
+	public String getUpdateBy() {
+		return updateBy;
+	}
 
-    public void setUpdateBy(String updateBy) {
-    this.updateBy = updateBy;
-    }
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}
 
-    public Date getUpdateTime() {
-    return updateTime;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    public String getRemark() {
-    return remark;
-    }
+	public String getRemark() {
+		return remark;
+	}
 
-    public void setRemark(String remark) {
-    this.remark = remark;
-    }
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 
-    @Override
-    public String toString() {
-    return "SysDepartmentVO{" +
-            "id = " + id +
-            ", parentId = " + parentId +
-            ", ancestors = " + ancestors +
-            ", name = " + name +
-            ", sort = " + sort +
-            ", leader = " + leader +
-            ", phone = " + phone +
-            ", email = " + email +
-            ", status = " + status +
-            ", createBy = " + createBy +
-            ", createTime = " + createTime +
-            ", updateBy = " + updateBy +
-            ", updateTime = " + updateTime +
-            ", remark = " + remark +
-    "}";
-    }
+	@Override
+	public String toString() {
+		return "SysDepartmentVO{" +
+				"id = " + id +
+				", parentId = " + parentId +
+				", ancestors = " + ancestors +
+				", name = " + name +
+				", sort = " + sort +
+				", leader = " + leader +
+				", phone = " + phone +
+				", email = " + email +
+				", status = " + status +
+				", createBy = " + createBy +
+				", createTime = " + createTime +
+				", updateBy = " + updateBy +
+				", updateTime = " + updateTime +
+				", remark = " + remark +
+				"}";
+	}
 }

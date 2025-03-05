@@ -10,9 +10,9 @@ package com.cc.frame.config;
 //@Configuration
 //@MapperScan("com.cc.server.mapper")
 public class MybatisPlusConfig {
-    /**
-     * 分页插件 3.5.X
-     */
+	/**
+	 * 分页插件 3.5.X
+	 */
 //    @Bean
 //    public PaginationInnerInterceptor paginationInnerInterceptor() {
 //        PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
@@ -22,11 +22,11 @@ public class MybatisPlusConfig {
 //        return paginationInterceptor;
 //    }
 
-    /**
-     * 阻止恶意全表更新删除
-     *
-     * @return {@code MybatisPlusInterceptor}
-     */
+	/**
+	 * 阻止恶意全表更新删除
+	 *
+	 * @return {@code MybatisPlusInterceptor}
+	 */
 //    @Bean
 //    public MybatisPlusInterceptor mybatisPlusInterceptor() {
 //        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();

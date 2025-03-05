@@ -5,7 +5,6 @@
 | [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html) |
 | [Maven 仓库](https://mvnrepository.com/)                                                           |
 
-
 | 核心                   |
 |----------------------|
 | [Spring  Boot 全家桶]() |
@@ -29,9 +28,9 @@
 |------|
 | []() |
 
-| 多数据源                                                                     |
-|--------------------------------------------------------------------------|
-| [分表分库 Apache ShardingSphere]()                                           |
+| 多数据源                           |
+|--------------------------------|
+| [分表分库 Apache ShardingSphere]() |
 
 | safe auth                                                                 |
 |---------------------------------------------------------------------------|
@@ -54,15 +53,15 @@
 
 # SpringBoot 学习
 
-|                                                                                                                          |
-|--------------------------------------------------------------------------------------------------------------------------|
-| [SpringBoot3 examples](https://gitee.com/li_ximing/springboot30-development-guide)                                       |
-| [SpringBoot3 examples](https://github.com/ali-bouali/spring-boot-3-jwt-security)                                         |
-| [SpringBoot3 examples](https://github.com/jobmission/oauth2-server)                                                      |
-| [SpringBoot3 examples](https://github.com/eugenp/tutorials)                                                              |
-| [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects)                                               |
-| [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples)                                                |
-| [SpringBoot3 examples](https://github.com/xkcoding/spring-boot-demo)                                                     |
+|                                                                                    |
+|------------------------------------------------------------------------------------|
+| [SpringBoot3 examples](https://gitee.com/li_ximing/springboot30-development-guide) |
+| [SpringBoot3 examples](https://github.com/ali-bouali/spring-boot-3-jwt-security)   |
+| [SpringBoot3 examples](https://github.com/jobmission/oauth2-server)                |
+| [SpringBoot3 examples](https://github.com/eugenp/tutorials)                        |
+| [SpringBoot3 examples](https://github.com/ZHENFENG13/spring-boot-projects)         |
+| [SpringBoot3 examples](https://github.com/ityouknow/spring-boot-examples)          |
+| [SpringBoot3 examples](https://github.com/xkcoding/spring-boot-demo)               |
 
 # 项目
 
@@ -86,6 +85,10 @@
 | [springboot3 youlai-boot](https://github.com/haoxianrui/youlai-boot)                                       |
 | [文件管理](https://github.com/zfile-dev/zfile)                                                                 |
 | [SpringCloud](https://github.com/pig-mesh/pig)                                                             |
+
 https://github.com/1024-lab/smart-admin
 https://gitee.com/peng.liu.s/springboot3-springsecurity6-mybatisplus
 
+##### formatter command + option + L
+
+##### Settings Preferences Tools Actions on Save 【Reformat code】 【Changed lines】

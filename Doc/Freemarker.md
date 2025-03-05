@@ -32,6 +32,7 @@
 |                   | superMapperClassPackage	 | 获取 Mapper 父类包	                             |
 | date              | date                     | 获取当前日期		                                   |
 | author            | author                   | 获取作者		                                     |
+
 # FreeMarker 模板控制语句
 
 | 对象/变量    | 描述                   | 用法                                    |

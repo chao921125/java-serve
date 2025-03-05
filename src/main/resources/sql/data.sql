@@ -15,12 +15,14 @@
 */
 
 SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+SET
+FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Records of log_login
 -- ----------------------------
-INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_time`, `address`, `system`, `status`) VALUES (1, '234', '324', '234', '234', '2023-10-08 15:19:03', '234', '234', '1');
+INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_time`, `address`, `system`, `status`)
+VALUES (1, '234', '324', '234', '234', '2023-10-08 15:19:03', '234', '234', '1');
 
 -- ----------------------------
 -- Records of log_operation
@@ -29,7 +31,9 @@ INSERT INTO `log_login` (`id`, `user_id`, `user_name`, `ip`, `ip_real`, `login_t
 -- ----------------------------
 -- Records of sys_department
 -- ----------------------------
-INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `leader`, `phone`, `email`, `status`,
+                              `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES (1, 0, '[\"1\"]', 'CC总部', 1, 'admin', '13520121955', 'admin@mail.com', '1', NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Records of sys_dictionary
@@ -54,7 +58,11 @@ INSERT INTO `sys_department` (`id`, `parent_id`, `ancestors`, `name`, `sort`, `l
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`, `avatar`, `email`, `phone`, `sex`, `age`, `address`, `status`, `login_ip`, `login_address`, `login_info`, `login_time`, `pwd_update_time`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES (1, 'admin', '123456', '超管', NULL, NULL, 'admin@mail.com', '19920008007', '1', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`, `avatar`, `email`, `phone`, `sex`,
+                        `age`, `address`, `status`, `login_ip`, `login_address`, `login_info`, `login_time`,
+                        `pwd_update_time`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES (1, 'admin', '123456', '超管', NULL, NULL, 'admin@mail.com', '19920008007', '1', NULL, NULL, '1', NULL, NULL,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Records of sys_user_department
@@ -68,4 +76,5 @@ INSERT INTO `sys_user` (`id`, `user_name`, `password`, `nick_name`, `real_name`,
 -- Records of sys_user_role
 -- ----------------------------
 
-SET FOREIGN_KEY_CHECKS = 1;
+SET
+FOREIGN_KEY_CHECKS = 1;

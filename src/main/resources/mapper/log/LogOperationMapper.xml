@@ -3,123 +3,140 @@
 <mapper namespace="com.cc.server.mapper.log.LogOperationMapper">
     <!-- 通用查询映射结果 -->
     <resultMap id="LogOperationMap" type="com.cc.server.entity.log.LogOperation">
-            <id column="id" property="id" />
-            <result column="user_id" property="userId" />
-            <result column="user_name" property="userName" />
-            <result column="ip" property="ip" />
-            <result column="ip_real" property="ipReal" />
-            <result column="oper_time" property="operTime" />
-            <result column="address" property="address" />
-            <result column="system" property="system" />
-            <result column="status" property="status" />
-            <result column="type" property="type" />
-            <result column="source" property="source" />
-            <result column="url" property="url" />
-            <result column="method" property="method" />
-            <result column="method_type" property="methodType" />
-            <result column="message" property="message" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="ip" property="ip"/>
+        <result column="ip_real" property="ipReal"/>
+        <result column="oper_time" property="operTime"/>
+        <result column="address" property="address"/>
+        <result column="system" property="system"/>
+        <result column="status" property="status"/>
+        <result column="type" property="type"/>
+        <result column="source" property="source"/>
+        <result column="url" property="url"/>
+        <result column="method" property="method"/>
+        <result column="method_type" property="methodType"/>
+        <result column="message" property="message"/>
     </resultMap>
 
     <!-- 通用查询列 -->
     <sql id="LogOperationList">
-        id, user_id, user_name, ip, ip_real, oper_time, address, system, status, type, source, url, method, method_type, message
+        id
+        , user_id, user_name, ip, ip_real, oper_time, address, system, status, type, source, url, method, method_type,
+        message
     </sql>
 
     <!-- 通用条件列 -->
     <sql id="LogOperationBy">
-            <if test="userId != null and userId != ''">
-                AND user_id = #{userId}
-            </if>
-            <if test="userName != null and userName != ''">
-                AND user_name = #{userName}
-            </if>
-            <if test="ip != null and ip != ''">
-                AND ip = #{ip}
-            </if>
-            <if test="ipReal != null and ipReal != ''">
-                AND ip_real = #{ipReal}
-            </if>
-            <if test="operTime != null and operTime != ''">
-                AND oper_time = #{operTime}
-            </if>
-            <if test="address != null and address != ''">
-                AND address = #{address}
-            </if>
-            <if test="system != null and system != ''">
-                AND system = #{system}
-            </if>
-            <if test="status != null and status != ''">
-                AND status = #{status}
-            </if>
-            <if test="type != null and type != ''">
-                AND type = #{type}
-            </if>
-            <if test="source != null and source != ''">
-                AND source = #{source}
-            </if>
-            <if test="url != null and url != ''">
-                AND url = #{url}
-            </if>
-            <if test="method != null and method != ''">
-                AND method = #{method}
-            </if>
-            <if test="methodType != null and methodType != ''">
-                AND method_type = #{methodType}
-            </if>
-            <if test="message != null and message != ''">
-                AND message = #{message}
-            </if>
+        <if test="userId != null and userId != ''">
+            AND user_id = #{userId}
+        </if>
+        <if test="userName != null and userName != ''">
+            AND user_name = #{userName}
+        </if>
+        <if test="ip != null and ip != ''">
+            AND ip = #{ip}
+        </if>
+        <if test="ipReal != null and ipReal != ''">
+            AND ip_real = #{ipReal}
+        </if>
+        <if test="operTime != null and operTime != ''">
+            AND oper_time = #{operTime}
+        </if>
+        <if test="address != null and address != ''">
+            AND address = #{address}
+        </if>
+        <if test="system != null and system != ''">
+            AND system = #{system}
+        </if>
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        <if test="type != null and type != ''">
+            AND type = #{type}
+        </if>
+        <if test="source != null and source != ''">
+            AND source = #{source}
+        </if>
+        <if test="url != null and url != ''">
+            AND url = #{url}
+        </if>
+        <if test="method != null and method != ''">
+            AND method = #{method}
+        </if>
+        <if test="methodType != null and methodType != ''">
+            AND method_type = #{methodType}
+        </if>
+        <if test="message != null and message != ''">
+            AND message = #{message}
+        </if>
     </sql>
 
     <!-- 通用设置列 -->
     <sql id="LogOperationSet">
-            <if test="userId != null and userId != ''">
-                user_id = #{userId}
-            </if>
-            <if test="userName != null and userName != ''">
-                user_name = #{userName}
-            </if>
-            <if test="ip != null and ip != ''">
-                ip = #{ip}
-            </if>
-            <if test="ipReal != null and ipReal != ''">
-                ip_real = #{ipReal}
-            </if>
-            <if test="operTime != null and operTime != ''">
-                oper_time = #{operTime}
-            </if>
-            <if test="address != null and address != ''">
-                address = #{address}
-            </if>
-            <if test="system != null and system != ''">
-                system = #{system}
-            </if>
-            <if test="status != null and status != ''">
-                status = #{status}
-            </if>
-            <if test="type != null and type != ''">
-                type = #{type}
-            </if>
-            <if test="source != null and source != ''">
-                source = #{source}
-            </if>
-            <if test="url != null and url != ''">
-                url = #{url}
-            </if>
-            <if test="method != null and method != ''">
-                method = #{method}
-            </if>
-            <if test="methodType != null and methodType != ''">
-                method_type = #{methodType}
-            </if>
-            <if test="message != null and message != ''">
-                message = #{message}
-            </if>
+        <if test="userId != null and userId != ''">
+            user_id = #{userId}
+        </if>
+        <if test="userName != null and userName != ''">
+            user_name = #{userName}
+        </if>
+        <if test="ip != null and ip != ''">
+            ip = #{ip}
+        </if>
+        <if test="ipReal != null and ipReal != ''">
+            ip_real = #{ipReal}
+        </if>
+        <if test="operTime != null and operTime != ''">
+            oper_time = #{operTime}
+        </if>
+        <if test="address != null and address != ''">
+            address = #{address}
+        </if>
+        <if test="system != null and system != ''">
+            system = #{system}
+        </if>
+        <if test="status != null and status != ''">
+            status = #{status}
+        </if>
+        <if test="type != null and type != ''">
+            type = #{type}
+        </if>
+        <if test="source != null and source != ''">
+            source = #{source}
+        </if>
+        <if test="url != null and url != ''">
+            url = #{url}
+        </if>
+        <if test="method != null and method != ''">
+            method = #{method}
+        </if>
+        <if test="methodType != null and methodType != ''">
+            method_type = #{methodType}
+        </if>
+        <if test="message != null and message != ''">
+            message = #{message}
+        </if>
     </sql>
 
     <!-- 通用查询 -->
     <sql id="selectLogOperationVo">
-        select id, user_id, user_name, ip, ip_real, oper_time, address, system, status, type, source, url, method, method_type, message from log_operation
+        select id,
+        user_id,
+        user_name,
+        ip,
+        ip_real,
+        oper_time,
+        address,
+        system,
+        status,
+        type,
+        source,
+        url,
+        method,
+        method_type,
+        message
+        from log_operation
     </sql>
 
     <!-- 查询表log_operation所有信息 -->
@@ -143,44 +160,41 @@
         <include refid="LogOperationList"/>
         FROM log_operation
         WHERE 1=1
-        <include refid="LogOperationBy" />
+        <include refid="LogOperationBy"/>
     </select>
 
     <!-- 新增表log_operation信息 -->
     <insert id="insertLogOperation">
-        INSERT INTO log_operation (
-            id
-            ,user_id
-            ,user_name
-            ,ip
-            ,ip_real
-            ,oper_time
-            ,address
-            ,system
-            ,status
-            ,type
-            ,source
-            ,url
-            ,method
-            ,method_type
-            ,message
-        ) VALUES (
-            #{id}
-            ,#{userId}
-            ,#{userName}
-            ,#{ip}
-            ,#{ipReal}
-            ,#{operTime}
-            ,#{address}
-            ,#{system}
-            ,#{status}
-            ,#{type}
-            ,#{source}
-            ,#{url}
-            ,#{method}
-            ,#{methodType}
-            ,#{message}
-        )
+        INSERT INTO log_operation ( id
+        , user_id
+        , user_name
+        , ip
+        , ip_real
+        , oper_time
+        , address
+        , system
+        , status
+        , type
+        , source
+        , url
+        , method
+        , method_type
+        , message)
+        VALUES ( #{id}
+        , #{userId}
+        , #{userName}
+        , #{ip}
+        , #{ipReal}
+        , #{operTime}
+        , #{address}
+        , #{system}
+        , #{status}
+        , #{type}
+        , #{source}
+        , #{url}
+        , #{method}
+        , #{methodType}
+        , #{message})
     </insert>
 
     <!-- 根据主键id更新表log_operation信息 -->
@@ -195,8 +209,8 @@
 
     <!-- 根据主键id删除表log_operation信息：慎用！！！ -->
     <delete id="deleteLogOperationById">
-        DELETE FROM
-        log_operation
-        WHERE id=#{id}
+        DELETE
+        FROM log_operation
+        WHERE id = #{id}
     </delete>
 </mapper>

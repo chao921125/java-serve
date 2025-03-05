@@ -15,39 +15,44 @@ import java.util.List;
  * @since 2025-03-01 20:26:58
  */
 public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
-  /**
-  *  查询表sys_department所有信息
-  */
-  List<SysDepartment> selectAllSysDepartment();
+	/**
+	 * 查询表sys_department所有信息
+	 */
+	List<SysDepartment> selectAllSysDepartment();
 
-  /**
-  *  根据主键id查询表sys_department信息
-  *  @param id
-  */
-  SysDepartment selectSysDepartmentById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_department信息
+	 *
+	 * @param id
+	 */
+	SysDepartment selectSysDepartmentById(@Param("id") Long id);
 
-  /**
-  *  根据条件查询表sys_department信息
-  *  @param sysDepartment
-  */
-  List<SysDepartment> selectSysDepartmentByCondition(SysDepartment sysDepartment);
+	/**
+	 * 根据条件查询表sys_department信息
+	 *
+	 * @param sysDepartment
+	 */
+	List<SysDepartment> selectSysDepartmentByCondition(SysDepartment sysDepartment);
 
-  /**
-  *  根据主键id查询表sys_department信息
-  *  @param id
-  */
-  Integer deleteSysDepartmentById(@Param("id") Long id);
+	/**
+	 * 根据主键id查询表sys_department信息
+	 *
+	 * @param id
+	 */
+	Integer deleteSysDepartmentById(@Param("id") Long id);
 
-  /**
-  *  根据主键id更新表sys_department信息
-  *  @param sysDepartment
-  */
-  Integer updateSysDepartmentById(SysDepartment sysDepartment);
+	/**
+	 * 根据主键id更新表sys_department信息
+	 *
+	 * @param sysDepartment
+	 */
+	Integer updateSysDepartmentById(SysDepartment sysDepartment);
 
-  /**
-  *  新增表sys_department信息
-  *  @param sysDepartment
-  */
-  Integer insertSysDepartment(SysDepartment sysDepartment);
+	/**
+	 * 新增表sys_department信息
+	 *
+	 * @param sysDepartment
+	 */
+	Integer insertSysDepartment(SysDepartment sysDepartment);
 
 }

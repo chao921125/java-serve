@@ -1,31 +1,31 @@
 package com.cc.frame.enums;
 
 public enum Role {
-    ADMIN(0, "ADMIN"),
-    USER(1, "USER");
+	ADMIN(0, "ADMIN"),
+	USER(1, "USER");
 
-    private Integer type;
+	private Integer type;
 
-    private String name;
+	private String name;
 
-    Role(int type, String name) {
-        this.type = type;
-        this.name = name;
-    }
+	Role(int type, String name) {
+		this.type = type;
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Integer getType() {
-        return type;
-    }
+	public Integer getType() {
+		return type;
+	}
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+	public void setType(Integer type) {
+		this.type = type;
+	}
 }
