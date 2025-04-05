@@ -5,7 +5,6 @@ import com.cc.server.entity.system.SysUser;
 import com.cc.server.mapper.system.SysUserMapper;
 import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.system.SysUserService;
 
@@ -23,9 +22,6 @@ import java.util.List;
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 	@Resource
 	private SysUserMapper sysUserMapper;
-
-	@Resource
-	private PasswordEncoder passwordEncoder;
 
 	/**
 	 * 查询表sys_user所有信息
@@ -82,7 +78,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	 */
 	@Override
 	public Integer insertSysUser(SysUser sysUser) {
-		sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
+//		sysUser.setPassword(PasswordEncoder.encode(sysUser.getPassword()));
 		return sysUserMapper.insertSysUser(sysUser);
 	}
 

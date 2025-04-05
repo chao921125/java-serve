@@ -36,14 +36,14 @@ public class SecurityConfig {
 	/**
 	 * 密码加密使用的编码器
 	 */
-	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable)
+		http.csrf(AbstractHttpConfigurer::disable) // 禁用 CSRF
+				.cors(AbstractHttpConfigurer::disable) // 禁用 CORS
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers("/api/auth/**", "/api/public/**", "/swagger-ui/**", "/docs/**").permitAll()
 						.anyRequest().authenticated())
