@@ -143,6 +143,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
 
 # MyBatis-plus 配置
 mybatis-plus:
@@ -162,12 +166,8 @@ mybatis-plus:
     db-config:
       id-type: auto
 
-# Redis 配置
+# Redis 配置 https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-mac-os/
 application:
-  #  redis:
-  #    host: localhost
-  #    port: 6380
-  #    pass: pass
   security:
     jwt:
       secret: 7edeedb12066a811f92a3ade3d68ded679d92bf43fe448f155ae0748ee640e85

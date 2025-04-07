@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.*;
 import java.util.function.Function;
+
+import static java.security.KeyRep.Type.SECRET;
 
 @Component
 public class JwtUtil {
@@ -20,6 +21,15 @@ public class JwtUtil {
 	private String JWT_KEY;
 	@Value("${application.security.jwt.expirat}")
 	public Long JWT_TTL;
+
+	public static String getUUID() {
+		return UUID.randomUUID().toString().replaceAll("-", "");
+	}
+
+	public static SecretKey generalKey() {
+		byte[] encodedKey = Base64.getDecoder().decode(SECRET.getClass().getSimpleName());
+		return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
+	}
 
 	/**
 	 * 提取所有声明
