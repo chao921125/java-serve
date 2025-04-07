@@ -16,9 +16,11 @@
 | [Mybatis 不推荐]()                       |
 | [分页功能](https://github.com/pagehelper) |
 
-|      |
-|------|
-| []() |
+| Entity VO DTO 等相互转换                                       |
+|-----------------------------------------------------------|
+| [MapStruct](https://github.com/mapstruct/mapstruct)       |
+| [ModelMapper](https://github.com/modelmapper/modelmapper) |
+| []()                                                      |
 
 |      |
 |------|

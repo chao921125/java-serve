@@ -1,7 +1,6 @@
-package com.cc.frame.utils;
+package com.cc.frame.config.redis;
 
 import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONFactory;
 import com.alibaba.fastjson2.JSONReader;
 import com.alibaba.fastjson2.JSONWriter;
 import com.alibaba.fastjson2.filter.Filter;

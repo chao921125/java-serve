@@ -1,12 +1,11 @@
 package com.cc.server.controller.system;
 
-import com.cc.server.entity.system.SysUser;
 import com.cc.server.service.system.SysUserService;
+import com.cc.server.vo.system.SysUserVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.annotation.Resource;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +26,10 @@ public class SysUserController {
 
 	@Operation(summary = "获取用户信息", description = "用户名、邮箱、手机号，密码登录")
 	@GetMapping("/user")
-	public SysUser getUserByNameEmailPhone(@RequestParam String username) {
-		SysUser sysUser = new SysUser();
-		sysUser.setUserName(username);
-		return userService.getUserByNameEmailPhone(sysUser);
+	public SysUserVO getUserByNameEmailPhone(@RequestParam String username) {
+		SysUserVO sysUserVO = new SysUserVO();
+		sysUserVO.setUserName(username);
+		return userService.getUserByNameEmailPhone(sysUserVO);
 	}
 
 	@Operation(summary = "用户登录", description = "用户名、邮箱、手机号，密码登录")
@@ -38,10 +37,10 @@ public class SysUserController {
 	@Parameter(name = "password", description = "密码", required = true)
 	@ApiResponse(responseCode = "200", description = "登录成功")
 	@PostMapping("/login")
-	public SysUser login(@RequestParam String username, @RequestParam String password) {
-		SysUser sysUser = new SysUser();
-		sysUser.setUserName(username);
-		sysUser.setPassword(password);
-		return userService.getUserByNameEmailPhone(sysUser);
+	public SysUserVO login(@RequestParam String username, @RequestParam String password) {
+		SysUserVO sysUserVO = new SysUserVO();
+		sysUserVO.setUserName(username);
+		sysUserVO.setPassword(password);
+		return userService.getUserByNameEmailPhone(sysUserVO);
 	}
 }

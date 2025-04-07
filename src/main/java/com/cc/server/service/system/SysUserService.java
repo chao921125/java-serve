@@ -2,6 +2,7 @@ package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysUser;
+import com.cc.server.vo.system.SysUserVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,21 +19,21 @@ public interface SysUserService extends IService<SysUser> {
     /**
      * 查询表sys_user所有信息
      */
-    List<SysUser> selectAllSysUser();
+    List<SysUserVO> selectAllSysUser();
 
     /**
      * 根据主键id查询表sys_user信息
      *
      * @param id
      */
-    SysUser selectSysUserById(@Param("id") Long id);
+    SysUserVO selectSysUserById(@Param("id") Long id);
 
     /**
      * 根据条件查询表sys_user信息
      *
-     * @param sysUser
+     * @param sysUserVO
      */
-    List<SysUser> selectSysUserByCondition(SysUser sysUser);
+    List<SysUserVO> selectSysUserByCondition(SysUserVO sysUserVO);
 
     /**
      * 根据主键id查询表sys_user信息
@@ -44,16 +45,16 @@ public interface SysUserService extends IService<SysUser> {
     /**
      * 根据主键id更新表sys_user信息
      *
-     * @param sysUser
+     * @param sysUserVO
      */
-    Integer updateSysUserById(SysUser sysUser);
+    Integer updateSysUserById(SysUserVO sysUserVO);
 
     /**
      * 新增表sys_user信息
      *
-     * @param sysUser
+     * @param sysUserVO
      */
-    Integer insertSysUser(SysUser sysUser);
+    Integer insertSysUser(SysUserVO sysUserVO);
 
-	SysUser getUserByNameEmailPhone(SysUser sysUser);
+    SysUserVO getUserByNameEmailPhone(SysUserVO sysUserVO);
 }
