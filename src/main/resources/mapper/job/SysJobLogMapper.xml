@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.server.mapper.job.SysJobLogMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysJobLogMap" type="com.cc.server.entity.job.SysJobLog">
+        <id column="id" property="id"/>
+        <result column="job_id" property="jobId"/>
+        <result column="job_name" property="jobName"/>
+        <result column="job_group" property="jobGroup"/>
+        <result column="invoke_target" property="invokeTarget"/>
+        <result column="job_message" property="jobMessage"/>
+        <result column="status" property="status"/>
+        <result column="exception_info" property="exceptionInfo"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+    </resultMap>
+
+    <!-- 通用查询列 -->
+    <sql id="SysJobLogList">
+        id, job_id, job_name, job_group, invoke_target, job_message, status, exception_info, start_time, end_time
+    </sql>
+
+    <!-- 分页条件查询 -->
+    <select id="selectJobLogPage" resultMap="SysJobLogMap">
+        SELECT <include refid="SysJobLogList"/>
+        FROM sys_job_log
+        <where>
+            <if test="jobId != null">
+                AND job_id = #{jobId}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY start_time DESC
+    </select>
+</mapper>

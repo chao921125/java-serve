@@ -67,6 +67,18 @@ public class LogOperation implements Serializable {
 	@TableField("message")
 	private String message;
 
+	@TableField("exception_msg")
+	private String exceptionMsg;
+
+	@TableField("params")
+	private String params;
+
+	@TableField("result")
+	private String result;
+
+	@TableField("cost_time")
+	private Long costTime;
+
 
 	public Long getId() {
 		return id;
@@ -186,6 +198,38 @@ public class LogOperation implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getExceptionMsg() {
+		return exceptionMsg;
+	}
+
+	public void setExceptionMsg(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
+	}
+
+	public String getParams() {
+		return params;
+	}
+
+	public void setParams(String params) {
+		this.params = params;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public Long getCostTime() {
+		return costTime;
+	}
+
+	public void setCostTime(Long costTime) {
+		this.costTime = costTime;
 	}
 
 

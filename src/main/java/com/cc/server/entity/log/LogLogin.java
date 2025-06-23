@@ -49,6 +49,12 @@ public class LogLogin implements Serializable {
 	@TableField("status")
 	private String status;
 
+	@TableField("message")
+	private String message;
+
+	@TableField("exception_msg")
+	private String exceptionMsg;
+
 
 	public Long getId() {
 		return id;
@@ -120,6 +126,22 @@ public class LogLogin implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getExceptionMsg() {
+		return exceptionMsg;
+	}
+
+	public void setExceptionMsg(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
 	}
 
 
