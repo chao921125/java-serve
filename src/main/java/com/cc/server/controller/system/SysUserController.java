@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * <p>
@@ -25,6 +26,7 @@ public class SysUserController {
 	private SysUserService userService;
 
 	@Operation(summary = "获取用户信息", description = "用户名、邮箱、手机号，密码登录")
+	@PreAuthorize("hasAuthority('sys:user:query')")
 	@GetMapping("/user")
 	public SysUserVO getUserByNameEmailPhone(@RequestParam String username) {
 		SysUserVO sysUserVO = new SysUserVO();

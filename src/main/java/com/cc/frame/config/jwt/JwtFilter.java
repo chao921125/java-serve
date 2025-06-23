@@ -12,6 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import java.io.IOException;
 
@@ -44,10 +47,21 @@ public class JwtFilter extends OncePerRequestFilter {
 
 		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 			if (jwtUtil.isTokenValid(jwt, userName)) {
+				// 解析权限
+				List<String> authorities = jwtUtil.extractClaim(jwt, claims -> {
+					Object authObj = claims.get("authorities");
+					if (authObj instanceof List<?> list) {
+						return list.stream().map(Object::toString).collect(Collectors.toList());
+					} else if (authObj instanceof String str) {
+						return List.of(str.split(","));
+					}
+					return List.of();
+				});
+				var grantedAuthorities = authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-						userName,
-						null,
-						null
+					userName,
+					null,
+					grantedAuthorities
 				);
 				authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(authToken);
