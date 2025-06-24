@@ -14,6 +14,10 @@ import com.cc.server.service.system.SysUserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 
 /**
  * <p>
@@ -80,6 +84,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	public Integer updateSysUserById(SysUserVO sysUserVO) {
 		SysUser sysUser = new SysUser();
 		BeanUtils.copyProperties(sysUserVO, sysUser);
+		if (sysUserVO.getPassword() != null && !sysUserVO.getPassword().isEmpty()) {
+			sysUser.setPassword(md5(sysUserVO.getPassword()));
+		}
 		return sysUserMapper.updateSysUserById(sysUser);
 	}
 
@@ -90,11 +97,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	 */
 	@Override
 	public Integer insertSysUser(SysUserVO sysUserVO) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//		sysUser.setPassword(PasswordEncoder.encode(sysUser.getPassword()));
 		SysUser sysUser = new SysUser();
 		BeanUtils.copyProperties(sysUserVO, sysUser);
-		sysUser.setPassword(encoder.encode(sysUserVO.getPassword()));
+		sysUser.setPassword(md5(sysUserVO.getPassword()));
 		return sysUserMapper.insertSysUser(sysUser);
 	}
 
@@ -124,11 +129,31 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		if (dbUser == null) {
 			return null;
 		}
-		// 密码比对
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		if (sysUserVO.getPassword() != null && !encoder.matches(sysUserVO.getPassword(), dbUser.getPassword())) {
+		if (sysUserVO.getPassword() != null && !md5(sysUserVO.getPassword()).equals(dbUser.getPassword())) {
 			return null;
 		}
 		return BeanCopyUtil.convert(dbUser, SysUserVO.class);
+	}
+
+	public Integer logicDeleteSysUserById(Long id) {
+		SysUser user = sysUserMapper.selectSysUserById(id);
+		if (user == null) return 0;
+		user.setStatus("9");
+		return sysUserMapper.updateSysUserById(user);
+	}
+
+	private String md5(String input) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(input.getBytes(StandardCharsets.UTF_8));
+			BigInteger no = new BigInteger(1, messageDigest);
+			String hashtext = no.toString(16);
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

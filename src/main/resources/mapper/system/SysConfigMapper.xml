@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.server.mapper.system.SysConfigMapper">
+    <resultMap id="SysConfigMap" type="com.cc.server.entity.system.SysConfig">
+        <id column="id" property="id"/>
+        <result column="config_key" property="configKey"/>
+        <result column="config_value" property="configValue"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="selectAllSysConfig" resultMap="SysConfigMap">
+        SELECT id, config_key, config_value, remark FROM sys_config
+    </select>
+
+    <select id="selectSysConfigById" resultMap="SysConfigMap">
+        SELECT id, config_key, config_value, remark FROM sys_config WHERE id = #{id}
+    </select>
+
+    <select id="selectSysConfigByKey" resultMap="SysConfigMap">
+        SELECT id, config_key, config_value, remark FROM sys_config WHERE config_key = #{configKey}
+    </select>
+
+    <delete id="deleteSysConfigById">
+        DELETE FROM sys_config WHERE id = #{id}
+    </delete>
+
+    <update id="updateSysConfigById" parameterType="com.cc.server.entity.system.SysConfig">
+        UPDATE sys_config
+        <set>
+            <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
+            <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertSysConfig">
+        INSERT INTO sys_config (config_key, config_value, remark)
+        VALUES (#{configKey}, #{configValue}, #{remark})
+    </insert>
+</mapper> 
