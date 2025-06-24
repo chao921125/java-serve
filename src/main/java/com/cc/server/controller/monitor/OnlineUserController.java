@@ -31,7 +31,7 @@ public class OnlineUserController {
         return users;
     }
 
-    @DeleteMapping("/kick/{userId}")
+    @GetMapping("/kick/{userId}")
     public String kick(@PathVariable Long userId) {
         Set<String> keys = stringRedisTemplate.keys(CacheKey.LOGIN_TOKEN_KEY + "*");
         if (keys != null) {

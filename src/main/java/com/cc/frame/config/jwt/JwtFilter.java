@@ -33,6 +33,22 @@ public class JwtFilter extends OncePerRequestFilter {
 			@NonNull HttpServletResponse response,
 			@NonNull FilterChain filterChain
 	) throws ServletException, IOException {
+		String uri = request.getRequestURI();
+		// 白名单路径
+		if (uri.startsWith("/admin/sys-user/login") ||
+			uri.startsWith("/admin/sys-user/register") ||
+			uri.startsWith("/swagger-ui") ||
+			uri.startsWith("/v3/api-docs") ||
+			uri.startsWith("/docs") ||
+			uri.startsWith("/swagger-resources") ||
+			uri.startsWith("/webjars") ||
+			uri.startsWith("/api-docs") ||
+			uri.startsWith("/api/") ||
+			uri.startsWith("/ui/")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+
 		final String authHeader = request.getHeader("Authorization");
 		final String jwt;
 		final String userName;

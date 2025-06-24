@@ -105,9 +105,30 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	 */
 	@Override
 	public SysUserVO getUserByNameEmailPhone(SysUserVO sysUserVO) {
-		SysUser sysUser = new SysUser();
-		BeanUtils.copyProperties(sysUserVO, sysUser);
-		sysUser = sysUserMapper.loginSysUser(sysUser);
-		return BeanCopyUtil.convert(sysUser, SysUserVO.class);
+		SysUser dbUser = null;
+		if (sysUserVO.getUserName() != null) {
+			SysUser query = new SysUser();
+			query.setUserName(sysUserVO.getUserName());
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		if (dbUser == null && sysUserVO.getEmail() != null) {
+			SysUser query = new SysUser();
+			query.setEmail(sysUserVO.getEmail());
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		if (dbUser == null && sysUserVO.getPhone() != null) {
+			SysUser query = new SysUser();
+			query.setPhone(sysUserVO.getPhone());
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		if (dbUser == null) {
+			return null;
+		}
+		// 密码比对
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if (sysUserVO.getPassword() != null && !encoder.matches(sysUserVO.getPassword(), dbUser.getPassword())) {
+			return null;
+		}
+		return BeanCopyUtil.convert(dbUser, SysUserVO.class);
 	}
 }

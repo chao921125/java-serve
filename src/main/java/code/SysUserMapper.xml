@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SysUserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysUserMap" type="entity.SysUser">
+                <id column="id" property="id"/>
+                <result column="user_name" property="userName"/>
+                <result column="password" property="password"/>
+                <result column="nick_name" property="nickName"/>
+                <result column="real_name" property="realName"/>
+                <result column="avatar" property="avatar"/>
+                <result column="email" property="email"/>
+                <result column="phone" property="phone"/>
+                <result column="sex" property="sex"/>
+                <result column="age" property="age"/>
+                <result column="address" property="address"/>
+                <result column="status" property="status"/>
+                <result column="login_ip" property="loginIp"/>
+                <result column="login_address" property="loginAddress"/>
+                <result column="login_info" property="loginInfo"/>
+                <result column="login_time" property="loginTime"/>
+                <result column="pwd_update_time" property="pwdUpdateTime"/>
+                <result column="create_by" property="createBy"/>
+                <result column="create_time" property="createTime"/>
+                <result column="update_by" property="updateBy"/>
+                <result column="update_time" property="updateTime"/>
+                <result column="remark" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询列 -->
+    <sql id="SysUserList">
+        id, user_name, password, nick_name, real_name, avatar, email, phone, sex, age, address, status, login_ip, login_address, login_info, login_time, pwd_update_time, create_by, create_time, update_by, update_time, remark
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysUserBy">
+                <if test="userName != null and userName != ''">
+                    AND user_name = #{userName}
+                </if>
+                <if test="password != null and password != ''">
+                    AND password = #{password}
+                </if>
+                <if test="nickName != null and nickName != ''">
+                    AND nick_name = #{nickName}
+                </if>
+                <if test="realName != null and realName != ''">
+                    AND real_name = #{realName}
+                </if>
+                <if test="avatar != null and avatar != ''">
+                    AND avatar = #{avatar}
+                </if>
+                <if test="email != null and email != ''">
+                    AND email = #{email}
+                </if>
+                <if test="phone != null and phone != ''">
+                    AND phone = #{phone}
+                </if>
+                <if test="sex != null and sex != ''">
+                    AND sex = #{sex}
+                </if>
+                <if test="age != null and age != ''">
+                    AND age = #{age}
+                </if>
+                <if test="address != null and address != ''">
+                    AND address = #{address}
+                </if>
+                <if test="status != null and status != ''">
+                    AND status = #{status}
+                </if>
+                <if test="loginIp != null and loginIp != ''">
+                    AND login_ip = #{loginIp}
+                </if>
+                <if test="loginAddress != null and loginAddress != ''">
+                    AND login_address = #{loginAddress}
+                </if>
+                <if test="loginInfo != null and loginInfo != ''">
+                    AND login_info = #{loginInfo}
+                </if>
+                <if test="loginTime != null and loginTime != ''">
+                    AND login_time = #{loginTime}
+                </if>
+                <if test="pwdUpdateTime != null and pwdUpdateTime != ''">
+                    AND pwd_update_time = #{pwdUpdateTime}
+                </if>
+                <if test="createBy != null and createBy != ''">
+                    AND create_by = #{createBy}
+                </if>
+                <if test="createTime != null and createTime != ''">
+                    AND create_time = #{createTime}
+                </if>
+                <if test="updateBy != null and updateBy != ''">
+                    AND update_by = #{updateBy}
+                </if>
+                <if test="updateTime != null and updateTime != ''">
+                    AND update_time = #{updateTime}
+                </if>
+                <if test="remark != null and remark != ''">
+                    AND remark = #{remark}
+                </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysUserSet">
+                <if test="userName != null and userName != ''">
+                    user_name = #{userName}
+                </if>
+                <if test="password != null and password != ''">
+                    password = #{password}
+                </if>
+                <if test="nickName != null and nickName != ''">
+                    nick_name = #{nickName}
+                </if>
+                <if test="realName != null and realName != ''">
+                    real_name = #{realName}
+                </if>
+                <if test="avatar != null and avatar != ''">
+                    avatar = #{avatar}
+                </if>
+                <if test="email != null and email != ''">
+                    email = #{email}
+                </if>
+                <if test="phone != null and phone != ''">
+                    phone = #{phone}
+                </if>
+                <if test="sex != null and sex != ''">
+                    sex = #{sex}
+                </if>
+                <if test="age != null and age != ''">
+                    age = #{age}
+                </if>
+                <if test="address != null and address != ''">
+                    address = #{address}
+                </if>
+                <if test="status != null and status != ''">
+                    status = #{status}
+                </if>
+                <if test="loginIp != null and loginIp != ''">
+                    login_ip = #{loginIp}
+                </if>
+                <if test="loginAddress != null and loginAddress != ''">
+                    login_address = #{loginAddress}
+                </if>
+                <if test="loginInfo != null and loginInfo != ''">
+                    login_info = #{loginInfo}
+                </if>
+                <if test="loginTime != null and loginTime != ''">
+                    login_time = #{loginTime}
+                </if>
+                <if test="pwdUpdateTime != null and pwdUpdateTime != ''">
+                    pwd_update_time = #{pwdUpdateTime}
+                </if>
+                <if test="createBy != null and createBy != ''">
+                    create_by = #{createBy}
+                </if>
+                <if test="createTime != null and createTime != ''">
+                    create_time = #{createTime}
+                </if>
+                <if test="updateBy != null and updateBy != ''">
+                    update_by = #{updateBy}
+                </if>
+                <if test="updateTime != null and updateTime != ''">
+                    update_time = #{updateTime}
+                </if>
+                <if test="remark != null and remark != ''">
+                    remark = #{remark}
+                </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectSysUserVo">
+        select id, user_name, password, nick_name, real_name, avatar, email, phone, sex, age, address, status, login_ip, login_address, login_info, login_time, pwd_update_time, create_by, create_time, update_by, update_time, remark from sys_user
+    </sql>
+
+    <!-- 查询表sys_user所有信息 -->
+    <select id="selectAllSysUser" resultMap="SysUserMap">
+        SELECT
+        <include refid="SysUserList"/>
+        FROM sys_user
+    </select>
+
+            <!-- 根据主键id查询表sys_user信息 -->
+            <select id="selectSysUserByid" resultMap="SysUserMap">
+                SELECT
+                <include refid="SysUserList"/>
+                FROM sys_user
+                WHERE id = #{id}
+            </select>
+
+    <!-- 根据条件查询表sys_user信息 -->
+    <select id="selectSysUserByCondition" resultMap="SysUserMap">
+        SELECT
+        <include refid="SysUserList"/>
+        FROM sys_user
+        WHERE 1=1
+        <include refid="SysUserBy"/>
+    </select>
+
+            <!-- 新增表sys_user信息 -->
+            <insert id="insertSysUser">
+                INSERT INTO sys_user (
+                    id
+                    ,user_name
+                    ,password
+                    ,nick_name
+                    ,real_name
+                    ,avatar
+                    ,email
+                    ,phone
+                    ,sex
+                    ,age
+                    ,address
+                    ,status
+                    ,login_ip
+                    ,login_address
+                    ,login_info
+                    ,login_time
+                    ,pwd_update_time
+                    ,create_by
+                    ,create_time
+                    ,update_by
+                    ,update_time
+                    ,remark
+                ) VALUES (
+                    #{id}
+                    ,#{userName}
+                    ,#{password}
+                    ,#{nickName}
+                    ,#{realName}
+                    ,#{avatar}
+                    ,#{email}
+                    ,#{phone}
+                    ,#{sex}
+                    ,#{age}
+                    ,#{address}
+                    ,#{status}
+                    ,#{loginIp}
+                    ,#{loginAddress}
+                    ,#{loginInfo}
+                    ,#{loginTime}
+                    ,#{pwdUpdateTime}
+                    ,#{createBy}
+                    ,#{createTime}
+                    ,#{updateBy}
+                    ,#{updateTime}
+                    ,#{remark}
+                )
+            </insert>
+
+            <!-- 根据主键id更新表sys_user信息 -->
+            <update id="updateSysUserByid" parameterType="entity.SysUser">
+                UPDATE sys_user
+                <set>
+                    <include refid="SysUserSet"/>
+                </set>
+                WHERE
+                id=#{id}
+            </update>
+
+            <!-- 根据主键id删除表sys_user信息：慎用！！！ -->
+            <delete id="deleteSysUserByid">
+                DELETE FROM
+                sys_user
+                WHERE id=#{id}
+            </delete>
+</mapper>

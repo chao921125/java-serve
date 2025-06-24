@@ -23,9 +23,11 @@ public class SysJobController extends BaseController {
 
     @Operation(summary = "获取全部定时任务列表")
     @GetMapping("/list")
-    public Result list() {
+    public ResultPageEntity list(@RequestParam(defaultValue = "1") int pageNum,
+                                 @RequestParam(defaultValue = "10") int pageSize) {
+        startPage();
         List<SysJobVO> voList = JobConverter.toVOList(sysJobService.listAll());
-        return new Result(Result.SUCCESS_CODE, "查询成功", voList);
+        return getDataTable(voList);
     }
 
     @Operation(summary = "分页查询定时任务")
@@ -59,14 +61,14 @@ public class SysJobController extends BaseController {
     }
 
     @Operation(summary = "修改定时任务")
-    @PutMapping("/update")
+    @PostMapping("/update")
     public Result update(@RequestBody SysJobVO jobVO) {
         boolean ok = sysJobService.update(JobConverter.toEntity(jobVO));
         return new Result(ok ? Result.SUCCESS_CODE : Result.FAIL_CODE, ok ? "修改成功" : "修改失败", null);
     }
 
     @Operation(summary = "删除定时任务")
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public Result delete(@Parameter(description = "任务ID") @PathVariable Long id) {
         boolean ok = sysJobService.remove(id);
         return new Result(ok ? Result.SUCCESS_CODE : Result.FAIL_CODE, ok ? "删除成功" : "删除失败", null);

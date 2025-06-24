@@ -45,7 +45,20 @@ public class SecurityConfig {
 		http.csrf(AbstractHttpConfigurer::disable) // 禁用 CSRF
 				.cors(AbstractHttpConfigurer::disable) // 禁用 CORS
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers("/api/auth/**", "/api/public/**", "/swagger-ui/**", "/docs/**").permitAll()
+						.requestMatchers(
+								"/admin/sys-user/login",
+								"/admin/sys-user/register",
+								"/swagger-ui/**",
+								"/v3/api-docs/**",
+								"/docs/**",
+								"/swagger-resources/**",
+								"/webjars/**",
+								"/api-docs/**",
+								"/api/**",
+								"/ui/**",
+								"/api/auth/**",
+								"/api/public/**"
+						).permitAll()
 						.anyRequest().authenticated())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.formLogin(AbstractHttpConfigurer::disable)

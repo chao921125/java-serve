@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SysUserDepartmentMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysUserDepartmentMap" type="entity.SysUserDepartment">
+                <id column="id" property="id"/>
+                <result column="user_id" property="userId"/>
+                <result column="department_id" property="departmentId"/>
+    </resultMap>
+
+    <!-- 通用查询列 -->
+    <sql id="SysUserDepartmentList">
+        id, user_id, department_id
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysUserDepartmentBy">
+                <if test="userId != null and userId != ''">
+                    AND user_id = #{userId}
+                </if>
+                <if test="departmentId != null and departmentId != ''">
+                    AND department_id = #{departmentId}
+                </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysUserDepartmentSet">
+                <if test="userId != null and userId != ''">
+                    user_id = #{userId}
+                </if>
+                <if test="departmentId != null and departmentId != ''">
+                    department_id = #{departmentId}
+                </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectSysUserDepartmentVo">
+        select id, user_id, department_id from sys_user_department
+    </sql>
+
+    <!-- 查询表sys_user_department所有信息 -->
+    <select id="selectAllSysUserDepartment" resultMap="SysUserDepartmentMap">
+        SELECT
+        <include refid="SysUserDepartmentList"/>
+        FROM sys_user_department
+    </select>
+
+            <!-- 根据主键id查询表sys_user_department信息 -->
+            <select id="selectSysUserDepartmentByid" resultMap="SysUserDepartmentMap">
+                SELECT
+                <include refid="SysUserDepartmentList"/>
+                FROM sys_user_department
+                WHERE id = #{id}
+            </select>
+
+    <!-- 根据条件查询表sys_user_department信息 -->
+    <select id="selectSysUserDepartmentByCondition" resultMap="SysUserDepartmentMap">
+        SELECT
+        <include refid="SysUserDepartmentList"/>
+        FROM sys_user_department
+        WHERE 1=1
+        <include refid="SysUserDepartmentBy"/>
+    </select>
+
+            <!-- 新增表sys_user_department信息 -->
+            <insert id="insertSysUserDepartment">
+                INSERT INTO sys_user_department (
+                    id
+                    ,user_id
+                    ,department_id
+                ) VALUES (
+                    #{id}
+                    ,#{userId}
+                    ,#{departmentId}
+                )
+            </insert>
+
+            <!-- 根据主键id更新表sys_user_department信息 -->
+            <update id="updateSysUserDepartmentByid" parameterType="entity.SysUserDepartment">
+                UPDATE sys_user_department
+                <set>
+                    <include refid="SysUserDepartmentSet"/>
+                </set>
+                WHERE
+                id=#{id}
+            </update>
+
+            <!-- 根据主键id删除表sys_user_department信息：慎用！！！ -->
+            <delete id="deleteSysUserDepartmentByid">
+                DELETE FROM
+                sys_user_department
+                WHERE id=#{id}
+            </delete>
+</mapper>

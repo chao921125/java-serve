@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.OnlineUserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="OnlineUserMap" type="entity.OnlineUser">
+                <id column="id" property="id"/>
+                <result column="user_id" property="userId"/>
+                <result column="user_name" property="userName"/>
+                <result column="token" property="token"/>
+                <result column="login_time" property="loginTime"/>
+                <result column="last_active_time" property="lastActiveTime"/>
+                <result column="ip" property="ip"/>
+                <result column="status" property="status"/>
+    </resultMap>
+
+    <!-- 通用查询列 -->
+    <sql id="OnlineUserList">
+        id, user_id, user_name, token, login_time, last_active_time, ip, status
+    </sql>
+
+    <!-- 通用条件列 -->
+    <sql id="OnlineUserBy">
+                <if test="userId != null and userId != ''">
+                    AND user_id = #{userId}
+                </if>
+                <if test="userName != null and userName != ''">
+                    AND user_name = #{userName}
+                </if>
+                <if test="token != null and token != ''">
+                    AND token = #{token}
+                </if>
+                <if test="loginTime != null and loginTime != ''">
+                    AND login_time = #{loginTime}
+                </if>
+                <if test="lastActiveTime != null and lastActiveTime != ''">
+                    AND last_active_time = #{lastActiveTime}
+                </if>
+                <if test="ip != null and ip != ''">
+                    AND ip = #{ip}
+                </if>
+                <if test="status != null and status != ''">
+                    AND status = #{status}
+                </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="OnlineUserSet">
+                <if test="userId != null and userId != ''">
+                    user_id = #{userId}
+                </if>
+                <if test="userName != null and userName != ''">
+                    user_name = #{userName}
+                </if>
+                <if test="token != null and token != ''">
+                    token = #{token}
+                </if>
+                <if test="loginTime != null and loginTime != ''">
+                    login_time = #{loginTime}
+                </if>
+                <if test="lastActiveTime != null and lastActiveTime != ''">
+                    last_active_time = #{lastActiveTime}
+                </if>
+                <if test="ip != null and ip != ''">
+                    ip = #{ip}
+                </if>
+                <if test="status != null and status != ''">
+                    status = #{status}
+                </if>
+    </sql>
+
+    <!-- 通用查询 -->
+    <sql id="selectOnlineUserVo">
+        select id, user_id, user_name, token, login_time, last_active_time, ip, status from online_user
+    </sql>
+
+    <!-- 查询表online_user所有信息 -->
+    <select id="selectAllOnlineUser" resultMap="OnlineUserMap">
+        SELECT
+        <include refid="OnlineUserList"/>
+        FROM online_user
+    </select>
+
+            <!-- 根据主键id查询表online_user信息 -->
+            <select id="selectOnlineUserByid" resultMap="OnlineUserMap">
+                SELECT
+                <include refid="OnlineUserList"/>
+                FROM online_user
+                WHERE id = #{id}
+            </select>
+
+    <!-- 根据条件查询表online_user信息 -->
+    <select id="selectOnlineUserByCondition" resultMap="OnlineUserMap">
+        SELECT
+        <include refid="OnlineUserList"/>
+        FROM online_user
+        WHERE 1=1
+        <include refid="OnlineUserBy"/>
+    </select>
+
+            <!-- 新增表online_user信息 -->
+            <insert id="insertOnlineUser">
+                INSERT INTO online_user (
+                    id
+                    ,user_id
+                    ,user_name
+                    ,token
+                    ,login_time
+                    ,last_active_time
+                    ,ip
+                    ,status
+                ) VALUES (
+                    #{id}
+                    ,#{userId}
+                    ,#{userName}
+                    ,#{token}
+                    ,#{loginTime}
+                    ,#{lastActiveTime}
+                    ,#{ip}
+                    ,#{status}
+                )
+            </insert>
+
+            <!-- 根据主键id更新表online_user信息 -->
+            <update id="updateOnlineUserByid" parameterType="entity.OnlineUser">
+                UPDATE online_user
+                <set>
+                    <include refid="OnlineUserSet"/>
+                </set>
+                WHERE
+                id=#{id}
+            </update>
+
+            <!-- 根据主键id删除表online_user信息：慎用！！！ -->
+            <delete id="deleteOnlineUserByid">
+                DELETE FROM
+                online_user
+                WHERE id=#{id}
+            </delete>
+</mapper>

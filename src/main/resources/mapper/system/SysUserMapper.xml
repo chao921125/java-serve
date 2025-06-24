@@ -298,8 +298,5 @@
         <if test="phone != null and phone != ''">
             AND phone = #{phone}
         </if>
-        <if test="password != null and password != ''">
-            AND password = #{password}
-        </if>
     </select>
 </mapper>
