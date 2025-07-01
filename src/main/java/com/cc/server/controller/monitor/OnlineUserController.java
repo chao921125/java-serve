@@ -2,6 +2,8 @@ package com.cc.server.controller.monitor;
 
 import com.cc.frame.constants.CacheKey;
 import com.cc.server.vo.monitor.OnlineUserVO;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,13 @@ public class OnlineUserController {
     private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/list")
-    public List<OnlineUserVO> list() {
+    public PageResult<OnlineUserVO> list(@RequestParam(defaultValue = "1") int pageNum, 
+                                        @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPageNum(pageNum);
+        pageRequest.setPageSize(pageSize);
         Set<String> keys = stringRedisTemplate.keys(CacheKey.LOGIN_TOKEN_KEY + "*");
-        if (keys == null) return Collections.emptyList();
+        if (keys == null) return new PageResult<>(0, Collections.emptyList());
         List<OnlineUserVO> users = new ArrayList<>();
         for (String key : keys) {
             String json = stringRedisTemplate.opsForValue().get(key);
@@ -28,7 +34,11 @@ public class OnlineUserController {
                 } catch (Exception ignored) {}
             }
         }
-        return users;
+        int total = users.size();
+        int fromIndex = Math.min((pageRequest.getPageNum() - 1) * pageRequest.getPageSize(), total);
+        int toIndex = Math.min(fromIndex + pageRequest.getPageSize(), total);
+        List<OnlineUserVO> pageList = users.subList(fromIndex, toIndex);
+        return new PageResult<>(total, pageList);
     }
 
     @GetMapping("/kick/{userId}")

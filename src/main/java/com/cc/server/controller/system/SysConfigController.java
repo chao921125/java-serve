@@ -10,6 +10,8 @@ import com.cc.server.entity.system.SysConfig;
 import com.cc.server.service.system.SysConfigService;
 import jakarta.annotation.Resource;
 import java.util.List;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 
 @RestController
 @RequestMapping("/admin/sys-config")
@@ -61,8 +63,12 @@ public class SysConfigController {
 
     // 查询所有配置
     @GetMapping("/list")
-    public List<SysConfig> list() {
-        return sysConfigService.selectAllSysConfig();
+    public PageResult<SysConfig> list(@RequestParam(defaultValue = "1") int pageNum, 
+                                     @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPageNum(pageNum);
+        pageRequest.setPageSize(pageSize);
+        return sysConfigService.pageSysConfig(pageRequest);
     }
 
     // 新增配置

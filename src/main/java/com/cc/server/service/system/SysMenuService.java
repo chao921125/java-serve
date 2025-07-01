@@ -2,6 +2,8 @@ package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysMenu;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -54,4 +56,9 @@ public interface SysMenuService extends IService<SysMenu> {
 	 * @param sysMenu
 	 */
 	Integer insertSysMenu(SysMenu sysMenu);
+
+	/**
+	 * 分页查询菜单
+	 */
+	PageResult<SysMenu> pageSysMenu(PageRequest pageRequest);
 }

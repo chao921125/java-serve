@@ -11,6 +11,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.system.SysUserService;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,5 +159,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public PageResult<SysUserVO> pageSysUser(PageRequest pageRequest) {
+		Page<SysUser> page = new Page<>(pageRequest.getPageNum(), pageRequest.getPageSize());
+		Page<SysUser> result = this.page(page, new QueryWrapper<>());
+		List<SysUserVO> voList = BeanCopyUtil.convertList(result.getRecords(), SysUserVO.class);
+		return new PageResult<>(result.getTotal(), voList);
 	}
 }

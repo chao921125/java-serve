@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.log.LogLoginService;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -79,5 +83,12 @@ public class LogLoginServiceImpl extends ServiceImpl<LogLoginMapper, LogLogin> i
 	@Override
 	public Integer insertLogLogin(LogLogin logLogin) {
 		return logLoginMapper.insertLogLogin(logLogin);
+	}
+
+	@Override
+	public PageResult<LogLogin> pageLogLogin(PageRequest pageRequest) {
+		Page<LogLogin> page = new Page<>(pageRequest.getPageNum(), pageRequest.getPageSize());
+		Page<LogLogin> result = this.page(page, new QueryWrapper<>());
+		return new PageResult<>(result.getTotal(), result.getRecords());
 	}
 }

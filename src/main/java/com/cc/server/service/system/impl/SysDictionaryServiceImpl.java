@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.system.SysDictionaryService;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -79,5 +83,12 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
 	@Override
 	public Integer insertSysDictionary(SysDictionary sysDictionary) {
 		return sysDictionaryMapper.insertSysDictionary(sysDictionary);
+	}
+
+	@Override
+	public PageResult<SysDictionary> pageSysDictionary(PageRequest pageRequest) {
+		Page<SysDictionary> page = new Page<>(pageRequest.getPageNum(), pageRequest.getPageSize());
+		Page<SysDictionary> result = this.page(page, new QueryWrapper<>());
+		return new PageResult<>(result.getTotal(), result.getRecords());
 	}
 }

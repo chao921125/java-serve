@@ -2,6 +2,8 @@ package com.cc.server.controller.log;
 
 import com.cc.server.entity.log.LogOperation;
 import com.cc.server.service.log.LogOperationService;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -30,10 +32,14 @@ public class LogOperationController {
         return "success";
     }
 
-    @Operation(summary = "查询所有操作日志")
+    @Operation(summary = "分页查询操作日志")
     @GetMapping("/list")
-    public List<LogOperation> list() {
-        return logOperationService.selectAllLogOperation();
+    public PageResult<LogOperation> list(@RequestParam(defaultValue = "1") int pageNum, 
+                                        @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPageNum(pageNum);
+        pageRequest.setPageSize(pageSize);
+        return logOperationService.pageLogOperation(pageRequest);
     }
 
     @Operation(summary = "按条件查询操作日志")

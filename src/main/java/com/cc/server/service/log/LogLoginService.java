@@ -2,6 +2,8 @@ package com.cc.server.service.log;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.log.LogLogin;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -54,4 +56,9 @@ public interface LogLoginService extends IService<LogLogin> {
 	 * @param logLogin
 	 */
 	Integer insertLogLogin(LogLogin logLogin);
+
+	/**
+	 * 分页查询登录日志
+	 */
+	PageResult<LogLogin> pageLogLogin(PageRequest pageRequest);
 }

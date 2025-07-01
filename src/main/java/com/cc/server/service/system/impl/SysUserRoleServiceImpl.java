@@ -7,6 +7,10 @@ import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.system.SysUserRoleService;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -79,5 +83,12 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUs
 	@Override
 	public Integer insertSysUserRole(SysUserRole sysUserRole) {
 		return sysUserRoleMapper.insertSysUserRole(sysUserRole);
+	}
+
+	@Override
+	public PageResult<SysUserRole> pageSysUserRole(PageRequest pageRequest) {
+		Page<SysUserRole> page = new Page<>(pageRequest.getPageNum(), pageRequest.getPageSize());
+		Page<SysUserRole> result = this.page(page, new QueryWrapper<>());
+		return new PageResult<>(result.getTotal(), result.getRecords());
 	}
 }

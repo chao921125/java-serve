@@ -2,6 +2,8 @@ package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysRole;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -54,4 +56,9 @@ public interface SysRoleService extends IService<SysRole> {
 	 * @param sysRole
 	 */
 	Integer insertSysRole(SysRole sysRole);
+
+	/**
+	 * 分页查询角色
+	 */
+	PageResult<SysRole> pageSysRole(PageRequest pageRequest);
 }

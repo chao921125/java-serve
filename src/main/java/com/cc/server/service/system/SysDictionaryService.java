@@ -2,6 +2,8 @@ package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysDictionary;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -54,4 +56,9 @@ public interface SysDictionaryService extends IService<SysDictionary> {
 	 * @param sysDictionary
 	 */
 	Integer insertSysDictionary(SysDictionary sysDictionary);
+
+	/**
+	 * 分页查询字典
+	 */
+	PageResult<SysDictionary> pageSysDictionary(PageRequest pageRequest);
 }

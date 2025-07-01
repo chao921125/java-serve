@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import org.springframework.http.MediaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -19,10 +20,14 @@ public class LogOperationControllerTest {
 
     @Test
     void testList() throws Exception {
-        mockMvc.perform(get("/log-operation/list?pageNum=1&pageSize=5"))
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(new com.cc.server.vo.PageRequest());
+        mockMvc.perform(post("/log-operation/list")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.total").exists())
-                .andExpect(jsonPath("$.rows").isArray());
+                .andExpect(jsonPath("$.list").isArray());
     }
 
     @Test

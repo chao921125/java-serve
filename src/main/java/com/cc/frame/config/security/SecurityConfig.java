@@ -25,23 +25,27 @@ public class SecurityConfig {
 
 	private final ApplicationContext applicationContext;
 	private final JwtUtil jwtUtil;
-	private final AuthException authenticationExceptionHandler;
 
-	public SecurityConfig(ApplicationContext applicationContext, JwtUtil jwtUtil, AuthException authenticationExceptionHandler) {
+	public SecurityConfig(ApplicationContext applicationContext, JwtUtil jwtUtil) {
 		this.applicationContext = applicationContext;
 		this.jwtUtil = jwtUtil;
-		this.authenticationExceptionHandler = authenticationExceptionHandler;
 	}
 
 	/**
 	 * 密码加密使用的编码器
 	 */
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	public AuthException authenticationExceptionHandler() {
+		return new AuthException();
+	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthException authenticationExceptionHandler) throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable) // 禁用 CSRF
 				.cors(AbstractHttpConfigurer::disable) // 禁用 CORS
 				.authorizeHttpRequests(authorize -> authorize

@@ -6,6 +6,10 @@ import com.cc.server.service.system.SysConfigService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 @Service
 public class SysConfigServiceImpl implements SysConfigService {
@@ -40,5 +44,12 @@ public class SysConfigServiceImpl implements SysConfigService {
     @Override
     public Integer insertSysConfig(SysConfig sysConfig) {
         return sysConfigMapper.insertSysConfig(sysConfig);
+    }
+
+    @Override
+    public PageResult<SysConfig> pageSysConfig(PageRequest pageRequest) {
+        Page<SysConfig> page = new Page<>(pageRequest.getPageNum(), pageRequest.getPageSize());
+        Page<SysConfig> result = sysConfigMapper.selectPage(page, new QueryWrapper<>());
+        return new PageResult<>(result.getTotal(), result.getRecords());
     }
 } 

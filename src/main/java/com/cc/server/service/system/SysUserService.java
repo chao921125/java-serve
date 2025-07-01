@@ -3,6 +3,8 @@ package com.cc.server.service.system;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysUser;
 import com.cc.server.vo.system.SysUserVO;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -57,4 +59,9 @@ public interface SysUserService extends IService<SysUser> {
     Integer insertSysUser(SysUserVO sysUserVO);
 
     SysUserVO getUserByNameEmailPhone(SysUserVO sysUserVO);
+
+    /**
+     * 分页查询用户
+     */
+    PageResult<SysUserVO> pageSysUser(PageRequest pageRequest);
 }

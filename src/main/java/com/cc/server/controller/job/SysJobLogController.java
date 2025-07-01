@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 
 @Tag(name = "定时任务日志", description = "定时任务日志接口")
 @RestController
@@ -21,27 +23,20 @@ public class SysJobLogController extends BaseController {
     @Autowired
     private SysJobLogService sysJobLogService;
 
-    @Operation(summary = "按任务ID查询日志")
-    @GetMapping("/list/{jobId}")
-    public Result listByJobId(@Parameter(description = "任务ID") @PathVariable Long jobId) {
-        List<SysJobLogVO> voList = JobConverter.toVOLogList(sysJobLogService.listByJobId(jobId));
-        return new Result(Result.SUCCESS_CODE, "查询成功", voList);
-    }
-
-    @Operation(summary = "分页查询日志")
-    @GetMapping("/page")
-    public ResultPageEntity page(
-            @Parameter(description = "页码", example = "1") @RequestParam(defaultValue = "1") int pageNum,
-            @Parameter(description = "每页数量", example = "10") @RequestParam(defaultValue = "10") int pageSize,
-            @Parameter(description = "任务ID") @RequestParam(required = false) Long jobId,
-            @Parameter(description = "状态") @RequestParam(required = false) String status) {
-        startPage();
-        List<SysJobLog> list = sysJobLogService.lambdaQuery()
-                .eq(jobId != null, SysJobLog::getJobId, jobId)
-                .eq(status != null && !status.isEmpty(), SysJobLog::getStatus, status)
-                .list();
+    @Operation(summary = "分页查询任务日志")
+    @GetMapping("/list")
+    public PageResult<SysJobLogVO> list(@RequestParam(defaultValue = "1") int pageNum, 
+                                       @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPageNum(pageNum);
+        pageRequest.setPageSize(pageSize);
+        List<SysJobLog> list = sysJobLogService.list();
         List<SysJobLogVO> voList = JobConverter.toVOLogList(list);
-        return getDataTable(voList);
+        int total = voList.size();
+        int fromIndex = Math.min((pageRequest.getPageNum() - 1) * pageRequest.getPageSize(), total);
+        int toIndex = Math.min(fromIndex + pageRequest.getPageSize(), total);
+        List<SysJobLogVO> pageList = voList.subList(fromIndex, toIndex);
+        return new PageResult<>(total, pageList);
     }
 
     @Operation(summary = "获取日志详情")

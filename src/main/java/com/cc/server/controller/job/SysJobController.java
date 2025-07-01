@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 
 @Tag(name = "定时任务", description = "定时任务管理接口")
 @RestController
@@ -21,29 +23,20 @@ public class SysJobController extends BaseController {
     @Autowired
     private SysJobService sysJobService;
 
-    @Operation(summary = "获取全部定时任务列表")
-    @GetMapping("/list")
-    public ResultPageEntity list(@RequestParam(defaultValue = "1") int pageNum,
-                                 @RequestParam(defaultValue = "10") int pageSize) {
-        startPage();
-        List<SysJobVO> voList = JobConverter.toVOList(sysJobService.listAll());
-        return getDataTable(voList);
-    }
-
     @Operation(summary = "分页查询定时任务")
-    @GetMapping("/page")
-    public ResultPageEntity page(
-            @Parameter(description = "页码", example = "1") @RequestParam(defaultValue = "1") int pageNum,
-            @Parameter(description = "每页数量", example = "10") @RequestParam(defaultValue = "10") int pageSize,
-            @Parameter(description = "任务名") @RequestParam(required = false) String jobName,
-            @Parameter(description = "任务组") @RequestParam(required = false) String jobGroup) {
-        startPage();
-        List<SysJob> list = sysJobService.lambdaQuery()
-                .like(jobName != null && !jobName.isEmpty(), SysJob::getJobName, jobName)
-                .eq(jobGroup != null && !jobGroup.isEmpty(), SysJob::getJobGroup, jobGroup)
-                .list();
+    @GetMapping("/list")
+    public PageResult<SysJobVO> list(@RequestParam(defaultValue = "1") int pageNum, 
+                                    @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPageNum(pageNum);
+        pageRequest.setPageSize(pageSize);
+        List<SysJob> list = sysJobService.listAll();
         List<SysJobVO> voList = JobConverter.toVOList(list);
-        return getDataTable(voList);
+        int total = voList.size();
+        int fromIndex = Math.min((pageRequest.getPageNum() - 1) * pageRequest.getPageSize(), total);
+        int toIndex = Math.min(fromIndex + pageRequest.getPageSize(), total);
+        List<SysJobVO> pageList = voList.subList(fromIndex, toIndex);
+        return new PageResult<>(total, pageList);
     }
 
     @Operation(summary = "获取定时任务详情")

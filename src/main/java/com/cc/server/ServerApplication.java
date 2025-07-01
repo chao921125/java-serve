@@ -7,9 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
+import org.springframework.context.annotation.ComponentScan;
+
 @SpringBootApplication
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.cc.server.mapper")
+@ComponentScan({"com.cc.server", "com.cc.frame"})
 public class ServerApplication {
 	private static final Logger logger = LoggerFactory.getLogger(ServerApplication.class);
 

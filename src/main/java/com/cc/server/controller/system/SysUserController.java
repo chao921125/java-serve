@@ -21,6 +21,8 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Value;
+import com.cc.server.vo.PageRequest;
+import com.cc.server.vo.PageResult;
 
 /**
  * <p>
@@ -120,6 +122,16 @@ public class SysUserController {
 		long expireSeconds = expireDays * 24L * 60 * 60;
 		stringRedisTemplate.opsForValue().set(CacheKey.LOGIN_TOKEN_KEY + token, user.getUserName(), expireSeconds, TimeUnit.SECONDS);
 		return token;
+	}
+
+	@Operation(summary = "分页查询用户", description = "分页查询用户")
+	@GetMapping("/list")
+	public PageResult<SysUserVO> list(@RequestParam(defaultValue = "1") int pageNum, 
+	                                 @RequestParam(defaultValue = "10") int pageSize) {
+		PageRequest pageRequest = new PageRequest();
+		pageRequest.setPageNum(pageNum);
+		pageRequest.setPageSize(pageSize);
+		return userService.pageSysUser(pageRequest);
 	}
 
 	// MD5加密工具
