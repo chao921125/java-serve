@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import org.springframework.http.MediaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.cc.frame.core.PageRequest;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,7 +22,7 @@ public class LogOperationControllerTest {
     @Test
     void testList() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(new com.cc.server.vo.PageRequest());
+        String json = objectMapper.writeValueAsString(new PageRequest());
         mockMvc.perform(post("/log-operation/list")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))

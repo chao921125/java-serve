@@ -2,8 +2,9 @@ package com.cc.server.controller.log;
 
 import com.cc.server.entity.log.LogOperation;
 import com.cc.server.service.log.LogOperationService;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
+import com.cc.frame.core.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -27,30 +28,38 @@ public class LogOperationController {
 
     @Operation(summary = "记录操作日志")
     @PostMapping("/record")
-    public String record(@RequestBody LogOperation log) {
+    public ApiResponse<String> record(@RequestBody LogOperation log) {
         logOperationService.insertLogOperation(log);
-        return "success";
+        return ApiResponse.success("记录成功", null);
     }
 
     @Operation(summary = "分页查询操作日志")
     @GetMapping("/list")
-    public PageResult<LogOperation> list(@RequestParam(defaultValue = "1") int pageNum, 
+    public ApiResponse<PageResult<LogOperation>> list(@RequestParam(defaultValue = "1") int pageNum, 
                                         @RequestParam(defaultValue = "10") int pageSize) {
         PageRequest pageRequest = new PageRequest();
         pageRequest.setPageNum(pageNum);
         pageRequest.setPageSize(pageSize);
-        return logOperationService.pageLogOperation(pageRequest);
+        return ApiResponse.success(logOperationService.pageLogOperation(pageRequest));
     }
 
     @Operation(summary = "按条件查询操作日志")
     @PostMapping("/query")
-    public List<LogOperation> query(@RequestBody LogOperation log) {
-        return logOperationService.selectLogOperationByCondition(log);
+    public ApiResponse<java.util.List<LogOperation>> query(@RequestBody LogOperation log) {
+        java.util.List<LogOperation> result = logOperationService.selectLogOperationByCondition(log);
+        if (result == null || result.isEmpty()) {
+            return ApiResponse.success("未查询到数据", null);
+        }
+        return ApiResponse.success(result);
     }
 
     @Operation(summary = "根据ID查询操作日志")
     @GetMapping("/{id}")
-    public LogOperation getById(@PathVariable Long id) {
-        return logOperationService.selectLogOperationById(id);
+    public ApiResponse<LogOperation> getById(@PathVariable Long id) {
+        LogOperation result = logOperationService.selectLogOperationById(id);
+        if (result == null) {
+            return ApiResponse.success("未查询到数据", null);
+        }
+        return ApiResponse.success(result);
     }
 }

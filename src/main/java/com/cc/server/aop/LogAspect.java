@@ -31,7 +31,7 @@ public class LogAspect {
     public void loginPointcut() {}
 
     // 业务操作切点（可根据需要调整包路径）
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping) || @annotation(org.springframework.web.bind.annotation.PutMapping) || @annotation(org.springframework.web.bind.annotation.DeleteMapping)")
+    @Pointcut("(@annotation(org.springframework.web.bind.annotation.PostMapping) || @annotation(org.springframework.web.bind.annotation.PutMapping) || @annotation(org.springframework.web.bind.annotation.DeleteMapping)) && !execution(* com.cc.server.controller.system.SysUserController.login(..))")
     public void operationPointcut() {}
 
     // 登录成功后记录登录日志
@@ -40,7 +40,11 @@ public class LogAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = request.getRemoteAddr();
         Object[] args = joinPoint.getArgs();
-        String loginName = args.length > 0 ? String.valueOf(args[0]) : "";
+        String loginName = "";
+        if (args.length > 0 && args[0] instanceof com.cc.server.vo.system.SysUserVO) {
+            com.cc.server.vo.system.SysUserVO loginVO = (com.cc.server.vo.system.SysUserVO) args[0];
+            loginName = loginVO.getUserName() != null ? loginVO.getUserName() : "";
+        }
         LogLogin log = new LogLogin();
         log.setUserName(loginName);
         log.setIp(ip);
@@ -56,7 +60,11 @@ public class LogAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = request.getRemoteAddr();
         Object[] args = joinPoint.getArgs();
-        String loginName = args.length > 0 ? String.valueOf(args[0]) : "";
+        String loginName = "";
+        if (args.length > 0 && args[0] instanceof com.cc.server.vo.system.SysUserVO) {
+            com.cc.server.vo.system.SysUserVO loginVO = (com.cc.server.vo.system.SysUserVO) args[0];
+            loginName = loginVO.getUserName() != null ? loginVO.getUserName() : "";
+        }
         LogLogin log = new LogLogin();
         log.setUserName(loginName);
         log.setIp(ip);

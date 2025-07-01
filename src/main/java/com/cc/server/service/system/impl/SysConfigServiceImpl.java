@@ -6,8 +6,8 @@ import com.cc.server.service.system.SysConfigService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 

@@ -17,7 +17,7 @@
     <!-- 通用查询列 -->
     <sql id="LogLoginList">
         id
-        , user_id, user_name, ip, ip_real, login_time, address, system, status
+        , user_id, user_name, ip, ip_real, login_time, address, `system`, status
     </sql>
 
     <!-- 通用条件列 -->
@@ -41,7 +41,7 @@
             AND address = #{address}
         </if>
         <if test="system != null and system != ''">
-            AND system = #{system}
+            AND `system` = #{system}
         </if>
         <if test="status != null and status != ''">
             AND status = #{status}
@@ -69,7 +69,7 @@
             address = #{address}
         </if>
         <if test="system != null and system != ''">
-            system = #{system}
+            `system` = #{system}
         </if>
         <if test="status != null and status != ''">
             status = #{status}
@@ -85,7 +85,7 @@
         ip_real,
         login_time,
         address,
-        system,
+        `system`,
         status
         from log_login
     </sql>
@@ -123,7 +123,7 @@
         , ip_real
         , login_time
         , address
-        , system
+        , `system`
         , status)
         VALUES ( #{id}
         , #{userId}

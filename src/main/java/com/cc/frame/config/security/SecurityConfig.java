@@ -25,6 +25,20 @@ public class SecurityConfig {
 
 	private final ApplicationContext applicationContext;
 	private final JwtUtil jwtUtil;
+	// 白名单路径数组（可自定义）
+	private static final String[] WHITE_LIST_URLS = {
+			"/api-admin/auth/**",
+			"/swagger-ui/**",
+			"/v3/api-docs/**",
+			"/docs/**",
+			"/swagger-resources/**",
+			"/webjars/**",
+			"/api-docs/**",
+			"/api/**",
+			"/ui/**",
+			"/api/auth/**",
+			"/api/public/**"
+	};
 
 	public SecurityConfig(ApplicationContext applicationContext, JwtUtil jwtUtil) {
 		this.applicationContext = applicationContext;
@@ -46,23 +60,10 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthException authenticationExceptionHandler) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable) // 禁用 CSRF
+		http.csrf(csrf -> csrf.ignoringRequestMatchers(WHITE_LIST_URLS)) // 禁用 CSRF
 				.cors(AbstractHttpConfigurer::disable) // 禁用 CORS
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers(
-								"/api-admin/sys-user/login",
-								"/api-admin/sys-user/register",
-								"/swagger-ui/**",
-								"/v3/api-docs/**",
-								"/docs/**",
-								"/swagger-resources/**",
-								"/webjars/**",
-								"/api-docs/**",
-								"/api/**",
-								"/ui/**",
-								"/api/auth/**",
-								"/api/public/**"
-						).permitAll()
+						.requestMatchers(WHITE_LIST_URLS).permitAll()
 						.anyRequest().authenticated())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.formLogin(AbstractHttpConfigurer::disable)

@@ -1,6 +1,6 @@
 package com.cc.frame.utils;
 
-import com.cc.frame.exception.GlobalException;
+import com.cc.frame.exception.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 
 public class SqlUtil {
@@ -19,7 +19,7 @@ public class SqlUtil {
 	 */
 	public static String escapeOrderBySql(String value) {
 		if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value)) {
-			throw new GlobalException("参数不符合规范，不能进行查询");
+			throw new ServiceException("参数不符合规范，不能进行查询");
 		}
 		return value;
 	}
@@ -41,7 +41,7 @@ public class SqlUtil {
 		String[] sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
 		for (String sqlKeyword : sqlKeywords) {
 			if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1) {
-				throw new GlobalException("参数存在SQL注入风险");
+				throw new ServiceException("参数存在SQL注入风险");
 			}
 		}
 	}

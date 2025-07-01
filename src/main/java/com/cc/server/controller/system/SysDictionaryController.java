@@ -2,8 +2,9 @@ package com.cc.server.controller.system;
 
 import com.cc.server.entity.system.SysDictionary;
 import com.cc.server.service.system.SysDictionaryService;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
+import com.cc.frame.core.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -27,38 +28,42 @@ public class SysDictionaryController {
 
     @Operation(summary = "分页查询字典")
     @GetMapping("/list")
-    public PageResult<SysDictionary> list(@RequestParam(defaultValue = "1") int pageNum, 
+    public ApiResponse<PageResult<SysDictionary>> list(@RequestParam(defaultValue = "1") int pageNum, 
                                          @RequestParam(defaultValue = "10") int pageSize) {
         PageRequest pageRequest = new PageRequest();
         pageRequest.setPageNum(pageNum);
         pageRequest.setPageSize(pageSize);
-        return dictionaryService.pageSysDictionary(pageRequest);
+        return ApiResponse.success(dictionaryService.pageSysDictionary(pageRequest));
     }
 
     @Operation(summary = "根据ID查询字典")
     @GetMapping("/{id}")
-    public SysDictionary getById(@PathVariable Integer id) {
-        return dictionaryService.selectSysDictionaryById(id);
+    public ApiResponse<SysDictionary> getById(@PathVariable Integer id) {
+        SysDictionary result = dictionaryService.selectSysDictionaryById(id);
+        if (result == null) {
+            return ApiResponse.success("未查询到数据", null);
+        }
+        return ApiResponse.success(result);
     }
 
     @Operation(summary = "新增字典")
     @PostMapping("/add")
-    public String add(@RequestBody SysDictionary dictionary) {
+    public ApiResponse<String> add(@RequestBody SysDictionary dictionary) {
         dictionaryService.insertSysDictionary(dictionary);
-        return "success";
+        return ApiResponse.success("新增成功", null);
     }
 
     @Operation(summary = "修改字典")
     @PostMapping("/update")
-    public String update(@RequestBody SysDictionary dictionary) {
+    public ApiResponse<String> update(@RequestBody SysDictionary dictionary) {
         dictionaryService.updateSysDictionaryById(dictionary);
-        return "success";
+        return ApiResponse.success("修改成功", null);
     }
 
     @Operation(summary = "删除字典")
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public ApiResponse<String> delete(@PathVariable Integer id) {
         dictionaryService.deleteSysDictionaryById(id);
-        return "success";
+        return ApiResponse.success("删除成功", null);
     }
 }

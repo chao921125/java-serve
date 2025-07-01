@@ -2,8 +2,9 @@ package com.cc.server.controller.monitor;
 
 import com.cc.frame.constants.CacheKey;
 import com.cc.server.vo.monitor.OnlineUserVO;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
+import com.cc.frame.core.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +18,13 @@ public class OnlineUserController {
     private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/list")
-    public PageResult<OnlineUserVO> list(@RequestParam(defaultValue = "1") int pageNum, 
+    public ApiResponse<PageResult<OnlineUserVO>> list(@RequestParam(defaultValue = "1") int pageNum, 
                                         @RequestParam(defaultValue = "10") int pageSize) {
         PageRequest pageRequest = new PageRequest();
         pageRequest.setPageNum(pageNum);
         pageRequest.setPageSize(pageSize);
         Set<String> keys = stringRedisTemplate.keys(CacheKey.LOGIN_TOKEN_KEY + "*");
-        if (keys == null) return new PageResult<>(0, Collections.emptyList());
+        if (keys == null) return ApiResponse.success("未查询到数据", null);
         List<OnlineUserVO> users = new ArrayList<>();
         for (String key : keys) {
             String json = stringRedisTemplate.opsForValue().get(key);
@@ -38,11 +39,11 @@ public class OnlineUserController {
         int fromIndex = Math.min((pageRequest.getPageNum() - 1) * pageRequest.getPageSize(), total);
         int toIndex = Math.min(fromIndex + pageRequest.getPageSize(), total);
         List<OnlineUserVO> pageList = users.subList(fromIndex, toIndex);
-        return new PageResult<>(total, pageList);
+        return ApiResponse.success(new PageResult<>(total, pageList));
     }
 
     @GetMapping("/kick/{userId}")
-    public String kick(@PathVariable Long userId) {
+    public ApiResponse<String> kick(@PathVariable Long userId) {
         Set<String> keys = stringRedisTemplate.keys(CacheKey.LOGIN_TOKEN_KEY + "*");
         if (keys != null) {
             for (String key : keys) {
@@ -52,6 +53,6 @@ public class OnlineUserController {
                 }
             }
         }
-        return "success";
+        return ApiResponse.success("强制下线成功", null);
     }
 } 

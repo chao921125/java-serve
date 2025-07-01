@@ -2,8 +2,8 @@ package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cc.server.entity.system.SysUserRole;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

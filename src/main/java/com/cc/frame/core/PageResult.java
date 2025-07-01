@@ -1,4 +1,4 @@
-package com.cc.server.vo;
+package com.cc.frame.core;
 
 import java.util.List;
 

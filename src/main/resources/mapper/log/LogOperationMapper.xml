@@ -23,7 +23,7 @@
     <!-- 通用查询列 -->
     <sql id="LogOperationList">
         id
-        , user_id, user_name, ip, ip_real, oper_time, address, system, status, type, source, url, method, method_type,
+        , user_id, user_name, ip, ip_real, oper_time, address, `system`, status, type, source, url, method, method_type,
         message
     </sql>
 
@@ -48,7 +48,7 @@
             AND address = #{address}
         </if>
         <if test="system != null and system != ''">
-            AND system = #{system}
+            AND `system` = #{system}
         </if>
         <if test="status != null and status != ''">
             AND status = #{status}
@@ -94,7 +94,7 @@
             address = #{address}
         </if>
         <if test="system != null and system != ''">
-            system = #{system}
+            `system` = #{system}
         </if>
         <if test="status != null and status != ''">
             status = #{status}
@@ -128,7 +128,7 @@
         ip_real,
         oper_time,
         address,
-        system,
+        `system`,
         status,
         type,
         source,
@@ -172,7 +172,7 @@
         , ip_real
         , oper_time
         , address
-        , system
+        , `system`
         , status
         , type
         , source

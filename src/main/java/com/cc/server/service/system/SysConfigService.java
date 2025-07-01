@@ -2,8 +2,8 @@ package com.cc.server.service.system;
 
 import com.cc.server.entity.system.SysConfig;
 import java.util.List;
-import com.cc.server.vo.PageRequest;
-import com.cc.server.vo.PageResult;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
 
 public interface SysConfigService {
     List<SysConfig> selectAllSysConfig();
