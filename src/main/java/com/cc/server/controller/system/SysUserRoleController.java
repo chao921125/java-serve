@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "用户角色管理", description = "用户角色管理接口")
 @RestController
-@RequestMapping("/sys-user-role")
+@RequestMapping("/api-admin/sys-user-role")
 public class SysUserRoleController {
     @Resource
     private SysUserRoleService userRoleService;

@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "菜单管理", description = "菜单管理接口")
 @RestController
-@RequestMapping("/sys-menu")
+@RequestMapping("/api-admin/sys-menu")
 public class SysMenuController {
     @Resource
     private SysMenuService menuService;

@@ -28,14 +28,14 @@ public class SysUserControllerAuthTest {
 
     @Test
     void testNoTokenDenied() throws Exception {
-        mockMvc.perform(get("/admin/sys-user/user?username=any"))
+        mockMvc.perform(get("/api-admin/sys-user/user?username=any"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
     void testNoPermissionDenied() throws Exception {
         String token = genToken("user1", "sys:user:other");
-        mockMvc.perform(get("/admin/sys-user/user?username=any")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=any")
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
@@ -44,7 +44,7 @@ public class SysUserControllerAuthTest {
     @Test
     void testHasPermissionAllowed() throws Exception {
         String token = genToken("user2", "sys:user:query");
-        mockMvc.perform(get("/admin/sys-user/user?username=any")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=any")
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

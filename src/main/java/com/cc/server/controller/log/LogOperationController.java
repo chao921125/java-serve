@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "操作日志", description = "系统操作日志接口")
 @RestController
-@RequestMapping("/log-operation")
+@RequestMapping("/api-admin/log-operation")
 public class LogOperationController {
     @Resource
     private LogOperationService logOperationService;

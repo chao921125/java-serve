@@ -18,7 +18,7 @@ import com.cc.server.vo.PageResult;
 
 @Tag(name = "定时任务", description = "定时任务管理接口")
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/api-admin/job")
 public class SysJobController extends BaseController {
     @Autowired
     private SysJobService sysJobService;

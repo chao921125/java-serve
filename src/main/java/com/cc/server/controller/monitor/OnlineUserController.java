@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/online-user")
+@RequestMapping("/api-admin/online-user")
 public class OnlineUserController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

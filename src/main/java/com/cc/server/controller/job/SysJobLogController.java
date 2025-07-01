@@ -18,7 +18,7 @@ import com.cc.server.vo.PageResult;
 
 @Tag(name = "定时任务日志", description = "定时任务日志接口")
 @RestController
-@RequestMapping("/job/log")
+@RequestMapping("/api-admin/job/log")
 public class SysJobLogController extends BaseController {
     @Autowired
     private SysJobLogService sysJobLogService;

@@ -17,7 +17,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginEmptyUsername() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "")
                 .param("password", "123456"))
                 .andExpect(status().isBadRequest());
@@ -25,7 +25,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginEmptyPassword() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "admin")
                 .param("password", ""))
                 .andExpect(status().isBadRequest());
@@ -33,7 +33,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginWrongPassword() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "admin")
                 .param("password", "wrong"))
                 .andExpect(status().isUnauthorized());
@@ -41,7 +41,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginUserNotExist() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "not_exist_user")
                 .param("password", "123456"))
                 .andExpect(status().isUnauthorized());
@@ -49,28 +49,28 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testNoTokenAccess() throws Exception {
-        mockMvc.perform(get("/admin/sys-user/user?username=admin"))
+        mockMvc.perform(get("/api-admin/sys-user/user?username=admin"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
     void testTokenNoPermission() throws Exception {
         String token = "无权限用户的token";
-        mockMvc.perform(get("/admin/sys-user/user?username=admin")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=admin")
                 .header("Authorization", "Bearer " + token))
                 .andExpect(status().isForbidden());
     }
 
     @Test
     void testTokenFormatError() throws Exception {
-        mockMvc.perform(get("/admin/sys-user/user?username=admin")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=admin")
                 .header("Authorization", "token-format-error"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
     void testLoginDisabledUser() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "disabled_user")
                 .param("password", "123456"))
                 .andExpect(status().isForbidden());
@@ -78,7 +78,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginUsernameTooShort() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "a")
                 .param("password", "123456"))
                 .andExpect(status().isBadRequest());
@@ -86,7 +86,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginPasswordTooShort() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", "admin")
                 .param("password", "123"))
                 .andExpect(status().isBadRequest());
@@ -95,7 +95,7 @@ public class AuthEdgeCaseTest {
     @Test
     void testLoginUsernameTooLong() throws Exception {
         String longUsername = "a".repeat(30);
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("username", longUsername)
                 .param("password", "123456"))
                 .andExpect(status().isBadRequest());
@@ -104,7 +104,7 @@ public class AuthEdgeCaseTest {
     @Test
     void testTokenExpired() throws Exception {
         String expiredToken = "过期的token";
-        mockMvc.perform(get("/admin/sys-user/user?username=admin")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=admin")
                 .header("Authorization", "Bearer " + expiredToken))
                 .andExpect(status().isUnauthorized());
     }
@@ -112,14 +112,14 @@ public class AuthEdgeCaseTest {
     @Test
     void testTokenUserDisabledAfterLogin() throws Exception {
         String token = "被禁用用户的有效token";
-        mockMvc.perform(get("/admin/sys-user/user?username=disabled_user")
+        mockMvc.perform(get("/api-admin/sys-user/user?username=disabled_user")
                 .header("Authorization", "Bearer " + token))
                 .andExpect(status().isForbidden());
     }
 
     @Test
     void testLoginByUsername() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("loginName", "admin")
                 .param("password", "123456"))
                 .andExpect(status().isOk());
@@ -127,7 +127,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginByEmail() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("loginName", "admin@example.com")
                 .param("password", "123456"))
                 .andExpect(status().isOk());
@@ -135,7 +135,7 @@ public class AuthEdgeCaseTest {
 
     @Test
     void testLoginByPhone() throws Exception {
-        mockMvc.perform(post("/admin/sys-user/login")
+        mockMvc.perform(post("/api-admin/sys-user/login")
                 .param("loginName", "13800000000")
                 .param("password", "123456"))
                 .andExpect(status().isOk());

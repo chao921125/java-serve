@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "登录日志", description = "系统登录日志接口")
 @RestController
-@RequestMapping("/log-login")
+@RequestMapping("/api-admin/log-login")
 public class LogLoginController {
     @Resource
     private LogLoginService logLoginService;

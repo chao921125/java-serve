@@ -14,7 +14,7 @@ import com.cc.server.vo.PageRequest;
 import com.cc.server.vo.PageResult;
 
 @RestController
-@RequestMapping("/admin/sys-config")
+@RequestMapping("/api-admin/sys-config")
 public class SysConfigController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

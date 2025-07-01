@@ -50,8 +50,8 @@ public class SecurityConfig {
 				.cors(AbstractHttpConfigurer::disable) // 禁用 CORS
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(
-								"/admin/sys-user/login",
-								"/admin/sys-user/register",
+								"/api-admin/sys-user/login",
+								"/api-admin/sys-user/register",
 								"/swagger-ui/**",
 								"/v3/api-docs/**",
 								"/docs/**",

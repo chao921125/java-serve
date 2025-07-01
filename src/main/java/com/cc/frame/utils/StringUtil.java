@@ -573,4 +573,23 @@ public class StringUtil extends StringUtils {
 		}
 		return sb.toString();
 	}
+
+	/**
+	 * 计算字符串的MD5值
+	 */
+	public static String md5(String input) {
+		if (input == null) return null;
+		try {
+			java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(input.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+			java.math.BigInteger no = new java.math.BigInteger(1, messageDigest);
+			String hashtext = no.toString(16);
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (java.security.NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

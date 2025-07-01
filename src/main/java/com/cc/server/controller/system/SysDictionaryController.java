@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "字典管理", description = "字典管理接口")
 @RestController
-@RequestMapping("/sys-dictionary")
+@RequestMapping("/api-admin/sys-dictionary")
 public class SysDictionaryController {
     @Resource
     private SysDictionaryService dictionaryService;

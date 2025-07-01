@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Tag(name = "用户岗位管理", description = "用户岗位管理接口")
 @RestController
-@RequestMapping("/sys-user-post")
+@RequestMapping("/api-admin/sys-user-post")
 public class SysUserPostController {
     @Resource
     private SysUserPostService userPostService;

@@ -59,8 +59,8 @@ public class SpringDocConfig {
 	@Bean
 	public GroupedOpenApi adminApi() {
 		return GroupedOpenApi.builder()
-				.group("admin")
-				.pathsToMatch("/admin/**")
+				.group("api-admin")
+				.pathsToMatch("/api-admin/**")
 				.build();
 	}
 }
