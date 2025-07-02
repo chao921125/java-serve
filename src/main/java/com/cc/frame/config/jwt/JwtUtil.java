@@ -9,11 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.util.*;
 import java.util.function.Function;
-
-import static java.security.KeyRep.Type.SECRET;
 
 @Component
 public class JwtUtil {
@@ -24,11 +21,6 @@ public class JwtUtil {
 
 	public static String getUUID() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
-	}
-
-	public static SecretKey generalKey() {
-		byte[] encodedKey = Base64.getDecoder().decode(SECRET.getClass().getSimpleName());
-		return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
 	}
 
 	/**
@@ -46,13 +38,21 @@ public class JwtUtil {
 	}
 
 	/**
-	 * 获取签名密钥
+	 * 获取签名密钥（从配置文件读取Base64字符串并转换为SecretKey）
 	 *
-	 * @return {@code Key} 用于验证Jwt签名的密钥。签名密钥必须与生成Jwt令牌时使用的密钥相同，否则无法正确验证Jwt的真实性。
+	 * @return {@code SecretKey}
 	 */
 	private SecretKey getSignInKey() {
-		byte[] keyBytes = DatatypeConverter.parseBase64Binary(JWT_KEY);
-		return Keys.hmacShaKeyFor(keyBytes);
+		try {
+			byte[] keyBytes = java.util.Base64.getDecoder().decode(JWT_KEY);
+			if (keyBytes.length < 64) {
+				System.err.println("JWT密钥长度不足，HS512算法要求至少64字节（512位），请更换更长的密钥！");
+			}
+			return Keys.hmacShaKeyFor(keyBytes);
+		} catch (Exception e) {
+			System.err.println("JWT密钥解析失败，请检查配置文件中的JWT密钥格式！");
+			throw new RuntimeException("JWT密钥无效", e);
+		}
 	}
 
 	/**
@@ -63,7 +63,6 @@ public class JwtUtil {
 	 * @return {@code T}
 	 */
 	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-		// 获取JWT令牌中的所有声明信息,存储在Claims对象中
 		final Claims claims = extractAllClaims(token);
 		return claimsResolver.apply(claims);
 	}
@@ -80,9 +79,9 @@ public class JwtUtil {
 				.claims(extraClaims)
 				.subject(userName)
 				.issuedAt(new Date(System.currentTimeMillis()))
-				.expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) // 设置JWT令牌的过期时间（24小时）
-				.signWith(getSignInKey(), SignatureAlgorithm.HS512)   // 对JWT令牌进行签名
-				.compact(); // 生成最终的JWT令牌字符串
+				.expiration(new Date(System.currentTimeMillis() + JWT_TTL))
+				.signWith(getSignInKey())
+				.compact();
 	}
 
 	/**
@@ -103,6 +102,36 @@ public class JwtUtil {
 	 * @return boolean
 	 */
 	public boolean isTokenValid(String token, String userName) {
-		return (!extractClaim(token, Claims::getExpiration).before(new Date()));
+		try {
+			final String extractedUserName = extractClaim(token, Claims::getSubject);
+			return (extractedUserName.equals(userName) && !isTokenExpired(token));
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * 检查令牌是否过期
+	 *
+	 * @param token 令牌
+	 * @return boolean
+	 */
+	private boolean isTokenExpired(String token) {
+		return extractClaim(token, Claims::getExpiration).before(new Date());
+	}
+
+	/**
+	 * 生成安全的JWT密钥（仅供开发时生成配置用密钥，不在主业务逻辑中调用）
+	 *
+	 * @return Base64编码的安全密钥
+	 */
+	public static String generateSecureKey() {
+		// 仅供开发时生成密钥用，主业务逻辑不调用此方法
+		javax.crypto.SecretKey key = io.jsonwebtoken.security.Keys.hmacShaKeyFor(io.jsonwebtoken.security.Keys.secretKeyFor(SignatureAlgorithm.HS512).getEncoded());
+		return java.util.Base64.getEncoder().encodeToString(key.getEncoded());
+	}
+
+	public static void main(String[] args) {
+		System.out.println(generateSecureKey());
 	}
 }

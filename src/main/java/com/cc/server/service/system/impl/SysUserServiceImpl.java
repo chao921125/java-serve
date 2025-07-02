@@ -108,9 +108,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	}
 
 	/**
-	 * 新增表sys_user信息
-	 *
-	 * @param sysUserVO
+	 * 根据用户名、邮箱、手机号查询用户（包含密码验证）
+	 * @param sysUserVO 包含用户名、邮箱、手机号和密码的用户信息
+	 * @return 用户信息，如果验证失败返回null
 	 */
 	@Override
 	public SysUserVO getUserByNameEmailPhone(SysUserVO sysUserVO) {
@@ -139,6 +139,114 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		return BeanCopyUtil.convert(dbUser, SysUserVO.class);
 	}
 
+	/**
+	 * 验证用户登录
+	 * @param loginName 登录名（用户名、邮箱或手机号）
+	 * @param password 密码
+	 * @return 用户信息，如果验证失败返回null
+	 */
+	@Override
+	public SysUserVO validateUserLogin(String loginName, String password) {
+		if (loginName == null || password == null) {
+			return null;
+		}
+
+		// 1. 根据登录名查询用户
+		SysUser dbUser = getUserByLoginNameFromDB(loginName);
+		if (dbUser == null) {
+			return null;
+		}
+
+		// 2. 验证密码
+		String encryptedPassword = md5(password);
+		if (!encryptedPassword.equals(dbUser.getPassword())) {
+			return null;
+		}
+
+		// 3. 返回用户信息
+		return BeanCopyUtil.convert(dbUser, SysUserVO.class);
+	}
+
+	/**
+	 * 检查用户是否存在
+	 * @param username 用户名
+	 * @param email 邮箱
+	 * @param phone 手机号
+	 * @return 如果用户存在返回用户信息，否则返回null
+	 */
+	@Override
+	public SysUserVO checkUserExists(String username, String email, String phone) {
+		SysUser dbUser = null;
+		
+		// 检查用户名
+		if (username != null && !username.trim().isEmpty()) {
+			SysUser query = new SysUser();
+			query.setUserName(username);
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		
+		// 检查邮箱
+		if (dbUser == null && email != null && !email.trim().isEmpty()) {
+			SysUser query = new SysUser();
+			query.setEmail(email);
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		
+		// 检查手机号
+		if (dbUser == null && phone != null && !phone.trim().isEmpty()) {
+			SysUser query = new SysUser();
+			query.setPhone(phone);
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		
+		return dbUser != null ? BeanCopyUtil.convert(dbUser, SysUserVO.class) : null;
+	}
+
+	/**
+	 * 根据登录名查询用户（不验证密码）
+	 * @param loginName 登录名（用户名、邮箱或手机号）
+	 * @return 用户信息，如果不存在返回null
+	 */
+	@Override
+	public SysUserVO getUserByLoginName(String loginName) {
+		SysUser dbUser = getUserByLoginNameFromDB(loginName);
+		return dbUser != null ? BeanCopyUtil.convert(dbUser, SysUserVO.class) : null;
+	}
+
+	/**
+	 * 从数据库根据登录名查询用户（私有方法）
+	 * @param loginName 登录名
+	 * @return 用户实体，如果不存在返回null
+	 */
+	private SysUser getUserByLoginNameFromDB(String loginName) {
+		if (loginName == null || loginName.trim().isEmpty()) {
+			return null;
+		}
+
+		SysUser dbUser = null;
+		
+		// 1. 尝试按用户名查询
+		SysUser query = new SysUser();
+		query.setUserName(loginName);
+		dbUser = sysUserMapper.loginSysUser(query);
+		
+		// 2. 如果用户名不存在，尝试按邮箱查询
+		if (dbUser == null) {
+			query = new SysUser();
+			query.setEmail(loginName);
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		
+		// 3. 如果邮箱不存在，尝试按手机号查询
+		if (dbUser == null) {
+			query = new SysUser();
+			query.setPhone(loginName);
+			dbUser = sysUserMapper.loginSysUser(query);
+		}
+		
+		return dbUser;
+	}
+
 	public Integer logicDeleteSysUserById(Long id) {
 		SysUser user = sysUserMapper.selectSysUserById(id);
 		if (user == null) return 0;
@@ -146,7 +254,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		return sysUserMapper.updateSysUserById(user);
 	}
 
+	/**
+	 * MD5加密
+	 * @param input 输入字符串
+	 * @return MD5加密后的字符串
+	 */
 	private String md5(String input) {
+		if (input == null) {
+			return null;
+		}
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] messageDigest = md.digest(input.getBytes(StandardCharsets.UTF_8));
@@ -157,7 +273,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 			}
 			return hashtext;
 		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("MD5加密失败", e);
 		}
 	}
 

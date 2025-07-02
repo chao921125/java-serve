@@ -58,7 +58,36 @@ public interface SysUserService extends IService<SysUser> {
      */
     Integer insertSysUser(SysUserVO sysUserVO);
 
+    /**
+     * 根据用户名、邮箱、手机号查询用户（包含密码验证）
+     * @param sysUserVO 包含用户名、邮箱、手机号和密码的用户信息
+     * @return 用户信息，如果验证失败返回null
+     */
     SysUserVO getUserByNameEmailPhone(SysUserVO sysUserVO);
+
+    /**
+     * 验证用户登录
+     * @param loginName 登录名（用户名、邮箱或手机号）
+     * @param password 密码
+     * @return 用户信息，如果验证失败返回null
+     */
+    SysUserVO validateUserLogin(String loginName, String password);
+
+    /**
+     * 检查用户是否存在
+     * @param username 用户名
+     * @param email 邮箱
+     * @param phone 手机号
+     * @return 如果用户存在返回用户信息，否则返回null
+     */
+    SysUserVO checkUserExists(String username, String email, String phone);
+
+    /**
+     * 根据登录名查询用户（不验证密码）
+     * @param loginName 登录名（用户名、邮箱或手机号）
+     * @return 用户信息，如果不存在返回null
+     */
+    SysUserVO getUserByLoginName(String loginName);
 
     /**
      * 分页查询用户
