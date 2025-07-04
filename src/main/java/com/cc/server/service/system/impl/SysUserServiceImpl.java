@@ -8,7 +8,6 @@ import com.cc.server.vo.system.SysUserVO;
 import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.cc.server.service.system.SysUserService;
 import com.cc.frame.core.PageRequest;
@@ -16,7 +15,6 @@ import com.cc.frame.core.PageResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

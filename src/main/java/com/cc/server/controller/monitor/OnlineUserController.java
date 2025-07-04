@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api-admin/online-user")
@@ -24,7 +23,9 @@ public class OnlineUserController {
         pageRequest.setPageNum(pageNum);
         pageRequest.setPageSize(pageSize);
         Set<String> keys = stringRedisTemplate.keys(CacheKey.LOGIN_TOKEN_KEY + "*");
-        if (keys == null) return ApiResponse.success("未查询到数据", null);
+        if (keys == null || keys.isEmpty()) {
+            return ApiResponse.success(new PageResult<>(0, new ArrayList<>()));
+        }
         List<OnlineUserVO> users = new ArrayList<>();
         for (String key : keys) {
             String json = stringRedisTemplate.opsForValue().get(key);
@@ -32,7 +33,9 @@ public class OnlineUserController {
                 try {
                     OnlineUserVO vo = com.alibaba.fastjson2.JSON.parseObject(json, OnlineUserVO.class);
                     users.add(vo);
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    // 忽略JSON解析异常，继续处理其他用户数据
+                }
             }
         }
         int total = users.size();

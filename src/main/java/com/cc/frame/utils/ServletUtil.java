@@ -66,6 +66,7 @@ public class ServletUtil {
 	 * @param request 请求对象{@link ServletRequest}
 	 * @return Map
 	 */
+	@SuppressWarnings("unchecked")
 	public static Map<String, String[]> getParams(ServletRequest request) {
 		final Map<String, String[]> map = request.getParameterMap();
 		return Collections.unmodifiableMap(map);

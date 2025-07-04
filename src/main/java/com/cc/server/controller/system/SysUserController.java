@@ -13,10 +13,6 @@ import com.cc.frame.core.PageResult;
 import com.cc.frame.utils.StringUtil;
 import com.cc.frame.core.ApiResponse;
 import com.cc.frame.constants.User;
-import com.cc.frame.constants.CacheKey;
-import com.cc.frame.config.jwt.JwtUtil;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -32,12 +28,6 @@ import java.util.concurrent.TimeUnit;
 public class SysUserController {
 	@Autowired
 	private SysUserService userService;
-
-	@Autowired
-	private StringRedisTemplate stringRedisTemplate;
-
-	@Autowired
-	private JwtUtil jwtUtil;
 
 	@Value("${token.expire.days:7}")
 	private int tokenExpireDays;

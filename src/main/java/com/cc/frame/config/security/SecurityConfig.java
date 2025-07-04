@@ -3,7 +3,6 @@ package com.cc.frame.config.security;
 import com.cc.frame.config.jwt.JwtFilter;
 import com.cc.frame.config.jwt.JwtUtil;
 import com.cc.frame.exception.AuthException;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
@@ -23,7 +22,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalAuthentication
 public class SecurityConfig {
 
-	private final ApplicationContext applicationContext;
 	private final JwtUtil jwtUtil;
 	// 白名单路径数组（可自定义）
 	private static final String[] WHITE_LIST_URLS = {
@@ -40,8 +38,7 @@ public class SecurityConfig {
 			"/api/public/**"
 	};
 
-	public SecurityConfig(ApplicationContext applicationContext, JwtUtil jwtUtil) {
-		this.applicationContext = applicationContext;
+	public SecurityConfig(JwtUtil jwtUtil) {
 		this.jwtUtil = jwtUtil;
 	}
 

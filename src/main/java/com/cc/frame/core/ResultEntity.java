@@ -4,11 +4,10 @@ import com.cc.frame.constants.HttpStatus;
 import com.cc.frame.enums.ResultStatus;
 import com.cc.frame.utils.StringUtil;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class ResultEntity<T> extends HashMap<String, Object> implements Serializable {
+public class ResultEntity<T> extends HashMap<String, Object> {
 
 	/**
 	 * 状态码
@@ -41,44 +40,44 @@ public class ResultEntity<T> extends HashMap<String, Object> implements Serializ
 		}
 	}
 
-	public static ResultEntity success() {
+	public static <T> ResultEntity<T> success() {
 		return ResultEntity.success(HttpStatus.SUCCESS_MSG);
 	}
 
-	public static ResultEntity success(Object data) {
+	public static <T> ResultEntity<T> success(Object data) {
 		return ResultEntity.success(HttpStatus.SUCCESS_MSG, data);
 	}
 
-	public static ResultEntity success(String msg) {
+	public static <T> ResultEntity<T> success(String msg) {
 		return ResultEntity.success(msg, null);
 	}
 
-	public static ResultEntity success(String msg, Object data) {
-		return new ResultEntity(HttpStatus.SUCCESS, msg, data);
+	public static <T> ResultEntity<T> success(String msg, Object data) {
+		return new ResultEntity<>(HttpStatus.SUCCESS, msg, data);
 	}
 
-	public static ResultEntity warn(String msg) {
+	public static <T> ResultEntity<T> warn(String msg) {
 		return ResultEntity.warn(msg, null);
 	}
 
-	public static ResultEntity warn(String msg, Object data) {
-		return new ResultEntity(HttpStatus.WARN, msg, data);
+	public static <T> ResultEntity<T> warn(String msg, Object data) {
+		return new ResultEntity<>(HttpStatus.WARN, msg, data);
 	}
 
-	public static ResultEntity error() {
+	public static <T> ResultEntity<T> error() {
 		return ResultEntity.error(HttpStatus.ERROR_MSG);
 	}
 
-	public static ResultEntity error(String msg) {
+	public static <T> ResultEntity<T> error(String msg) {
 		return ResultEntity.error(msg, null);
 	}
 
-	public static ResultEntity error(String msg, Object data) {
-		return new ResultEntity(HttpStatus.ERROR, msg, data);
+	public static <T> ResultEntity<T> error(String msg, Object data) {
+		return new ResultEntity<>(HttpStatus.ERROR, msg, data);
 	}
 
-	public static ResultEntity error(int code, String msg, Object data) {
-		return new ResultEntity(code, msg, data);
+	public static <T> ResultEntity<T> error(int code, String msg, Object data) {
+		return new ResultEntity<>(code, msg, data);
 	}
 
 	/**
@@ -109,7 +108,7 @@ public class ResultEntity<T> extends HashMap<String, Object> implements Serializ
 	}
 
 	@Override
-	public ResultEntity put(String key, Object value) {
+	public ResultEntity<T> put(String key, Object value) {
 		super.put(key, value);
 		return this;
 	}
@@ -118,30 +117,30 @@ public class ResultEntity<T> extends HashMap<String, Object> implements Serializ
 	private String msg;
 	private T data;
 
-	public ResultEntity resultSuccess() {
-		ResultEntity result = new ResultEntity();
+	public ResultEntity<T> resultSuccess() {
+		ResultEntity<T> result = new ResultEntity<>();
 		result.code = ResultStatus.SUCCESS.getCode();
 		result.msg = ResultStatus.SUCCESS.getMsg();
 		return result;
 	}
 
 	public ResultEntity<Object> resultSuccess(Object data) {
-		ResultEntity<Object> result = new ResultEntity<Object>();
+		ResultEntity<Object> result = new ResultEntity<>();
 		result.code = ResultStatus.SUCCESS.getCode();
 		result.msg = ResultStatus.SUCCESS.getMsg();
 		result.setData(data);
 		return result;
 	}
 
-	public ResultEntity resultFail(ResultStatus resultStatus) {
-		ResultEntity result = new ResultEntity();
+	public ResultEntity<T> resultFail(ResultStatus resultStatus) {
+		ResultEntity<T> result = new ResultEntity<>();
 		result.code = resultStatus.getCode();
 		result.msg = resultStatus.getMsg();
 		return result;
 	}
 
-	public ResultEntity resultFail(ResultStatus resultStatus, Object data) {
-		ResultEntity<Object> result = new ResultEntity<Object>();
+	public ResultEntity<Object> resultFail(ResultStatus resultStatus, Object data) {
+		ResultEntity<Object> result = new ResultEntity<>();
 		result.code = resultStatus.getCode();
 		result.msg = resultStatus.getMsg();
 		result.setData(data);

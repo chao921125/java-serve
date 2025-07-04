@@ -4,13 +4,12 @@ import com.cc.server.entity.job.SysJob;
 import com.cc.server.entity.job.SysJobLog;
 import com.cc.server.service.job.SysJobLogService;
 import com.cc.server.service.job.SysJobService;
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
+import org.springframework.lang.NonNull;
 import java.util.Date;
 
 @Component
@@ -21,7 +20,7 @@ public class QuartzJob extends QuartzJobBean {
     private SysJobLogService sysJobLogService;
 
     @Override
-    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+    protected void executeInternal(@NonNull JobExecutionContext context) throws JobExecutionException {
         Long jobId = context.getJobDetail().getJobDataMap().getLong("jobId");
         SysJob job = sysJobService.getById(jobId);
         SysJobLog log = new SysJobLog();

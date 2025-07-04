@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
+import org.springframework.lang.Nullable;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -29,7 +30,7 @@ public class RedisUtil<T> implements RedisSerializer<T> {
 	}
 
 	@Override
-	public byte[] serialize(T value) throws SerializationException {
+	public byte[] serialize(@Nullable T value) throws SerializationException {
 		if (value == null) {
 			return new byte[0];
 		}
@@ -37,7 +38,8 @@ public class RedisUtil<T> implements RedisSerializer<T> {
 	}
 
 	@Override
-	public T deserialize(byte[] bytes) throws SerializationException {
+	@Nullable
+	public T deserialize(@Nullable byte[] bytes) throws SerializationException {
 		if (bytes == null || bytes.length == 0) {
 			return null;
 		}

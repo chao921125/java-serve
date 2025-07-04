@@ -12,7 +12,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -37,7 +36,10 @@ public class LogAspect {
     // 登录成功后记录登录日志
     @AfterReturning(pointcut = "loginPointcut()", returning = "result")
     public void afterLogin(JoinPoint joinPoint, Object result) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        var requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) return;
+        
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         String ip = request.getRemoteAddr();
         Object[] args = joinPoint.getArgs();
         String loginName = "";
@@ -57,7 +59,10 @@ public class LogAspect {
     // 登录异常记录失败日志
     @AfterThrowing(pointcut = "loginPointcut()", throwing = "ex")
     public void afterLoginException(JoinPoint joinPoint, Throwable ex) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        var requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) return;
+        
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         String ip = request.getRemoteAddr();
         Object[] args = joinPoint.getArgs();
         String loginName = "";
@@ -77,7 +82,10 @@ public class LogAspect {
     // 操作日志（增删改）
     @AfterReturning(pointcut = "operationPointcut()", returning = "result")
     public void afterOperation(JoinPoint joinPoint, Object result) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        var requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) return;
+        
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         String ip = request.getRemoteAddr();
         String url = request.getRequestURI();
         String method = request.getMethod();
@@ -102,7 +110,10 @@ public class LogAspect {
 
     @AfterThrowing(pointcut = "operationPointcut()", throwing = "ex")
     public void afterOperationException(JoinPoint joinPoint, Throwable ex) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        var requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) return;
+        
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         String ip = request.getRemoteAddr();
         String url = request.getRequestURI();
         String method = request.getMethod();
@@ -127,7 +138,14 @@ public class LogAspect {
 
     // 获取当前登录用户名（可根据实际安全框架调整）
     private String getCurrentUserName() {
-        // TODO: 可集成Spring Security等获取当前用户
+        try {
+            var authentication = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.isAuthenticated() && !"anonymousUser".equals(authentication.getName())) {
+                return authentication.getName();
+            }
+        } catch (Exception e) {
+            // 忽略异常，返回默认值
+        }
         return "未知用户";
     }
 } 

@@ -9,17 +9,11 @@ import java.util.List;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.transaction.annotation.Transactional;
-import com.cc.server.entity.job.SysJobLog;
-import com.cc.server.service.job.SysJobLogService;
-import java.util.Date;
 
 @Service
 public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> implements SysJobService {
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
-    @Autowired
-    private SysJobLogService sysJobLogService;
 
     private static final String JOB_CLASS = "com.cc.server.job.QuartzJob";
 
@@ -96,6 +90,7 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> impleme
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void scheduleJob(SysJob job) {
         try {
             Scheduler scheduler = schedulerFactoryBean.getScheduler();

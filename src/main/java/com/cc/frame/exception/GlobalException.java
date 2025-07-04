@@ -1,7 +1,6 @@
 package com.cc.frame.exception;
 
 import com.cc.frame.core.ApiResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,7 +17,9 @@ public class GlobalException {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ApiResponse<Void> handle400(MethodArgumentNotValidException ex) {
-		return ApiResponse.error(400, "参数校验失败: " + ex.getBindingResult().getFieldError().getDefaultMessage());
+		var fieldError = ex.getBindingResult().getFieldError();
+		String errorMessage = fieldError != null ? fieldError.getDefaultMessage() : "参数校验失败";
+		return ApiResponse.error(400, "参数校验失败: " + errorMessage);
 	}
 
 	@ExceptionHandler(AuthenticationException.class)
