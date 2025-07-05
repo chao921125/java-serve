@@ -18,55 +18,49 @@ import java.util.List;
 @Tag(name = "定时任务", description = "定时任务管理接口")
 @RestController
 @RequestMapping("/api-admin/job")
-public class SysJobController extends BaseController {
+public class SysJobController extends BaseController<SysJobVO, SysJobService> {
     @Autowired
     private SysJobService sysJobService;
 
-    @Operation(summary = "分页查询定时任务")
-    @GetMapping("/list")
-    public ApiResponse<PageResult<SysJobVO>> list(@RequestParam(defaultValue = "1") int pageNum, 
-                                    @RequestParam(defaultValue = "10") int pageSize) {
-        PageRequest pageRequest = new PageRequest();
-        pageRequest.setPageNum(pageNum);
-        pageRequest.setPageSize(pageSize);
+    @Override
+    protected SysJobService getService() {
+        return sysJobService;
+    }
+
+    @Override
+    protected SysJobVO doGetById(Long id) {
+        return JobConverter.toVO(sysJobService.getById(id));
+    }
+
+    @Override
+    protected boolean doAdd(SysJobVO vo) {
+        return sysJobService.add(JobConverter.toEntity(vo));
+    }
+
+    @Override
+    protected boolean doDelete(Long id) {
+        return sysJobService.remove(id);
+    }
+
+    @Override
+    protected boolean doUpdate(SysJobVO vo) {
+        return sysJobService.update(JobConverter.toEntity(vo));
+    }
+
+    @Override
+    protected List<SysJobVO> doList() {
+        return JobConverter.toVOList(sysJobService.listAll());
+    }
+
+    @Override
+    protected PageResult<SysJobVO> doPage(PageRequest pageRequest) {
         List<SysJob> list = sysJobService.listAll();
         List<SysJobVO> voList = JobConverter.toVOList(list);
         int total = voList.size();
         int fromIndex = Math.min((pageRequest.getPageNum() - 1) * pageRequest.getPageSize(), total);
         int toIndex = Math.min(fromIndex + pageRequest.getPageSize(), total);
         List<SysJobVO> pageList = voList.subList(fromIndex, toIndex);
-        return ApiResponse.success(new PageResult<>(total, pageList));
-    }
-
-    @Operation(summary = "获取定时任务详情")
-    @GetMapping("/{id}")
-    public ApiResponse<SysJobVO> get(@Parameter(description = "任务ID") @PathVariable Long id) {
-        SysJobVO vo = JobConverter.toVO(sysJobService.getById(id));
-        if (vo == null) {
-            return ApiResponse.success("未查询到数据", null);
-        }
-        return ApiResponse.success(vo);
-    }
-
-    @Operation(summary = "新增定时任务")
-    @PostMapping("/add")
-    public ApiResponse<String> add(@RequestBody SysJobVO jobVO) {
-        boolean ok = sysJobService.add(JobConverter.toEntity(jobVO));
-        return ok ? ApiResponse.success("新增成功", null) : ApiResponse.error(500, "新增失败");
-    }
-
-    @Operation(summary = "修改定时任务")
-    @PostMapping("/update")
-    public ApiResponse<String> update(@RequestBody SysJobVO jobVO) {
-        boolean ok = sysJobService.update(JobConverter.toEntity(jobVO));
-        return ok ? ApiResponse.success("修改成功", null) : ApiResponse.error(500, "修改失败");
-    }
-
-    @Operation(summary = "删除定时任务")
-    @PostMapping("/delete/{id}")
-    public ApiResponse<String> delete(@Parameter(description = "任务ID") @PathVariable Long id) {
-        boolean ok = sysJobService.remove(id);
-        return ok ? ApiResponse.success("删除成功", null) : ApiResponse.error(500, "删除失败");
+        return new PageResult<>(total, pageList);
     }
 
     @Operation(summary = "暂停定时任务")

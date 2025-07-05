@@ -1,182 +1,139 @@
 package com.cc.frame.core;
 
-import com.cc.frame.constants.HttpStatus;
-import com.cc.frame.utils.DateUtil;
-import com.cc.frame.utils.PageUtil;
-import com.cc.frame.utils.SqlUtil;
-import com.cc.frame.utils.StringUtil;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-
-import java.beans.PropertyEditorSupport;
-import java.util.Date;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-public class BaseController {
-	protected final Logger logger = LoggerFactory.getLogger(BaseController.class);
+/**
+ * 通用 CRUD 基础控制器
+ * 提供标准的增删改查操作
+ * @param <T> 实体类型
+ * @param <S> 服务类型
+ */
+public abstract class BaseController<T, S> {
+	/**
+	 * 获取服务实例
+	 */
+	protected abstract S getService();
 
 	/**
-	 * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+	 * 根据ID获取实体
+	 * @param id 实体ID
+	 * @return 实体对象
 	 */
-	@InitBinder
-	public void convertDate(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {
-			@Override
-			public void setAsText(String text) {
-				setValue(DateUtil.parseDate(text));
-			}
-		});
-	}
+	protected abstract T doGetById(Long id);
 
 	/**
-	 * 设置请求分页数据
+	 * 新增实体
+	 * @param entity 实体对象
+	 * @return 操作结果
 	 */
-	protected void startPage() {
-		PageUtil.startPage();
-	}
+	protected abstract boolean doAdd(T entity);
 
 	/**
-	 * 设置请求排序数据
+	 * 删除实体
+	 * @param id 实体ID
+	 * @return 操作结果
 	 */
-	protected void startOrderBy() {
-		PageEntity pageEntity = PageSupport.buildPageRequest();
-		if (StringUtil.isNotEmpty(pageEntity.getOrderBy())) {
-			String orderBy = SqlUtil.escapeOrderBySql(pageEntity.getOrderBy());
-			PageHelper.orderBy(orderBy);
+	protected abstract boolean doDelete(Long id);
+
+	/**
+	 * 更新实体
+	 * @param entity 实体对象
+	 * @return 操作结果
+	 */
+	protected abstract boolean doUpdate(T entity);
+
+	/**
+	 * 获取实体列表
+	 * @return 实体列表
+	 */
+	protected abstract List<T> doList();
+
+	/**
+	 * 分页查询
+	 * @param pageRequest 分页请求
+	 * @return 分页结果
+	 */
+	protected abstract PageResult<T> doPage(PageRequest pageRequest);
+
+	/**
+	 * 通用获取接口
+	 * @param id 实体ID
+	 * @return 响应结果
+	 */
+	@Operation(summary = "根据ID获取详情")
+	@GetMapping("/{id}")
+	public ApiResponse<T> get(@Parameter(description = "实体ID") @PathVariable Long id) {
+		T entity = doGetById(id);
+		if (entity == null) {
+			return ApiResponse.success("未查询到数据", null);
 		}
+		return ApiResponse.success(entity);
 	}
 
 	/**
-	 * 清理分页的线程变量
+	 * 通用新增接口
+	 * @param entity 实体对象
+	 * @return 响应结果
 	 */
-	protected void clearPage() {
-		PageUtil.clearPage();
-	}
-
-
-	/**
-	 * 响应请求分页数据
-	 */
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	protected ResultPageEntity getDataTable(List<?> list) {
-		ResultPageEntity rspData = new ResultPageEntity();
-		rspData.setCode(HttpStatus.SUCCESS);
-		rspData.setMsg("查询成功");
-		rspData.setRows(list);
-		rspData.setTotal(new PageInfo(list).getTotal());
-		return rspData;
-	}
-
-
-	/**
-	 * 返回成功
-	 */
-	public ResultEntity success() {
-		return ResultEntity.success();
+	@Operation(summary = "新增")
+	@PostMapping("/add")
+	public ApiResponse<String> add(@RequestBody T entity) {
+		boolean result = doAdd(entity);
+		return result ? ApiResponse.success("新增成功", null) : ApiResponse.error(500, "新增失败");
 	}
 
 	/**
-	 * 返回成功消息
+	 * 通用删除接口
+	 * @param id 实体ID
+	 * @return 响应结果
 	 */
-	public ResultEntity success(String message) {
-		return ResultEntity.success(message);
+	@Operation(summary = "删除")
+	@PostMapping("/delete/{id}")
+	public ApiResponse<String> delete(@Parameter(description = "实体ID") @PathVariable Long id) {
+		boolean result = doDelete(id);
+		return result ? ApiResponse.success("删除成功", null) : ApiResponse.error(500, "删除失败");
 	}
 
 	/**
-	 * 返回成功消息
+	 * 通用更新接口
+	 * @param entity 实体对象
+	 * @return 响应结果
 	 */
-	public ResultEntity success(Object data) {
-		return ResultEntity.success(data);
+	@Operation(summary = "更新")
+	@PostMapping("/update")
+	public ApiResponse<String> update(@RequestBody T entity) {
+		boolean result = doUpdate(entity);
+		return result ? ApiResponse.success("修改成功", null) : ApiResponse.error(500, "修改失败");
 	}
 
 	/**
-	 * 返回失败消息
+	 * 通用列表接口
+	 * @return 响应结果
 	 */
-	public ResultEntity error() {
-		return ResultEntity.error();
+	@Operation(summary = "获取列表")
+	@GetMapping("/list")
+	public ApiResponse<List<T>> list() {
+		List<T> list = doList();
+		return ApiResponse.success(list);
 	}
 
 	/**
-	 * 返回失败消息
+	 * 通用分页接口
+	 * @param pageNum 页码
+	 * @param pageSize 页大小
+	 * @return 响应结果
 	 */
-	public ResultEntity error(String message) {
-		return ResultEntity.error(message);
+	@Operation(summary = "分页查询")
+	@GetMapping("/page")
+	public ApiResponse<PageResult<T>> page(@RequestParam(defaultValue = "1") int pageNum,
+										  @RequestParam(defaultValue = "10") int pageSize) {
+		PageRequest pageRequest = new PageRequest();
+		pageRequest.setPageNum(pageNum);
+		pageRequest.setPageSize(pageSize);
+		PageResult<T> result = doPage(pageRequest);
+		return ApiResponse.success(result);
 	}
-
-	/**
-	 * 返回警告消息
-	 */
-	public ResultEntity warn(String message) {
-		return ResultEntity.warn(message);
-	}
-
-	/**
-	 * 响应返回结果
-	 *
-	 * @param rows 影响行数
-	 * @return 操作结果
-	 */
-	protected ResultEntity toAjax(int rows) {
-		return rows > 0 ? ResultEntity.success() : ResultEntity.error();
-	}
-
-	/**
-	 * 响应返回结果
-	 *
-	 * @param result 结果
-	 * @return 操作结果
-	 */
-	protected ResultEntity toAjax(boolean result) {
-		return result ? success() : error();
-	}
-
-	/**
-	 * 页面跳转
-	 */
-	public String redirect(String url) {
-		return StringUtil.format("redirect:{}", url);
-	}
-
-	/**
-	 * 获取用户缓存信息
-	 */
-//    public LoginUser getLoginUser() {
-//        return SecurityUtils.getLoginUser();
-//    }
-
-	/**
-	 * 获取登录用户id
-	 */
-//    public Long getUserId() {
-//        return getLoginUser().getUserId();
-//    }
-//    public Long[] getRoleIds() {
-//        return getLoginUser().getUser().getRoleIds();
-//    }
-//    public String getRoleIdStr() {
-//        Long[] ids = getRoleIds();
-//        StringJoiner sj = new StringJoiner(",");
-//        for(Long id:ids) {
-//            sj.add(id.toString());
-//        }
-//        return sj.toString();
-//    }
-
-	/**
-	 * 获取登录部门id
-	 */
-//    public Long getDeptId() {
-//        return getLoginUser().getDeptId();
-//    }
-
-	/**
-	 * 获取登录用户名
-	 */
-//    public String getUsername() {
-//        return getLoginUser().getUsername();
-//    }
 }

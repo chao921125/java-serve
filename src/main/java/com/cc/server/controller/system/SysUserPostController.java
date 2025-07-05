@@ -4,11 +4,11 @@ import com.cc.server.entity.system.SysUserPost;
 import com.cc.server.service.system.SysUserPostService;
 import com.cc.frame.core.PageRequest;
 import com.cc.frame.core.PageResult;
-import com.cc.frame.core.ApiResponse;
-import io.swagger.v3.oas.annotations.Operation;
+import com.cc.frame.core.BaseController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 /**
  * <p>
@@ -21,48 +21,42 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "用户岗位管理", description = "用户岗位管理接口")
 @RestController
 @RequestMapping("/api-admin/sys-user-post")
-public class SysUserPostController {
+public class SysUserPostController extends BaseController<SysUserPost, SysUserPostService> {
     @Resource
     private SysUserPostService userPostService;
 
-    @Operation(summary = "分页查询用户岗位")
-    @GetMapping("/list")
-    public ApiResponse<PageResult<SysUserPost>> list(@RequestParam(defaultValue = "1") int pageNum, 
-                                       @RequestParam(defaultValue = "10") int pageSize) {
-        PageRequest pageRequest = new PageRequest();
-        pageRequest.setPageNum(pageNum);
-        pageRequest.setPageSize(pageSize);
-        return ApiResponse.success(userPostService.pageSysUserPost(pageRequest));
+    @Override
+    protected SysUserPostService getService() {
+        return userPostService;
     }
 
-    @Operation(summary = "根据ID查询用户岗位")
-    @GetMapping("/{id}")
-    public ApiResponse<SysUserPost> getById(@PathVariable Long id) {
-        SysUserPost result = userPostService.selectSysUserPostById(id);
-        if (result == null) {
-            return ApiResponse.success("未查询到数据", null);
-        }
-        return ApiResponse.success(result);
+    @Override
+    protected SysUserPost doGetById(Long id) {
+        return userPostService.selectSysUserPostById(id);
     }
 
-    @Operation(summary = "新增用户岗位")
-    @PostMapping("/add")
-    public ApiResponse<String> add(@RequestBody SysUserPost userPost) {
-        userPostService.insertSysUserPost(userPost);
-        return ApiResponse.success("新增成功", null);
+    @Override
+    protected boolean doAdd(SysUserPost entity) {
+        return userPostService.insertSysUserPost(entity) > 0;
     }
 
-    @Operation(summary = "修改用户岗位")
-    @PostMapping("/update")
-    public ApiResponse<String> update(@RequestBody SysUserPost userPost) {
-        userPostService.updateSysUserPostById(userPost);
-        return ApiResponse.success("修改成功", null);
+    @Override
+    protected boolean doDelete(Long id) {
+        return userPostService.deleteSysUserPostById(id) > 0;
     }
 
-    @Operation(summary = "删除用户岗位")
-    @PostMapping("/delete/{id}")
-    public ApiResponse<String> delete(@PathVariable Long id) {
-        userPostService.deleteSysUserPostById(id);
-        return ApiResponse.success("删除成功", null);
+    @Override
+    protected boolean doUpdate(SysUserPost entity) {
+        return userPostService.updateSysUserPostById(entity) > 0;
+    }
+
+    @Override
+    protected List<SysUserPost> doList() {
+        return userPostService.selectAllSysUserPost();
+    }
+
+    @Override
+    protected PageResult<SysUserPost> doPage(PageRequest pageRequest) {
+        return userPostService.pageSysUserPost(pageRequest);
     }
 }
