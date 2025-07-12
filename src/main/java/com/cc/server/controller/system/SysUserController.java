@@ -45,40 +45,14 @@ public class SysUserController {
 		return ApiResponse.success(result);
 	}
 
-	@Operation(summary = "新增用户", description = "新增用户，密码MD5加密")
+	@Operation(summary = "新增用户", description = "新增用户，密码加密存储")
 	@PostMapping("/add")
 	public ApiResponse<String> addUser(@RequestBody SysUserVO userVO) {
-		// 1. 参数验证
-		String username = userVO.getUserName();
-		String password = userVO.getPassword();
-
-		if (username == null || username.trim().isEmpty()) {
-			return ApiResponse.error(400, "用户名不能为空");
-		}
-		if (password == null || password.trim().isEmpty()) {
-			return ApiResponse.error(400, "密码不能为空");
-		}
-		if (username.length() < User.USERNAME_MIN_LENGTH || username.length() > User.USERNAME_MAX_LENGTH) {
-			return ApiResponse.error(400, "用户名长度不合法");
-		}
-		if (password.length() < User.PASSWORD_MIN_LENGTH || password.length() > User.PASSWORD_MAX_LENGTH) {
-			return ApiResponse.error(400, "密码长度不合法");
-		}
-
-		// 2. 检查用户是否已存在
-		SysUserVO existUser = userService.checkUserExists(username, userVO.getEmail(), userVO.getPhone());
-		if (existUser != null) {
-			return ApiResponse.error(409, "用户已存在");
-		}
-
-		// 3. 创建新用户
-		userVO.setPassword(StringUtil.md5(password));
-		userVO.setStatus(User.NORMAL);
-		Integer result = userService.insertSysUser(userVO);
+		// 参数校验交由 Service 层处理，Controller 只做参数转发
+		Integer result = userService.createUser(userVO);
 		if (result == null || result <= 0) {
 			return ApiResponse.error(500, "新增用户失败");
 		}
-
 		return ApiResponse.success("新增成功", null);
 	}
 

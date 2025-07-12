@@ -20,18 +20,15 @@ public class RunGenInput {
 
 	public static void main(String[] args) {
 		logger.info("======开始生成======");
-		final String DATA_SOURCE = "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
-		final String DATA_NAME = "root";
-//        final String DATA_PWD = "Admin123.";
-//        final String DATA_PWD = "root123456";
-		final String DATA_PWD = "root1234";
+		// 支持命令行参数或环境变量配置
+		final String DATA_SOURCE = System.getProperty("gen.datasource", System.getenv().getOrDefault("GEN_DATASOURCE", "jdbc:mysql://localhost:3306/cc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8"));
+		final String DATA_NAME = System.getProperty("gen.username", System.getenv().getOrDefault("GEN_USERNAME", "root"));
+		final String DATA_PWD = System.getProperty("gen.password", System.getenv().getOrDefault("GEN_PASSWORD", "root1234"));
 
-		final String TABLE_NAME = "";
-		final String TABLE_NAME_PREFIX = "";
-
-		final String PKG = "system";
-		final String PKG_PATH = "/src/main/java/code";
-		final String PKG_PATH_MAPPER = "/src/main/java/code";
+		final String TABLE_NAME_PREFIX = System.getProperty("gen.tablePrefix", System.getenv().getOrDefault("GEN_TABLE_PREFIX", ""));
+		final String PKG = System.getProperty("gen.pkg", System.getenv().getOrDefault("GEN_PKG", "system"));
+		final String PKG_PATH = System.getProperty("gen.pkgPath", System.getenv().getOrDefault("GEN_PKG_PATH", "/src/main/java/code"));
+		final String PKG_PATH_MAPPER = System.getProperty("gen.pkgPathMapper", System.getenv().getOrDefault("GEN_PKG_PATH_MAPPER", "/src/main/java/code"));
 
 		FastAutoGenerator.create(DATA_SOURCE, DATA_NAME, DATA_PWD)
 				.globalConfig((scanner, builder) -> {
@@ -66,11 +63,15 @@ public class RunGenInput {
 							.addTablePrefix(TABLE_NAME_PREFIX) // 过滤表前缀
 							.entityBuilder() // Entity策略
 							.enableTableFieldAnnotation()
+							.addTableFills(new com.baomidou.mybatisplus.generator.fill.Column("create_time", com.baomidou.mybatisplus.annotation.FieldFill.INSERT))
+							.addTableFills(new com.baomidou.mybatisplus.generator.fill.Column("update_time", com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE))
+							.addTableFills(new com.baomidou.mybatisplus.generator.fill.Column("create_by", com.baomidou.mybatisplus.annotation.FieldFill.INSERT))
+							.addTableFills(new com.baomidou.mybatisplus.generator.fill.Column("update_by", com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE))
+							.enableLombok()
+							.enableTableFieldAnnotation()
 							.naming(NamingStrategy.underline_to_camel) // 数据库映射实体，驼峰
 							.columnNaming(NamingStrategy.underline_to_camel) // 字段映射，驼峰
 							.enableFileOverride() // 覆盖已经生成的
-							.naming(NamingStrategy.underline_to_camel) // 数据库映射实体，驼峰
-							.columnNaming(NamingStrategy.underline_to_camel) // 字段映射，驼峰
 							.mapperBuilder() // Mapper策略
 							.superClass(BaseMapper.class)
 							.formatMapperFileName("%sMapper")

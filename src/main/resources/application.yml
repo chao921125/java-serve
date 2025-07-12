@@ -170,7 +170,7 @@ mybatis-plus:
 application:
   security:
     jwt:
-      secret: 1vC7+/wkWaUpVZgasO1h0tjDbLrhpRykN06wDtFrahHEEUGqdpNzHzNd1+VW3QLSnfBy/FElxjLcdHsWvSnkvg==
+      secret: ${JWT_SECRET:1vC7+/wkWaUpVZgasO1h0tjDbLrhpRykN06wDtFrahHEEUGqdpNzHzNd1+VW3QLSnfBy/FElxjLcdHsWvSnkvg==}
       expirat: 604800000 # 30天，ms为单位
       refresh:
         expirat: 2592000000 # 7 days

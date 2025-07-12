@@ -16,10 +16,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * <p>
@@ -31,6 +28,35 @@ import java.nio.charset.StandardCharsets;
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+
+	/**
+	 * 新增用户，包含参数校验和业务逻辑
+	 */
+	public Integer createUser(SysUserVO userVO) {
+		String username = userVO.getUserName();
+		String password = userVO.getPassword();
+		if (username == null || username.trim().isEmpty()) {
+			throw new IllegalArgumentException("用户名不能为空");
+		}
+		if (password == null || password.trim().isEmpty()) {
+			throw new IllegalArgumentException("密码不能为空");
+		}
+		// 假设 User 常量类可用
+		if (username.length() < com.cc.frame.constants.User.USERNAME_MIN_LENGTH || username.length() > com.cc.frame.constants.User.USERNAME_MAX_LENGTH) {
+			throw new IllegalArgumentException("用户名长度不合法");
+		}
+		if (password.length() < com.cc.frame.constants.User.PASSWORD_MIN_LENGTH || password.length() > com.cc.frame.constants.User.PASSWORD_MAX_LENGTH) {
+			throw new IllegalArgumentException("密码长度不合法");
+		}
+		// 检查用户是否已存在
+		SysUserVO existUser = checkUserExists(username, userVO.getEmail(), userVO.getPhone());
+		if (existUser != null) {
+			throw new IllegalArgumentException("用户已存在");
+		}
+		userVO.setStatus(com.cc.frame.constants.User.NORMAL);
+		return insertSysUser(userVO);
+	}
+	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	@Resource
 	private SysUserMapper sysUserMapper;
 
@@ -87,7 +113,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		SysUser sysUser = new SysUser();
 		BeanUtils.copyProperties(sysUserVO, sysUser);
 		if (sysUserVO.getPassword() != null && !sysUserVO.getPassword().isEmpty()) {
-			sysUser.setPassword(md5(sysUserVO.getPassword()));
+			sysUser.setPassword(passwordEncoder.encode(sysUserVO.getPassword()));
 		}
 		return sysUserMapper.updateSysUserById(sysUser);
 	}
@@ -101,7 +127,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	public Integer insertSysUser(SysUserVO sysUserVO) {
 		SysUser sysUser = new SysUser();
 		BeanUtils.copyProperties(sysUserVO, sysUser);
-		sysUser.setPassword(md5(sysUserVO.getPassword()));
+		sysUser.setPassword(passwordEncoder.encode(sysUserVO.getPassword()));
 		return sysUserMapper.insertSysUser(sysUser);
 	}
 
@@ -131,7 +157,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		if (dbUser == null) {
 			return null;
 		}
-		if (sysUserVO.getPassword() != null && !md5(sysUserVO.getPassword()).equals(dbUser.getPassword())) {
+		if (sysUserVO.getPassword() != null && !passwordEncoder.matches(sysUserVO.getPassword(), dbUser.getPassword())) {
 			return null;
 		}
 		return BeanCopyUtil.convert(dbUser, SysUserVO.class);
@@ -156,8 +182,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		}
 
 		// 2. 验证密码
-		String encryptedPassword = md5(password);
-		if (!encryptedPassword.equals(dbUser.getPassword())) {
+		if (!passwordEncoder.matches(password, dbUser.getPassword())) {
 			return null;
 		}
 
@@ -252,28 +277,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		return sysUserMapper.updateSysUserById(user);
 	}
 
-	/**
-	 * MD5加密
-	 * @param input 输入字符串
-	 * @return MD5加密后的字符串
-	 */
-	private String md5(String input) {
-		if (input == null) {
-			return null;
-		}
-		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] messageDigest = md.digest(input.getBytes(StandardCharsets.UTF_8));
-			BigInteger no = new BigInteger(1, messageDigest);
-			String hashtext = no.toString(16);
-			while (hashtext.length() < 32) {
-				hashtext = "0" + hashtext;
-			}
-			return hashtext;
-		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException("MD5加密失败", e);
-		}
-	}
+	// ...existing code...
 
 	@Override
 	public PageResult<SysUserVO> pageSysUser(PageRequest pageRequest) {

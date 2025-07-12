@@ -1,3 +1,28 @@
+
+package com.cc.server.service.system;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.cc.server.entity.system.SysUser;
+import com.cc.server.vo.system.SysUserVO;
+import com.cc.frame.core.PageRequest;
+import com.cc.frame.core.PageResult;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+/**
+ * <p>
+ * 用户表 服务类
+ * </p>
+ *
+ * @author cc
+ * @since 2025-03-01 20:26:58
+ */
+public interface SysUserService extends IService<SysUser> {
+    /**
+     * 新增用户，包含参数校验和业务逻辑
+     */
+    Integer createUser(SysUserVO userVO);
 package com.cc.server.service.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
