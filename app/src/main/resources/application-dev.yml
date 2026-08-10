@@ -1,0 +1,94 @@
+# ============================================
+# Java Serve Admin - 开发环境配置（PostgreSQL）
+# ============================================
+spring:
+  datasource:
+    # PostgreSQL 数据源配置
+    url: jdbc:postgresql://localhost:5432/serve?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: Root000.
+
+  # 初始化脚本
+  sql:
+    init:
+      mode: never
+
+  # 开发环境禁用 Redis（启用时注释掉下面两个 exclude）
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+
+  # JPA/Hibernate 禁用
+  jpa:
+    open-in-view: false
+
+# 日志
+logging:
+  level:
+    com.cc: debug
+    org.mybatis: debug
+
+# Druid 数据源配置
+spring.datasource.druid:
+  initial-size: 1
+  min-idle: 1
+  max-active: 10
+  validation-query: SELECT 1
+  test-while-idle: true
+  test-on-borrow: false
+  test-on-return: false
+
+# ============================================
+# 文件存储配置
+# ============================================
+file-storage:
+  type: local
+  local-path: ./uploads
+  max-file-size: 50
+  presigned-expire: 3600
+
+# ============================================
+# Sentinel 配置
+# ============================================
+spring.cloud.sentinel:
+  enabled: false
+  transport:
+    dashboard: localhost:8080
+
+# ============================================
+# XXL-Job 任务调度配置
+# ============================================
+xxl:
+  job:
+    admin-addresses: http://localhost:9080/xxl-job-admin
+    appname: java-serve-executor
+    port: 9999
+    access-token: default_token
+    log-retention-days: 30
+
+# ============================================
+# RocketMQ 配置（开发环境可选关闭）
+# ============================================
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: ${spring.application.name}-producer
+    send-message-timeout: 3000
+    retry-times-when-send-failed: 2
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}

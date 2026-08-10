@@ -1,21 +1,67 @@
 services:
-  mysql:
-    image: 'mysql:latest'
+  postgres:
+    image: 'postgres:16-alpine'
     environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+      - 'POSTGRES_DB=serve'
+      - 'POSTGRES_PASSWORD=serve123'
+      - 'POSTGRES_USER=serve'
     ports:
-      - '3306'
-  rabbitmq:
-    image: 'rabbitmq:latest'
-    environment:
-      - 'RABBITMQ_DEFAULT_PASS=secret'
-      - 'RABBITMQ_DEFAULT_USER=myuser'
-    ports:
-      - '5672'
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./app/src/main/resources/sql/init-postgresql.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U serve -d serve']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   redis:
-    image: 'redis:latest'
+    image: 'redis:7-alpine'
     ports:
-      - '6379'
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rocketmq-namesrv:
+    image: 'apache/rocketmq:5.3.0'
+    command: sh mqnamesrv
+    ports:
+      - '9876:9876'
+    environment:
+      - 'JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m'
+
+  rocketmq-broker:
+    image: 'apache/rocketmq:5.3.0'
+    command: sh mqbroker -n rocketmq-namesrv:9876
+    ports:
+      - '10909:10909'
+      - '10911:10911'
+    environment:
+      - 'JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m'
+      - 'NAMESRV_ADDR=rocketmq-namesrv:9876'
+    depends_on:
+      - rocketmq-namesrv
+
+  xxl-job-admin:
+    image: 'xuxueli/xxl-job-admin:2.4.1'
+    ports:
+      - '9080:8080'
+    environment:
+      - 'PARAMS=--spring.datasource.url=jdbc:postgresql://postgres:5432/serve?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        --spring.datasource.username=serve
+        --spring.datasource.password=serve123
+        --spring.datasource.driver-class-name=org.postgresql.Driver
+        --xxl.job.accessToken=default_token'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  redis-data:

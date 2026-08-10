@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.cc</groupId>
+        <artifactId>java-serve</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>app</artifactId>
+    <name>App Module</name>
+    <description>应用模块：启动类、控制器、Service 实现、配置</description>
+
+    <dependencies>
+        <!-- 依赖 framework 模块（传递依赖 core） -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework</artifactId>
+        </dependency>
+
+        <!-- 多级缓存 + 分布式锁 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-redis</artifactId>
+        </dependency>
+
+        <!-- 文件存储 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-filestorage</artifactId>
+        </dependency>
+
+        <!-- 限流熔断 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-sentinel</artifactId>
+        </dependency>
+
+        <!-- 监控可观测性 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-monitor</artifactId>
+        </dependency>
+
+        <!-- 消息队列 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-rocketmq</artifactId>
+        </dependency>
+
+        <!-- 任务调度 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>framework-xxljob</artifactId>
+        </dependency>
+
+        <!-- 依赖 generator 模块 -->
+        <dependency>
+            <groupId>com.cc</groupId>
+            <artifactId>generator</artifactId>
+        </dependency>
+
+        <!-- PostgreSQL 驱动 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Druid 连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <!-- DevTools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

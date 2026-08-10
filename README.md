@@ -1,22 +1,22 @@
 # 项目组成
 
-| 核心                                                                                               |
-|--------------------------------------------------------------------------------------------------|
+| 核心                                                                                                 |
+|------------------------------------------------------------------------------------------------------|
 | [SpringBoot 配置文档](https://docs.spring.io/spring-boot/appendix/application-properties/index.html) |
-| [Maven 仓库](https://mvnrepository.com/)                                                           |
+| [Maven 仓库](https://mvnrepository.com/)                                                             |
 
-| 核心                   |
-|----------------------|
+| 核心                    |
+|-------------------------|
 | [Spring  Boot 全家桶]() |
 
-| 持久层，数据源，CRUD 操作                       |
-|---------------------------------------|
+| 持久层，数据源，CRUD 操作                 |
+|-------------------------------------------|
 | [Spring JPA 复杂项目]()                   |
-| [Mybatis-Plus](https://baomidou.com/) |
-| [Mybatis 不推荐]()                       |
+| [Mybatis-Plus](https://baomidou.com/)     |
+| [Mybatis 不推荐]()                        |
 | [分页功能](https://github.com/pagehelper) |
 
-| Entity VO DTO 等相互转换                                       |
+| Entity VO DTO 等相互转换                                  |
 |-----------------------------------------------------------|
 | [MapStruct](https://github.com/mapstruct/mapstruct)       |
 | [ModelMapper](https://github.com/modelmapper/modelmapper) |
@@ -31,11 +31,11 @@
 | []() |
 
 | 多数据源                           |
-|--------------------------------|
+|------------------------------------|
 | [分表分库 Apache ShardingSphere]() |
 
-| safe auth                                                                 |
-|---------------------------------------------------------------------------|
+| safe auth                                                                      |
+|--------------------------------------------------------------------------------|
 | [shrio 强大且灵活](https://shiro.apache.org/)                                  |
 | [spring-security 和spring结合方便](https://spring.io/projects/spring-security) |
 
@@ -48,9 +48,9 @@
 
 # 推荐
 
-| AI                                                                          |
-|-----------------------------------------------------------------------------|
-| [springboot3](https://github.com/dulaiduwang003/TIME-SEA-chatgpt)           |
+| AI                                                                             |
+|--------------------------------------------------------------------------------|
+| [springboot3](https://github.com/dulaiduwang003/TIME-SEA-chatgpt)              |
 | [springboot3 纯后端](https://github.com/gemingjia/gear-wenxinworkshop-starter) |
 
 # SpringBoot 学习
@@ -67,26 +67,26 @@
 
 # 项目
 
-|                                                                                                            |
-|------------------------------------------------------------------------------------------------------------|
+|                                                                                                                 |
+|-----------------------------------------------------------------------------------------------------------------|
 | [SpringBoot3 微服务商城](https://github.com/gz-yami/mall4cloud) [SpringBoot](https://github.com/gz-yami/mall4j) |
-| [springboot3 admin3](https://github.com/cjbi/admin3)                                                       |
-| [springboot3 Dice](https://github.com/bihell/Dice)                                                         |
-| [springboot3 mall](https://github.com/wayn111/waynboot-mall)                                               |
-| [springboot3 mall](https://github.com/wayn111/newbee-mall-pro)                                             |
-| [springboot3 admin](https://github.com/hb0730/boot-admin)                                                  |
-| [springboot3 continew](https://github.com/Charles7c/continew-admin)                                        |
-| [SpringBoot3 pig](https://gitee.com/log4j/pig) [lengleng](https://gitee.com/log4j)                         |
-| [SpringBoot3 springsecurity6](https://github.com/buingoctruong/springboot3-springsecurity6-jwt)            |
-| [springboot3 ScribbleHub](https://github.com/dulaiduwang003/ScribbleHub)                                   |
-| [springboot3 boot-admin](https://github.com/hb0730/boot-admin)                                             |
-| [springboot3 PlayEdu](https://github.com/PlayEdu/PlayEdu)                                                  |
-| [springboot3 demo](https://gitee.com/ckw1988/shiro-jwt-integration)                                        |
-| [springboot3 maku](https://github.com/makunet/maku-boot)                                                   |
-| [springboot3 Ruyu-Blog](https://github.com/kuailemao/Ruyu-Blog)                                            |
-| [springboot3 youlai-boot](https://github.com/haoxianrui/youlai-boot)                                       |
-| [文件管理](https://github.com/zfile-dev/zfile)                                                                 |
-| [SpringCloud](https://github.com/pig-mesh/pig)                                                             |
+| [springboot3 admin3](https://github.com/cjbi/admin3)                                                            |
+| [springboot3 Dice](https://github.com/bihell/Dice)                                                              |
+| [springboot3 mall](https://github.com/wayn111/waynboot-mall)                                                    |
+| [springboot3 mall](https://github.com/wayn111/newbee-mall-pro)                                                  |
+| [springboot3 admin](https://github.com/hb0730/boot-admin)                                                       |
+| [springboot3 continew](https://github.com/Charles7c/continew-admin)                                             |
+| [SpringBoot3 pig](https://gitee.com/log4j/pig) [lengleng](https://gitee.com/log4j)                              |
+| [SpringBoot3 springsecurity6](https://github.com/buingoctruong/springboot3-springsecurity6-jwt)                 |
+| [springboot3 ScribbleHub](https://github.com/dulaiduwang003/ScribbleHub)                                        |
+| [springboot3 boot-admin](https://github.com/hb0730/boot-admin)                                                  |
+| [springboot3 PlayEdu](https://github.com/PlayEdu/PlayEdu)                                                       |
+| [springboot3 demo](https://gitee.com/ckw1988/shiro-jwt-integration)                                             |
+| [springboot3 maku](https://github.com/makunet/maku-boot)                                                        |
+| [springboot3 Ruyu-Blog](https://github.com/kuailemao/Ruyu-Blog)                                                 |
+| [springboot3 youlai-boot](https://github.com/haoxianrui/youlai-boot)                                            |
+| [文件管理](https://github.com/zfile-dev/zfile)                                                                  |
+| [SpringCloud](https://github.com/pig-mesh/pig)                                                                  |
 
 https://github.com/1024-lab/smart-admin
 https://gitee.com/peng.liu.s/springboot3-springsecurity6-mybatisplus
