@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -37,7 +38,7 @@ public class SysUserController {
      */
     @GetMapping("/page")
     @PreAuthorize("hasAuthority('sys:user:list')")
-    public R<Page<SysUser>> page(
+    public R<Page<UserVO>> page(
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(required = false) String userName,
@@ -56,9 +57,12 @@ public class SysUserController {
         }
         wrapper.orderByDesc(SysUser::getCreateTime);
         Page<SysUser> result = userService.page(page, wrapper);
-        // 清除密码
-        result.getRecords().forEach(u -> u.setPassword(null));
-        return R.ok(result);
+        // 转换为 UserVO 并填充关联数据
+        Page<UserVO> voPage = new Page<>(result.getCurrent(), result.getSize(), result.getTotal());
+        voPage.setRecords(result.getRecords().stream()
+                .map(u -> { u.setPassword(null); return userService.enrichUserVO(u); })
+                .collect(java.util.stream.Collectors.toList()));
+        return R.ok(voPage);
     }
 
     /**
@@ -67,13 +71,7 @@ public class SysUserController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('sys:user:query')")
     public R<UserVO> getInfo(@PathVariable Long id) {
-        SysUser user = userService.getById(id);
-        if (user == null) {
-            throw ServiceException.notFound("用户不存在");
-        }
-        UserVO vo = new UserVO();
-        BeanUtils.copyProperties(user, vo);
-        return R.ok(vo);
+        return R.ok(userService.getUserDetail(id));
     }
 
     /**
@@ -85,7 +83,7 @@ public class SysUserController {
     public R<Void> add(@Valid @RequestBody UserAddDTO dto) {
         SysUser user = new SysUser();
         BeanUtils.copyProperties(dto, user);
-        userService.addUser(user, dto.getRoleIds(), dto.getDeptId());
+        userService.addUser(user, dto.getRoleIds(), dto.getPostIds(), dto.getDeptId());
         return R.ok();
     }
 
@@ -98,7 +96,7 @@ public class SysUserController {
     public R<Void> edit(@Valid @RequestBody UserEditDTO dto) {
         SysUser user = new SysUser();
         BeanUtils.copyProperties(dto, user);
-        userService.updateUser(user, dto.getRoleIds(), dto.getDeptId());
+        userService.updateUser(user, dto.getRoleIds(), dto.getPostIds(), dto.getDeptId());
         return R.ok();
     }
 
@@ -147,7 +145,8 @@ public class SysUserController {
     @PutMapping("/{id}/status")
     @PreAuthorize("hasAuthority('sys:user:edit')")
     @Log(title = "用户管理", businessType = com.cc.core.enums.BusinessType.UPDATE)
-    public R<Void> changeStatus(@PathVariable Long id, @RequestParam Integer status) {
+    public R<Void> changeStatus(@PathVariable Long id, @RequestBody java.util.Map<String, Integer> body) {
+        Integer status = body.get("status");
         SysUser user = new SysUser();
         user.setId(id);
         user.setStatus(status);

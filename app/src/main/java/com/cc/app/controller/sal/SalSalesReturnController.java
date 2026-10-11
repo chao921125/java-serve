@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.sal;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -11,9 +12,13 @@ import com.cc.framework.base.R;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 销售退货单控制器
@@ -51,11 +56,41 @@ public class SalSalesReturnController {
     }
 
     /**
-     * 新增
+     * 新增（含明细）
      */
     @PostMapping
-    public R<Void> create(@RequestBody SalSalesReturn returnOrder) {
+    public R<Long> create(@RequestBody SalSalesReturn returnOrder) {
+        returnOrder.setReturnNo("SR" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+                + ThreadLocalRandom.current().nextInt(1000, 9999));
+        if (returnOrder.getStatus() == null) returnOrder.setStatus(0);
         salesReturnService.save(returnOrder);
+        if (returnOrder.getItems() != null) {
+            BigDecimal totalQty = BigDecimal.ZERO;
+            BigDecimal totalAmt = BigDecimal.ZERO;
+            for (SalSalesReturnItem item : returnOrder.getItems()) {
+                item.setReturnId(returnOrder.getId());
+                if (item.getBatchNo() == null) item.setBatchNo("");
+                totalQty = totalQty.add(item.getQuantity());
+                totalAmt = totalAmt.add(item.getQuantity().multiply(item.getPrice()));
+                salesReturnItemService.save(item);
+            }
+            returnOrder.setTotalQuantity(totalQty);
+            returnOrder.setTotalAmount(totalAmt);
+            salesReturnService.updateById(returnOrder);
+        }
+        return R.ok(returnOrder.getId());
+    }
+
+    /**
+     * 提交审核（草稿→待审核）
+     */
+    @PostMapping("/{id}/submit")
+    public R<Void> submit(@PathVariable Long id) {
+        SalSalesReturn returnOrder = salesReturnService.getById(id);
+        if (returnOrder == null) return R.fail("退货单不存在");
+        if (returnOrder.getStatus() != 0) return R.fail("只有草稿状态才能提交");
+        returnOrder.setStatus(1);
+        salesReturnService.updateById(returnOrder);
         return R.ok();
     }
 

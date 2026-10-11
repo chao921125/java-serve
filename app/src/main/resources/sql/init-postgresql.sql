@@ -260,7 +260,7 @@ COMMENT ON TABLE log_operation IS '操作日志表';
 
 -- 超级管理员（密码：123456 -> BCrypt）
 INSERT INTO sys_user (id, user_name, password, nick_name, real_name, status, create_by, remark)
-VALUES (1, 'admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5Eh', '超级管理员', '管理员', 0, 'system', '系统内置超级管理员')
+VALUES (1, 'admin', '$2b$10$qsoftlHoWyX1DToXA7bx9OwBBxHvyR/uI/W6dqBDuB2d9PrD0a7Vy', '超级管理员', '管理员', 0, 'system', '系统内置超级管理员')
 ON CONFLICT (id) DO NOTHING;
 
 -- 部门数据

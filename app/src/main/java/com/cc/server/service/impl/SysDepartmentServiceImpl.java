@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -164,6 +165,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
             BeanUtils.copyProperties(d, vo);
             if (d.getChildren() != null && !d.getChildren().isEmpty()) {
                 vo.setChildren(convertToVO(d.getChildren()));
+            } else {
+                vo.setChildren(new ArrayList<>());
             }
             return vo;
         }).collect(Collectors.toList());

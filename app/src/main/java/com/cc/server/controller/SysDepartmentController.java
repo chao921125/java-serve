@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.controller;
 
 import com.cc.core.entity.SysDepartment;
@@ -28,7 +29,7 @@ public class SysDepartmentController {
      * 查询部门树
      */
     @GetMapping("/tree")
-    @PreAuthorize("hasAuthority('sys:dept:list')")
+    @PreAuthorize("hasAuthority('sys:dept:list') or hasAuthority('sys:dept:query')")
     public R<List<DeptTreeVO>> tree() {
         return R.ok(deptServiceImpl.getDeptTreeVO());
     }
@@ -37,7 +38,7 @@ public class SysDepartmentController {
      * 查询所有部门（列表）
      */
     @GetMapping("/list")
-    @PreAuthorize("hasAuthority('sys:dept:list')")
+    @PreAuthorize("hasAuthority('sys:dept:list') or hasAuthority('sys:dept:query')")
     public R<List<SysDepartment>> list() {
         return R.ok(deptService.list());
     }

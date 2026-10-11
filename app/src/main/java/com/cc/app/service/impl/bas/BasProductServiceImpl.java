@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.service.impl.bas;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -31,6 +32,18 @@ public class BasProductServiceImpl extends ServiceImpl<BasProductMapper, BasProd
         }
         if (query.getCategoryId() != null) {
             wrapper.eq(BasProduct::getCategoryId, query.getCategoryId());
+        }
+        if (query.getMaterial() != null && !query.getMaterial().isEmpty()) {
+            wrapper.eq(BasProduct::getMaterial, query.getMaterial());
+        }
+        if (query.getStandard() != null && !query.getStandard().isEmpty()) {
+            wrapper.eq(BasProduct::getStandard, query.getStandard());
+        }
+        if (query.getProductType() != null && !query.getProductType().isEmpty()) {
+            wrapper.eq(BasProduct::getProductType, query.getProductType());
+        }
+        if (query.getWarehouseId() != null) {
+            wrapper.eq(BasProduct::getWarehouseId, query.getWarehouseId());
         }
         if (query.getStatus() != null) {
             wrapper.eq(BasProduct::getStatus, query.getStatus());

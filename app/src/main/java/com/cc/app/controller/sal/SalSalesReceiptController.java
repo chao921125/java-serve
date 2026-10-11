@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.sal;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -8,6 +9,10 @@ import com.cc.core.service.sal.SalSalesReceiptService;
 import com.cc.framework.base.R;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 销售收款单控制器
@@ -43,8 +48,24 @@ public class SalSalesReceiptController {
      * 新增
      */
     @PostMapping
-    public R<Void> create(@RequestBody SalSalesReceipt receipt) {
+    public R<Long> create(@RequestBody SalSalesReceipt receipt) {
+        receipt.setReceiptNo("RC" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+                + ThreadLocalRandom.current().nextInt(1000, 9999));
+        if (receipt.getStatus() == null) receipt.setStatus(0);
         salesReceiptService.save(receipt);
+        return R.ok(receipt.getId());
+    }
+
+    /**
+     * 提交审核（草稿→待审核）
+     */
+    @PostMapping("/{id}/submit")
+    public R<Void> submit(@PathVariable Long id) {
+        SalSalesReceipt receipt = salesReceiptService.getById(id);
+        if (receipt == null) return R.fail("收款单不存在");
+        if (receipt.getStatus() != 0) return R.fail("只有草稿状态才能提交");
+        receipt.setStatus(1);
+        salesReceiptService.updateById(receipt);
         return R.ok();
     }
 

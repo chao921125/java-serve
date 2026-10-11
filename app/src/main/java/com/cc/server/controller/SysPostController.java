@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -46,7 +47,7 @@ public class SysPostController {
      * 查询所有正常岗位
      */
     @GetMapping("/list")
-    @PreAuthorize("hasAuthority('sys:post:list')")
+    @PreAuthorize("hasAuthority('sys:post:list') or hasAuthority('sys:post:query')")
     public R<List<SysPost>> list() {
         LambdaQueryWrapper<SysPost> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(SysPost::getStatus, 0);

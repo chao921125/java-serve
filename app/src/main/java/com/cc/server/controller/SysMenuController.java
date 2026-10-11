@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.controller;
 
 import com.cc.core.entity.SysMenu;
@@ -41,6 +42,14 @@ public class SysMenuController {
     public R<List<MenuTreeVO>> userTree() {
         Long userId = SecurityUtil.getUserId();
         return R.ok(menuServiceImpl.getMenuTreeVOByUserId(userId));
+    }
+
+    /**
+     * 查询全部菜单树（供前端路由注册，不限制权限）
+     */
+    @GetMapping("/routeTree")
+    public R<List<MenuTreeVO>> routeTree() {
+        return R.ok(menuServiceImpl.getMenuTreeVO());
     }
 
     /**

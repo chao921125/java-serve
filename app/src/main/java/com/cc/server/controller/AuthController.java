@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.controller;
 
 import com.cc.core.dto.ChangePasswordDTO;
@@ -104,7 +105,7 @@ public class AuthController {
         user.setEmail(dto.getEmail());
         user.setPhone(dto.getPhone());
         user.setStatus(0);
-        userService.addUser(user, Collections.emptyList(), null);
+        userService.addUser(user, Collections.emptyList(), Collections.emptyList(), null);
         return R.ok();
     }
 

@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.pur;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -53,9 +54,9 @@ public class PurPurchaseOrderController {
      * 新增
      */
     @PostMapping
-    public R<Void> create(@Valid @RequestBody PurchaseOrderSaveDTO dto) {
-        purchaseOrderService.create(dto);
-        return R.ok();
+    public R<Long> create(@Valid @RequestBody PurchaseOrderSaveDTO dto) {
+        Long id = purchaseOrderService.create(dto);
+        return R.ok(id);
     }
 
     /**
@@ -80,6 +81,19 @@ public class PurPurchaseOrderController {
             return R.fail("只有草稿状态的订单才能删除");
         }
         return purchaseOrderService.removeById(id) ? R.ok() : R.fail("删除失败");
+    }
+
+    /**
+     * 提交审核（草稿→待审核）
+     */
+    @PostMapping("/{id}/submit")
+    public R<Void> submit(@PathVariable Long id) {
+        PurPurchaseOrder order = purchaseOrderService.getById(id);
+        if (order == null) return R.fail("采购订单不存在");
+        if (order.getStatus() != 0) return R.fail("只有草稿状态才能提交");
+        order.setStatus(1);
+        purchaseOrderService.updateById(order);
+        return R.ok();
     }
 
     /**

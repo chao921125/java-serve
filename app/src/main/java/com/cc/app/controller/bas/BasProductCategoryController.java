@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.bas;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -36,14 +37,7 @@ public class BasProductCategoryController {
         // 构建树
         Map<Long, List<BasProductCategory>> grouped = all.stream()
                 .collect(Collectors.groupingBy(c -> c.getParentId() == null ? 0L : c.getParentId()));
-        all.forEach(c -> {
-            List<BasProductCategory> children = grouped.get(c.getId());
-            // 子节点放入 params 字段（非表字段）便于返回
-            if (children != null) {
-                c.setParams(new java.util.HashMap<>());
-                c.getParams().put("children", children);
-            }
-        });
+        all.forEach(c -> c.setChildren(grouped.getOrDefault(c.getId(), new ArrayList<>())));
         List<BasProductCategory> roots = grouped.getOrDefault(0L, new ArrayList<>());
         return R.ok(roots);
     }

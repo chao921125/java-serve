@@ -1,15 +1,20 @@
+// AI生成
 package com.cc.app.controller.m;
 
 import com.cc.core.entity.bas.BasProduct;
 import com.cc.core.entity.inv.InvInventory;
+import com.cc.core.entity.pur.PurPurchaseOrder;
 import com.cc.core.entity.sal.SalSalesOrder;
 import com.cc.core.service.bas.BasProductService;
 import com.cc.core.service.inv.InvInventoryService;
+import com.cc.core.service.pur.PurPurchaseOrderService;
 import com.cc.core.service.sal.SalSalesOrderService;
 import com.cc.framework.base.R;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -23,6 +28,7 @@ public class MobileController {
     private final BasProductService productService;
     private final SalSalesOrderService salesOrderService;
     private final InvInventoryService inventoryService;
+    private final PurPurchaseOrderService purchaseOrderService;
 
     /**
      * 移动端首页数据
@@ -36,8 +42,11 @@ public class MobileController {
                 .ge(SalSalesOrder::getOrderDate, java.time.LocalDate.now().withDayOfMonth(1)).count());
         result.put("pendingApprovals", salesOrderService.lambdaQuery()
                 .eq(SalSalesOrder::getStatus, 1).count());
-        result.put("stockWarnings", 0);
-        result.put("notifications", 0);
+        result.put("stockWarnings", productService.lambdaQuery()
+                .le(BasProduct::getInventory, 10)
+                .eq(BasProduct::getStatus, 0).count());
+        result.put("notifications", salesOrderService.lambdaQuery()
+                .eq(SalSalesOrder::getStatus, 1).count());
         return R.ok(result);
     }
 
@@ -90,8 +99,26 @@ public class MobileController {
      * 快速开采购单
      */
     @PostMapping("/purchase-orders")
-    public R<Void> quickPurchaseOrder(@RequestBody Map<String, Object> request) {
-        return R.ok();
+    public R<Map<String, Object>> quickPurchaseOrder(@RequestBody Map<String, Object> request) {
+        PurPurchaseOrder order = new PurPurchaseOrder();
+        order.setOrderNo("PUR" + System.currentTimeMillis());
+        order.setOrderDate(LocalDate.now());
+        order.setSupplierId(request.get("supplierId") != null
+                ? Long.valueOf(request.get("supplierId").toString()) : null);
+        order.setWarehouseId(request.get("warehouseId") != null
+                ? Long.valueOf(request.get("warehouseId").toString()) : 1L);
+        order.setStatus(0);
+        order.setTotalQuantity(BigDecimal.ZERO);
+        order.setTotalAmount(BigDecimal.ZERO);
+        order.setTotalTax(BigDecimal.ZERO);
+        order.setTotalPayable(BigDecimal.ZERO);
+        order.setReceivedQuantity(BigDecimal.ZERO);
+        purchaseOrderService.save(order);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("orderNo", order.getOrderNo());
+        result.put("orderId", order.getId());
+        return R.ok(result);
     }
 
     /**

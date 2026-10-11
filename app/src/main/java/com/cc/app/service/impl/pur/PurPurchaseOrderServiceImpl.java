@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.service.impl.pur;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -63,7 +64,7 @@ public class PurPurchaseOrderServiceImpl extends ServiceImpl<PurPurchaseOrderMap
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void create(PurchaseOrderSaveDTO dto) {
+    public Long create(PurchaseOrderSaveDTO dto) {
         // 构建主表
         PurPurchaseOrder order = new PurPurchaseOrder();
         order.setOrderNo(generateOrderNo());
@@ -132,6 +133,7 @@ public class PurPurchaseOrderServiceImpl extends ServiceImpl<PurPurchaseOrderMap
         order.setTotalTax(totalTax);
         order.setTotalPayable(totalPayable);
         this.updateById(order);
+        return order.getId();
     }
 
     @Override

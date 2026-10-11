@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.sal;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -11,9 +12,13 @@ import com.cc.framework.base.R;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 销售出库单控制器
@@ -51,11 +56,41 @@ public class SalSalesDeliveryController {
     }
 
     /**
-     * 新增
+     * 新增（含明细）
      */
     @PostMapping
-    public R<Void> create(@RequestBody SalSalesDelivery delivery) {
+    public R<Long> create(@RequestBody SalSalesDelivery delivery) {
+        delivery.setDeliveryNo("SD" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+                + ThreadLocalRandom.current().nextInt(1000, 9999));
+        if (delivery.getStatus() == null) delivery.setStatus(0);
         salesDeliveryService.save(delivery);
+        if (delivery.getItems() != null) {
+            BigDecimal totalQty = BigDecimal.ZERO;
+            BigDecimal totalAmt = BigDecimal.ZERO;
+            for (SalSalesDeliveryItem item : delivery.getItems()) {
+                item.setDeliveryId(delivery.getId());
+                if (item.getBatchNo() == null) item.setBatchNo("");
+                totalQty = totalQty.add(item.getQuantity());
+                totalAmt = totalAmt.add(item.getQuantity().multiply(item.getPrice()));
+                salesDeliveryItemService.save(item);
+            }
+            delivery.setTotalQuantity(totalQty);
+            delivery.setTotalAmount(totalAmt);
+            salesDeliveryService.updateById(delivery);
+        }
+        return R.ok(delivery.getId());
+    }
+
+    /**
+     * 提交审核（草稿→待审核）
+     */
+    @PostMapping("/{id}/submit")
+    public R<Void> submit(@PathVariable Long id) {
+        SalSalesDelivery delivery = salesDeliveryService.getById(id);
+        if (delivery == null) return R.fail("出库单不存在");
+        if (delivery.getStatus() != 0) return R.fail("只有草稿状态才能提交");
+        delivery.setStatus(1);
+        salesDeliveryService.updateById(delivery);
         return R.ok();
     }
 

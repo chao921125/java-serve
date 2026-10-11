@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.app.controller.pur;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -9,12 +10,15 @@ import com.cc.core.service.pur.PurPurchaseReceiptService;
 import com.cc.framework.base.R;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 采购入库单控制器
@@ -52,11 +56,41 @@ public class PurPurchaseReceiptController {
     }
 
     /**
-     * 新增
+     * 新增（含明细）
      */
     @PostMapping
-    public R<Void> create(@RequestBody PurPurchaseReceipt receipt) {
+    public R<Long> create(@RequestBody PurPurchaseReceipt receipt) {
+        receipt.setReceiptNo("PR" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+                + ThreadLocalRandom.current().nextInt(1000, 9999));
+        if (receipt.getStatus() == null) receipt.setStatus(0);
         purchaseReceiptService.save(receipt);
+        if (receipt.getItems() != null) {
+            BigDecimal totalQty = BigDecimal.ZERO;
+            BigDecimal totalAmt = BigDecimal.ZERO;
+            for (PurPurchaseReceiptItem item : receipt.getItems()) {
+                item.setReceiptId(receipt.getId());
+                if (item.getBatchNo() == null) item.setBatchNo("");
+                totalQty = totalQty.add(item.getQuantity());
+                totalAmt = totalAmt.add(item.getQuantity().multiply(item.getPrice()));
+                purchaseReceiptItemService.save(item);
+            }
+            receipt.setTotalQuantity(totalQty);
+            receipt.setTotalAmount(totalAmt);
+            purchaseReceiptService.updateById(receipt);
+        }
+        return R.ok(receipt.getId());
+    }
+
+    /**
+     * 提交审核（草稿→待审核）
+     */
+    @PostMapping("/{id}/submit")
+    public R<Void> submit(@PathVariable Long id) {
+        PurPurchaseReceipt receipt = purchaseReceiptService.getById(id);
+        if (receipt == null) return R.fail("入库单不存在");
+        if (receipt.getStatus() != 0) return R.fail("只有草稿状态才能提交");
+        receipt.setStatus(1);
+        purchaseReceiptService.updateById(receipt);
         return R.ok();
     }
 

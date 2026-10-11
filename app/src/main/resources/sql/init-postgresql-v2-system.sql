@@ -34,6 +34,10 @@ CREATE TABLE sys_approval_node (
     can_delegate SMALLINT DEFAULT 1,
     timeout_hours INTEGER,
     condition_expression VARCHAR(500),
+    node_type VARCHAR(20) DEFAULT 'SEQUENTIAL',
+    required_count INTEGER DEFAULT 1,
+    true_next_order INTEGER,
+    false_next_order INTEGER,
     deleted SMALLINT DEFAULT 0,
     create_by VARCHAR(64),
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -42,6 +46,10 @@ CREATE TABLE sys_approval_node (
     remark VARCHAR(500)
 );
 COMMENT ON TABLE sys_approval_node IS '审批节点';
+COMMENT ON COLUMN sys_approval_node.node_type IS '节点类型: SEQUENTIAL(顺序) PARALLEL_AND(会签) PARALLEL_OR(或签) CONDITIONAL(条件) CC(抄送)';
+COMMENT ON COLUMN sys_approval_node.required_count IS '会签/或签所需审批人数';
+COMMENT ON COLUMN sys_approval_node.true_next_order IS '条件为真时跳转的节点顺序';
+COMMENT ON COLUMN sys_approval_node.false_next_order IS '条件为假时跳转的节点顺序';
 CREATE INDEX idx_sys_an_flow ON sys_approval_node(flow_id);
 
 -- 审批实例
@@ -59,6 +67,8 @@ CREATE TABLE sys_approval_instance (
     applicant_name VARCHAR(100) NOT NULL,
     applied_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     completed_time TIMESTAMP,
+    form_data TEXT,
+    callback_type VARCHAR(50),
     deleted SMALLINT DEFAULT 0,
     create_by VARCHAR(64),
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -95,6 +105,27 @@ CREATE TABLE sys_approval_record (
 COMMENT ON TABLE sys_approval_record IS '审批记录';
 CREATE INDEX idx_sys_ar_instance ON sys_approval_record(instance_id);
 CREATE INDEX idx_sys_ar_approver ON sys_approval_record(approver_id);
+
+-- 审批抄送记录
+DROP TABLE IF EXISTS sys_approval_cc CASCADE;
+CREATE TABLE sys_approval_cc (
+    id BIGSERIAL PRIMARY KEY,
+    instance_id BIGINT NOT NULL,
+    node_id BIGINT NOT NULL,
+    cc_user_id BIGINT NOT NULL,
+    cc_user_name VARCHAR(100),
+    cc_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    is_read SMALLINT DEFAULT 0,
+    deleted SMALLINT DEFAULT 0,
+    create_by VARCHAR(64),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_by VARCHAR(64),
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    remark VARCHAR(500)
+);
+COMMENT ON TABLE sys_approval_cc IS '审批抄送记录';
+CREATE INDEX idx_sys_acc_instance ON sys_approval_cc(instance_id);
+CREATE INDEX idx_sys_acc_user ON sys_approval_cc(cc_user_id);
 
 -- 通知消息
 DROP TABLE IF EXISTS sys_notification CASCADE;

@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -97,6 +98,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             BeanUtils.copyProperties(m, vo);
             if (m.getChildren() != null && !m.getChildren().isEmpty()) {
                 vo.setChildren(convertToVO(m.getChildren()));
+            } else {
+                vo.setChildren(new ArrayList<>());
             }
             return vo;
         }).collect(Collectors.toList());
