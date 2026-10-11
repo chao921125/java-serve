@@ -1,5 +1,7 @@
+// AI生成
 package com.cc.core.entity.bas;
 
+import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.cc.core.base.BaseEntity;
 import lombok.Data;
@@ -36,6 +38,39 @@ public class BasProduct extends BaseEntity {
     /** 品牌 ID */
     private Long brandId;
 
+    /** 材质（铜、铝合金、铁）→ 建议用字典管理 */
+    private String material;
+
+    /** 标准（欧标、美标、国标）→ 建议用字典管理 */
+    private String standard;
+
+    /** 类型（等径直接、卡箍组合、内螺纹球阀）→ 建议用字典管理 */
+    private String productType;
+
+    /** 重量（kg） */
+    private BigDecimal weight;
+
+    /** 体积（m³） */
+    private BigDecimal volume;
+
+    /** 库存数量 */
+    private Integer inventory;
+
+    /** 占用库存 */
+    private Integer occupiedInventory;
+
+    /** 可装箱数量 */
+    private Integer boxTotal;
+
+    /** 箱体规格 */
+    private String boxSpecification;
+
+    /** 箱体体积 */
+    private String boxVolume;
+
+    /** 仓库 ID → bas_warehouses */
+    private Long warehouseId;
+
     /** 基础价格 */
     private BigDecimal basePrice;
 
@@ -68,4 +103,8 @@ public class BasProduct extends BaseEntity {
 
     /** 成本核算方法: WEIGHTED_AVG(移动加权平均), FIFO(先进先出), SPECIFIC(个别计价) */
     private String costingMethod;
+
+    /** 乐观锁版本号 */
+    @Version
+    private Integer version;
 }

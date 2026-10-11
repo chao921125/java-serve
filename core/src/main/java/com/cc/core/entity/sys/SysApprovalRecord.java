@@ -1,9 +1,12 @@
+// AI生成
 package com.cc.core.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.cc.core.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
  * 审批记录
@@ -41,5 +44,5 @@ public class SysApprovalRecord extends BaseEntity {
     private Long delegateToId;
 
     /** 操作时间 */
-    private String actionTime;
+    private LocalDateTime actionTime;
 }

@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.dto.bas;
 
 import lombok.Data;
@@ -30,6 +31,39 @@ public class ProductSaveDTO {
 
     /** 品牌 ID */
     private Long brandId;
+
+    /** 材质 */
+    private String material;
+
+    /** 标准 */
+    private String standard;
+
+    /** 类型 */
+    private String productType;
+
+    /** 重量（kg） */
+    private BigDecimal weight;
+
+    /** 体积（m³） */
+    private BigDecimal volume;
+
+    /** 库存数量 */
+    private Integer inventory;
+
+    /** 占用库存 */
+    private Integer occupiedInventory;
+
+    /** 可装箱数量 */
+    private Integer boxTotal;
+
+    /** 箱体规格 */
+    private String boxSpecification;
+
+    /** 箱体体积 */
+    private String boxVolume;
+
+    /** 仓库 ID */
+    private Long warehouseId;
 
     /** 基础价格 */
     private BigDecimal basePrice;

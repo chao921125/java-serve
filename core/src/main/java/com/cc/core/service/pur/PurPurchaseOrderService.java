@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.service.pur;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -20,9 +21,9 @@ public interface PurPurchaseOrderService extends IService<PurPurchaseOrder> {
     IPage<PurPurchaseOrder> page(PurchaseOrderQueryDTO query);
 
     /**
-     * 创建采购订单（含明细）
+     * 创建采购订单（含明细），返回订单ID
      */
-    void create(PurchaseOrderSaveDTO dto);
+    Long create(PurchaseOrderSaveDTO dto);
 
     /**
      * 更新采购订单（含明细，先删旧明细再插新明细）

@@ -1,6 +1,9 @@
+// AI生成
 package com.cc.core.entity.inv;
 
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -40,7 +43,8 @@ public class InvInventory {
     /** 锁定数量 */
     private BigDecimal lockedQuantity;
 
-    /** 可用数量（计算列） */
+    /** 可用数量（数据库生成列，不参与INSERT/UPDATE） */
+    @TableField(insertStrategy = FieldStrategy.NEVER, updateStrategy = FieldStrategy.NEVER)
     private BigDecimal availableQuantity;
 
     /** 成本单价 */

@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -39,4 +40,16 @@ public class SysApprovalNode extends BaseEntity {
 
     /** 条件表达式 */
     private String conditionExpression;
+
+    /** 节点类型: SEQUENTIAL(顺序) PARALLEL_AND(会签) PARALLEL_OR(或签) CONDITIONAL(条件) CC(抄送) */
+    private String nodeType;
+
+    /** 会签/或签所需审批人数 */
+    private Integer requiredCount;
+
+    /** 条件分支：条件为真时跳转的节点顺序 */
+    private Integer trueNextOrder;
+
+    /** 条件分支：条件为假时跳转的节点顺序 */
+    private Integer falseNextOrder;
 }

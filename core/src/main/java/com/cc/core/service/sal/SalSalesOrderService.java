@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.service.sal;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -22,7 +23,7 @@ public interface SalSalesOrderService extends IService<SalSalesOrder> {
     /**
      * 创建销售订单（含明细），校验信用额度和库存可用量
      */
-    void create(SalesOrderSaveDTO dto);
+    Long create(SalesOrderSaveDTO dto);
 
     /**
      * 更新销售订单（含明细，先删旧明细再插新明细）

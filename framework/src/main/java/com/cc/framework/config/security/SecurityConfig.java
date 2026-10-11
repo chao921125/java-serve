@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.framework.config.security;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Spring Security 配置
@@ -69,6 +71,22 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // 其他请求需要认证
                         .anyRequest().authenticated())
+                // 异常处理：未认证返回 401，无权限返回 403
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType("application/json;charset=UTF-8");
+                            response.getWriter().write(
+                                    "{\"code\":401,\"msg\":\"未授权，请重新登录\",\"data\":null,\"timestamp\":"
+                                            + System.currentTimeMillis() + "}");
+                        })
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.setContentType("application/json;charset=UTF-8");
+                            response.getWriter().write(
+                                    "{\"code\":403,\"msg\":\"拒绝访问\",\"data\":null,\"timestamp\":"
+                                            + System.currentTimeMillis() + "}");
+                        }))
                 // 认证提供者
                 .authenticationProvider(authenticationProvider())
                 // JWT 过滤器在 UsernamePasswordAuthenticationFilter 之前

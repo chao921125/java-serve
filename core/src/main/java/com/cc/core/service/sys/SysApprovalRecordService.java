@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.service.sys;
 
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -28,6 +29,16 @@ public interface SysApprovalRecordService extends IService<SysApprovalRecord> {
     /**
      * 撤回
      */
-    void withdraw(Long instanceId);
+    void withdraw(Long instanceId, Long applicantId);
+
+    /**
+     * 查询审批记录
+     */
+    java.util.List<SysApprovalRecord> getByInstanceId(Long instanceId);
+
+    /**
+     * 退回到指定节点
+     */
+    void returnTo(Long instanceId, Long approverId, String approverName, Integer targetNodeOrder, String comment);
 
 }

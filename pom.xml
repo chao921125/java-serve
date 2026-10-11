@@ -70,7 +70,7 @@
         <commons-io.version>2.16.1</commons-io.version>
         <freemarker.version>2.3.33</freemarker.version>
         <jjwt.version>0.12.6</jjwt.version>
-        <lombok.version>1.18.36</lombok.version>
+        <lombok.version>1.18.44</lombok.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <oshi.version>6.6.1</oshi.version>
         <springdoc.version>2.6.0</springdoc.version>

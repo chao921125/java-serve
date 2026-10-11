@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.core.dto.bas;
 
 import lombok.Data;
@@ -22,6 +23,18 @@ public class ProductQueryDTO {
 
     /** 分类 ID */
     private Long categoryId;
+
+    /** 材质A */
+    private String material;
+
+    /** 标准 */
+    private String standard;
+
+    /** 类型 */
+    private String productType;
+
+    /** 仓库 ID */
+    private Long warehouseId;
 
     /** 状态 */
     private Integer status;

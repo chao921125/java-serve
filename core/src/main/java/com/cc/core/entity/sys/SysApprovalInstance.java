@@ -1,9 +1,12 @@
+// AI生成
 package com.cc.core.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.cc.core.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
  * 审批实例
@@ -41,8 +44,14 @@ public class SysApprovalInstance extends BaseEntity {
     private String applicantName;
 
     /** 申请时间 */
-    private String appliedTime;
+    private LocalDateTime appliedTime;
 
     /** 完成时间 */
-    private String completedTime;
+    private LocalDateTime completedTime;
+
+    /** 表单数据(JSON)，用于条件表达式求值 */
+    private String formData;
+
+    /** 业务回调类型：审批通过后回调业务模块 */
+    private String callbackType;
 }

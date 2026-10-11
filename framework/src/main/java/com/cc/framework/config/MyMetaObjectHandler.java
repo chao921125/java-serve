@@ -1,3 +1,4 @@
+// AI生成
 package com.cc.framework.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
@@ -23,6 +24,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, now);
         this.strictInsertFill(metaObject, "createBy", String.class, getCurrentUser());
         this.strictInsertFill(metaObject, "updateBy", String.class, getCurrentUser());
+        this.strictInsertFill(metaObject, "deleted", Integer.class, 0);
     }
 
     @Override

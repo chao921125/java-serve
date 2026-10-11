@@ -1,5 +1,7 @@
+// AI生成
 package com.cc.core.entity.sal;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.cc.core.base.BaseEntity;
 import lombok.Data;
@@ -8,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 销售出库单主表
@@ -46,4 +49,8 @@ public class SalSalesDelivery extends BaseEntity {
 
     /** 审核时间 */
     private LocalDateTime approveTime;
+
+    /** 明细列表（非表字段） */
+    @TableField(exist = false)
+    private List<SalSalesDeliveryItem> items;
 }
